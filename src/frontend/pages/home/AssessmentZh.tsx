@@ -95,7 +95,7 @@ function Assessment(res: any) {
                     <div className={classes.actionArea}>
                       <div className={classes.media}>
                         <img
-                          src={url + res.content[1].en_img.url}
+                          src={url + (res.content[1].en_img && res.content[1].en_img.url) || ''}
                           width={244}
                           height={56}
                           alt="JAKROO"
@@ -129,7 +129,7 @@ function Assessment(res: any) {
                     <div className={classes.actionArea}>
                       <div className={classes.media}>
                         <img
-                          src={url + res.content[4].en_img.url}
+                          src={url + (res.content[4].en_img && res.content[4].en_img.url) || ''}
                           width={145}
                           height={56}
                           alt="JAKROO"
@@ -163,7 +163,7 @@ function Assessment(res: any) {
                     <div className={classes.actionArea}>
                       <div className={classes.media}>
                         <img
-                          src={url + res.content[7].en_img.url}
+                          src={url + (res.content[7].en_img && res.content[7].en_img.url) || ''}
                           width={145}
                           height={56}
                           alt="JAKROO"

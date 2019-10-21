@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/styles";
 
 import { Typography, Grid } from "@material-ui/core";
 import url from "../../../../http";
+
 const useStyles = makeStyles({
   content: {
     maxWidth: "75rem",
@@ -57,7 +58,7 @@ function HomeAbout(res: any) {
           <Grid item sm={6} xs={12}>
             <div className={classes.item}>
               <img
-                src={url + res.whatDo.content[6].en_img.url}
+                src={url + (res.whatDo.content[6].en_img && res.whatDo.content[6].en_img.url) || ""}
                 width={"100%"}
                 alt="R2.ai"
               />
@@ -91,7 +92,7 @@ function HomeAbout(res: any) {
           <Grid item sm={6} xs={12}>
             <div className={classes.item}>
               <img
-                src={url + res.whyDiff.content[4].en_img.url}
+                src={url + (res.whyDiff.content[4].en_img && res.whyDiff.content[4].en_img.url) || ""}
                 width={"100%"}
                 alt="R2.ai"
               />

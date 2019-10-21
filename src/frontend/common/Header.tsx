@@ -19,14 +19,24 @@ const useStyles = makeStyles({
 
 interface InterfaceMenu {
   name?: string;
-  children?: null;
+  children?: any;
   link?: string | undefined;
 }
 
 const menus: InterfaceMenu[] = [
   {
     name: "产品",
-    children: null,
+    children: [
+      {
+        name: "R2 Learn",
+        children: null,
+        link: "/products"
+      }, {
+        name: "应用场景",
+        children: null,
+        link: "/application"
+      }
+    ],
     link: "/products"
   },
   {
@@ -89,7 +99,7 @@ function Header() {
         {menus.map((value: InterfaceMenu, index) => {
           return (
             <Link key={index} href={value.link || ""}>
-              <Tab className={classes.tab} label={value.name} />
+              <Tab className={classes.tab} label={value.name}/>
             </Link>
           );
         })}

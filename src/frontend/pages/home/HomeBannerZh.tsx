@@ -8,7 +8,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 
 import { Grommet, Button } from "grommet";
-import url from "../../../../http";
+import http from "../../../../http";
 
 
 const useStyles = makeStyles((theme: any) =>
@@ -101,13 +101,12 @@ const HomeBanner = (res: any) => {
   function onHandleClose() {
     setOpen(false);
   }
-
   return (
     <>
       <Carousel showThumbs={false} showArrows={false} showStatus={false}>
         <div
           className={classes.item}
-          style={{ backgroundImage: url + res.content[0].zh_img.url }}
+          style={{ backgroundImage: http + (res.content[0].zh_img && res.content[0].zh_img.url)  || '' }}
         >
           <div className={classes.itemContent}>
             <Typography variant={"h3"} className={classes.title}>
