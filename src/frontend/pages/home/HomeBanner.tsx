@@ -8,6 +8,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 
 import { Grommet, Button } from "grommet";
+import url from "../../../../http";
+
 
 const useStyles = makeStyles((theme: any) =>
   createStyles({
@@ -87,7 +89,7 @@ const customTheme = {
   }
 };
 
-function HomeBanner() {
+const HomeBanner = (res: any) => {
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
@@ -100,17 +102,23 @@ function HomeBanner() {
     setOpen(false);
   }
 
+
+  // const enBanner: any = _.find(banner.content, (data: any) => {
+  //   return data.en_img;
+  // });
+  const banner = url + res.content[0].en_img.url
+
   return (
     <>
       <Carousel showThumbs={false} showArrows={false} showStatus={false}>
         <div
           className={classes.item}
-          style={{ backgroundImage: "url(/static/images/home/banner@2x.jpg)" }}
+          style={{ backgroundImage: banner }}
         >
           <div className={classes.itemContent}>
             <Typography variant={"h3"} className={classes.title}>
               R2 Learn
-              <br />
+              <br/>
               公开试用 开启全新建模体验
             </Typography>
             <Typography variant={"h4"} className={classes.subtitle}>
@@ -126,40 +134,19 @@ function HomeBanner() {
             </Grommet>
           </div>
         </div>
-        <div
-          className={classes.item}
-          style={{ backgroundImage: "url(/static/images/home/banner@2x.jpg)" }}
-        >
-          <div className={classes.itemContent}>
-            <Typography variant={"h3"} className={classes.title}>
-              233模式
-              <br />
-              被套路了吧233..
-            </Typography>
-            <Typography variant={"h4"} className={classes.subtitle}>
-              看我这蛇皮般走位，我是绝对不会被打死的
-            </Typography>
-            <Grommet className={classes.buttonWrap} theme={customTheme}>
-              <Button
-                hoverIndicator
-                label={"233视频"}
-                className={classes.button}
-              />
-            </Grommet>
-          </div>
-        </div>
+
       </Carousel>
       <Modal className={classes.modal} open={open} onClose={onHandleClose}>
         <div className={classes.paper}>
           <video width={"100%"} controls autoPlay>
             {/*<source src="/static/images/home/20190830.webm" type="video/webm" />*/}
             {/*<source src="/static/images/home/20190830.ogv" type="video/ogg" />*/}
-            <source src="/static/images/home/20190830.mp4" type="video/mp4" />
+            <source src="/static/images/home/20190830.mp4" type="video/mp4"/>
           </video>
         </div>
       </Modal>
     </>
   );
-}
+};
 
 export default HomeBanner;

@@ -36,23 +36,33 @@ const menus: InterfaceMenu[] = [
   },
   {
     name: "合作伙伴",
-    children: null
+    children: null,
+    link: "/partner"
   },
   {
     name: "R2资源",
-    children: null
+    children: null,
+    link: "/resources"
   },
   {
     name: "R2大学",
-    children: null
+    children: null,
+    link: "/university"
   },
   {
     name: "新闻资讯",
-    children: null
+    children: null,
+    link: "/news"
   },
   {
     name: "关于我们",
-    children: null
+    children: null,
+    link: "/aboutUs"
+  },
+  {
+    name: "登录",
+    children: null,
+    link: "/register"
   }
 ];
 

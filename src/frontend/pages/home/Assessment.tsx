@@ -6,6 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 
 import { Grommet, ResponsiveContext } from "grommet";
+import url from "../../../../http";
 
 const useStyles = makeStyles({
   root: {
@@ -68,13 +69,13 @@ const percentages: any = {
   md: 33
 };
 
-function Assessment() {
+function Assessment(res: any) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <div className={classes.content}>
         <Typography variant={"h4"} align={"center"} className={classes.title}>
-          客户评价
+          {res.content[0].en}
         </Typography>
         <Grommet theme={customBreakpoints}>
           <ResponsiveContext.Consumer>
@@ -94,31 +95,30 @@ function Assessment() {
                     <div className={classes.actionArea}>
                       <div className={classes.media}>
                         <img
-                          src="/static/images/home/JAKROO@2x.png"
+                          src={url + res.content[1].en_img.url}
                           width={244}
                           height={56}
                           alt="JAKROO"
                         />
                       </div>
                       <div>
-                        <div className={classes.comma}>
-                          <img
-                            src="/static/images/home/“@2x.png"
-                            width={46}
-                            height={55}
-                            alt="“"
-                          />
-                        </div>
+                        {/*<div className={classes.comma}>*/}
+                        {/*  <img*/}
+                        {/*    src="/static/images/home/“@2x.png"*/}
+                        {/*    width={46}*/}
+                        {/*    height={55}*/}
+                        {/*    alt="“"*/}
+                        {/*  />*/}
+                        {/*</div>*/}
                         <Typography
                           variant="body2"
                           color="textSecondary"
                           className={classes.words}
                         >
-                          由R2.ai的AI技术驱动的AI Designer (人工智能设计师)
-                          将彻底改变我们所知的图形设计行业。通过提供几乎无限的设计风格方案，它大大加快了定制设计流程并显着提升了我们的竞争优势。
+                          {res.content[2].en}
                         </Typography>
                         <Typography variant={"subtitle2"} align={"right"}>
-                          -定制服装公司首席运营官 Derek Wiseman
+                          {res.content[3].en}
                         </Typography>
                       </div>
                     </div>
@@ -129,30 +129,30 @@ function Assessment() {
                     <div className={classes.actionArea}>
                       <div className={classes.media}>
                         <img
-                          src="/static/images/home/pingan@2x.png"
+                          src={url + res.content[4].en_img.url}
                           width={145}
                           height={56}
                           alt="JAKROO"
                         />
                       </div>
                       <div>
-                        <div className={classes.comma}>
-                          <img
-                            src="/static/images/home/“@2x.png"
-                            width={46}
-                            height={55}
-                            alt="“"
-                          />
-                        </div>
+                        {/*<div className={classes.comma}>*/}
+                        {/*  <img*/}
+                        {/*    src="/static/images/home/“@2x.png"*/}
+                        {/*    width={46}*/}
+                        {/*    height={55}*/}
+                        {/*    alt="“"*/}
+                        {/*  />*/}
+                        {/*</div>*/}
                         <Typography
                           variant="body2"
                           color="textSecondary"
                           className={classes.words}
                         >
-                          R2.ai的新一代人工智能自动建模产品正在为平安智能健康大数据分析平台赋能。我们因此得以快速、准确、自动地建立机器学习模型，充分运用大数据为个人医疗风险画像更新迭代，以有效预测并发症和风险程度。
+                          {res.content[5].en}
                         </Typography>
                         <Typography variant={"subtitle2"} align={"right"}>
-                          -平安医疗首席医疗官郑毅
+                          {res.content[6].en}
                         </Typography>
                       </div>
                     </div>
@@ -163,30 +163,30 @@ function Assessment() {
                     <div className={classes.actionArea}>
                       <div className={classes.media}>
                         <img
-                          src="/static/images/home/pingan@2x.png"
+                          src={url + res.content[7].en_img.url}
                           width={145}
                           height={56}
                           alt="JAKROO"
                         />
                       </div>
                       <div>
-                        <div className={classes.comma}>
-                          <img
-                            src="/static/images/home/“@2x.png"
-                            width={46}
-                            height={55}
-                            alt="“"
-                          />
-                        </div>
+                        {/*<div className={classes.comma}>*/}
+                        {/*  <img*/}
+                        {/*    src="/static/images/home/“@2x.png"*/}
+                        {/*    width={46}*/}
+                        {/*    height={55}*/}
+                        {/*    alt="“"*/}
+                        {/*  />*/}
+                        {/*</div>*/}
                         <Typography
                           variant="body2"
                           color="textSecondary"
                           className={classes.words}
                         >
-                          R2.ai的新一代人工智能自动建模产品正在为平安智能健康大数据分析平台赋能。我们因此得以快速、准确、自动地建立机器学习模型，充分运用大数据为个人医疗风险画像更新迭代，以有效预测并发症和风险程度。
+                          {res.content[8].en}
                         </Typography>
                         <Typography variant={"subtitle2"} align={"right"}>
-                          -平安医疗首席医疗官郑毅
+                          {res.content[9].en}
                         </Typography>
                       </div>
                     </div>

@@ -59,7 +59,7 @@ const customTheme = {
   }
 };
 
-export default function ContentBanner() {
+export default function ContentBanner(res: any) {
   const classes = useStyles();
   return (
     <div
@@ -67,10 +67,9 @@ export default function ContentBanner() {
       style={{ backgroundImage: "url(/static/images/home/1920_2@2x.png)" }}
     >
       <div className={classes.content}>
-        <Typography className={classes.title}>R2 Learn云平台上线</Typography>
+        <Typography className={classes.title}>{res.content[0].en}</Typography>
         <Typography className={classes.des}>
-          开启全新建模体验，R2.ai推出网上产品公开试用和付费订阅；不管您是从事数据科学，模型开发，大数据分析或是商业预测分析工作，您都可以亲身体验使用R2
-          Learn建模平台建立精准机器学习模型。
+          {res.content[1].en}
         </Typography>
         <Grommet theme={customTheme} className={classes.buttonWrap}>
           <Box align="center" pad="medium">
