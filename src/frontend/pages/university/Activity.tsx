@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
-
+import Router from "next/router";
 import { Typography, Grid } from "@material-ui/core";
 import { Button, Grommet } from "grommet";
 
@@ -125,6 +125,7 @@ function HomeAbout() {
                 <p>· 了解如何追求AI/机器学习相关职业发展规划及建议</p>
                 <Grommet className={classes.buttonWrap} theme={customTheme}>
                   <Button
+                    onClick={()=>Router.push('/train')}
                     hoverIndicator
                     label={"查看详情"}
                     className={classes.button}
@@ -164,6 +165,7 @@ function HomeAbout() {
                 <p>· 提升孩子升学竞争力</p>
                 <Grommet className={classes.buttonWrap} theme={customTheme}>
                   <Button
+                    onClick={()=>Router.push('/train')}
                     hoverIndicator
                     label={"查看详情"}
                     className={classes.button}
@@ -190,6 +192,7 @@ function HomeAbout() {
                 <Grommet className={classes.buttonWrap} theme={customTheme}>
                   <Button
                     hoverIndicator
+                    onClick={()=>Router.push('/train')}
                     label={"查看详情"}
                     className={classes.button}
                   />
@@ -232,6 +235,7 @@ function HomeAbout() {
                 <p>· 近距离感受美国高科技发展</p>
                 <Grommet className={classes.buttonWrap} theme={customTheme}>
                   <Button
+                    onClick={()=>Router.push('/train')}
                     hoverIndicator
                     label={"查看详情"}
                     className={classes.button}

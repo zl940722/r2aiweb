@@ -67,9 +67,9 @@ export default function ContentBanner(res: any) {
       style={{ backgroundImage: "url(/static/images/home/1920_2@2x.png)" }}
     >
       <div className={classes.content}>
-        <Typography className={classes.title}>{res.content[0].en}</Typography>
+        <Typography className={classes.title}>{(res.content && res.content[0].en) || ""}</Typography>
         <Typography className={classes.des}>
-          {res.content[1].en}
+          {(res.content && res.content[1].en) || ""}
         </Typography>
         <Grommet theme={customTheme} className={classes.buttonWrap}>
           <Box align="center" pad="medium">

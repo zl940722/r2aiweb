@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/styles";
 
 import { Typography, Grid, Card } from "@material-ui/core";
 import { Button, Grommet } from "grommet";
+import Router from "next/router";
 
 const useStyles = makeStyles({
   content: {
@@ -137,7 +138,32 @@ const customTheme = {
 
 function Pricing(res: any) {
 
-  console.log(res.data, "dasdsadsa");
+
+  const toBuy = (id, value) => {
+    return () => {
+      console.log("df", id);
+      if (id === 4) {
+        Router.push(`/register`);
+      } else if (id === 3) {
+        Router.push({
+          pathname: '/simpleBuy',
+          query: {
+            id
+          }
+        });
+      } else if (id === 2) {
+        Router.push({
+          pathname: '/simpleBuy',
+          query: {
+            id
+          }
+        });
+      } else if (id === 1) {
+        Router.push(`/contactSales`);
+      }
+    };
+  };
+
   const classes = useStyles();
   return (
     <>
@@ -159,8 +185,10 @@ function Pricing(res: any) {
                       <Grommet className={classes.buttonWrap} theme={customTheme}>
                         <Button
                           hoverIndicator
+                          disabled={!res.user.user.active}
                           label={value.button_zh}
                           className={classes.button}
+                          onClick={toBuy(value.id, value)}
                         />
                       </Grommet>
                     }

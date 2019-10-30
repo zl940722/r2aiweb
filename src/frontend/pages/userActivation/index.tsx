@@ -1,14 +1,13 @@
 import React from "react";
 
-import Register from "./register";
+import UserActivation from "./userActivation";
 
 function Index() {
   return (
     <>
-      <Register />
+      <UserActivation />
     </>
   );
 }
 
 export default Index;
-

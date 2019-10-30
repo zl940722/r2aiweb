@@ -1,14 +1,13 @@
 import React from "react";
 
-import Register from "./register";
+import Login from "./login";
 
 function Index() {
   return (
     <>
-      <Register />
+      <Login />
     </>
   );
 }
 
 export default Index;
-

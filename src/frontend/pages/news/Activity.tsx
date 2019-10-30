@@ -78,7 +78,7 @@ function HomeAbout(res: any) {
   return (
     <>
       <div className={classes.content}>
-        {res.news.map((value: any, index: any) => (
+        {res.news && res.news.map((value: any, index: any) => (
           <Grid key={index} container className={classes.items} direction={"row"} onClick={detail(value.id)}>
             <Grid item sm={6} xs={12}>
               <div className={classes.item}>

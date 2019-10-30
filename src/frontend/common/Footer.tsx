@@ -21,6 +21,7 @@ const useStyles = makeStyles({
 });
 
 function Copyright() {
+  // @ts-ignore
   const classes = useStyles();
 
   return (

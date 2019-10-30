@@ -25,6 +25,8 @@ Index.getInitialProps = async function() {
     priority_zh: "资源分配优先级",
     technical_support_zh: "技术支持"
   };
+
+
   homeData.unshift(list);
   return {
     data: homeData

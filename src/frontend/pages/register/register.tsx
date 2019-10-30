@@ -4,15 +4,20 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import { Grid } from "@material-ui/core";
-import provinces from './province'
+import provinces from "./province";
+import citise from "./city";
+import areas from "./area";
+import axios from "axios";
+import _ from "lodash";
 import { Grommet, Box, Button } from "grommet";
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     bg: {
       background: "#061122",
       backgroundSize: "cover",
       backgroundPosition: "50%",
-      backgroundRepeat: "no-repeat",
+      backgroundRepeat: "no-repeat"
     },
     container: {
       display: "flex",
@@ -31,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     grids: {
       width: 1900,
-      margin: "0 auto",
+      margin: "0 auto"
     },
     grid: {
       flex: 1,
@@ -50,7 +55,7 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "10.5rem",
       height: "3.2rem",
       fontWeight: "bold",
-      background:'#061222 !important'
+      background: "#061222 !important"
     }
   })
 );
@@ -64,41 +69,44 @@ const country = [
 //
 const industry = [
   {
-    value: 'Healthcare',
-    label: '医疗',
-  },  {
-    value: 'Insurance',
-    label: '保险',
-  },  {
-    value: 'Automotive',
-    label: '汽车',
-  },  {
-    value: 'Financial',
-    label: '金融',
-  },  {
-    value: 'Pharmaceutical',
-    label: '制药',
-  },  {
-    value: 'Environmental',
-    label: '环境',
-  },  {
-    value: 'Telecom',
-    label: '电信',
-  },  {
-    value: 'Logistics',
-    label: '物流',
-  },  {
-    value: 'Technology',
-    label: '科技',
+    value: "Healthcare",
+    label: "医疗"
+  }, {
+    value: "Insurance",
+    label: "保险"
+  }, {
+    value: "Automotive",
+    label: "汽车"
+  }, {
+    value: "Financial",
+    label: "金融"
+  }, {
+    value: "Pharmaceutical",
+    label: "制药"
+  }, {
+    value: "Environmental",
+    label: "环境"
+  }, {
+    value: "Telecom",
+    label: "电信"
+  }, {
+    value: "Logistics",
+    label: "物流"
+  }, {
+    value: "Technology",
+    label: "科技"
   }
 ];
 
-interface State {
-  name: string;
-  age: string;
-  multiline: string;
-  country: string;
-}
+// interface State {
+//   name: string;
+//   age: string;
+//   multiline: string;
+//   country: string;
+//   province: string;
+//   city: string
+// }
+
 const customTheme = {
   button: {
     border: {
@@ -118,15 +126,80 @@ const customTheme = {
 };
 export default function TextFields() {
   const classes = useStyles();
-  const [values, setValues] = React.useState<State>({
-    name: "",
-    age: "",
-    multiline: "Controlled",
-    country: "zh"
+  const [values, setValues] = React.useState<any>({
+    address: "",
+    area: "",
+    captcha: "",
+    city: "",
+    companyName: "",
+    country: "",
+    department: "",
+    email: "",
+    industry: "",
+    language: "zh-CN",
+    phone: "",
+    productName: "",
+    province: "",
+    password: "",
+    username: ""
   });
 
-  const handleChange = (name: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (name: any) => (event: React.ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [name]: event.target.value });
+  };
+
+  const [show, setshow] = React.useState({
+    province: false,
+    city: false,
+    area: false
+  }) as any;
+
+  const [cityList, setcityList] = React.useState([]) as any;
+  const [areaList, setareaList] = React.useState([]) as any;
+  const [captcha, setCaptchas] = React.useState("") as any;
+
+  const submit = () => {
+
+    const list: any = {
+      "address": values.address,
+      "area": values.area,
+      "captcha": values.captcha,
+      "city": values.city,
+      "companyName": values.companyName,
+      "country": values.country,
+      "department": values.department,
+      "email": values.email,
+      "industry": values.industry,
+      "language": "zh-CN",
+      "phone": values.phone,
+      "productName": values.productName,
+      "province": values.province,
+      "password": values.password,
+      "username": values.username
+    };
+
+    console.log(values.email, "zzz", list, "list");
+
+    axios.post("/user/captcha", { "captcha": values.captcha })
+      .then((res: any) => {
+        console.log(res, "dasd");
+        if (res.status === 200) {
+          axios.post("/user/register", list)
+            .then((res: any) => {
+              console.log(res, "dasd");
+              if (res.status === 200) {
+                console.log('成功');
+              }
+            }).catch((err: any) => {
+            console.log(err, "err");
+            setCaptchas(new Date().getTime());
+          });
+        }
+      }).catch((err: any) => {
+      console.log(err, "err");
+      setCaptchas(new Date().getTime());
+    });
+
   };
 
   return (
@@ -138,8 +211,9 @@ export default function TextFields() {
               id="standard-dense"
               label="用户邮箱"
               fullWidth={true}
+              value={values.email}
               className={clsx(classes.textField, classes.dense)}
-              onChange={handleChange("name")}
+              onChange={handleChange("email")}
               margin="dense"
             />
             <TextField
@@ -147,7 +221,7 @@ export default function TextFields() {
               label="用户姓名"
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}
-              onChange={handleChange("name")}
+              onChange={handleChange("username")}
               margin="dense"
             />
             <TextField
@@ -155,7 +229,7 @@ export default function TextFields() {
               label="密码"
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}
-              onChange={handleChange("name")}
+              onChange={handleChange("password")}
               margin="dense"
             />
             <TextField
@@ -163,57 +237,27 @@ export default function TextFields() {
               label="公司全称"
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}
-              onChange={handleChange("name")}
+              onChange={handleChange("companyName")}
               margin="dense"
             />
             <TextField
               id="standard-select-currency"
               select
               label="国家地区"
-              className={classes.textField}
               value={values.country}
-              onChange={handleChange("country")}
-              SelectProps={{
-                MenuProps: {
-                  className: classes.menu
-                }
-              }}
-              margin="normal"
-            >
-              {country.map(option => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </TextField>
-            <TextField
-              id="standard-select-currency"
-              select
-              label="省"
               className={classes.textField}
-              value={values.country}
-              onChange={handleChange("country")}
-              SelectProps={{
-                MenuProps: {
-                  className: classes.menu
-                }
-              }}
-              margin="normal"
-            >
-              {provinces.map((option: any) => (
-                <MenuItem key={option.code} value={option.code}>
-                  {option.name}
-                </MenuItem>
-              ))}
-            </TextField>
+              onChange={(e: any) => {
+                setshow({ province: true });
+                setValues({
+                  email: values.email,
+                  username: values.username,
+                  password: values.password,
+                  companyName: values.companyName,
+                  productName: values.productName,
+                  country: e.target.value
+                });
 
-            <TextField
-              id="standard-select-currency"
-              select
-              label="市"
-              className={classes.textField}
-              value={values.country}
-              onChange={handleChange("country")}
+              }}
               SelectProps={{
                 MenuProps: {
                   className: classes.menu
@@ -227,27 +271,112 @@ export default function TextFields() {
                 </MenuItem>
               ))}
             </TextField>
+            {
+              show.province ? <TextField
+                id="standard-select-currency"
+                select
+                label="省"
+                className={classes.textField}
+                value={values.province}
+                onChange={(event: any) => {
+                  let bb: any = [];
+                  _.forEach(citise, function(o) {
+                    if (event.target.value === _.toInteger(o.parentCode)) {
+                      bb.push(o);
+                      setshow({ province: true, city: true });
+                      setcityList(bb);
+                      setValues({
+                        email: values.email,
+                        username: values.username,
+                        password: values.password,
+                        country: values.country,
+                        companyName: values.companyName,
+                        productName: values.productName,
+                        province: event.target.value
+                      });
+                    }
 
-            <TextField
-              id="standard-select-currency"
-              select
-              label="区"
-              className={classes.textField}
-              value={values.country}
-              onChange={handleChange("country")}
-              SelectProps={{
-                MenuProps: {
-                  className: classes.menu
-                }
-              }}
-              margin="normal"
-            >
-              {country.map(option => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </TextField>
+                  });
+
+                }}
+                SelectProps={{
+                  MenuProps: {
+                    className: classes.menu
+                  }
+                }}
+                margin="normal"
+              >
+                {provinces.map((option: any) => (
+                  <MenuItem key={option.code} value={option.code}>
+                    {option.name}
+                  </MenuItem>
+                ))}
+              </TextField> : null
+            }
+            {
+              show.city ? <TextField
+                id="standard-select-currency"
+                select
+                label="市"
+                value={values.city}
+                className={classes.textField}
+                onChange={(event: any) => {
+                  setValues({
+                    email: values.email,
+                    username: values.username,
+                    password: values.password,
+                    companyName: values.companyName,
+                    productName: values.productName,
+                    country: values.country,
+                    province: values.province,
+                    city: event.target.value
+                  });
+                  let bb: any = [];
+                  _.forEach(areas, function(o) {
+                    if (event.target.value === _.toInteger(o.parentCode)) {
+                      bb.push(o);
+                      setshow({ province: true, city: true, area: true });
+                      setareaList(bb);
+                    }
+
+                  });
+                }}
+                SelectProps={{
+                  MenuProps: {
+                    className: classes.menu
+                  }
+                }}
+                margin="normal"
+              >
+                {cityList.map(option => (
+                  <MenuItem key={option.code} value={option.code}>
+                    {option.name}
+                  </MenuItem>
+                ))}
+              </TextField> : null
+            }
+            {
+              show.area ? <TextField
+                id="standard-select-currency"
+                select
+                label="区"
+                className={classes.textField}
+                value={values.area}
+                onChange={handleChange("area")}
+                SelectProps={{
+                  MenuProps: {
+                    className: classes.menu
+                  }
+                }}
+                margin="normal"
+              >
+                {areaList.map(option => (
+                  <MenuItem key={option.code} value={option.code}>
+                    {option.name}
+                  </MenuItem>
+                ))}
+              </TextField> : null
+            }
 
 
             <TextField
@@ -255,7 +384,7 @@ export default function TextFields() {
               label="公司地址"
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}
-              onChange={handleChange("name")}
+              onChange={handleChange("address")}
               margin="dense"
             />
             <TextField
@@ -263,8 +392,8 @@ export default function TextFields() {
               select
               label="所处行业"
               className={classes.textField}
-              value={values.country}
-              onChange={handleChange("country")}
+              value={values.industry}
+              onChange={handleChange("industry")}
               SelectProps={{
                 MenuProps: {
                   className: classes.menu
@@ -283,23 +412,39 @@ export default function TextFields() {
               label="业务部门"
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}
-              onChange={handleChange("name")}
+              onChange={handleChange("department")}
               margin="dense"
             />
             <TextField
               id="standard-dense"
               label="联系电话"
               fullWidth={true}
+              value={values.phone}
               className={clsx(classes.textField, classes.dense)}
-              onChange={handleChange("name")}
+              onChange={handleChange("phone")}
               margin="dense"
+            />
+            <TextField
+              id="standard-dense"
+              label="验证码"
+              fullWidth={true}
+              className={clsx(classes.textField, classes.dense)}
+              onChange={handleChange("captcha")}
+              margin="dense"
+            />
+            <img src={`/user/captcha?${captcha}`}
+                 alt=""
+                 onClick={() => {
+                   setCaptchas(new Date().getTime());
+                 }}
             />
             <p>本人同意签署贵公司的<a href="www.baidu.com">SAAS用户协议</a></p>
             <Grommet theme={customTheme} className={classes.buttonWrap}>
               <Box align="center" pad="medium">
                 <Button
+                  onClick={submit}
                   hoverIndicator
-                  label={"立即试用"}
+                  label={"立即注册"}
                   className={classes.button}
                 />
               </Box>
