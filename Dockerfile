@@ -10,4 +10,6 @@ RUN yarn config set registry https://registry.npm.taobao.org \
 
 COPY . $PROJECT_DIR
 
-CMD NODE_ENV=production nodemon server.ts
+RUN npm run build:all
+
+CMD npm start

@@ -15,8 +15,7 @@ const basicPrice = process.env.BASIC_PRICE || 199.98;
 const basicPriceYear = process.env.BASIC_PRICE_YEAR || 2159.78;
 const essentialPrice = process.env.ESSENTIAL_PRICE || 1999.98;
 const essentialPriceYear = process.env.ESSENTIAL_PRICE_YEAR || 21599.78;
-console.log(process.env.AUTH_SERVICE  , 'process.env.STRAPI_SERVICE1 ')
-
+console.log(process.env.AUTH_SERVICE, "process.env.AUTH_SERVICE ");
 
 const captcha = proxy({
   target: authService,
@@ -25,7 +24,7 @@ const captcha = proxy({
     "/user/captcha": "/captcha"
   },
   onProxyReq(proxyReq, req) {
-    proxyReq.setHeader("Cookie", req.headers.cookie);
+    req.headers.cookie && proxyReq.setHeader("Cookie", req.headers.cookie);
   },
   onProxyRes(proxyRes, req, res) {
     Object.keys(proxyRes.headers).forEach(function(key) {
@@ -184,6 +183,21 @@ const wechatOrderQuery = proxy({
   }
 });
 
+const applyProbation = proxy({
+  target: payService,
+  changeOrigin: true,
+  pathRewrite: {
+    "/probation/applyProbation": "/probation/applyProbation"
+  },
+  onProxyReq(proxyReq, req) {
+    proxyReq.setHeader("Cookie", req.headers.cookie);
+  },
+  onProxyRes(proxyRes, req, res) {
+    Object.keys(proxyRes.headers).forEach(function(key) {
+      res.append(key, proxyRes.headers[key]);
+    });
+  }
+});
 
 
 app.prepare()
@@ -214,6 +228,8 @@ app.prepare()
     server.use("/wechat/createCharge", wechatCreateCharge);
 
     server.use("/wechat/orderQuery", wechatOrderQuery);
+
+    server.use("/probation/applyProbation", applyProbation);
 
     server.get("/price", (req, res) => {
       res.send({

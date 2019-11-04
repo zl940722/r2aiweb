@@ -4,6 +4,7 @@ import Edition from "./edition";
 import Context from "./context";
 
 function Application(res: any) {
+console.log(res , 'price')
   return (
     <Card>
       <Edition {...res}/>

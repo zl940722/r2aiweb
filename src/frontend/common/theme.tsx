@@ -16,6 +16,16 @@ const theme = createMuiTheme({
     background: {
       default: "#fff"
     }
+  },
+  overrides: {
+    MuiAvatar: {
+      root: {
+        width: "auto",
+        background:'#0c151a !important',
+        height:'auto',
+        borderRadius:'none'
+      }
+    }
   }
 });
 

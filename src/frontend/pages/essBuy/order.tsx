@@ -100,19 +100,6 @@ const pay = [
 
 export default function TextFields(props: any) {
 
-  // let userRes: any = props.router.query.user || {};
-  // let userE: any;
-  //
-  // if (Object.keys(userRes).length !== 0) {
-  //   userE = JSON.parse(userRes);
-  // } else {
-  //   userE = {
-  //     email: "",
-  //     id: ""
-  //   };
-  // }
-
-
   console.log("cxx111", props.router.query.id);
   const [mPrice, setmPrice] = React.useState(0);
   const [yPrice, setyPrice] = React.useState(0);
@@ -123,19 +110,12 @@ export default function TextFields(props: any) {
   });
 
 
-  // axios.get("/price").then((response: any) => {
-  //   const { basicPrice, basicPriceYear } = response.data;
-  //   console.log(response.data);
-  //   setmPrice(basicPrice);
-  //   setyPrice(basicPriceYear);
-  // });
-
   console.log("aaaa", mPrice, yPrice);
   const classes = useStyles();
   const [values, setValues] = React.useState({
     email: userInfo.email,
     username: "",
-    product: "简易版",
+    product: "专业版",
     rent: "",
     price: "",
     captcha: ""
@@ -159,17 +139,7 @@ export default function TextFields(props: any) {
     type: ""
   });
   const [resData, setResData] = React.useState({}) as any;
-  // const [url, seturl] = React.useState("") as any;
   const buy = () => {
-    // const interval = setInterval(() => {
-    //   if (url) {
-    //     window.open(url, "", "width=1100,height=600");
-    //     seturl("");
-    //     clearInterval(interval);
-    //   }
-    // }, 1000);
-    // pays();
-
     axios.post("/user/captcha", { "captcha": values.captcha })
       .then(() => {
         pays();
@@ -185,31 +155,25 @@ export default function TextFields(props: any) {
           content: error.response.data,
           type: "error"
         });
-        // _Modal.error({
-        //   title: zhlocale ? "温馨提示" : "Kindly Reminder",
-        //   content: zhlocale ? "验证码错误或输入超时" : "验证码错误或输入超时",
-        //   okText: zhlocale ? "知道了" : "Ok"
-        // });
         setCaptchas(new Date().getTime());
-        // clearInterval(interval);
       });
   };
 
   const pays = () => {
     axios.get("/user/login").then((data: any) => {
       setuserInfo(data.data);
-      console.log(data, "1234568");
       const list: any = {
         email: data.data.email,
         orderType: rent,
         price: values.price * 100,
         renew: false,
         totalPrice: values.price * 100,
-        productId: "prod_E7zz1vwTiZxOgO",
+        productId: "prod_E7zzObgS7kjaMK",
         language: "zh-CN",
         duration: 1,
-        productName: "简易版"
+        productName: "专业版"
       };
+
       if (payMethod === "alipay") {
         console.log(1);
         axios.post("/alipay/createCharge", list)
@@ -299,11 +263,11 @@ export default function TextFields(props: any) {
           });
 
       }
+
     }).catch((error: any) => {
-      console.log("error", error);
+      console.log(error, "error");
     });
   };
-
 
   return (
     <div className={classes.bg}>
@@ -340,15 +304,18 @@ export default function TextFields(props: any) {
                 setrent(e.target.value);
 
                 axios.get("/price").then((response: any) => {
-                  const { basicPrice, basicPriceYear } = response.data;
-                  setmPrice(basicPrice);
-                  setyPrice(basicPriceYear);
+                  const { essentialPrice, essentialPriceYear } = response.data;
+                  console.log(response.data);
+                  setmPrice(essentialPrice);
+                  setyPrice(essentialPriceYear);
+                  console.log(rent, "rent", e.target.value);
                   if (e.target.value === "Monthly") {
-                    setValues({ price: basicPrice });
+                    setValues({ price: essentialPrice });
                   } else {
-                    setValues({ price: basicPriceYear });
+                    setValues({ price: essentialPriceYear });
                   }
                 });
+
               }}
               SelectProps={{
                 MenuProps: {
@@ -442,7 +409,8 @@ export default function TextFields(props: any) {
                   axios.get("/alipay/orderQuery", {
                     params: { orderId: resData.data.orderId }
                   }).then(result => {
-                    Router.push("/paySuccess");
+                    Router.push("/paysuccess");
+                    // history.push('/paysuccess');
                   }).catch(() => {
                     console.log("失败");
                   });
@@ -451,7 +419,7 @@ export default function TextFields(props: any) {
                     params: { orderId: resData.data.orderId }
                   }).then(result => {
                     console.log("unionPay");
-                    Router.push("/paySuccess");
+                    Router.push("/paysuccess");
                   }).catch(() => {
                     console.log("失败");
                   });
@@ -460,7 +428,7 @@ export default function TextFields(props: any) {
                     params: { orderId: resData.data.orderId }
                   }).then(result => {
                     console.log("wechat");
-                    Router.push("/paySuccess");
+                    Router.push("/paysuccess");
                   }).catch(() => {
                     console.log("失败");
                   });

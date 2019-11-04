@@ -101,12 +101,14 @@ const HomeBanner = (res: any) => {
   function onHandleClose() {
     setOpen(false);
   }
+
+  console.log(http, "banner banner@2x.jpg", res.content[0].zh_img);
   return (
     <>
       <Carousel showThumbs={false} showArrows={false} showStatus={false}>
         <div
           className={classes.item}
-          style={{ backgroundImage: http + (res.content[0].zh_img && res.content[0].zh_img.url)  || '' }}
+          style={{ backgroundImage: "url(/static/images/home/banner@2x.jpg)" }}
         >
           <div className={classes.itemContent}>
             <Typography variant={"h3"} className={classes.title}>

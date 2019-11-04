@@ -138,24 +138,31 @@ const customTheme = {
 
 function Pricing(res: any) {
 
-
+  console.log(res, "dsadasdads");
   const toBuy = (id, value) => {
     return () => {
       console.log("df", id);
       if (id === 4) {
-        Router.push(`/register`);
+        Router.push({
+          pathname: "/toUse",
+          query: {
+            id: res.user.user.id
+          }
+        });
       } else if (id === 3) {
         Router.push({
-          pathname: '/simpleBuy',
+          pathname: "/simpleBuy",
           query: {
-            id
+            id: id,
+            user: JSON.stringify(res.user.user)
           }
         });
       } else if (id === 2) {
         Router.push({
-          pathname: '/simpleBuy',
+          pathname: "/essBuy",
           query: {
-            id
+            id: id,
+            user: JSON.stringify(res.user.user)
           }
         });
       } else if (id === 1) {

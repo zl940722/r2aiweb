@@ -23,7 +23,8 @@
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "skipDefaultLibCheck": true
   },
   "exclude": [
     "node_modules"
@@ -31,6 +32,7 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "*.ts"
   ]
 }

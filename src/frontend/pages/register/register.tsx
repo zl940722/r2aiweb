@@ -11,6 +11,13 @@ import axios from "axios";
 import _ from "lodash";
 import { Grommet, Box, Button } from "grommet";
 
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     bg: {
@@ -154,53 +161,88 @@ export default function TextFields() {
     area: false
   }) as any;
 
+  const [open, setOpen] = React.useState(false);
+  const [modal, setModal] = React.useState({
+    content: "",
+    type: ""
+  });
+
   const [cityList, setcityList] = React.useState([]) as any;
   const [areaList, setareaList] = React.useState([]) as any;
   const [captcha, setCaptchas] = React.useState("") as any;
 
   const submit = () => {
+    if (values.address === "" || values.area === "" || values.city === ""
+      || values.companyName === "" || values.country === "" || values.department === "" || values.email === ""
+      || values.industry === "" || values.phone === "" || values.province === ""
+      || values.password === "" || values.username === "") {
+      setOpen(true);
+      setModal({
+        content: "以上选项为必填，请正确填写。",
+        type: "error"
+      });
+    } else {
+      const list: any = {
+        "address": values.address,
+        "area": values.area,
+        "captcha": values.captcha,
+        "city": values.city,
+        "companyName": values.companyName,
+        "country": values.country,
+        "department": values.department,
+        "email": values.email,
+        "industry": values.industry,
+        "language": "zh-CN",
+        "phone": values.phone,
+        "productName": values.productName,
+        "province": values.province,
+        "password": values.password,
+        "username": values.username
+      };
 
-    const list: any = {
-      "address": values.address,
-      "area": values.area,
-      "captcha": values.captcha,
-      "city": values.city,
-      "companyName": values.companyName,
-      "country": values.country,
-      "department": values.department,
-      "email": values.email,
-      "industry": values.industry,
-      "language": "zh-CN",
-      "phone": values.phone,
-      "productName": values.productName,
-      "province": values.province,
-      "password": values.password,
-      "username": values.username
-    };
+      console.log(values.email, "zzz", list, "list");
 
-    console.log(values.email, "zzz", list, "list");
-
-    axios.post("/user/captcha", { "captcha": values.captcha })
-      .then((res: any) => {
-        console.log(res, "dasd");
-        if (res.status === 200) {
-          axios.post("/user/register", list)
-            .then((res: any) => {
-              console.log(res, "dasd");
-              if (res.status === 200) {
-                console.log('成功');
+      axios.post("/user/captcha", { "captcha": values.captcha })
+        .then((res: any) => {
+          console.log(res, "dasd");
+          if (res.status === 200) {
+            axios.post("/user/register", list)
+              .then((res: any) => {
+                console.log(res, "dasd");
+                if (res.status === 200) {
+                  setOpen(true);
+                  setModal({
+                    content: "注册成功,请去邮箱激活！",
+                    type: "success"
+                  });
+                }
+              }).catch((error: any) => {
+              if (error.response) {
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
               }
-            }).catch((err: any) => {
-            console.log(err, "err");
-            setCaptchas(new Date().getTime());
-          });
-        }
-      }).catch((err: any) => {
-      console.log(err, "err");
-      setCaptchas(new Date().getTime());
-    });
+              setOpen(true);
+              setModal({
+                content: error.response.data,
+                type: "error"
+              });
+              setCaptchas(new Date().getTime());
+            });
+          }
+        }).catch((err: any) => {
+        setOpen(true);
+        setModal({
+          content: err.response.data,
+          type: "error"
+        });
+        setCaptchas(new Date().getTime());
+      });
+    }
+
 
   };
+
 
   return (
     <div className={classes.bg} style={{ backgroundImage: "url(/static/images/register/loginBg.png)" }}>
@@ -452,6 +494,31 @@ export default function TextFields() {
           </Grid>
         </Grid>
       </form>
+      <Dialog
+        open={open}
+        // onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"提示"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            {modal.content}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => {
+            setOpen(false);
+          }} color="primary">
+            取消
+          </Button>
+          <Button onClick={() => {
+            setOpen(false);
+          }} color="primary" autoFocus>
+            确定
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }

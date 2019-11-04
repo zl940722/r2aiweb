@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "nodemon server.ts",
-    "build": "cross-env  NODE_ENV=production  next build",
-    "start": "cross-env NODE_ENV=production  node server.ts",
+    "build": "cross-env  NODE_ENV=production next build",
+    "start": "cross-env NODE_ENV=production node server.js",
+    "tsc": "tsc --project ./tsconfig.server.json",
+    "build:all": "yarn build && yarn tsc",
     "docker:build": "docker build -t harbor-dev.r2ai.com.cn/r2-test/portal-admin-bff:latest . && docker push harbor-dev.r2ai.com.cn/r2-test/portal-admin-bff:latest"
   },
   "dependencies": {

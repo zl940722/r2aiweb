@@ -144,7 +144,7 @@ const Header = (props) => {
     <div className={classes.root}>
       <Link href={"/"}>
         <img
-          src="/static/images/common/logo@2x.png"
+          src="/static/images/common/logo1.jpg"
           width={60}
           style={{ position: "absolute", top: 16, left: 80 }}
           alt="R2.ai"

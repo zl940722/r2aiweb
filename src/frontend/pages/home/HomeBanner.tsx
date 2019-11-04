@@ -107,6 +107,7 @@ const HomeBanner = (res: any) => {
   //   return data.en_img;
   // });
   const banner = url + res.content[0].en_img.url
+  console.log(banner , 'banner banner@2x.jpg')
 
   return (
     <>

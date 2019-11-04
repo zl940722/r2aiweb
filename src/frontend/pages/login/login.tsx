@@ -7,6 +7,12 @@ import { Grommet, Box, Button } from "grommet";
 import axios from "axios";
 import Router from "next/router";
 
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     bg: {
@@ -90,7 +96,11 @@ export default function TextFields() {
 
   const [captcha, setCaptchas] = React.useState("") as any;
 
-
+  const [open, setOpen] = React.useState(false);
+  const [modal, setModal] = React.useState({
+    content: "",
+    type: ""
+  });
   const handleChange = (name: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [name]: event.target.value });
   };
@@ -98,21 +108,36 @@ export default function TextFields() {
   const submit = () => {
     console.log(values.email, values.password, values.captcha);
 
-    axios.defaults.withCredentials = true;
-    axios.put("/user/login", {
-      email: values.email,
-      password: values.password,
-      captcha: values.captcha
-    }).then((res: any) => {
-      if (res.status === 200) {
-        axios.get("/user/login").then((data: any) => {
-          localStorage.setItem("userInfo",JSON.stringify(data.data));
-          Router.push('/loginSucess');
-        })
-      }
-    }).catch((err: any) => {
-      setCaptchas(new Date().getTime());
-    });
+    if (values.email === "" || values.password === "" || values.captcha === "") {
+      setOpen(true);
+      setModal({
+        content: "以上选项为必填，请正确填写。",
+        type: "error"
+      });
+    } else {
+
+      axios.defaults.withCredentials = true;
+      axios.put("/user/login", {
+        email: values.email,
+        password: values.password,
+        captcha: values.captcha
+      }).then((res: any) => {
+        if (res.status === 200) {
+          axios.get("/user/login").then((data: any) => {
+            localStorage.setItem("userInfo", JSON.stringify(data.data));
+            Router.push("/loginSucess");
+          });
+        }
+      }).catch((err: any) => {
+        setOpen(true);
+        setModal({
+          content: err.response.data,
+          type: "error"
+        });
+        setCaptchas(new Date().getTime());
+      });
+    }
+
 
 
   };
@@ -167,6 +192,33 @@ export default function TextFields() {
           </Grid>
         </Grid>
       </form>
+
+      <Dialog
+        open={open}
+        // onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"提示"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            {modal.content}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => {
+            setOpen(false);
+          }} color="primary">
+            取消
+          </Button>
+          <Button onClick={() => {
+            setOpen(false);
+          }} color="primary" autoFocus>
+            确定
+          </Button>
+        </DialogActions>
+      </Dialog>
+
     </div>
   );
 }

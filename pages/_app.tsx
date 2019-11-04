@@ -14,7 +14,8 @@ class MyApp extends App {
     super(props);
     this.state = {
       user: {
-
+        email: "",
+        active: false
       }
     };
   }
@@ -23,11 +24,15 @@ class MyApp extends App {
   componentDidMount() {
     console.log(window !== undefined);	//true
     const userInfo: any = JSON.parse(window.localStorage.getItem("userInfo") as any);
-    if(userInfo === null){
-      this.setState({ user: {
+    if (userInfo === null) {
+      this.setState({
+        user: {
+          id: "",
+          email: "",
           active: false
-        } });
-    }else{
+        }
+      });
+    } else {
       this.setState({ user: userInfo });
     }
   }
