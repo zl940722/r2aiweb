@@ -134,6 +134,7 @@ export default function TextFields() {
           <Grid item md={4} className={classes.grid}>
             <TextField
               id="standard-dense"
+              variant="outlined"
               label="用户邮箱"
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}
@@ -142,6 +143,7 @@ export default function TextFields() {
             />
             <TextField
               id="standard-dense"
+              variant="outlined"
               label="用户姓名"
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}
@@ -150,6 +152,7 @@ export default function TextFields() {
             />
             <TextField
               id="standard-dense"
+              variant="outlined"
               label="密码"
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}
@@ -158,6 +161,7 @@ export default function TextFields() {
             />
             <TextField
               id="standard-dense"
+              variant="outlined"
               label="公司全称"
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}
@@ -166,6 +170,7 @@ export default function TextFields() {
             />
             <TextField
               id="standard-select-currency"
+              variant="outlined"
               select
               label="国家地区"
               className={classes.textField}
@@ -186,6 +191,7 @@ export default function TextFields() {
             </TextField>
             <TextField
               id="standard-select-currency"
+              variant="outlined"
               select
               label="省"
               className={classes.textField}
@@ -207,6 +213,7 @@ export default function TextFields() {
 
             <TextField
               id="standard-select-currency"
+              variant="outlined"
               select
               label="市"
               className={classes.textField}
@@ -228,6 +235,7 @@ export default function TextFields() {
 
             <TextField
               id="standard-select-currency"
+              variant="outlined"
               select
               label="区"
               className={classes.textField}
@@ -249,16 +257,18 @@ export default function TextFields() {
 
 
             <TextField
-              id="standard-dense"
               label="公司地址"
+              variant="outlined"
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}
               onChange={handleChange("name")}
               margin="dense"
+              id="standard-dense"
             />
             <TextField
               id="standard-select-currency"
               select
+              variant="outlined"
               label="所处行业"
               className={classes.textField}
               value={values.country}
@@ -278,6 +288,7 @@ export default function TextFields() {
             </TextField>
             <TextField
               id="standard-dense"
+              variant="outlined"
               label="业务部门"
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}
@@ -286,6 +297,7 @@ export default function TextFields() {
             />
             <TextField
               id="standard-dense"
+              variant="outlined"
               label="联系电话"
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}

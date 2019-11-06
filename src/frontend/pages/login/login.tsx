@@ -94,6 +94,13 @@ export default function TextFields() {
     captcha: ","
   });
 
+  const [error, seterror] = React.useState<any>({
+    email: false,
+    password: false
+  });
+
+
+
   const [captcha, setCaptchas] = React.useState("") as any;
 
   const [open, setOpen] = React.useState(false);
@@ -109,13 +116,18 @@ export default function TextFields() {
     console.log(values.email, values.password, values.captcha);
 
     if (values.email === "" || values.password === "" || values.captcha === "") {
+      seterror({
+        email: true
+      });
       setOpen(true);
       setModal({
         content: "以上选项为必填，请正确填写。",
         type: "error"
       });
     } else {
-
+      seterror({
+        email: false
+      });
       axios.defaults.withCredentials = true;
       axios.put("/user/login", {
         email: values.email,
@@ -139,7 +151,6 @@ export default function TextFields() {
     }
 
 
-
   };
 
   return (
@@ -149,27 +160,71 @@ export default function TextFields() {
           <Grid item md={4} className={classes.grid}>
             <TextField
               id="standard-dense"
+              autoComplete="email"
               label="邮箱"
               fullWidth={true}
+              variant="outlined"
+              // error={error.email}
+              // helperText={"邮箱不能为空"}
               className={clsx(classes.textField, classes.dense)}
-              onChange={handleChange("email")}
+              onChange={(event: any)=> {
+                if(event.target.value === ''){
+                  seterror({
+                    email: true
+                  });
+                }else{
+                  seterror({
+                    email: false
+                  });
+                }
+                console.log(error)
+                handleChange("email")
+              }}
               margin="dense"
             />
             <TextField
               id="standard-dense"
+              variant="outlined"
+              // error={error.password}
+              // helperText={"密码不能为空"}
               label="密码"
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}
-              onChange={handleChange("password")}
+              onChange={(event:any) => {
+                if(event.target.value === ''){
+                  seterror({
+                    password: true
+                  });
+                }else{
+                  seterror({
+                    password: false
+                  });
+                }
+                handleChange("password")
+              }}
               margin="dense"
             />
 
             <TextField
               id="standard-dense"
+              variant="outlined"
               label="验证码"
+              // error={error.captcha}
+              // helperText={"密码不能为空"}
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}
-              onChange={handleChange("captcha")}
+              onChange={(event:any) => {
+                if(event.target.value === ''){
+                  seterror({
+                    captcha: true
+                  });
+                }else{
+                  seterror({
+                    captcha: false
+                  });
+                }
+                handleChange("captcha")
+              }}
               margin="dense"
             />
             <img src={`/user/captcha?${captcha}`}

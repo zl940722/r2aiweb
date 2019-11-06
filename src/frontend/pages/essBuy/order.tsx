@@ -140,23 +140,32 @@ export default function TextFields(props: any) {
   });
   const [resData, setResData] = React.useState({}) as any;
   const buy = () => {
-    axios.post("/user/captcha", { "captcha": values.captcha })
-      .then(() => {
-        pays();
-      })
-      .catch((error) => {
-        if (error.response) {
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        }
-        setOpen(true);
-        setModal({
-          content: error.response.data,
-          type: "error"
-        });
-        setCaptchas(new Date().getTime());
+
+    if (values.price === "" || values.captcha === "") {
+      setOpen(true);
+      setModal({
+        content: "以上选项为必填，请正确填写。",
+        type: "error"
       });
+    } else {
+      axios.post("/user/captcha", { "captcha": values.captcha })
+        .then(() => {
+          pays();
+        })
+        .catch((error) => {
+          if (error.response) {
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          }
+          setOpen(true);
+          setModal({
+            content: error.response.data,
+            type: "error"
+          });
+          setCaptchas(new Date().getTime());
+        });
+    }
   };
 
   const pays = () => {
@@ -292,6 +301,7 @@ export default function TextFields(props: any) {
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}
               onChange={handleChange("product")}
+              variant="outlined"
               margin="dense"
             />
             <TextField
@@ -299,6 +309,7 @@ export default function TextFields(props: any) {
               select
               label="月租/年租"
               className={classes.textField}
+              variant="outlined"
               value={rent}
               onChange={(e) => {
                 setrent(e.target.value);
@@ -334,6 +345,7 @@ export default function TextFields(props: any) {
 
             <TextField
               id="standard-dense"
+              variant="outlined"
               label="产品价格"
               value={values.price}
               disabled
@@ -345,6 +357,7 @@ export default function TextFields(props: any) {
 
             <TextField
               id="standard-dense"
+              variant="outlined"
               label="请输入验证码"
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}

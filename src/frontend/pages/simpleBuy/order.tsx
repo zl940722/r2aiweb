@@ -161,38 +161,32 @@ export default function TextFields(props: any) {
   const [resData, setResData] = React.useState({}) as any;
   // const [url, seturl] = React.useState("") as any;
   const buy = () => {
-    // const interval = setInterval(() => {
-    //   if (url) {
-    //     window.open(url, "", "width=1100,height=600");
-    //     seturl("");
-    //     clearInterval(interval);
-    //   }
-    // }, 1000);
-    // pays();
 
-    axios.post("/user/captcha", { "captcha": values.captcha })
-      .then(() => {
-        pays();
-      })
-      .catch((error) => {
-        if (error.response) {
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        }
-        setOpen(true);
-        setModal({
-          content: error.response.data,
-          type: "error"
-        });
-        // _Modal.error({
-        //   title: zhlocale ? "温馨提示" : "Kindly Reminder",
-        //   content: zhlocale ? "验证码错误或输入超时" : "验证码错误或输入超时",
-        //   okText: zhlocale ? "知道了" : "Ok"
-        // });
-        setCaptchas(new Date().getTime());
-        // clearInterval(interval);
+    if (values.price === "" || values.captcha === "") {
+      setOpen(true);
+      setModal({
+        content: "以上选项为必填，请正确填写。",
+        type: "error"
       });
+    } else {
+      axios.post("/user/captcha", { "captcha": values.captcha })
+        .then(() => {
+          pays();
+        })
+        .catch((error) => {
+          if (error.response) {
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          }
+          setOpen(true);
+          setModal({
+            content: error.response.data,
+            type: "error"
+          });
+          setCaptchas(new Date().getTime());
+        });
+    }
   };
 
   const pays = () => {
@@ -322,6 +316,7 @@ export default function TextFields(props: any) {
             {/*/>*/}
             <TextField
               id="standard-dense"
+              variant="outlined"
               label="购买产品"
               value={values.product}
               disabled
@@ -332,6 +327,7 @@ export default function TextFields(props: any) {
             />
             <TextField
               id="standard-select-currency"
+              variant="outlined"
               select
               label="月租/年租"
               className={classes.textField}
@@ -367,6 +363,7 @@ export default function TextFields(props: any) {
 
             <TextField
               id="standard-dense"
+              variant="outlined"
               label="产品价格"
               value={values.price}
               disabled
@@ -378,6 +375,7 @@ export default function TextFields(props: any) {
 
             <TextField
               id="standard-dense"
+              variant="outlined"
               label="请输入验证码"
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}

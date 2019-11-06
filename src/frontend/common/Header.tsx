@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/styles";
 
 import Link from "next/link";
-
+import _ from "lodash";
 import { Tabs, Tab } from "@material-ui/core";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -41,20 +41,20 @@ const menus: InterfaceMenu[] = [
   {
     id: 1,
     name: "产品",
-    children: null,
-    // children: [
-    //   {
-    //     id: 9,
-    //     name: "R2 Learn",
-    //     children: null,
-    //     link: "/products"
-    //   }, {
-    //     id: 10,
-    //     name: "应用场景",
-    //     children: null,
-    //     link: "/application"
-    //   }
-    // ],
+    // children: null,
+    children: [
+      {
+        id: 9,
+        name: "R2 Learn",
+        children: null,
+        link: "/products"
+      }, {
+        id: 10,
+        name: "应用场景",
+        children: null,
+        link: "/application"
+      }
+    ],
     link: "/products"
   },
   {
@@ -151,36 +151,38 @@ const Header = (props) => {
         />
       </Link>
       <Tabs value={value} onChange={handleChange} centered>
-        {menus.map((value: InterfaceMenu, index) => {
-          return (
-            value.children ?
-              <div key={value.id}>
-                <Tab className={classes.tab} label={value.name} onClick={handleClick}/>
-                <Menu
-                  id="simple-menu"
-                  anchorEl={anchorEl}
-                  keepMounted
-                  open={Boolean(anchorEl)}
-                  onClick={handleClose}
-                >
-
-                  {
-                    value.children.map((res: any) => {
-                      return (
-                        <a className={classes.a} href={res.link}>
-                          <MenuItem key={res.id}>{res.name}</MenuItem>
-                        </a>
-                      );
-                    })
-                  }
-                </Menu>
-              </div>
-              :
-              <a className={classes.a} key={index} href={value.link || ""}><Tab className={classes.tab}
-                                                                                label={value.name}/></a>
-          );
-
-        })}
+        {
+          _.map(menus, (value: InterfaceMenu, index) => {
+            return (
+              value.children ?
+                <div key={value.id}>
+                  <Tab key={value.id} className={classes.tab} label={value.name} onClick={handleClick}/>
+                  <Menu
+                    id="simple-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={Boolean(anchorEl)}
+                    onClick={handleClose}
+                  >
+                    <div key={value.id}>
+                      {
+                        _.map(value.children, (res: any) => {
+                          return (
+                            <a key={res.id} className={classes.a} href={res.link}>
+                              <MenuItem>{res.name}</MenuItem>
+                            </a>
+                          );
+                        })
+                      }
+                    </div>
+                  </Menu>
+                </div>
+                :
+                <a className={classes.a} key={index} href={value.link || ""}><Tab className={classes.tab}
+                                                                                  label={value.name}/></a>
+            );
+          })
+        }
         {
           props.user.active ?
             <Avatar className={classes.avatar}>{props.user.email}</Avatar> :

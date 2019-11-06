@@ -251,6 +251,7 @@ export default function TextFields() {
           <Grid item md={4} className={classes.grid}>
             <TextField
               id="standard-dense"
+              variant="outlined"
               label="用户邮箱"
               fullWidth={true}
               value={values.email}
@@ -260,6 +261,7 @@ export default function TextFields() {
             />
             <TextField
               id="standard-dense"
+              variant="outlined"
               label="用户姓名"
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}
@@ -268,6 +270,7 @@ export default function TextFields() {
             />
             <TextField
               id="standard-dense"
+              variant="outlined"
               label="密码"
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}
@@ -276,6 +279,7 @@ export default function TextFields() {
             />
             <TextField
               id="standard-dense"
+              variant="outlined"
               label="公司全称"
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}
@@ -283,6 +287,7 @@ export default function TextFields() {
               margin="dense"
             />
             <TextField
+              variant="outlined"
               id="standard-select-currency"
               select
               label="国家地区"
@@ -315,6 +320,7 @@ export default function TextFields() {
             </TextField>
             {
               show.province ? <TextField
+                variant="outlined"
                 id="standard-select-currency"
                 select
                 label="省"
@@ -357,6 +363,7 @@ export default function TextFields() {
             }
             {
               show.city ? <TextField
+                variant="outlined"
                 id="standard-select-currency"
                 select
                 label="市"
@@ -399,6 +406,7 @@ export default function TextFields() {
             }
             {
               show.area ? <TextField
+                variant="outlined"
                 id="standard-select-currency"
                 select
                 label="区"
@@ -422,6 +430,7 @@ export default function TextFields() {
 
 
             <TextField
+              variant="outlined"
               id="standard-dense"
               label="公司地址"
               fullWidth={true}
@@ -430,6 +439,7 @@ export default function TextFields() {
               margin="dense"
             />
             <TextField
+              variant="outlined"
               id="standard-select-currency"
               select
               label="所处行业"
@@ -450,6 +460,7 @@ export default function TextFields() {
               ))}
             </TextField>
             <TextField
+              variant="outlined"
               id="standard-dense"
               label="业务部门"
               fullWidth={true}
@@ -458,6 +469,7 @@ export default function TextFields() {
               margin="dense"
             />
             <TextField
+              variant="outlined"
               id="standard-dense"
               label="联系电话"
               fullWidth={true}
@@ -467,6 +479,7 @@ export default function TextFields() {
               margin="dense"
             />
             <TextField
+              variant="outlined"
               id="standard-dense"
               label="验证码"
               fullWidth={true}
