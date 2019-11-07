@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles, createStyles } from "@material-ui/styles";
 
-import { Typography, Modal } from "@material-ui/core";
+import { Modal } from "@material-ui/core";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
@@ -11,8 +11,9 @@ import { Grommet, Button } from "grommet";
 const useStyles = makeStyles((theme: any) =>
   createStyles({
     item: {
-      height: "36.25rem",
-      backgroundSize: "cover"
+      height: "50rem",
+      backgroundSize: "cover",
+      backgroundPosition:'center'
     },
     itemContent: {
       maxWidth: "75rem",
@@ -26,20 +27,21 @@ const useStyles = makeStyles((theme: any) =>
       color: "#091221",
       fontWeight: "bold",
       lineHeight: 1.5,
-      fontSize:48
+      fontSize: 48
     },
     subtitle: {
       marginTop: "2.8rem",
       color: "#314157",
-      fontSize:30
+      fontSize: 30
     },
     buttonWrap: {
       width: "100%",
-      marginTop: "4rem",
-      paddingLeft: "0.5rem"
+      marginTop: "55%",
+      paddingLeft: "0.5rem",
+      color:'#fff'
     },
     button: {
-      width: "13.6rem",
+      width: "16.6rem",
       height: "4.5rem",
       fontWeight: "bold"
     },
@@ -64,7 +66,7 @@ const customTheme = {
       width: "3px",
       radius: "2.3rem"
     },
-    color: "#2C4159"
+    color: "#fff"
   },
   text: {
     medium: {
@@ -77,7 +79,7 @@ const customTheme = {
       background: "#2C4159"
     },
     colors: {
-      brand: "#2C4159"
+      brand: "#fff"
     }
   },
   video: {
@@ -110,19 +112,13 @@ function ProductBanner() {
       >
         <div
           className={classes.item}
-          style={{ backgroundImage: "url(/static/images/partner/banner.png)" }}
+          style={{ backgroundImage: "url(/static/images/partner/banner@2x.png)" }}
         >
           <div className={classes.itemContent}>
-            <Typography variant={"h3"} className={classes.title}>
-              联系合作
-            </Typography>
-            <Typography variant={"h4"} className={classes.subtitle}>
-              感兴趣我们的合作机会？请与我们联系，成为我们的合作伙伴！
-            </Typography>
             <Grommet className={classes.buttonWrap} theme={customTheme}>
               <Button
                 hoverIndicator
-                label={"联系我们"}
+                label={"立即联系合作"}
                 className={classes.button}
                 onClick={onHandleOpen}
               />
@@ -133,7 +129,7 @@ function ProductBanner() {
       <Modal className={classes.modal} open={open} onClose={onHandleClose}>
         <div className={classes.paper}>
           <video width={"100%"} controls autoPlay>
-            <source src="/static/images/home/20190830.mp4" type="video/mp4" />
+            <source src="/static/images/home/20190830.mp4" type="video/mp4"/>
           </video>
         </div>
       </Modal>
