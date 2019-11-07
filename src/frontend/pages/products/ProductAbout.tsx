@@ -53,7 +53,8 @@ function ProductAbout() {
           R2 Learn领跑新一代的AutoML
         </Typography>
         <Typography variant={"body1"} className={classes.product_body1}>
-          <span>端到端的AI解决方案</span>
+          <span>  端到端的AI解决方案，自动完成从数据清洗到模型搭建和部署的所有步骤，提供一站式服务；
+          </span>
           <span>
             优化引擎功能，能用最少的算力快速高效地筛选最佳算法，建立最适合的机器学习模型；
           </span>
@@ -68,9 +69,9 @@ function ProductAbout() {
         </Typography>
         <div className={classes.product_img}>
           <img
-            src="/static/images/products/product@2x.png"
-            width={1040}
-            height={516}
+            src="/static/images/products/product.png"
+            width={1200}
+            height={743}
             alt=""
           />
         </div>
