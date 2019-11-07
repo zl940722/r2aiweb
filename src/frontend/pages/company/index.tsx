@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
 
-import { Typography, Grid } from "@material-ui/core";
+import { Typography, Grid, Card } from "@material-ui/core";
 
 const useStyles = makeStyles({
   content: {
@@ -27,11 +27,22 @@ const useStyles = makeStyles({
   },
   item: {
     maxWidth: "90%",
-    boxSizing: "border-box"
+    boxSizing: "border-box",
+    display: "flex",
+    alignItems: "center",
+    padding: '0 10px',
+  },
+  itemC:{
+    maxWidth: "90%",
+    boxSizing: "border-box",
+    display: "flex",
+    alignItems: "center",
+    padding: '0 10px',
+    flexFlow:'column'
   },
   itemDes: {
-    lineHeight:2,
-    marginBottom: "3rem",
+    lineHeight: 2,
+    marginBottom: "3rem"
   },
   itemTitle: {
     marginBottom: "3rem",
@@ -40,6 +51,9 @@ const useStyles = makeStyles({
   itemTitle2: {
     marginTop: "3rem",
     fontWeight: "bold"
+  },
+  card:{
+    height:'100px'
   }
 });
 
@@ -61,7 +75,7 @@ function HomeAbout() {
               </div>
             </Grid>
             <Grid item sm={6} xs={12}>
-              <div className={classes.item}>
+              <div className={classes.itemC}>
                 <Typography variant={"body1"} className={classes.itemDes}>
                   2015年，R2.ai由一群在AI和数据科学领域内最杰出、最富有想象力的团队在硅谷建立。他们致力于将大胆的创意转化为复杂现实中的实际应用。R2.ai的使命是为AI在各行业的应用赋能，大规模推动AI的普及和发展。
                 </Typography>
@@ -81,7 +95,7 @@ function HomeAbout() {
           <Grid container className={classes.items} direction={"row"}>
 
             <Grid item sm={6} xs={12}>
-              <div className={classes.item}>
+              <div className={classes.itemC}>
                 <Typography variant={"body1"} className={classes.itemDes}>
                   不断创新：我们极力推动技术发展，提高产品性能；
                 </Typography>
@@ -103,6 +117,78 @@ function HomeAbout() {
                   width={"100%"}
                   alt="R2.ai"
                 />
+              </div>
+            </Grid>
+          </Grid>
+        </div>
+
+
+        <div>
+          <Typography className={classes.title}>公司地址</Typography>
+          <Grid container className={classes.items} direction={"row"}>
+
+            <Grid item sm={4} xs={12} className={classes.card}>
+              <div className={classes.item}>
+                <Card style={{ margin: 10,height:'10rem' }}>
+                  <div className={classes.item}>
+                    <img
+                      src="/static/images/company/3.png"
+                      width={"16px"}
+                      alt="R2.ai"
+                    />
+                    <h4 style={{ textAlign: "center",marginLeft:10 }}>
+                      美国硅谷
+                    </h4></div>
+                    <p style={{ padding: '0 10px' }}>
+                      R2.ai, INC R2.ai – 硅谷 (Headquarters)<br/>
+                      2228 Camino Ramon San Ramon
+                      <br/>
+                    </p>
+
+                </Card>
+              </div>
+            </Grid>
+            <Grid item sm={4} xs={12} className={classes.card}>
+              <div className={classes.item}>
+                <Card style={{ margin: 10,height:'10rem' }}>
+                  <div className={classes.item}>
+                    <img
+                      src="/static/images/company/3.png"
+                      width={"16px"}
+                      alt="R2.ai"
+                    />
+                    <h4 style={{ textAlign: "center",marginLeft:10 }}>
+                      杭州
+                    </h4> </div>
+                    <p style={{ padding: '0 10px' }}>
+
+                      杭州睿拓智能科技有限公司 R2.ai – 杭州<br/>
+                      杭州滨江区六和路368号海创基地 南楼2楼E2012
+                      <br/>
+                    </p>
+
+                </Card>
+              </div>
+            </Grid>
+            <Grid item sm={4} xs={12} className={classes.card}>
+              <div className={classes.item}>
+                <Card style={{ margin: 10,height:'10rem' }}>
+                  <div className={classes.item}>
+                    <img
+                      src="/static/images/company/3.png"
+                      width={"16px"}
+                      alt="R2.ai"
+                    />
+                    <h4 style={{ textAlign: "center",marginLeft:10 }}>
+                      上海
+                    </h4></div>
+                  <p style={{ padding: '0 10px' }}>
+                    上海机颖智能科技有限公司 R2.ai – 上海<br/>
+                    上海市杨浦区政立路497号国正中心 1号楼1508室
+                    <br/>
+                  </p>
+
+                </Card>
               </div>
             </Grid>
           </Grid>
