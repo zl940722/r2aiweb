@@ -1,8 +1,8 @@
 import React from "react";
 
-import AppDetailBanner from "./AppDetailBanner";
-import AppDetailPartOne from "./AppDetailPartOne";
-import AppDetailPartTwo from "./AppDetailPartTwo";
+import AppDetailBanner from "./bx/AppDetailBanner";
+import AppDetailPartOne from "./bx/AppDetailPartOne";
+import AppDetailPartTwo from "./bx/AppDetailPartTwo";
 import { withRouter } from 'next/router'
 function AppDetail(props: any) {
   console.log(props,'dasdsad');

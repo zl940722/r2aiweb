@@ -31,14 +31,18 @@ const useStyles = makeStyles({
     maxWidth: "90%",
     boxSizing: "border-box"
   },
+  itemh4: {    fontSize: "1.4rem",},
+  itemp: {    fontSize: "1.2rem",},
   itemBorder: {
     width: "100%",
     border: "1px dashed #ccc"
   },
   itemDes: {
     lineHeight: 2,
-    marginBottom: "3rem",
-    textAlign: "center"
+    marginBottom: "6rem",
+    color: "#333333FF",
+    textAlign: "center",
+    fontSize: "24px"
   },
   itemTitle: {
     marginBottom: "3rem",
@@ -50,45 +54,6 @@ const useStyles = makeStyles({
   }
 });
 
-// const lists = [
-//   {
-//     id: 1,
-//     name: "人工智能开发工程师",
-//     add: "杭州市·滨江区"
-//   }, {
-//     id: 2,
-//     name: "Node全栈工程师",
-//     add: "杭州市·滨江区"
-//   }, {
-//     id: 3,
-//     name: "AI前端工程师",
-//     add: "杭州市·滨江区"
-//   }, {
-//     id: 4,
-//     name: "人工智能云平台系统工程师",
-//     add: "杭州市·滨江区"
-//   }, {
-//     id: 5,
-//     name: "人工智能云平台开发工程师",
-//     add: "杭州市·滨江区"
-//   }, {
-//     id: 6,
-//     name: "机器学习工程师",
-//     add: "杭州市·滨江区"
-//   }, {
-//     id: 7,
-//     name: "机器学习工程师",
-//     add: "上海市·杨浦区"
-//   }, {
-//     id: 8,
-//     name: "数据科学家(NLP方向)",
-//     add: "上海市·杨浦区"
-//   }, {
-//     id: 9,
-//     name: "数据挖掘工程师",
-//     add: "上海市·杨浦区"
-//   }
-// ];
 
 function HomeAbout(res: any) {
   const classes = useStyles();
@@ -108,8 +73,8 @@ function HomeAbout(res: any) {
               {res.data.map((value: any, index: any) => (
                 <Grid key={index} item sm={6} xs={12} onClick={detail(value.id)}>
                   <div className={classes.item}>
-                    <h4>{value.name_en}</h4>
-                    <p>{value.place_en}</p>
+                    <h4 className={classes.itemh4}>{value.name_en}</h4>
+                    <p className={classes.itemp}>{value.place_en}</p>
                     <p className={classes.itemBorder}>{}</p>
                   </div>
                 </Grid>
@@ -118,12 +83,12 @@ function HomeAbout(res: any) {
           </div> : <div>
             <Typography className={classes.title}>我们在全面招聘</Typography>
             <p className={classes.itemDes}>对精英一族，我们有丰富的职业发展机会！如果您想引领潮流，坐拥人工智能革命的最前沿，请加入我们！</p>
-            <Grid container className={classes.items} direction={"row"} >
+            <Grid container className={classes.items} direction={"row"}>
               {res.data.map((value: any, index: any) => (
                 <Grid key={index} item sm={6} xs={12} onClick={detail(value.id)}>
                   <div className={classes.item}>
-                    <h4>{value.name_zh}</h4>
-                    <p>{value.place_zh}</p>
+                    <h4 className={classes.itemh4}>{value.name_zh}</h4>
+                    <p className={classes.itemp}>{value.place_zh}</p>
                     <p className={classes.itemBorder}>{}</p>
                   </div>
                 </Grid>

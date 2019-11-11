@@ -6,8 +6,9 @@ import { Carousel } from "react-responsive-carousel";
 
 const useStyles = makeStyles({
   item: {
-    height: "36.25rem",
-    backgroundSize: "cover"
+    height: "50rem",
+    backgroundSize: "cover",
+    backgroundPosition:'center'
   }
 });
 
@@ -25,7 +26,7 @@ function AppBanner() {
         <div
           className={classes.item}
           style={{
-            backgroundImage: "url(/static/images/application/banner@1x.jpg)"
+            backgroundImage: "url(/static/images/application/banner.png)"
           }}
         />
       </Carousel>

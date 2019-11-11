@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/styles";
 
 import { Typography, Grid } from "@material-ui/core";
-import isEn from "../../../../language";
+import Router from "next/router";
 
 const useStyles = makeStyles({
   content: {
@@ -13,9 +13,9 @@ const useStyles = makeStyles({
   },
   title: {
     padding: "3rem",
-    fontSize: "2rem",
+    fontSize: "1rem",
     fontWeight: "bold",
-    textAlign: "center"
+    color: "#D3323EFF"
   },
   des: {
     fontSize: "1rem",
@@ -25,7 +25,10 @@ const useStyles = makeStyles({
   },
   items: {
     margin: "2rem 0 1rem",
-    textAlign: "center"
+    textAlign: "left",
+    minHeight: "700px",
+    backgroundColor: "#F5F5F5",
+    padding: 20
   },
   item: {
     maxWidth: "90%",
@@ -33,7 +36,9 @@ const useStyles = makeStyles({
   },
   itemBorder: {
     width: "100%",
-    border: "1px dashed #ccc"
+    display:'flex',
+    border: "1px dashed #343f53",
+    height:1
   },
   itemDes: {
     lineHeight: 2,
@@ -50,82 +55,37 @@ const useStyles = makeStyles({
   }
 });
 
-// const lists = [
-//   {
-//     id: 1,
-//     name: "人工智能开发工程师",
-//     add: "杭州市·滨江区"
-//   }, {
-//     id: 2,
-//     name: "Node全栈工程师",
-//     add: "杭州市·滨江区"
-//   }, {
-//     id: 3,
-//     name: "AI前端工程师",
-//     add: "杭州市·滨江区"
-//   }, {
-//     id: 4,
-//     name: "人工智能云平台系统工程师",
-//     add: "杭州市·滨江区"
-//   }, {
-//     id: 5,
-//     name: "人工智能云平台开发工程师",
-//     add: "杭州市·滨江区"
-//   }, {
-//     id: 6,
-//     name: "机器学习工程师",
-//     add: "杭州市·滨江区"
-//   }, {
-//     id: 7,
-//     name: "机器学习工程师",
-//     add: "上海市·杨浦区"
-//   }, {
-//     id: 8,
-//     name: "数据科学家(NLP方向)",
-//     add: "上海市·杨浦区"
-//   }, {
-//     id: 9,
-//     name: "数据挖掘工程师",
-//     add: "上海市·杨浦区"
-//   }
-// ];
-
 function HomeAbout(res: any) {
+  console.log(res, "dfsadsad");
   const classes = useStyles();
   return (
     <>
       <div className={classes.content}>
-        {
-          isEn ? <div>
-            <Typography className={classes.title}>我们在全面招聘</Typography>
-            <p className={classes.itemDes}>对精英一族，我们有丰富的职业发展机会！如果您想引领潮流，坐拥人工智能革命的最前沿，请加入我们！</p>
-            <Grid container className={classes.items} direction={"row"}>
+        <Typography onClick={()=> {
+          Router.back()
+        }} className={classes.title}>返回职位列表</Typography>
+        <div>
+          <Grid container className={classes.items} direction={"row"}>
+            <div>
+              <p>{res.data.created_at}</p>
+              <h4>{res.data.name_zh}</h4>
+              <p>工作地点：{res.data.place_zh}</p>
+            </div>
+            <p className={classes.itemBorder}>{}</p>
+            <div className={classes.item}>
+              <h4>职业描述</h4>
+              <p>{res.data.describe_zh}</p>
 
-              <Grid item sm={12} xs={12}>
-                <div className={classes.item}>
-                  <h4>{res.data.name_en}</h4>
-                  <p>{res.data.describe_en}</p>
-                  <p>{res.data.requirement_en}</p>
-                  <p className={classes.itemBorder}>{}</p>
-                </div>
-              </Grid>
+            </div>
+            <p className={classes.itemBorder}>{}</p>
+            <div className={classes.item}>
+              <h4>职业要求</h4>
+              <p>{res.data.requirement_zh}</p>
 
-            </Grid>
-          </div> : <div>
-            <Typography className={classes.title}>我们在全面招聘</Typography>
-            <p className={classes.itemDes}>对精英一族，我们有丰富的职业发展机会！如果您想引领潮流，坐拥人工智能革命的最前沿，请加入我们！</p>
-            <Grid container className={classes.items} direction={"row"}>
-              <Grid item sm={12} xs={12}>
-                <div className={classes.item}>
-                  <h4>{res.data.name_zn}</h4>
-                  <p>{res.data.describe_zh}</p>
-                  <p>{res.data.requirement_zh}</p>
-                  <p className={classes.itemBorder}>{}</p>
-                </div>
-              </Grid>
-            </Grid>
-          </div>
-        }
+            </div>
+          </Grid>
+        </div>
+
 
       </div>
     </>

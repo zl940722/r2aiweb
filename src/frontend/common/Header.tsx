@@ -11,12 +11,12 @@ import Avatar from "@material-ui/core/Avatar";
 const useStyles = makeStyles({
     root: {
       flexGrow: 1,
-      backgroundColor: "#0C151B"
+      backgroundColor: "#fff"
     },
     tab: {
       height: 70,
       fontSize: "1rem",
-      color: "#FFF"
+      color: "#000000"
     },
     a: {
       textDecoration: "none",
@@ -40,26 +40,39 @@ interface InterfaceMenu {
 const menus: InterfaceMenu[] = [
   {
     id: 1,
-    name: "产品",
+    name: "首页",
+    // children: null,
+    children: null,
+    link: "/"
+  },
+  {
+    id: 1,
+    name: "产品技术",
     // children: null,
     children: [
       {
         id: 9,
-        name: "R2 Learn",
+        name: "技术能力",
         children: null,
         link: "/products"
       }, {
         id: 10,
-        name: "应用场景",
+        name: "产品",
         children: null,
-        link: "/application"
+        link: "/products"
       }
     ],
     link: "/products"
   },
   {
     id: 2,
-    name: "云服务价单",
+    name: "解决方案",
+    children: null,
+    link: "/application"
+  },
+  {
+    id: 2,
+    name: "云服务",
     children: null,
     link: "/pricing"
   },
@@ -70,37 +83,42 @@ const menus: InterfaceMenu[] = [
     link: "/partner"
   },
   {
-    id: 4,
-    name: "R2资源",
-    children: null,
-    link: "/resources"
-  },
-  {
-    id: 5,
-    name: "R2大学",
-    children: null,
-    link: "/university"
-  },
-  {
     id: 6,
     name: "新闻资讯",
     children: null,
     link: "/news"
   },
   {
+    id: 4,
+    name: "R2社区",
+    children: null,
+    link: "/resources"
+  },
+  // {
+  //   id: 5,
+  //   name: "R2大学",
+  //   children: null,
+  //   link: "/university"
+  // },
+  {
     id: 7,
     name: "关于我们",
     children: [
       {
         id: 11,
-        name: "R2 公司",
+        name: "公司介绍",
         children: null,
         link: "/company"
       }, {
         id: 12,
-        name: "R2 团队",
+        name: "团队介绍",
         children: null,
         link: "/team"
+      }, {
+        id: 13,
+        name: "联系我们",
+        children: null,
+        link: "/job"
       }, {
         id: 13,
         name: "职业机会",
@@ -144,8 +162,8 @@ const Header = (props) => {
     <div className={classes.root}>
       <Link href={"/"}>
         <img
-          src="/static/images/common/logo1.jpg"
-          width={60}
+          src="/static/images/common/logo@2x.png"
+          width={88}
           style={{ position: "absolute", top: 16, left: 80 }}
           alt="R2.ai"
         />

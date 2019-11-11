@@ -1,6 +1,4 @@
 const express = require("express");
-
-
 const next = require("next");
 const proxy = require("http-proxy-middleware");
 const dev = process.env.NODE_ENV !== "production";
@@ -10,194 +8,50 @@ const handle = app.getRequestHandler();
 const authService = process.env.AUTH_SERVICE || "http://localhost:8088";
 const payService = process.env.PAY_SERVICE || "http://192.168.0.105:8090";
 const payBff = process.env.PAY_BFF || "http://192.168.0.105:8091";
-// const strapiService = process.env.STRAPI_SERVICE || "http://192.168.0.105:1337";
 const basicPrice = process.env.BASIC_PRICE || 199.98;
 const basicPriceYear = process.env.BASIC_PRICE_YEAR || 2159.78;
 const essentialPrice = process.env.ESSENTIAL_PRICE || 1999.98;
 const essentialPriceYear = process.env.ESSENTIAL_PRICE_YEAR || 21599.78;
-console.log(process.env.AUTH_SERVICE, "process.env.AUTH_SERVICE ");
 
-const captcha = proxy({
-  target: authService,
-  changeOrigin: true,
-  pathRewrite: {
-    "/user/captcha": "/captcha"
-  },
-  onProxyReq(proxyReq, req) {
-    req.headers.cookie && proxyReq.setHeader("Cookie", req.headers.cookie);
-  },
-  onProxyRes(proxyRes, req, res) {
-    Object.keys(proxyRes.headers).forEach(function(key) {
-      res.append(key, proxyRes.headers[key]);
-    });
-  }
-});
+const proxies = (target, org, url) => {
+  return proxy({
+    target: target,
+    changeOrigin: true,
+    pathRewrite: {
+      [org]: url
+    },
+    onProxyReq(proxyReq, req) {
+      req.headers.cookie && proxyReq.setHeader("Cookie", req.headers.cookie);
+    },
+    onProxyRes(proxyRes, req, res) {
+      Object.keys(proxyRes.headers).forEach(function(key) {
+        res.append(key, proxyRes.headers[key]);
+      });
+    }
+  });
+};
 
-const login = proxy({
-  target: authService,
-  changeOrigin: true,
-  pathRewrite: {
-    "/user/login": "/"
-  },
-  onProxyReq(proxyReq, req) {
-    proxyReq.setHeader("Cookie", req.headers.cookie);
-  },
-  onProxyRes(proxyRes, req, res) {
-    Object.keys(proxyRes.headers).forEach(function(key) {
-      res.append(key, proxyRes.headers[key]);
-    });
-  }
-});
+const captcha = proxies(authService, "/user/captcha", "/captcha");
 
+const login = proxies(authService, "/user/login", "/");
 
-const register = proxy({
-  target: payService,
-  changeOrigin: true,
-  pathRewrite: {
-    "/user/register": "/user/register"
-  },
-  onProxyReq(proxyReq, req) {
-    proxyReq.setHeader("Cookie", req.headers.cookie);
-  },
-  onProxyRes(proxyRes, req, res) {
-    Object.keys(proxyRes.headers).forEach(function(key) {
-      res.append(key, proxyRes.headers[key]);
-    });
-  }
-});
+const register = proxies(payService, "/user/register", "/user/register");
 
+const active = proxies(payService, "/active", "/user/activeUser");
 
-const active = proxy({
-  target: payService,
-  changeOrigin: true,
-  pathRewrite: {
-    "/active": "/user/activeUser"
-  },
-  onProxyReq(proxyReq, req) {
-    console.log(213213);
-    proxyReq.setHeader("Cookie", req.headers.cookie);
-  },
-  onProxyRes(proxyRes, req, res) {
-    Object.keys(proxyRes.headers).forEach(function(key) {
-      res.append(key, proxyRes.headers[key]);
-    });
-  }
-});
+const alipayCreateCharge = proxies(payBff, "/alipay/createCharge", "/alipay/createCharge");
 
+const alipayOrderQuery = proxies(payBff, "/alipay/orderQuery", "/alipay/orderQuery");
 
-const alipayCreateCharge = proxy({
-  target: payBff,
-  changeOrigin: true,
-  pathRewrite: {
-    "/alipay/createCharge": "/alipay/createCharge"
-  },
-  onProxyReq(proxyReq, req) {
-    proxyReq.setHeader("Cookie", req.headers.cookie);
-  },
-  onProxyRes(proxyRes, req, res) {
-    Object.keys(proxyRes.headers).forEach(function(key) {
-      res.append(key, proxyRes.headers[key]);
-    });
-  }
-});
+const unionPayCreateCharge = proxies(payBff, "/unionPay/createCharge", "/unionPay/createCharge");
 
-const alipayOrderQuery = proxy({
-  target: payBff,
-  changeOrigin: true,
-  pathRewrite: {
-    "/alipay/orderQuery": "/alipay/orderQuery"
-  },
-  onProxyReq(proxyReq, req) {
-    proxyReq.setHeader("Cookie", req.headers.cookie);
-  },
-  onProxyRes(proxyRes, req, res) {
-    Object.keys(proxyRes.headers).forEach(function(key) {
-      res.append(key, proxyRes.headers[key]);
-    });
-  }
-});
+const unionPayOrderQuery = proxies(payBff, "/unionPay/orderQuery", "/unionPay/orderQuery");
 
-const unionPayCreateCharge = proxy({
-  target: payBff,
-  changeOrigin: true,
-  pathRewrite: {
-    "/unionPay/createCharge": "/unionPay/createCharge"
-  },
-  onProxyReq(proxyReq, req) {
-    proxyReq.setHeader("Cookie", req.headers.cookie);
-  },
-  onProxyRes(proxyRes, req, res) {
-    Object.keys(proxyRes.headers).forEach(function(key) {
-      res.append(key, proxyRes.headers[key]);
-    });
-  }
-});
+const wechatCreateCharge = proxies(payBff, "/wechat/createCharge", "/wechat/createCharge");
 
+const wechatOrderQuery = proxies(payBff, "/wechat/orderQuery", "/wechat/orderQuery");
 
-const unionPayOrderQuery = proxy({
-  target: payBff,
-  changeOrigin: true,
-  pathRewrite: {
-    "/unionPay/orderQuery": "/unionPay/orderQuery"
-  },
-  onProxyReq(proxyReq, req) {
-    proxyReq.setHeader("Cookie", req.headers.cookie);
-  },
-  onProxyRes(proxyRes, req, res) {
-    Object.keys(proxyRes.headers).forEach(function(key) {
-      res.append(key, proxyRes.headers[key]);
-    });
-  }
-});
-
-
-const wechatCreateCharge = proxy({
-  target: payBff,
-  changeOrigin: true,
-  pathRewrite: {
-    "/wechat/createCharge": "/wechat/createCharge"
-  },
-  onProxyReq(proxyReq, req) {
-    proxyReq.setHeader("Cookie", req.headers.cookie);
-  },
-  onProxyRes(proxyRes, req, res) {
-    Object.keys(proxyRes.headers).forEach(function(key) {
-      res.append(key, proxyRes.headers[key]);
-    });
-  }
-});
-
-const wechatOrderQuery = proxy({
-  target: payBff,
-  changeOrigin: true,
-  pathRewrite: {
-    "/wechat/orderQuery": "/wechat/orderQuery"
-  },
-  onProxyReq(proxyReq, req) {
-    proxyReq.setHeader("Cookie", req.headers.cookie);
-  },
-  onProxyRes(proxyRes, req, res) {
-    Object.keys(proxyRes.headers).forEach(function(key) {
-      res.append(key, proxyRes.headers[key]);
-    });
-  }
-});
-
-const applyProbation = proxy({
-  target: payService,
-  changeOrigin: true,
-  pathRewrite: {
-    "/probation/applyProbation": "/probation/applyProbation"
-  },
-  onProxyReq(proxyReq, req) {
-    proxyReq.setHeader("Cookie", req.headers.cookie);
-  },
-  onProxyRes(proxyRes, req, res) {
-    Object.keys(proxyRes.headers).forEach(function(key) {
-      res.append(key, proxyRes.headers[key]);
-    });
-  }
-});
+const applyProbation = proxies(payService, "/probation/applyProbation", "/probation/applyProbation");
 
 
 app.prepare()
@@ -239,11 +93,6 @@ app.prepare()
         essentialPriceYear
       });
     });
-
-
-    // server.get("/strapiUrl", function(req: any, res: any) {
-    //   res.send(strapiService);
-    // });
 
 
     server.get("/p/:id", (req, res) => {
