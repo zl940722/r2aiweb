@@ -11,7 +11,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noImplicitAny": false,
     "preserveConstEnums": true,
     "pretty": true,

@@ -9,52 +9,51 @@ import ContentBanner from "./ContentBanner";
 import ContentBannerZh from "./ContentBannerZh";
 import Assessment from "./Assessment";
 import AssessmentZh from './AssessmentZh'
+import NumZh from './NumZh'
 import isEn from "../../../../language";
+import WhatDoWeDoZH from "./WhatDoWeDoZH";
+import WhyDifferent from "./WhyDifferent";
+import WhyDifferentZH from "./WhyDifferentZH";
+import WhatDoWeDo from "./WhatDoWeDo";
 
 function Home(res: any) {
 
   const lists = res.data;
+  const {url} = res;
+  console.log(11,res)
 
   const banner = _.find(lists, (data: any) => {
     return data.name === "banner";
   });
 
-  const aboutUs = _.find(lists, (data: any) => {
-    return data.name === "about_us";
+  const user = _.find(lists, (data: any) => {
+    return data.name === "user";
   });
 
-  const whatDo = _.find(lists, (data: any) => {
-    return data.name === "what_do_we_do";
+  const modeling = _.find(lists, (data: any) => {
+    return data.name === "modeling";
   });
-
-  const whyDiff = _.find(lists, (data: any) => {
-    return data.name === "why_diff";
-  });
-
-  const cloud = _.find(lists, (data: any) => {
-    return data.name === "cloud";
-  });
-
-  const appraise = _.find(lists, (data: any) => {
-    return data.name === "appraise";
-  });
-
 
   return (
     <>
       {
         isEn ?
           <>
-            <HomeBanner {...banner}/>
-            <HomeAbout aboutUs={aboutUs} whatDo={whatDo} whyDiff={whyDiff}/>
-            <ContentBanner {...cloud}/>
-            <Assessment {...res} />
+            <HomeBanner {...banner} url={url}/>
+            <NumZh user={user} modeling={modeling}/>
+            <HomeAbout/>
+            <WhatDoWeDo/>
+            <WhyDifferent/>
+            {/*<ContentBanner {...cloud}/>*/}
+            {/*<Assessment {...res} />*/}
           </> :
           <>
-            <HomeBannerZh {...banner}/>
-            <HomeAboutZh aboutUs={aboutUs} whatDo={whatDo} whyDiff={whyDiff}/>
-            <ContentBannerZh {...cloud}/>
-            <AssessmentZh {...appraise} />
+            <HomeBannerZh {...banner} url={url}/>
+            <NumZh user={user} modeling={modeling}/>
+            <WhatDoWeDoZH/>
+            <WhyDifferentZH/>
+            {/*<ContentBannerZh {...cloud}/>*/}
+            <AssessmentZh/>
           </>
       }
     </>

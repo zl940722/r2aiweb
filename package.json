@@ -41,7 +41,7 @@
     "query-string": "^6.8.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-responsive-carousel": "^3.1.50",
+    "react-responsive-carousel": "^3.1.51",
     "react-window": "^1.8.5",
     "styled-components": "^4.3.2",
     "sw-precache-webpack-plugin": "^0.11.5",
@@ -53,6 +53,7 @@
     "@types/react-dom": "^16.9.0",
     "cross-env": "^6.0.3",
     "prettier": "^1.18.2",
+    "swiper": "^5.2.0",
     "typescript": "^3.5.3"
   }
 }

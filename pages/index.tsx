@@ -7,7 +7,6 @@ import fetch from "isomorphic-unfetch";
 import url from "../http";
 
 const Index = (res: any) => {
-  console.log(res , 'rsssses')
   return <Home {...res}/>;
 };
 
@@ -17,6 +16,7 @@ Index.getInitialProps = async function() {
 
   return {
     data: homeData,
+    url,
   };
 };
 
