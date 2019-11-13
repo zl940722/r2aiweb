@@ -13,6 +13,11 @@ import WlwAppDetailBanner from "./wlw/AppDetailBanner";
 import WlwAppDetailPartOne from "./wlw/AppDetailPartOne";
 
 
+import YhAppDetailBanner from "./yh/AppDetailBanner";
+import YhAppDetailPartOne from "./yh/AppDetailPartOne";
+import YhAppDetailPartTwo from "./yh/AppDetailPartTwo";
+import YhAppDetailPartThree from "./yh/AppDetailPartThree";
+
 import { withRouter } from "next/router";
 
 function AppDetail(props: any) {
@@ -21,9 +26,10 @@ function AppDetail(props: any) {
   if (props.router.query.id === "1") {
     compent = (
       <>
-        <BxAppDetailBanner/>
-        <BxAppDetailPartOne {...props}/>
-        <BxAppDetailPartTwo/>
+        <YhAppDetailBanner/>
+        <YhAppDetailPartOne {...props}/>
+        <YhAppDetailPartTwo/>
+        <YhAppDetailPartThree/>
       </>
     );
   } else if (props.router.query.id === "2") {

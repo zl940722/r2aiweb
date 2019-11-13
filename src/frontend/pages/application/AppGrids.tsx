@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     marginTop: "1.2rem"
   },
   grids: {
-    margin: "0 40px",
+    // margin: "0 40px",
     padding: "4rem 0 6rem"
   },
   grid: {
