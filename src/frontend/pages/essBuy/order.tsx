@@ -65,9 +65,9 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "10.5rem",
       height: "3.2rem",
       fontWeight: "bold",
-      border:'1px solid #D3323E',
+      border: "1px solid #D3323E",
       background: "#F5F5F5 !important",
-      color:'#D3323E'
+      color: "#D3323E"
     }
   })
 );
@@ -364,6 +364,7 @@ export default function TextFields(props: any) {
               id="standard-dense"
               variant="outlined"
               label="请输入验证码"
+              style={{ width: 600 }}
               fullWidth={true}
               className={clsx(classes.textField, classes.dense)}
               onChange={handleChange("captcha")}
@@ -378,7 +379,7 @@ export default function TextFields(props: any) {
 
             <div>
               <FormControl component="fieldset" className={classes.formControl}>
-                <FormLabel component="legend">请选择支付方式</FormLabel>
+                {/*<FormLabel component="legend">请选择支付方式</FormLabel>*/}
                 <RadioGroup aria-label="gender" name="gender1" value={payMethod} onChange={handleChanges}>
                   <Grid container spacing={10}>
                     <Grid item md={4}>
