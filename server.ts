@@ -5,6 +5,7 @@ const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
+const messageService = process.env.MESSAGE_SERVICE || "http://localhost:8088";
 const authService = process.env.AUTH_SERVICE || "http://localhost:8088";
 const payService = process.env.PAY_SERVICE || "http://192.168.0.105:8090";
 const payBff = process.env.PAY_BFF || "http://192.168.0.105:8091";
@@ -56,6 +57,8 @@ const wechatOrderQuery = proxies(payBff, "/wechat/orderQuery", "/wechat/orderQue
 
 const applyProbation = proxies(payService, "/probation/applyProbation", "/probation/applyProbation");
 
+const sendMail = proxies(messageService, "user/sendMail", "mailer/sendMail");
+
 
 app.prepare()
   .then(() => {
@@ -89,6 +92,8 @@ app.prepare()
     server.use("/wechat/orderQuery", wechatOrderQuery);
 
     server.use("/probation/applyProbation", applyProbation);
+
+    server.use("user/sendMail", sendMail);
 
     server.get("/price", (req, res) => {
       res.send({

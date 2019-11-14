@@ -6,6 +6,7 @@ import { CssBaseline } from "@material-ui/core";
 import theme from "../src/frontend/common/theme";
 import Header from "../src/frontend/common/Header";
 import Footer from "../src/frontend/common/Footer";
+import Head from "next/Head";
 
 class MyApp extends App {
 
@@ -39,9 +40,12 @@ class MyApp extends App {
 
   render() {
     const { Component, pageProps } = this.props as any;
-    console.log("userData", this.state);
+    console.log(Component, pageProps, 111);
     return (
       <>
+        <Head>
+          <title>R2.ai官网</title>
+        </Head>
         {/*<ApolloProvider client={apolloClient}>*/}
         <ThemeProvider theme={theme}>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
