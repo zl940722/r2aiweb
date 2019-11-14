@@ -24,8 +24,9 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(3)
     },
     bg: {
-      background: "#131d2d",
+      background: "#fff",
       backgroundSize: "cover"
+
     },
     container: {
       display: "flex",
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) =>
     textField: {
       marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
-      width: 440
+      width: 800
     },
     dense: {
       marginTop: 19
@@ -48,8 +49,8 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     grid: {
       flex: 1,
-      background: "#fff",
-      margin: "2.5rem auto",
+      background: "#F5F5F5",
+      margin: "6.5rem auto 13.5rem",
       padding: "4rem",
       borderRadius: ".3rem",
       // boxShadow: ".2rem .2rem .2rem #ddd",
@@ -63,7 +64,9 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "10.5rem",
       height: "3.2rem",
       fontWeight: "bold",
-      background: "#061222 !important"
+      border:'1px solid #D3323E',
+      background: "#F5F5F5 !important",
+      color:'#D3323E'
     }
   })
 );
@@ -301,9 +304,17 @@ export default function TextFields(props: any) {
 
   return (
     <div className={classes.bg}>
+      {/*<p style={{color:'#D3323E',textAlign:'center'}} onClick={()=> {*/}
+      {/*  */}
+      {/*}}>返回价单列表</p>*/}
+      <h1 style={{ textAlign: "center", marginTop: 100 }}>产品购买</h1>
       <form className={classes.container} noValidate autoComplete="off">
+
         <Grid container className={classes.grids}>
-          <Grid item md={4} className={classes.grid}>
+
+          <Grid item md={6} className={classes.grid}>
+
+
             {/*<TextField*/}
             {/*  id="standard-dense"*/}
             {/*  label="用户邮箱"*/}
@@ -378,11 +389,13 @@ export default function TextFields(props: any) {
               variant="outlined"
               label="请输入验证码"
               fullWidth={true}
+              style={{ width: 600 }}
               className={clsx(classes.textField, classes.dense)}
               onChange={handleChange("captcha")}
               margin="dense"
             />
             <img src={`/user/captcha?${captcha}`}
+                 style={{marginTop:'11px'}}
                  alt=""
                  onClick={() => {
                    setCaptchas(new Date().getTime());
@@ -391,11 +404,22 @@ export default function TextFields(props: any) {
 
             <div>
               <FormControl component="fieldset" className={classes.formControl}>
-                <FormLabel component="legend">请选择支付方式</FormLabel>
+                {/*<FormLabel component="legend">请选择支付方式</FormLabel>*/}
                 <RadioGroup aria-label="gender" name="gender1" value={payMethod} onChange={handleChanges}>
-                  <FormControlLabel value="unionPay" control={<Radio/>} label="银联"/>
-                  <FormControlLabel value="alipay" control={<Radio/>} label="支付宝"/>
-                  <FormControlLabel value="wechat" control={<Radio/>} label="微信支付"/>
+                  <Grid container spacing={10}>
+                    <Grid item md={4}>
+                      <FormControlLabel value="unionPay" control={<Radio/>} label={<img style={{ width: 120 }}
+                                                                                        src='/static/images/price/yinlian@2x.png'/>}/>
+                    </Grid>
+                    <Grid item md={4}>
+                      <FormControlLabel value="alipay" control={<Radio/>} label={<img style={{ width: 120 }}
+                                                                                      src='/static/images/price/zhifubao@2x.png'/>}/>
+                    </Grid>
+                    <Grid item md={4}>
+                      <FormControlLabel value="wechat" control={<Radio/>}
+                                        label={<img style={{ width: 120 }} src='/static/images/price/weixin@2x.png'/>}/>
+                    </Grid>
+                  </Grid>
                 </RadioGroup>
               </FormControl>
 
