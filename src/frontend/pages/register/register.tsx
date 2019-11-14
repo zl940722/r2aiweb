@@ -21,7 +21,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     bg: {
-      background: "#061122",
+      background: "#fff",
       backgroundSize: "cover",
       backgroundPosition: "50%",
       backgroundRepeat: "no-repeat"
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     grid: {
       flex: 1,
-      background: "#fff",
+      background: "#f5f5f5",
       margin: "2.5rem auto",
       padding: "4rem",
       borderRadius: ".3rem",
@@ -62,7 +62,9 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "10.5rem",
       height: "3.2rem",
       fontWeight: "bold",
-      background: "#061222 !important"
+      border: "1px solid #D3323E",
+      background: "#F5F5F5 !important",
+      color: "#D3323E"
     }
   })
 );
@@ -245,7 +247,8 @@ export default function TextFields() {
 
 
   return (
-    <div className={classes.bg} style={{ backgroundImage: "url(/static/images/register/loginBg.png)" }}>
+    <div className={classes.bg}>
+      <h1 style={{ textAlign: "center", marginTop: 100 }}>免费试用申请</h1>
       <form className={classes.container} noValidate autoComplete="off">
         <Grid container className={classes.grids}>
           <Grid item md={4} className={classes.grid}>
@@ -493,7 +496,7 @@ export default function TextFields() {
                    setCaptchas(new Date().getTime());
                  }}
             />
-            <p>本人同意签署贵公司的<a href="www.baidu.com">SAAS用户协议</a></p>
+            <p>本人同意签署贵公司的<a href="">SAAS用户协议</a></p>
             <Grommet theme={customTheme} className={classes.buttonWrap}>
               <Box align="center" pad="medium">
                 <Button
