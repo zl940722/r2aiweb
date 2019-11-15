@@ -83,7 +83,7 @@ function HomeAbout(res: any) {
             <Grid item sm={6} xs={12}>
               <div className={classes.item}>
                 <img
-                  src={url + value.image.url}
+                  src={url + (value.image || {}).url}
                   width={"400px"}
                   height={300}
                   alt="R2.ai"
