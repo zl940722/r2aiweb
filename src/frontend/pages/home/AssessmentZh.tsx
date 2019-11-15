@@ -21,6 +21,7 @@ const useStyles = makeStyles({
         position:'relative',
         height:'9.125rem',
         width:'34rem',
+        float:'right',
       }
     },
     "& dt": {
@@ -67,7 +68,8 @@ const useStyles = makeStyles({
     },
     "& dd": {
       '& >div':{
-        clear:'both'
+        clear:'both',
+        float:"none",
       },
       '& i':{
         left:' -6.2rem',
@@ -114,8 +116,8 @@ function Assessment() {
           </div>
         </dt>
         <dd>
-          <div/>
-          <div>
+          <div style={{float:'none'}}/>
+          <div style={{float:'none'}}>
             <i>
               <span />
             </i>
@@ -128,7 +130,7 @@ function Assessment() {
             </label>
           </div>
           <div/>
-          <div style={{height:0}}>
+          <div style={{height:0,float:'none'}}>
             <i>
               <span />
             </i>

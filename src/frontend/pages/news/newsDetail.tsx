@@ -3,6 +3,9 @@ import Banner from "./Banner";
 import { Grid, Typography } from "@material-ui/core";
 import url from "../../../../http";
 import { makeStyles } from "@material-ui/styles";
+import { Remarkable } from 'remarkable';
+import moment from "moment";
+
 
 const useStyles = makeStyles({
   content: {
@@ -39,8 +42,21 @@ const useStyles = makeStyles({
     fontWeight: "bold",
     marginTop:'2rem'
   },
-  itemTitle2: {
+  body: {
     marginTop: "2rem",
+    textAlign:'left',
+    '& img':{
+      maxWidth:'100%',
+    },
+    '& p':{
+      textIndent:'2rem',
+      '& img':{
+        // position:'relative',
+        // left:'-2rem',
+        margin: 'auto',
+        display: 'block',
+      }
+    }
   },
   itemDashed: {
     marginTop: "2rem",
@@ -50,8 +66,15 @@ const useStyles = makeStyles({
 });
 
 
-function Application(res: any) {
+
+export default function(res: any) {
   const classes = useStyles();
+
+  // function getRawMarkup() {
+  //   const md = new Remarkable();
+  //   return { __html: md.render(res.news.content) };
+  // }
+
   return (
     <>
       <Banner/>
@@ -59,24 +82,14 @@ function Application(res: any) {
         <Grid container className={classes.items} direction={"row"}>
           <Grid item sm={12} xs={12}>
             <div className={classes.item}>
-              <img
-                src={url + res.news.image.url || ""}
-                width={"400px"}
-                height={300}
-                alt="R2.ai"
-              />
-            </div>
-          </Grid>
-          <Grid item sm={12} xs={12}>
-            <div className={classes.item}>
               <Typography variant={"h5"} className={classes.itemTitle}>
                 {res.news.title || ""}
               </Typography>
               <Typography variant={"body1"} className={classes.itemDes}>
-                {res.news.updatedAt || ""}
+                {moment(res.news.publishTime).format('YYYY-MM-DD')}
               </Typography>
-              <Typography variant={"body1"} className={classes.itemTitle2}>
-                {res.news.content || ""}
+              <Typography variant={"body1"} className={classes.body}>
+                <div dangerouslySetInnerHTML={{__html:res.news.content}}/>
               </Typography>
             </div>
           </Grid>
@@ -86,5 +99,3 @@ function Application(res: any) {
     </>
   );
 }
-
-export default Application;

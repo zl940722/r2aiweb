@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/styles";
 import url from "../../../../http";
 import Router from "next/router";
 import { Typography, Grid } from "@material-ui/core";
+import moment from 'moment'
 
 const useStyles = makeStyles({
   content: {
@@ -49,23 +50,6 @@ const useStyles = makeStyles({
   }
 });
 
-// const lists: any = [
-//   {
-//     id: 1,
-//     url: "/static/images/news/1.png",
-//     title: "赋能智慧城市，助力大湾区发展，R2.ai携手广东宏景科技",
-//     date: "2019-07-25",
-//     context: "R2.ai创始人、CEO黄一文先生受邀拜访广东宏景科技股份有限公司（以下简称“宏景科技”），与宏景科技CEO欧阳华博士及首席科学家、中国智能建筑领域顶级专家陈佳实教授就人工智能在智慧城市领域的广泛应用进行了深入交流，双方将在智能园区，智能医疗，智能农业等多领域展开实质性合作。"
-//   },
-//   {
-//     id: 2,
-//     url: "/static/images/news/2.png",
-//     title: "赋能智慧城市，助力大湾区发展，R2.ai携手广东宏景科技",
-//     date: "2019-07-25",
-//     context: "R2.ai创始人、CEO黄一文先生受邀拜访广东宏景科技股份有限公司（以下简称“宏景科技”），与宏景科技CEO欧阳华博士及首席科学家、中国智能建筑领域顶级专家陈佳实教授就人工智能在智慧城市领域的广泛应用进行了深入交流，双方将在智能园区，智能医疗，智能农业等多领域展开实质性合作。"
-//   }
-// ];
-
 function HomeAbout(res: any) {
   console.log(res, "dasdasd");
   const classes = useStyles();
@@ -96,10 +80,10 @@ function HomeAbout(res: any) {
                   {value.title}
                 </Typography>
                 <Typography variant={"body1"} className={classes.itemDes}>
-                  {value.updatedAt}
+                  {moment(value.publishTime).format('YYYY-MM-DD')}
                 </Typography>
                 <Typography variant={"body1"} className={classes.itemTitle2}>
-                  {value.content}
+                  {value.description}
                 </Typography>
               </div>
             </Grid>

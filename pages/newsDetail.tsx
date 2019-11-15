@@ -9,7 +9,7 @@ const Index = (res: any) => {
 };
 
 Index.getInitialProps = async function(res: any) {
-  console.log(res , 'rsssses')
+  console.log(res , 'rsssses');
   const news: any = await fetch(url + `/news/${res.asPath.split('?')[1]}`) || [];
   const information: any =  await fetch(url + "/infors") || [];
   const newsData = await news.json();

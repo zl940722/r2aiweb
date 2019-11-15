@@ -10,7 +10,7 @@ function Application(res: any) {
       <Banner/>
       <Pagination />
       <Tabs {...res}/>
-      </>
+    </>
   );
 }
 

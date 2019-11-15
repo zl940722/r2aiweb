@@ -8,6 +8,7 @@ const handle = app.getRequestHandler();
 const authService = process.env.AUTH_SERVICE || "http://localhost:8088";
 const payService = process.env.PAY_SERVICE || "http://192.168.0.105:8090";
 const payBff = process.env.PAY_BFF || "http://192.168.0.105:8091";
+const STRAPI_URL = process.env.STRAPI_URL || "http://localhost:1337";
 const basicPrice = process.env.BASIC_PRICE || 199.98;
 const basicPriceYear = process.env.BASIC_PRICE_YEAR || 2159.78;
 const essentialPrice = process.env.ESSENTIAL_PRICE || 1999.98;
@@ -32,6 +33,8 @@ const proxies = (target, org, url) => {
 };
 
 const captcha = proxies(authService, "/user/captcha", "/captcha");
+
+const upload = proxies(STRAPI_URL, "/", "/");
 
 const login = proxies(authService, "/user/login", "/");
 
@@ -68,6 +71,8 @@ app.prepare()
     server.use("/user/register", register);
 
     server.use("/active", active);
+
+    server.use("/uploads", upload);
 
     server.use("/user/captcha", captcha);
 
