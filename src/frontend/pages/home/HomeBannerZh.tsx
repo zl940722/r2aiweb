@@ -2,18 +2,10 @@ import React, { useEffect } from "react";
 
 import { makeStyles, createStyles } from "@material-ui/styles";
 
-import { Typography, Modal } from "@material-ui/core";
-
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
 import Swiper from 'swiper'
 import 'swiper/css/swiper.css'
 
-import { Grommet, Button } from "grommet";
-import http from "../../../../http";
-
-
-const useStyles = makeStyles((theme: any) =>
+const useStyles = makeStyles(() =>
   createStyles({
     main:{
       '& .swiper-pagination-bullet-active':{
@@ -25,18 +17,8 @@ const useStyles = makeStyles((theme: any) =>
   })
 );
 
-const HomeBanner = (res: any) => {
+export default function(res: any){
   const classes = useStyles();
-
-  const [open, setOpen] = React.useState(false);
-
-  function onHandleOpen() {
-    setOpen(true);
-  }
-
-  function onHandleClose() {
-    setOpen(false);
-  }
 
   useEffect(()=>{
     new Swiper('.swiper-container', {
@@ -49,7 +31,7 @@ const HomeBanner = (res: any) => {
     })
   },[]);
   const {url} = res;
-  const img = res.content[0].zh_img;
+  const {zh_img:img=[]} = res.content[0];
   return <div className={"swiper-container "+classes.main}>
     <div className="swiper-wrapper">
       {
@@ -61,5 +43,3 @@ const HomeBanner = (res: any) => {
     <div className="swiper-pagination"/>
   </div>
 };
-
-export default HomeBanner;

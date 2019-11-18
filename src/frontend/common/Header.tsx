@@ -7,16 +7,21 @@ import { Tabs, Tab } from "@material-ui/core";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Avatar from "@material-ui/core/Avatar";
+import classNames from 'classnames'
 
 const useStyles = makeStyles({
     root: {
       flexGrow: 1,
-      backgroundColor: "#fff"
+      backgroundColor: "#fff",
+      color: "#000",
+      '& span':{
+        color: "#000"
+      }
     },
     tab: {
       height: 70,
       fontSize: "1rem",
-      color: "#000000"
+      // color: "#000000"
     },
     a: {
       textDecoration: "none",
@@ -25,7 +30,18 @@ const useStyles = makeStyles({
     avatar: {
       margin: 10,
       background: "#304057"
-    }
+    },
+    index:{
+      position:'absolute',
+      top:0,
+      zIndex:2,
+      width:'100%',
+      background:'transparent',
+      color:'#fff',
+      '& span':{
+        color:'#fff',
+      }
+    },
   })
 ;
 
@@ -137,10 +153,11 @@ const menus: InterfaceMenu[] = [
 ];
 
 const Header = (props) => {
-
   // @ts-ignore
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+
+  const index = props.route === '/';
 
   function handleChange(event: React.ChangeEvent<{}>, newValue: number) {
     console.log(event);
@@ -159,7 +176,7 @@ const Header = (props) => {
   console.log("header", props);
 
   return (
-    <div className={classes.root}>
+    <div className={classNames(classes.root,index?classes.index:'')}>
       <Link href={"/"}>
         <img
           src="/static/images/common/logo@2x.png"
