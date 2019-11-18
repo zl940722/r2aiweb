@@ -512,13 +512,18 @@ export default function TextFields() {
                    }}
               />
               <p>本人同意签署贵公司的<a href="">SAAS用户协议</a></p>
-
+              {/*<SimpleButton*/}
+              {/*  onClick={() => _.throttle(submit, 1000)}*/}
+              {/*  label={"立即注册"}*/}
+              {/*/>*/}
 
               <Grommet theme={customTheme} className={classes.buttonWrap}>
                 <Box align="center" pad="medium">
-                  <SimpleButton
+                  <Button
                     onClick={submit}
+                    hoverIndicator
                     label={"立即注册"}
+                    className={classes.button}
                   />
                 </Box>
               </Grommet>
