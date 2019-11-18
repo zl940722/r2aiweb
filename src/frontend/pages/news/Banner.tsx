@@ -25,7 +25,7 @@ function AppBanner() {
         <div
           className={classes.item}
           style={{
-            backgroundImage: "url(/static/images/news/banner1@2x.png)"
+            backgroundImage: "url(/static/images/news/banner.png)"
           }}
         />
       </Carousel>

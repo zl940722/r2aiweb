@@ -1,0 +1,4 @@
+#news .Activity:after{
+    content:'活动参会';
+    color:#50A5E7;
+}

@@ -4,6 +4,7 @@ import url from "../../../../http";
 import Router from "next/router";
 import { Typography, Grid } from "@material-ui/core";
 import moment from 'moment'
+import './news.css'
 
 const useStyles = makeStyles({
   content: {
@@ -25,14 +26,23 @@ const useStyles = makeStyles({
     textAlign: "center"
   },
   items: {
-    margin: "2rem 0 1rem"
+    margin: "4.875rem 0 0",
+    cursor:'pointer',
+    '& img':{
+      height:'14.375rem',
+      width:'25rem'
+    }
   },
   item: {
     maxWidth: "90%",
     boxSizing: "border-box"
   },
   itemDes: {
-    lineHeight: 1
+    lineHeight: 1,
+    '& i':{
+      fontStyle:'normal',
+      padding:'0 1rem',
+    }
   },
   itemTitle: {
     marginBottom: "2rem",
@@ -44,7 +54,6 @@ const useStyles = makeStyles({
     overflow: "hidden"
   },
   itemDashed: {
-    marginTop: "2rem",
     width: "96%",
     border: "1px dashed #ccc"
   }
@@ -61,15 +70,13 @@ function HomeAbout(res: any) {
 
   return (
     <>
-      <div className={classes.content}>
+      <div className={classes.content} id='news'>
         {res.news && res.news.map((value: any, index: any) => (
           <Grid key={index} container className={classes.items} direction={"row"} onClick={detail(value.id)}>
             <Grid item sm={6} xs={12}>
               <div className={classes.item}>
                 <img
                   src={url + (value.image || {}).url}
-                  width={"400px"}
-                  height={300}
                   alt="R2.ai"
                 />
               </div>
@@ -80,7 +87,8 @@ function HomeAbout(res: any) {
                   {value.title}
                 </Typography>
                 <Typography variant={"body1"} className={classes.itemDes}>
-                  {moment(value.publishTime).format('YYYY-MM-DD')}
+                  {moment(value.publishTime).format('YYYY-MM-DD')}<i>|</i>
+                  <span className={value.type}/>
                 </Typography>
                 <Typography variant={"body1"} className={classes.itemTitle2}>
                   {value.description}
