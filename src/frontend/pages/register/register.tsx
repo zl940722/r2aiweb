@@ -18,6 +18,13 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
 
+import SimpleInput from "../../Components/SimpleInput";
+import SimpleSelect from "../../Components/SimpleSelectCountry";
+// import SimpleSelect from "../src/frontend/Components/SimpleSelect";
+// import SimpleTextArea from "../src/frontend/Components/SimpleTextArea";
+// import SimpleButton from "../src/frontend/Components/SimpleButton";
+
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     bg: {
@@ -32,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     textField: {
       marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
+      marginRight: theme.spacing(1)
     },
     dense: {
       marginTop: 19
@@ -54,7 +61,7 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: "4rem",
       borderRadius: ".3rem",
       // boxShadow: ".2rem .2rem .2rem #ddd",
-      cursor: "pointer",
+      cursor: "pointer"
     },
     buttonWrap: {
       width: "100%",
@@ -67,14 +74,32 @@ const useStyles = makeStyles((theme: Theme) =>
       border: "1px solid #D3323E",
       background: "#F5F5F5 !important",
       color: "#D3323E"
+    },
+    main: {
+      display: "flex",
+      alignItems: "baseline",
+      "&  select": {
+        paddingTop: "1.5rem",
+        paddingBottom: "1.5rem",
+        paddingLeft: "1rem"
+      }
+    },
+    labelCss: {
+      width: "6.6rem",
+      textAlign: "right",
+      marginRight: "0.75rem"
+    },
+    selectTextField: {
+      minHeight: "4.25rem",
+      backgroundColor: "#FFFFFF"
     }
   })
 );
 
 const country = [
   {
-    value: "zh",
-    label: "中国"
+    code: "zh",
+    name: "中国"
   }
 ];
 //
@@ -143,7 +168,7 @@ export default function TextFields() {
     captcha: "",
     city: "",
     companyName: "",
-    country: "",
+    country: "zh",
     department: "",
     email: "",
     industry: "",
@@ -221,32 +246,36 @@ export default function TextFields() {
                   });
                 }
               }).catch((error: any) => {
-                if (error.response) {
-                  console.log(error.response.data);
-                  console.log(error.response.status);
-                  console.log(error.response.headers);
-                }
-                setOpen(true);
-                setModal({
-                  content: error.response.data,
-                  type: "error"
-                });
-                setCaptchas(new Date().getTime());
+              if (error.response) {
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+              }
+              setOpen(true);
+              setModal({
+                content: error.response.data,
+                type: "error"
               });
+              setCaptchas(new Date().getTime());
+            });
           }
         }).catch((err: any) => {
-          setOpen(true);
-          setModal({
-            content: err.response.data,
-            type: "error"
-          });
-          setCaptchas(new Date().getTime());
+        setOpen(true);
+        setModal({
+          content: err.response.data,
+          type: "error"
         });
+        setCaptchas(new Date().getTime());
+      });
     }
 
 
   };
-
+  const contactTypes = {
+    "获取试用版": "获取试用版",
+    "寻求合作": "寻求合作",
+    "普通咨询": "普通咨询"
+  };
 
   return (
     <div className={classes.bg}>
@@ -255,55 +284,60 @@ export default function TextFields() {
         <Grid container className={classes.grids}>
           <Grid item lg={9} xs={12} className={classes.center}>
             <Grid item lg={10} xs={12} spacing={1} className={classes.grid}>
-              <Grid item xs={12} ><TextField
-                id="standard-dense"
-                variant="outlined"
-                label="用户邮箱"
-                fullWidth={true}
+
+
+              <SimpleInput
                 value={values.email}
-                className={clsx(classes.textField, classes.dense)}
+                label="用户邮箱"
+                required={true}
+                allowedLength={32}
+                regex={/^[\s\S]*.*[^\s][\s\S]*$/}
+                helperText="用户邮箱不能为空"
+                className={classes.dense}
                 onChange={handleChange("email")}
                 margin="dense"
               />
-              </Grid>
-              <Grid item xs={12} ><TextField
-                id="standard-dense"
-                variant="outlined"
+              <SimpleInput
                 label="用户姓名"
-                fullWidth={true}
-                className={clsx(classes.textField, classes.dense)}
+                required={true}
+                value={values.username}
+                allowedLength={32}
+                regex={/^[\s\S]*.*[^\s][\s\S]*$/}
+                helperText="用户名不能为空"
+                className={classes.dense}
                 onChange={handleChange("username")}
                 margin="dense"
               />
-              </Grid>
-              <Grid item xs={12} ><TextField
-                id="standard-dense"
-                variant="outlined"
+
+              <SimpleInput
                 label="密码"
-                fullWidth={true}
-                className={clsx(classes.textField, classes.dense)}
+                required={true}
+                value={values.password}
+                allowedLength={12}
+                regex={/^[\s\S]*.*[^\s][\s\S]*$/}
+                helperText="密码不能为空"
+                className={classes.dense}
                 onChange={handleChange("password")}
                 margin="dense"
               />
-              </Grid>
-              <Grid item xs={12} ><TextField
-                id="standard-dense"
-                variant="outlined"
+
+              <SimpleInput
                 label="公司全称"
-                fullWidth={true}
-                className={clsx(classes.textField, classes.dense)}
+                required={true}
+                value={values.companyName}
+                allowedLength={32}
+                regex={/^[\s\S]*.*[^\s][\s\S]*$/}
+                helperText="公司全称不能为空"
+                className={classes.dense}
                 onChange={handleChange("companyName")}
                 margin="dense"
               />
-              </Grid>
-              <Grid item xs={12} ><TextField
-                variant="outlined"
-                id="standard-select-currency"
-                select
+
+              <SimpleSelect
                 label="国家地区"
-                fullWidth={true}
+                xs={12}
+                className={classes.dense}
                 value={values.country}
-                className={classes.textField}
                 onChange={(e: any) => {
                   setshow({ province: true });
                   setValues({
@@ -316,66 +350,48 @@ export default function TextFields() {
                   });
 
                 }}
-                SelectProps={{
-                  MenuProps: {
-                    className: classes.menu
-                  }
-                }}
+                data={country}
                 margin="normal"
-              >
-                {country.map(option => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </TextField></Grid>
+              />
+
               {
 
-                show.province ? <Grid item xs={12} ><TextField
-                  variant="outlined"
-                  id="standard-select-currency"
-                  select
-                  label="省"
-                  className={classes.textField}
-                  value={values.province}
-                  onChange={(event: any) => {
-                    let bb: any = [];
-                    _.forEach(citise, function (o) {
-                      if (event.target.value === _.toInteger(o.parentCode)) {
-                        bb.push(o);
-                        setshow({ province: true, city: true });
-                        setcityList(bb);
-                        setValues({
-                          email: values.email,
-                          username: values.username,
-                          password: values.password,
-                          country: values.country,
-                          companyName: values.companyName,
-                          productName: values.productName,
-                          province: event.target.value
-                        });
-                      }
+                show.province ?
 
-                    });
+                  <SimpleSelect
+                    label="国家地区"
+                    xs={12}
+                    className={classes.dense}
+                    value={values.province}
+                    onChange={(event: any) => {
+                      let bb: any = [];
+                      _.forEach(citise, function(o) {
+                        if (event.target.value === _.toInteger(o.parentCode)) {
+                          bb.push(o);
+                          setshow({ province: true, city: true });
+                          setcityList(bb);
+                          setValues({
+                            email: values.email,
+                            username: values.username,
+                            password: values.password,
+                            country: values.country,
+                            companyName: values.companyName,
+                            productName: values.productName,
+                            province: event.target.value
+                          });
+                        }
 
-                  }}
-                  SelectProps={{
-                    MenuProps: {
-                      className: classes.menu
-                    }
-                  }}
-                  margin="normal"
-                >
-                  {provinces.map((option: any) => (
-                    <MenuItem key={option.code} value={option.code}>
-                      {option.name}
-                    </MenuItem>
-                  ))}
-                </TextField></Grid> : null
+                      });
+
+                    }}
+                    data={provinces}
+                    margin="normal"
+                  />
+                  : null
               }
               {
 
-                show.city ? <Grid item xs={12} ><TextField
+                show.city ? <Grid item xs={12}><TextField
                   variant="outlined"
                   id="standard-select-currency"
                   select
@@ -394,7 +410,7 @@ export default function TextFields() {
                       city: event.target.value
                     });
                     let bb: any = [];
-                    _.forEach(areas, function (o) {
+                    _.forEach(areas, function(o) {
                       if (event.target.value === _.toInteger(o.parentCode)) {
                         bb.push(o);
                         setshow({ province: true, city: true, area: true });
@@ -419,7 +435,7 @@ export default function TextFields() {
               }
               {
 
-                show.area ? <Grid item xs={12} ><TextField
+                show.area ? <Grid item xs={12}><TextField
                   variant="outlined"
                   id="standard-select-currency"
                   select
@@ -443,8 +459,7 @@ export default function TextFields() {
               }
 
 
-
-              <Grid item xs={12} ><TextField
+              <Grid item xs={12}><TextField
                 variant="outlined"
                 id="standard-dense"
                 label="公司地址"
@@ -454,7 +469,7 @@ export default function TextFields() {
                 margin="dense"
               />
               </Grid>
-              <Grid item xs={12} ><TextField
+              <Grid item xs={12}><TextField
                 variant="outlined"
                 id="standard-select-currency"
                 select
@@ -477,7 +492,7 @@ export default function TextFields() {
                 ))}
               </TextField>
               </Grid>
-              <Grid item xs={12} ><TextField
+              <Grid item xs={12}><TextField
                 variant="outlined"
                 id="standard-dense"
                 label="业务部门"
@@ -487,7 +502,7 @@ export default function TextFields() {
                 margin="dense"
               />
               </Grid>
-              <Grid item xs={12} ><TextField
+              <Grid item xs={12}><TextField
                 variant="outlined"
                 id="standard-dense"
                 label="联系电话"
@@ -498,7 +513,7 @@ export default function TextFields() {
                 margin="dense"
               />
               </Grid>
-              <Grid item xs={12} ><TextField
+              <Grid item xs={12}><TextField
                 variant="outlined"
                 id="standard-dense"
                 label="验证码"
@@ -508,10 +523,10 @@ export default function TextFields() {
                 margin="dense"
               /></Grid>
               <img src={`/user/captcha?${captcha}`}
-                alt=""
-                onClick={() => {
-                  setCaptchas(new Date().getTime());
-                }}
+                   alt=""
+                   onClick={() => {
+                     setCaptchas(new Date().getTime());
+                   }}
               />
               <p>本人同意签署贵公司的<a href="">SAAS用户协议</a></p>
               <Grommet theme={customTheme} className={classes.buttonWrap}>
