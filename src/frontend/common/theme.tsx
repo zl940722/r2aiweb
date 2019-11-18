@@ -21,9 +21,14 @@ const theme = createMuiTheme({
     MuiAvatar: {
       root: {
         width: "auto",
-        background:'#0c151a !important',
-        height:'auto',
-        borderRadius:'none'
+        background: "#0c151a !important",
+        height: "auto",
+        borderRadius: "none"
+      }
+    },
+    MuiSelect: {
+      selectMenu: {
+        height: '31px !important'
       }
     }
   }

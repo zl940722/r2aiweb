@@ -24,11 +24,14 @@ const useStyles = makeStyles((theme: any) =>
     selectTextField: {
       minHeight: "4.25rem",
       backgroundColor: "#FFFFFF"
-    }
+    },
+    menu: {
+      width: 400
+    },
   })
 );
 
-const SimpleSelectCountry = (res: any) => {
+const SimpleSelect = (res: any) => {
   const classes = useStyles();
   const {
     label, labelCss, data, className
@@ -46,16 +49,18 @@ const SimpleSelectCountry = (res: any) => {
         margin="normal"
         variant="outlined"
         fullWidth={true}
-        SelectProps={{
-          // native: true
-        }}
         className={clsx(classes.selectTextField, className)}
         {...textFiledProps}
         select
+        SelectProps={{
+          MenuProps: {
+            className: classes.menu
+          }
+        }}
       >
         {_.map(data, (value, key) => (
-          <MenuItem key={key} value={key}>
-            {value}
+          <MenuItem key={key} value={value.code}>
+            {value.name}
           </MenuItem>
         ))}
       </TextField>
@@ -63,4 +68,4 @@ const SimpleSelectCountry = (res: any) => {
   );
 };
 
-export default SimpleSelectCountry;
+export default SimpleSelect;
