@@ -23,11 +23,11 @@ const useStyles = makeStyles((theme: any) =>
   })
 );
 
+
 const SimpleInput = (res: any) => {
   const classes = useStyles();
   const {
     label, regex, value, labelCss, helperText, onChange, required, placeholder, allowedLength, className, inputCss = {
-      // width: "45.125rem",
       height: "2.9375rem",
       backgroundColor: "#FFFFFF"
     }
@@ -38,9 +38,14 @@ const SimpleInput = (res: any) => {
     onChange(...args);
   };
   const textFiledProps = _.omit(res, ["label", "labelCss", "inputCss", "regex", "required", "helperText", "placeholder", "onChange", "allowedLength", "className"]);
-  const error = required ? changed && regex && !regex.test(value) : value && regex && !regex.test(value);
-  const lengthError = allowedLength && (value && value.length) > allowedLength ? "超过长度限制" : "";
-  const inputInValid = error || !!lengthError;
+
+  const checkError = (value, render) => {
+    const error = required ? regex && !regex.test(value) : value && regex && !regex.test(value);
+    const lengthError = allowedLength && (value && value.length) > allowedLength ? "超过长度限制" : "";
+    const inputInValid = error || !!lengthError;
+    return { error: render ? changed && error : error, lengthError, inputInValid };
+  };
+  const { error, lengthError } = checkError(value, true);
   return (
     <div className={classes.main}>
       {
@@ -58,7 +63,7 @@ const SimpleInput = (res: any) => {
         error={error || !!lengthError}
         inputProps={{ style: inputCss, placeholder }}
         helperText={error ? helperText : lengthError}
-        onChange={(e) => changeFun(e, inputInValid)}
+        onChange={(e) => changeFun(e, checkError(e.target.value, false)["inputInValid"])}
       />
     </div>
   )

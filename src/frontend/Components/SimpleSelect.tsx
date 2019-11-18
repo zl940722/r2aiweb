@@ -46,9 +46,6 @@ const SimpleSelectCountry = (res: any) => {
         margin="normal"
         variant="outlined"
         fullWidth={true}
-        SelectProps={{
-          // native: true
-        }}
         className={clsx(classes.selectTextField, className)}
         {...textFiledProps}
         select

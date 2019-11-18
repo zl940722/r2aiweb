@@ -36,9 +36,13 @@ const SimpleTextArea = (res: any) => {
     onChange(...args);
   };
   const textFiledProps = _.omit(res, ["label", "labelCss", "regex", "required", "helperText", "onChange", "allowedLength", "className"]);
-  const error = required ? changed && regex && !regex.test(value) : value && regex && !regex.test(value);
-  const lengthError = allowedLength && (value.length) > allowedLength ? "超过长度限制" : "";
-  const inputInValid = error || !!lengthError;
+  const checkError = (value, render) => {
+    const error = required ? regex && !regex.test(value) : value && regex && !regex.test(value);
+    const lengthError = allowedLength && (value && value.length) > allowedLength ? "超过长度限制" : "";
+    const inputInValid = error || !!lengthError;
+    return { error: render ? changed && error : error, lengthError, inputInValid };
+  };
+  const { error, lengthError } = checkError(value, true);
   return (
     <div className={classes.main}>
       {
@@ -56,7 +60,7 @@ const SimpleTextArea = (res: any) => {
         multiline={true}
         error={error || !!lengthError}
         helperText={error ? helperText : lengthError}
-        onChange={(e) => changeFun(e, inputInValid)}
+        onChange={(e) => changeFun(e, checkError(e.target.value, false)["inputInValid"])}
       />
     </div>
   )

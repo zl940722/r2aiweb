@@ -1,24 +1,14 @@
 import React from "react";
-import clsx from "clsx";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
-import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import axios from "axios";
 import _ from "lodash";
-import { Grommet, Box, Button } from "grommet";
 
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import SimpleInput from "../src/frontend/Components/SimpleInput";
 import SimpleSelect from "../src/frontend/Components/SimpleSelect";
 import SimpleTextArea from "../src/frontend/Components/SimpleTextArea";
 import SimpleButton from "../src/frontend/Components/SimpleButton";
-import { string } from "prop-types";
+import SimpleDialog from "../src/frontend/Components/SimpleDialog";
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -82,7 +72,6 @@ const customTheme = {
 export default function TextFields() {
   const classes = useStyles();
   const [values, setValues] = React.useState<any>({
-    dropDown: false,
     language: "zh-CN",
     type: "获取试用版",
     name: "",
@@ -95,31 +84,31 @@ export default function TextFields() {
   const [checkErrorList, setCheckErrorList] = React.useState(arr);
   const handleChange = (name: string) => (event: React.ChangeEvent<HTMLInputElement>, invalid: boolean) => {
     setValues({ ...values, [name]: event.target.value });
-    const tempList: Array<string> = invalid ? _.chain(checkErrorList).concat(checkErrorList, name).uniq().value() : _.pull(checkErrorList, name);
+    let tempList: Array<string> = invalid ? _.chain(checkErrorList).concat(name).uniq().value() : _.pull(checkErrorList, name);
     setCheckErrorList(tempList);
   };
 
-  const [modal, setModal] = React.useState({
+  const [dialogInfo, setDialogOpen] = React.useState({
     open: false,
     content: "",
     type: ""
   });
+  const required = ["name", "mail", "phone", "company", "message"];
 
-  //["type", "name", "mail", "phone", "company", "message"]
   const submit = () => {
-    console.log(checkErrorList);
-    if (checkErrorList.length > 0) {
-      setModal({
+    const requiredValues = _.chain(values).pick(required).values().compact().value();
+    if (requiredValues.length < required.length || checkErrorList.length > 0) {
+      setDialogOpen({
         open: true,
-        content: "以上选项为必填，请正确填写。",
-        type: "error"
+        content: "以上选项包含必填项，请正确填写。",
+        type: "warning"
       });
     } else {
       axios.post("user/sendMail", {
         "data": values,
-        "mailType": "contact"
+        "emailType": "contact"
       }).catch((err: any) => {
-        setModal({
+        setDialogOpen({
           open: true,
           content: err.response.data,
           type: "error"
@@ -147,7 +136,7 @@ export default function TextFields() {
             <SimpleInput
               value={name}
               label="用户姓名"
-              required={true}
+              required={_.includes(required, "name")}
               allowedLength={32}
               regex={/^[\s\S]*.*[^\s][\s\S]*$/}
               helperText="用户名不能为空"
@@ -158,7 +147,7 @@ export default function TextFields() {
             <SimpleInput
               label="邮件"
               value={mail}
-              required
+              required={_.includes(required, "mail")}
               allowedLength={32}
               regex={/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/}
               helperText="请输入正确的邮箱"
@@ -170,7 +159,7 @@ export default function TextFields() {
             <SimpleInput
               label="电话"
               value={phone}
-              required
+              required={_.includes(required, "phone")}
               regex={/^(?:\+?86)?1(?:3\d{3}|5[^4\D]\d{2}|8\d{3}|7(?:[35678]\d{2}|4(?:0\d|1[0-2]|9\d))|9[189]\d{2}|66\d{2})\d{6}$/}
               helperText="请输入正确的手机号码"
               className={classes.dense}
@@ -179,11 +168,11 @@ export default function TextFields() {
             />
             <SimpleInput
               label="公司"
-              required
               value={company}
               allowedLength={32}
               className={classes.dense}
               onChange={handleChange("company")}
+              required={_.includes(required, "company")}
               margin="dense"
             />
 
@@ -191,47 +180,25 @@ export default function TextFields() {
               label="描述"
               value={message}
               rows={6}
-              required
               allowedLength={128}
               regex={/^[\s\S]*.*[^\s][\s\S]*$/}
               helperText="描述不能为空"
               className={classes.dense}
               onChange={handleChange("message")}
+              required={_.includes(required, "message")}
               margin="dense"
             />
             <div className={classes.button}>
               <SimpleButton
-                onClick={() => _.throttle(submit, 1000)}
+                onClick={submit}
                 label={"提交"}
               />
             </div>
           </Grid>
         </Grid>
       </form>
-      <Dialog
-        open={modal.open}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">{"提示"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            {modal.content}
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => {
-            setModal({ ...modal, open: false });
-          }} color="primary">
-            取消
-          </Button>
-          <Button onClick={() => {
-            setModal({ ...modal, open: false });
-          }} color="primary" autoFocus>
-            确定
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <SimpleDialog
+        dialogInfo={dialogInfo} setOpen={setDialogOpen}/>
     </div>
   );
 }

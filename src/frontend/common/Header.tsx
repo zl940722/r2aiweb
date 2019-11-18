@@ -136,7 +136,7 @@ const menus: InterfaceMenu[] = [
         children: null,
         link: "/contactUs"
       }, {
-        id: 13,
+        id: 14,
         name: "职业机会",
         children: null,
         link: "/job"
