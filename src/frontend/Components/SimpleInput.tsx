@@ -39,7 +39,7 @@ const SimpleInput = (res: any) => {
   };
   const textFiledProps = _.omit(res, ["label", "labelCss", "inputCss", "regex", "required", "helperText", "placeholder", "onChange", "allowedLength", "className"]);
   const error = required ? changed && regex && !regex.test(value) : value && regex && !regex.test(value);
-  const lengthError = allowedLength && (value.length) > allowedLength ? "超过长度限制" : "";
+  const lengthError = allowedLength && (value && value.length) > allowedLength ? "超过长度限制" : "";
   const inputInValid = error || !!lengthError;
   return (
     <div className={classes.main}>

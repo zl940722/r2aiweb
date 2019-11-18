@@ -22,7 +22,7 @@ import SimpleInput from "../../Components/SimpleInput";
 import SimpleSelect from "../../Components/SimpleSelectCountry";
 // import SimpleSelect from "../src/frontend/Components/SimpleSelect";
 // import SimpleTextArea from "../src/frontend/Components/SimpleTextArea";
-// import SimpleButton from "../src/frontend/Components/SimpleButton";
+import SimpleButton from "../../Components/SimpleButton";
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -105,32 +105,32 @@ const country = [
 //
 const industry = [
   {
-    value: "Healthcare",
-    label: "医疗"
+    code: "Healthcare",
+    name: "医疗"
   }, {
-    value: "Insurance",
-    label: "保险"
+    code: "Insurance",
+    name: "保险"
   }, {
-    value: "Automotive",
-    label: "汽车"
+    code: "Automotive",
+    name: "汽车"
   }, {
-    value: "Financial",
-    label: "金融"
+    code: "Financial",
+    name: "金融"
   }, {
-    value: "Pharmaceutical",
-    label: "制药"
+    code: "Pharmaceutical",
+    name: "制药"
   }, {
-    value: "Environmental",
-    label: "环境"
+    code: "Environmental",
+    name: "环境"
   }, {
-    value: "Telecom",
-    label: "电信"
+    code: "Telecom",
+    name: "电信"
   }, {
-    value: "Logistics",
-    label: "物流"
+    code: "Logistics",
+    name: "物流"
   }, {
-    value: "Technology",
-    label: "科技"
+    code: "Technology",
+    name: "科技"
   }
 ];
 
@@ -168,7 +168,7 @@ export default function TextFields() {
     captcha: "",
     city: "",
     companyName: "",
-    country: "zh",
+    country: "",
     department: "",
     email: "",
     industry: "",
@@ -334,7 +334,7 @@ export default function TextFields() {
               />
 
               <SimpleSelect
-                label="国家地区"
+                label="国家"
                 xs={12}
                 className={classes.dense}
                 value={values.country}
@@ -359,7 +359,7 @@ export default function TextFields() {
                 show.province ?
 
                   <SimpleSelect
-                    label="国家地区"
+                    label="省"
                     xs={12}
                     className={classes.dense}
                     value={values.province}
@@ -391,137 +391,120 @@ export default function TextFields() {
               }
               {
 
-                show.city ? <Grid item xs={12}><TextField
-                  variant="outlined"
-                  id="standard-select-currency"
-                  select
-                  label="市"
-                  value={values.city}
-                  className={classes.textField}
-                  onChange={(event: any) => {
-                    setValues({
-                      email: values.email,
-                      username: values.username,
-                      password: values.password,
-                      companyName: values.companyName,
-                      productName: values.productName,
-                      country: values.country,
-                      province: values.province,
-                      city: event.target.value
-                    });
-                    let bb: any = [];
-                    _.forEach(areas, function(o) {
-                      if (event.target.value === _.toInteger(o.parentCode)) {
-                        bb.push(o);
-                        setshow({ province: true, city: true, area: true });
-                        setareaList(bb);
-                      }
+                show.city ?
 
-                    });
-                  }}
-                  SelectProps={{
-                    MenuProps: {
-                      className: classes.menu
-                    }
-                  }}
-                  margin="normal"
-                >
-                  {cityList.map(option => (
-                    <MenuItem key={option.code} value={option.code}>
-                      {option.name}
-                    </MenuItem>
-                  ))}
-                </TextField></Grid> : null
+                  <SimpleSelect
+                    label="市"
+                    xs={12}
+                    className={classes.dense}
+                    value={values.city}
+                    onChange={(event: any) => {
+                      setValues({
+                        email: values.email,
+                        username: values.username,
+                        password: values.password,
+                        companyName: values.companyName,
+                        productName: values.productName,
+                        country: values.country,
+                        province: values.province,
+                        city: event.target.value
+                      });
+                      let bb: any = [];
+                      _.forEach(areas, function(o) {
+                        if (event.target.value === _.toInteger(o.parentCode)) {
+                          bb.push(o);
+                          setshow({ province: true, city: true, area: true });
+                          setareaList(bb);
+                        }
+
+                      });
+                    }}
+                    data={cityList}
+                    margin="normal"
+                  />
+
+                  : null
               }
               {
 
-                show.area ? <Grid item xs={12}><TextField
-                  variant="outlined"
-                  id="standard-select-currency"
-                  select
-                  label="区"
-                  className={classes.textField}
-                  value={values.area}
-                  onChange={handleChange("area")}
-                  SelectProps={{
-                    MenuProps: {
-                      className: classes.menu
-                    }
-                  }}
-                  margin="normal"
-                >
-                  {areaList.map(option => (
-                    <MenuItem key={option.code} value={option.code}>
-                      {option.name}
-                    </MenuItem>
-                  ))}
-                </TextField></Grid> : null
+                show.area ?
+
+                  <SimpleSelect
+                    label="区"
+                    xs={12}
+                    className={classes.dense}
+                    value={values.area}
+                    onChange={handleChange("area")}
+                    data={areaList}
+                    margin="normal"
+                  />
+                  : null
               }
-
-
-              <Grid item xs={12}><TextField
-                variant="outlined"
-                id="standard-dense"
+              <SimpleInput
+                value={values.address}
                 label="公司地址"
-                fullWidth={true}
-                className={clsx(classes.textField, classes.dense)}
+                required={true}
+                allowedLength={32}
+                regex={/^[\s\S]*.*[^\s][\s\S]*$/}
+                helperText="公司地址不能为空"
+                className={classes.dense}
                 onChange={handleChange("address")}
                 margin="dense"
               />
-              </Grid>
-              <Grid item xs={12}><TextField
-                variant="outlined"
-                id="standard-select-currency"
-                select
+
+              <SimpleSelect
                 label="所处行业"
-                fullWidth={true}
-                className={classes.textField}
+                xs={12}
+                className={classes.dense}
                 value={values.industry}
                 onChange={handleChange("industry")}
-                SelectProps={{
-                  MenuProps: {
-                    className: classes.menu
-                  }
-                }}
+                data={industry}
                 margin="normal"
-              >
-                {industry.map(option => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </TextField>
-              </Grid>
-              <Grid item xs={12}><TextField
-                variant="outlined"
-                id="standard-dense"
+              />
+
+
+              <SimpleInput
+                value={values.department}
                 label="业务部门"
-                fullWidth={true}
-                className={clsx(classes.textField, classes.dense)}
+                required={true}
+                allowedLength={32}
+                regex={/^[\s\S]*.*[^\s][\s\S]*$/}
+                helperText="业务部门不能为空"
+                className={classes.dense}
                 onChange={handleChange("department")}
                 margin="dense"
               />
-              </Grid>
-              <Grid item xs={12}><TextField
-                variant="outlined"
-                id="standard-dense"
-                label="联系电话"
-                fullWidth={true}
+              <SimpleInput
                 value={values.phone}
-                className={clsx(classes.textField, classes.dense)}
+                label="联系电话"
+                required={true}
+                allowedLength={32}
+                regex={/^[\s\S]*.*[^\s][\s\S]*$/}
+                helperText="联系电话不能为空"
+                className={classes.dense}
                 onChange={handleChange("phone")}
                 margin="dense"
               />
-              </Grid>
-              <Grid item xs={12}><TextField
-                variant="outlined"
-                id="standard-dense"
+              <SimpleInput
+                value={values.captcha}
                 label="验证码"
-                fullWidth={true}
-                className={clsx(classes.textField, classes.dense)}
+                required={true}
+                allowedLength={32}
+                regex={/^[\s\S]*.*[^\s][\s\S]*$/}
+                helperText="验证码不能为空"
+                className={classes.dense}
                 onChange={handleChange("captcha")}
                 margin="dense"
-              /></Grid>
+              />
+              {/*<Grid item xs={12}><TextField*/}
+              {/*  variant="outlined"*/}
+              {/*  id="standard-dense"*/}
+              {/*  label="验证码"*/}
+              {/*  fullWidth={true}*/}
+              {/*  className={clsx(classes.textField, classes.dense)}*/}
+              {/*  onChange={handleChange("captcha")}*/}
+              {/*  margin="dense"*/}
+              {/*/></Grid>*/}
               <img src={`/user/captcha?${captcha}`}
                    alt=""
                    onClick={() => {
@@ -529,13 +512,13 @@ export default function TextFields() {
                    }}
               />
               <p>本人同意签署贵公司的<a href="">SAAS用户协议</a></p>
+
+
               <Grommet theme={customTheme} className={classes.buttonWrap}>
                 <Box align="center" pad="medium">
-                  <Button
+                  <SimpleButton
                     onClick={submit}
-                    hoverIndicator
                     label={"立即注册"}
-                    className={classes.button}
                   />
                 </Box>
               </Grommet>
