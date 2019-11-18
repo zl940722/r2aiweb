@@ -6,7 +6,7 @@ import { CssBaseline } from "@material-ui/core";
 import theme from "../src/frontend/common/theme";
 import Header from "../src/frontend/common/Header";
 import Footer from "../src/frontend/common/Footer";
-import Head from "next/Head";
+import Head from "next/head";
 
 class MyApp extends App {
 
