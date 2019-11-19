@@ -7,7 +7,6 @@ import classNames from "classnames";
 import { Menu } from "antd";
 import Router from "next/router";
 import Avatar from "@material-ui/core/Avatar";
-import { Tab } from "@material-ui/core";
 
 const { SubMenu } = Menu;
 const useStyles = makeStyles({
@@ -45,7 +44,7 @@ const useStyles = makeStyles({
     },
     user: {
       float: "right",
-      marginRight: 100
+      marginRight: '6%'
     },
     login: {
       color: "#000",
@@ -122,12 +121,6 @@ const menus: InterfaceMenu[] = [
     children: null,
     link: "/resources"
   },
-  // {
-  //   id: 5,
-  //   name: "R2大学",
-  //   children: null,
-  //   link: "/university"
-  // },
   {
     id: 10,
     name: "关于我们",
@@ -156,12 +149,6 @@ const menus: InterfaceMenu[] = [
     ],
     link: "/aboutUs"
   }
-  // {
-  //   id: 15,
-  //   name: "注册",
-  //   children: null,
-  //   link: "/register"
-  // }
 ];
 
 const Header = (props) => {
@@ -186,7 +173,7 @@ const Header = (props) => {
           <img
             src="/static/images/common/logo@2x.png"
             width={66}
-            style={{ marginRight: "20rem", marginLeft: "100px" }}
+            style={{ marginRight: "6%", marginLeft: "4%" }}
             alt="R2.ai"
           />
         </Link>
@@ -222,7 +209,7 @@ const Header = (props) => {
               <Avatar className={classes.avatar}>{props.user.email}</Avatar> :
               <a className={classes.login} href={"/login"}><img  width={66} src={'/static/images/home/login.png'}/>登录</a>
           }
-          <a className={classes.res} href={"/login"}>注册</a>
+          <a className={classes.res} href={"/register"}>注册</a>
         </span>
 
       </Menu>

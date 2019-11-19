@@ -1,5 +1,5 @@
 import React from "react";
-import 'antd/dist/antd.css';
+import "antd/dist/antd.css";
 
 import App from "next/app";
 import { ThemeProvider } from "@material-ui/styles";
@@ -40,20 +40,20 @@ export default class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps,router } = this.props as any;
+    const { Component, pageProps, router } = this.props as any;
     // console.log(Component, pageProps, 111);
     return (
-      <>
+      <div style={{ minWidth: 1200 }}>
         <Head>
           <title>R2.ai官网</title>
         </Head>
         <ThemeProvider theme={theme}>
           <CssBaseline/>
           <Header {...this.state} route={router.route}/>
-          <Component user={this.state} {...pageProps} route={router.route} />
+          <Component user={this.state} {...pageProps} route={router.route}/>
           <Footer/>
         </ThemeProvider>
-      </>
+      </div>
     );
   }
 }
