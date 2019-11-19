@@ -90,6 +90,9 @@ const useStyles = makeStyles((theme: Theme) =>
     selectTextField: {
       minHeight: "4.25rem",
       backgroundColor: "#FFFFFF"
+    },
+    captcha: {
+      position: "relative"
     }
   })
 );
@@ -466,32 +469,46 @@ export default function TextFields() {
                 onChange={handleChange("phone")}
                 margin="dense"
               />
-              <SimpleInput
-                value={values.captcha}
-                label="验证码"
-                required={true}
-                allowedLength={32}
-                regex={/^[\s\S]*.*[^\s][\s\S]*$/}
-                helperText="验证码不能为空"
-                className={classes.dense}
-                onChange={handleChange("captcha")}
-                margin="dense"
-              />
-              {/*<Grid item xs={12}><TextField*/}
-              {/*  variant="outlined"*/}
-              {/*  id="standard-dense"*/}
+
+
+              <div className={classes.captcha}>
+                <SimpleInput
+                  label="请输入验证码"
+                  required={true}
+                  value={values.captcha}
+                  allowedLength={32}
+                  regex={/^[\s\S]*.*[^\s][\s\S]*$/}
+                  className={classes.dense}
+                  onChange={handleChange("captcha")}
+                  margin="dense"
+                />
+
+                <img src={`/user/captcha?${captcha}`}
+                     style={{ marginTop: "11px",position:'absolute',right:10,top:16 }}
+                     alt=""
+                     onClick={() => {
+                       setCaptchas(new Date().getTime());
+                     }}
+                />
+              </div>
+              {/*<SimpleInput*/}
+              {/*  value={values.captcha}*/}
               {/*  label="验证码"*/}
-              {/*  fullWidth={true}*/}
-              {/*  className={clsx(classes.textField, classes.dense)}*/}
+              {/*  required={true}*/}
+              {/*  allowedLength={32}*/}
+              {/*  regex={/^[\s\S]*.*[^\s][\s\S]*$/}*/}
+              {/*  helperText="验证码不能为空"*/}
+              {/*  className={classes.dense}*/}
               {/*  onChange={handleChange("captcha")}*/}
               {/*  margin="dense"*/}
-              {/*/></Grid>*/}
-              <img src={`/user/captcha?${captcha}`}
-                   alt=""
-                   onClick={() => {
-                     setCaptchas(new Date().getTime());
-                   }}
-              />
+              {/*/>*/}
+
+              {/*<img src={`/user/captcha?${captcha}`}*/}
+              {/*     alt=""*/}
+              {/*     onClick={() => {*/}
+              {/*       setCaptchas(new Date().getTime());*/}
+              {/*     }}*/}
+              {/*/>*/}
               <p>本人同意签署贵公司的<a href="">SAAS用户协议</a></p>
               <CommonButton label={"立即注册"} onClick={submit}/>
             </Grid>

@@ -7,7 +7,7 @@ import _ from "lodash";
 import SimpleInput from "../src/frontend/Components/SimpleInput";
 import SimpleSelect from "../src/frontend/Components/SimpleSelect";
 import SimpleTextArea from "../src/frontend/Components/SimpleTextArea";
-import SimpleButton from "../src/frontend/Components/CommonButton";
+import SimpleButton from "../src/frontend/Components/SimpleButton";
 import SimpleDialog from "../src/frontend/Components/SimpleDialog";
 
 

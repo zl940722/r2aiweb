@@ -1,10 +1,11 @@
 import React from "react";
+import 'antd/dist/antd.css';
 
 import App from "next/app";
 import { ThemeProvider } from "@material-ui/styles";
 import { CssBaseline } from "@material-ui/core";
 import theme from "../src/frontend/common/theme";
-import Header from "../src/frontend/common/Header";
+import Header from "../src/frontend/common/Menu";
 import Footer from "../src/frontend/common/Footer";
 import Head from "next/head";
 
