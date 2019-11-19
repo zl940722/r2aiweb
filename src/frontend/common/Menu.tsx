@@ -42,6 +42,19 @@ const useStyles = makeStyles({
       "& span": {
         color: "#fff"
       }
+    },
+    user: {
+      float: "right",
+      marginRight: 100
+    },
+    login: {
+      color: "#000",
+      marginRight: 20,
+      textDecoration: "none",
+    },
+    res: {
+      color: "#000",
+      textDecoration: "none",
     }
   })
 ;
@@ -142,13 +155,13 @@ const menus: InterfaceMenu[] = [
       }
     ],
     link: "/aboutUs"
-  },
-  {
-    id: 15,
-    name: "注册",
-    children: null,
-    link: "/register"
   }
+  // {
+  //   id: 15,
+  //   name: "注册",
+  //   children: null,
+  //   link: "/register"
+  // }
 ];
 
 const Header = (props) => {
@@ -202,12 +215,16 @@ const Header = (props) => {
             );
           })
         }
-        {
-          props.user.active ?
-            <Avatar className={classes.avatar}>{props.user.email}</Avatar> :
-            <a href={"/login"}>登录</a>
-        }
-        <a>注册</a>
+
+        <span className={classes.user}>
+          {
+            props.user.active ?
+              <Avatar className={classes.avatar}>{props.user.email}</Avatar> :
+              <a className={classes.login} href={"/login"}><img  width={66} src={'/static/images/home/login.png'}/>登录</a>
+          }
+          <a className={classes.res} href={"/login"}>注册</a>
+        </span>
+
       </Menu>
     </div>
 
