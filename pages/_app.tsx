@@ -11,7 +11,6 @@ import Head from "next/head";
 
 export default class MyApp extends App {
 
-
   constructor(props) {
     super(props);
     this.state = {

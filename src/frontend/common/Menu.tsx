@@ -41,6 +41,15 @@ const useStyles = makeStyles({
       color: "#fff",
       "& span": {
         color: "#fff"
+      },
+      "& ul":{
+        background:'transparent',
+        boxShadow: 'none',
+        border:0,
+        color:'#fff',
+        "& li":{
+          color:'#fff',
+        }
       }
     }
   })
@@ -100,14 +109,42 @@ const menus: InterfaceMenu[] = [
   {
     id: 8,
     name: "新闻资讯",
-    children: null,
-    link: "/news"
+    children: [{
+      id: 81,
+      name: "产品发布",
+      children: null,
+      link: "/news/product"
+    },{
+      id: 82,
+      name: "参评获奖",
+      children: null,
+      link: "/news/prize"
+    },{
+      id: 83,
+      name: "活动参会",
+      children: null,
+      link: "/news/activity"
+    }],
   },
   {
     id: 9,
     name: "R2社区",
-    children: null,
-    link: "/resources"
+    children: [{
+      id: 41,
+      name: "活动信息",
+      children: null,
+      link: "/resources/message"
+    },{
+      id: 42,
+      name: "产品干货",
+      children: null,
+      link: "/resources/product"
+    },{
+      id: 43,
+      name: "案例分析",
+      children: null,
+      link: "/resources/case"
+    }],
   },
   // {
   //   id: 5,
@@ -167,8 +204,12 @@ const Header = (props) => {
 
   return (
     <div className={classNames(classes.root, index ? classes.index : "")}>
-
-      <Menu onClick={handleClick} style={{ color: "#000000" }} selectedKeys={[current]} mode="horizontal">
+      <Menu
+        onClick={handleClick}
+        style={{ color: "#000000" }}
+        selectedKeys={[current]}
+        mode="horizontal"
+      >
         <Link href={"/"}>
           <img
             src="/static/images/common/logo@2x.png"
