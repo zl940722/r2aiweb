@@ -7,6 +7,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 
 import { Grommet, Button } from "grommet";
+import Router from "next/router";
 
 const useStyles = makeStyles((theme: any) =>
   createStyles({
@@ -95,7 +96,7 @@ function ProductBanner() {
   const [open, setOpen] = React.useState(false);
 
   function onHandleOpen() {
-    setOpen(true);
+    Router.push('/contactUs')
   }
 
   function onHandleClose() {

@@ -7,7 +7,6 @@ import classNames from "classnames";
 import { Menu } from "antd";
 import Router from "next/router";
 import Avatar from "@material-ui/core/Avatar";
-import { Tab } from "@material-ui/core";
 
 const { SubMenu } = Menu;
 const useStyles = makeStyles({
@@ -51,6 +50,19 @@ const useStyles = makeStyles({
           color:'#fff',
         }
       }
+    },
+    user: {
+      float: "right",
+      marginRight: "6%"
+    },
+    login: {
+      color: "#000",
+      marginRight: 20,
+      textDecoration: "none"
+    },
+    res: {
+      color: "#000",
+      textDecoration: "none"
     }
   })
 ;
@@ -91,7 +103,29 @@ const menus: InterfaceMenu[] = [
   {
     id: 5,
     name: "解决方案",
-    children: null,
+    children: [
+      {
+        id: 3,
+        name: "银行",
+        children: null,
+        link: "/appDetail/bank"
+      }, {
+        id: 4,
+        name: "保险",
+        children: null,
+        link: "/appDetail/insurance"
+      }, {
+        id: 4,
+        name: "医疗",
+        children: null,
+        link: "/appDetail/medical"
+      }, {
+        id: 4,
+        name: "物联网",
+        children: null,
+        link: "/appDetail/internet"
+      }
+    ],
     link: "/application"
   },
   {
@@ -146,12 +180,6 @@ const menus: InterfaceMenu[] = [
       link: "/resources/case"
     }],
   },
-  // {
-  //   id: 5,
-  //   name: "R2大学",
-  //   children: null,
-  //   link: "/university"
-  // },
   {
     id: 10,
     name: "关于我们",
@@ -179,12 +207,6 @@ const menus: InterfaceMenu[] = [
       }
     ],
     link: "/aboutUs"
-  },
-  {
-    id: 15,
-    name: "注册",
-    children: null,
-    link: "/register"
   }
 ];
 
@@ -214,16 +236,19 @@ const Header = (props) => {
           <img
             src="/static/images/common/logo@2x.png"
             width={66}
-            style={{ marginRight: "20rem", marginLeft: "100px" }}
+            style={{ marginRight: "6%", marginLeft: "4%" }}
             alt="R2.ai"
           />
         </Link>
 
         {
-          _.map(menus, (value: InterfaceMenu, index) => {
+          _.map(menus, (value: any, index) => {
             return (
               value.children ?
-                <SubMenu title={<span className="submenu-title-wrapper"> {value.name}</span>
+                <SubMenu title={<span onClick={() => {
+                  setcurrent(value.link);
+                  Router.push(value.link);
+                }} className="submenu-title-wrapper"> {value.name}</span>
                 }
                 >
                   {
@@ -243,12 +268,16 @@ const Header = (props) => {
             );
           })
         }
-        {
-          props.user.active ?
-            <Avatar className={classes.avatar}>{props.user.email}</Avatar> :
-            <a href={"/login"}>登录</a>
-        }
-        <a>注册</a>
+
+        <span className={classes.user}>
+          {
+            props.user.active ?
+              <Avatar className={classes.avatar}>{props.user.email}</Avatar> :
+              <a className={classes.login} href={"/login"}><img width={66} src={"/static/images/home/login.png"}/>登录</a>
+          }
+          <a className={classes.res} href={"/register"}>注册</a>
+        </span>
+
       </Menu>
     </div>
 
