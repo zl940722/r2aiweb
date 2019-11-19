@@ -44,16 +44,16 @@ const useStyles = makeStyles({
     },
     user: {
       float: "right",
-      marginRight: '6%'
+      marginRight: "6%"
     },
     login: {
       color: "#000",
       marginRight: 20,
-      textDecoration: "none",
+      textDecoration: "none"
     },
     res: {
       color: "#000",
-      textDecoration: "none",
+      textDecoration: "none"
     }
   })
 ;
@@ -94,7 +94,29 @@ const menus: InterfaceMenu[] = [
   {
     id: 5,
     name: "解决方案",
-    children: null,
+    children: [
+      {
+        id: 3,
+        name: "银行",
+        children: null,
+        link: "/appDetail/bank"
+      }, {
+        id: 4,
+        name: "保险",
+        children: null,
+        link: "/appDetail/insurance"
+      }, {
+        id: 4,
+        name: "医疗",
+        children: null,
+        link: "/appDetail/medical"
+      }, {
+        id: 4,
+        name: "物联网",
+        children: null,
+        link: "/appDetail/internet"
+      }
+    ],
     link: "/application"
   },
   {
@@ -179,10 +201,13 @@ const Header = (props) => {
         </Link>
 
         {
-          _.map(menus, (value: InterfaceMenu, index) => {
+          _.map(menus, (value: any, index) => {
             return (
               value.children ?
-                <SubMenu title={<span className="submenu-title-wrapper"> {value.name}</span>
+                <SubMenu title={<span onClick={() => {
+                  setcurrent(value.link);
+                  Router.push(value.link);
+                }} className="submenu-title-wrapper"> {value.name}</span>
                 }
                 >
                   {
@@ -207,7 +232,7 @@ const Header = (props) => {
           {
             props.user.active ?
               <Avatar className={classes.avatar}>{props.user.email}</Avatar> :
-              <a className={classes.login} href={"/login"}><img  width={66} src={'/static/images/home/login.png'}/>登录</a>
+              <a className={classes.login} href={"/login"}><img width={66} src={"/static/images/home/login.png"}/>登录</a>
           }
           <a className={classes.res} href={"/register"}>注册</a>
         </span>
