@@ -106,7 +106,7 @@ function Assessment() {
             <i>
               <span />
             </i>
-            <img src="/static/images/home/shuzun.png.png" alt=""/>
+            <img src="/static/images/home/shuzun.png" alt=""/>
             <div>
               R2.ai端到端的自动机器建模工具R2 Learn是对传统拖拽式模型引擎的一次全面超越和创新。其纯自动化的建模方式让我们不仅分钟级建立金融风控模型，而且模型结果高质、专业。
             </div>

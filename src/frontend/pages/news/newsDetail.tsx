@@ -1,11 +1,8 @@
 import React from "react";
-import Banner from "./Banner";
 import { Grid, Typography } from "@material-ui/core";
-import url from "../../../../http";
 import { makeStyles } from "@material-ui/styles";
-import { Remarkable } from 'remarkable';
 import moment from "moment";
-
+import CommonButton from "../../Components/CommonButton";
 
 const useStyles = makeStyles({
   content: {
@@ -28,33 +25,36 @@ const useStyles = makeStyles({
   },
   items: {
     margin: "2rem 0 1rem",
-    textAlign:'center'
+    textAlign: "center"
   },
   item: {
-    maxWidth: "90%",
+    // maxWidth: "90%",
     boxSizing: "border-box"
   },
   itemDes: {
-    lineHeight: 1
+    lineHeight: 1,
+    color: "#666",
+    fontSize: "0.875rem",
+    textAlign: "left"
   },
   itemTitle: {
     marginBottom: "2rem",
     fontWeight: "bold",
-    marginTop:'2rem'
+    marginTop: "2rem",
+    fontSize: "2.25rem",
+    textAlign: "left"
   },
   body: {
     marginTop: "2rem",
-    textAlign:'left',
-    '& img':{
-      maxWidth:'100%',
+    textAlign: "left",
+    "& img": {
+      maxWidth: "100%"
     },
-    '& p':{
-      textIndent:'2rem',
-      '& img':{
-        // position:'relative',
-        // left:'-2rem',
-        margin: 'auto',
-        display: 'block',
+    "& p": {
+      textIndent: "2rem",
+      "& img": {
+        margin: "auto",
+        display: "block"
       }
     }
   },
@@ -62,39 +62,64 @@ const useStyles = makeStyles({
     marginTop: "2rem",
     width: "96%",
     border: "1px dashed #ccc"
+  },
+  back: {
+    color: "#D3323E",
+    textDecoration: "none"
+  },
+  others: {
+    display: "flex",
+    flexDirection: "column",
+    textAlign: "left",
+    color:'#666',
+    lineHeight:1.7,
+    fontSize:'1rem',
+    '& a':{
+      textDecoration: 'none',
+      color:'#666',
+      paddingLeft:'0.1rem',
+      '&:hover':{
+        color:'#D3323E',
+      }
+    }
   }
 });
 
-
-
 export default function(res: any) {
   const classes = useStyles();
+  const { prev={}, next={},news } = res;
 
-  // function getRawMarkup() {
-  //   const md = new Remarkable();
-  //   return { __html: md.render(res.news.content) };
-  // }
+
+  function back(){
+    location.href = `/news/${news.type.toLowerCase()}`;
+  }
 
   return (
     <>
-      <Banner/>
       <div className={classes.content}>
+        <a href="javascript:" className={classes.back} onClick={back}>
+          &lt;-- 返回资讯列表
+        </a>
         <Grid container className={classes.items} direction={"row"}>
           <Grid item sm={12} xs={12}>
             <div className={classes.item}>
               <Typography variant={"h5"} className={classes.itemTitle}>
-                {res.news.title || ""}
+                {news.title || ""}
               </Typography>
               <Typography variant={"body1"} className={classes.itemDes}>
-                {moment(res.news.publishTime).format('YYYY-MM-DD')}
+                发布日期:{moment(news.publishTime).format("YYYY-MM-DD")}
               </Typography>
               <Typography variant={"body1"} className={classes.body}>
-                <div dangerouslySetInnerHTML={{__html:res.news.content}}/>
+                <div dangerouslySetInnerHTML={{ __html: news.content }} />
               </Typography>
             </div>
           </Grid>
-          <div className={classes.itemDashed}>{}</div>
+          <dl className={classes.others}>
+            <dd style={{display:(prev.id?'':'none')}}>上一篇<a href={`/newsDetail?${prev.id}`}>:{prev.title}</a></dd>
+            <dd style={{display:(next.id?'':'none')}}>下一篇<a href={`/newsDetail?${next.id}`}>:{next.title}</a></dd>
+          </dl>
         </Grid>
+        <CommonButton label={"返回"} onClick={back}/>
       </div>
     </>
   );

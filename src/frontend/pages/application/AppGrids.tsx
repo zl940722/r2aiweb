@@ -83,7 +83,7 @@ function AppGrids() {
         {/*>*/}
         {/*  为各行各业企业进行快速易用高质的AI赋能*/}
         {/*</Typography>*/}
-        <Grid container className={classes.grids}>
+        <Grid container  spacing={6} className={classes.grids}>
           {app_lists.map((value, index) => (
             <Link
               key={index}

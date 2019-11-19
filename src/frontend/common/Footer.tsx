@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     display:'flex',
     margin: "0 auto",
     justifyContent:'center',
-    alignItems:'end'
+    alignItems:'flex-start'
   },
   copyright: {
     margin: "0 20px",

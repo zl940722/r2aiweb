@@ -50,7 +50,7 @@ const useStyles = makeStyles({
 });
 
 
-function HomeAbout(res: any) {
+export default function (res: any) {
   const classes = useStyles();
   return (
     <>
@@ -88,4 +88,3 @@ function HomeAbout(res: any) {
   );
 }
 
-export default HomeAbout;

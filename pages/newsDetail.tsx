@@ -9,14 +9,22 @@ const Index = (res: any) => {
 };
 
 Index.getInitialProps = async function(res: any) {
-  console.log(res , 'rsssses');
   const news: any = await fetch(url + `/news/${res.asPath.split('?')[1]}`) || [];
   const information: any =  await fetch(url + "/infors") || [];
   const newsData = await news.json();
   const informationData = await information.json();
 
+  const newsNext: any = await fetch(url + `/news?publishTime_gt=${newsData.publishTime}&_limit=1`) || [];
+  const newsPrev: any = await fetch(url + `/news?publishTime_lt=${newsData.publishTime}&_limit=1`) || [];
+
+  const nextData = await newsNext.json();
+  const prevData = await newsPrev.json();
+
+
   return {
     news: newsData,
+    next:nextData[0],
+    prev:prevData[0],
     information: informationData
   };
 };
