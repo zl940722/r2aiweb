@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import moment from "moment";
 import CommonButton from "../../Components/CommonButton";
+import Router from "next/router";
 
 const useStyles = makeStyles({
   content: {
@@ -87,18 +88,24 @@ const useStyles = makeStyles({
 
 export default function(res: any) {
   const classes = useStyles();
-  const { prev={}, next={},news } = res;
+  const { prev={}, next={},news,route} = res;
 
+  useEffect(()=>{
+    scroll(0,0);
+  },[]);
+
+  const link = route.includes('news')?'news':'resources';
 
   function back(){
-    location.href = `/news/${news.type.toLowerCase()}`;
+    // return Router.push(`/news/${news.type.toLowerCase()}`);
+    location.href = `/${link}/${news.type.toLowerCase()}`;
   }
 
   return (
     <>
       <div className={classes.content}>
         <a href="javascript:" className={classes.back} onClick={back}>
-          &lt;-- 返回资讯列表
+          &lt;-- 返回{route.includes('news')?"资讯":"社区"}列表
         </a>
         <Grid container className={classes.items} direction={"row"}>
           <Grid item sm={12} xs={12}>

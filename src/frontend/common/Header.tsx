@@ -160,7 +160,6 @@ const Header = (props) => {
   const index = props.route === '/';
 
   function handleChange(event: React.ChangeEvent<{}>, newValue: number) {
-    console.log(event);
     setValue(newValue);
   }
 
@@ -173,7 +172,6 @@ const Header = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  console.log("header", props);
 
   return (
     <div className={classNames(classes.root,index?classes.index:'')}>

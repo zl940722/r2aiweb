@@ -40,21 +40,18 @@ export default class MyApp extends App {
 
   render() {
     const { Component, pageProps,router } = this.props as any;
-    console.log(Component, pageProps, 111);
+    // console.log(Component, pageProps, 111);
     return (
       <>
         <Head>
           <title>R2.ai官网</title>
         </Head>
-        {/*<ApolloProvider client={apolloClient}>*/}
         <ThemeProvider theme={theme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline/>
           <Header {...this.state} route={router.route}/>
-          <Component user={this.state} {...pageProps} />
+          <Component user={this.state} {...pageProps} route={router.route} />
           <Footer/>
         </ThemeProvider>
-        {/*</ApolloProvider>*/}
       </>
     );
   }

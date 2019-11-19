@@ -60,20 +60,19 @@ const useStyles = makeStyles({
 });
 
 function HomeAbout(res: any) {
-  console.log(res, "dasdasd");
+  const {list=[],route} = res;
   const classes = useStyles();
   const detail = (id: any) => {
     return () => {
-      Router.push(`/newsDetail?${id}`);
+      const link = route.includes('news')?'news':'resources';
+      Router.push(`/${link}/detail?${id}`);
     };
   };
 
-  return (
-    <>
-      <div className={classes.content} id='news'>
-        {res.news && res.news.map((value: any, index: any) => (
+  return <div className={classes.content} id='news'>
+        {list.map((value: any, index: any) => (
           <Grid key={index} container className={classes.items} direction={"row"} onClick={detail(value.id)}>
-            <Grid item sm={6} xs={12}>
+            <Grid item sm={4} xs={12}>
               <div className={classes.item} style={{textAlign:'center'}}>
                 <img
                   src={url + (value.image || {}).url}
@@ -81,8 +80,8 @@ function HomeAbout(res: any) {
                 />
               </div>
             </Grid>
-            <Grid item sm={6} xs={12}>
-              <div className={classes.item}>
+            <Grid item sm={8} xs={12}>
+              <div className={classes.item} style={{paddingLeft:'2.5rem'}}>
                 <Typography variant={"h5"} className={classes.itemTitle}>
                   {value.title}
                 </Typography>
@@ -99,8 +98,6 @@ function HomeAbout(res: any) {
           </Grid>
         ))}
       </div>
-    </>
-  );
 }
 
 export default HomeAbout;

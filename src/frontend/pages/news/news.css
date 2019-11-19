@@ -12,3 +12,17 @@
     color:#E7505B;
 }
 
+#news .Message:after{
+    content:'活动信息';
+    color:#E7505B;
+}
+
+#news .Product:after{
+    content:'产品干货';
+    color:#E7505B;
+}
+
+#news .Case:after{
+    content:'案例分析';
+    color:#E7505B;
+}

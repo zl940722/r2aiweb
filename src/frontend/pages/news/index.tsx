@@ -4,14 +4,14 @@ import Banner from "./Banner";
 import Tabs from "./Tabs";
 import Pagination from '../../common/Pagination'
 
-function Application(res: any) {
+export default function(res: any) {
+  const link = res.route.includes('news')?'news':'resources';
+
   return (
     <>
-      <Banner/>
+      <Banner link={link}/>
       <Pagination />
       <Tabs {...res}/>
     </>
   );
 }
-
-export default Application;

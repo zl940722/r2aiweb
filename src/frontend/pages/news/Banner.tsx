@@ -11,7 +11,11 @@ const useStyles = makeStyles({
   }
 });
 
-function AppBanner() {
+interface Interface {
+  link:'news'|'resources'
+}
+
+export default function (props:Interface) {
   const classes = useStyles();
 
   return (
@@ -25,12 +29,10 @@ function AppBanner() {
         <div
           className={classes.item}
           style={{
-            backgroundImage: "url(/static/images/news/banner.png)"
+            backgroundImage: `url(/static/images/${props.link}/banner.png)`
           }}
         />
       </Carousel>
     </>
   );
 }
-
-export default AppBanner;

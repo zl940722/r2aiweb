@@ -1,12 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Activity from "./Activity";
-import Information from "./Information";
+import Link from "next/link";
 
 interface TabContainerProps {
   children?: React.ReactNode;
@@ -28,30 +26,57 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
-      backgroundColor: theme.palette.background.paper
+      backgroundColor: theme.palette.background.paper,
+    },
+    bar:{
+      lineHeight:'5rem',
+      backgroundColor:'#091221',
+      marginBlockStart: 0,
+      marginBlockEnd: 0,
+      fontSize:'1rem',
+      cursor:'pointer',
+      '& a':{
+        color:'#fff',
+        textDecoration:'#fff',
+      },
+      '& dl':{
+        maxWidth:'75rem',
+        display:'flex',
+        margin:'auto',
+        '& dd':{
+          marginInlineStart: 0,
+          marginRight:'3.75rem',
+        }
+      }
+    },
+    on:{
+      '& a':{
+        color:'#ccc'
+      }
     }
   })
 );
 
-export default function SimpleTabs(res: any) {
+export default function(res: any) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const {list,tabs=[],route} = res;
 
-  const handleChange = (event: any, newValue: any) => {
-    console.log(event);
-    setValue(newValue);
-  };
+  const link = route.includes('news')?'news':'resources';
 
   return (
     <div className={classes.root}>
-      <AppBar color={"secondary"} position="static">
-        <Tabs value={value} onChange={handleChange}>
-          <Tab label="R2活动"/>
-          <Tab label="R2资讯"/>
-        </Tabs>
-      </AppBar>
-      {value === 0 && <TabContainer><Activity {...res}/></TabContainer>}
-      {value === 1 && <TabContainer><Information {...res}/></TabContainer>}
+      <div className={classes.bar}>
+        <dl>
+          {tabs.map(itm=>{
+            return <dd
+              key={itm.key}
+              className={route.includes(itm.key)?classes.on:''}>
+                 <Link href={`/${link}/${itm.key}`}>{itm.name}</Link>
+            </dd>
+          })}
+        </dl>
+      </div>
+      <Activity list={list} route={route}/>
     </div>
   );
 }

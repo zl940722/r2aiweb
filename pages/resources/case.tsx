@@ -9,20 +9,20 @@ const Index = (res: any) => {
 };
 
 Index.getInitialProps = async function() {
-  const news: any = await fetch(url + "/news?type=Activity&_sort=publishTime:DESC") || [];
+  const news: any = await fetch(url + "/communities?type=Case&_sort=id:DESC") || [];
   const information: any =  await fetch(url + "/infors") || [];
   const newsData = await news.json();
   const informationData = await information.json();
 
   const tabs = [{
-    name:'产品发布',
-    key:'release',
+    name:'活动信息',
+    key:'message',
   },{
-    name:'参评获奖',
-    key:'prize',
+    name:'产品干货',
+    key:'product',
   },{
-    name:'活动参会',
-    key:'activity',
+    name:'案例分析',
+    key:'case',
   }];
 
   return {
