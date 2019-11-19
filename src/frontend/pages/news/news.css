@@ -2,3 +2,13 @@
     content:'活动参会';
     color:#50A5E7;
 }
+#news .Release:after{
+    content:'产品发布';
+    color:#E78950;
+}
+
+#news .Prize:after{
+    content:'参评获奖';
+    color:#E7505B;
+}
+

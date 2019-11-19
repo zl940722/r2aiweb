@@ -30,12 +30,12 @@ const useStyles = makeStyles({
     cursor:'pointer',
     '& img':{
       height:'14.375rem',
-      width:'25rem'
+      maxWidth:'25rem'
     }
   },
   item: {
     maxWidth: "90%",
-    boxSizing: "border-box"
+    boxSizing: "border-box",
   },
   itemDes: {
     lineHeight: 1,
@@ -74,7 +74,7 @@ function HomeAbout(res: any) {
         {res.news && res.news.map((value: any, index: any) => (
           <Grid key={index} container className={classes.items} direction={"row"} onClick={detail(value.id)}>
             <Grid item sm={6} xs={12}>
-              <div className={classes.item}>
+              <div className={classes.item} style={{textAlign:'center'}}>
                 <img
                   src={url + (value.image || {}).url}
                   alt="R2.ai"
