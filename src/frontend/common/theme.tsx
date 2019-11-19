@@ -30,7 +30,7 @@ const theme = createMuiTheme({
       selectMenu: {
         height: '31px !important'
       }
-    }
+    },
   }
 });
 
