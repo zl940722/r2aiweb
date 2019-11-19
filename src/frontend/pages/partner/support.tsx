@@ -61,6 +61,7 @@ function Supports() {
             <Card style={{ margin: 10 }}>
               <div className={classes.item}>
                 <img
+                  style={{ marginBottom: 20 }}
                   src="/static/images/partner/icon@2x.png"
                   width={"104px"}
                   alt="R2.ai"
@@ -78,7 +79,8 @@ function Supports() {
             <Card style={{ margin: 10 }}>
               <div className={classes.item}>
                 <img
-                  src="/static/images/partner/icon@2x(1).png"
+                  style={{ marginBottom: 20 }}
+                  src="/static/images/partner/icon@2x-1.png"
                   width={"104px"}
                   alt="R2.ai"
                 />
@@ -94,7 +96,8 @@ function Supports() {
             <Card style={{ margin: 10 }}>
               <div className={classes.item}>
                 <img
-                  src="/static/images/partner/icon@2x(2).png"
+                  style={{ marginBottom: 20 }}
+                  src="/static/images/partner/icon@2x-2.png"
                   width={"104px"}
                   alt="R2.ai"
                 />
@@ -110,7 +113,8 @@ function Supports() {
             <Card style={{ margin: 10 }}>
               <div className={classes.item}>
                 <img
-                  src="/static/images/partner/icon@2x(3).png"
+                  style={{ marginBottom: 20 }}
+                  src="/static/images/partner/icon@2x-3.png"
                   width={"104px"}
                   alt="R2.ai"
                 />
