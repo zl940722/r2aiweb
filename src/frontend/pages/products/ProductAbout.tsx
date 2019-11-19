@@ -33,7 +33,11 @@ const useStyles = makeStyles({
   },
   product_img: {
     margin: "5rem 0",
-    textAlign: "center"
+    textAlign: "center",
+    "& >img": {
+      maxWidth: '100%',
+      maxHeight: '100%'
+    }
   }
 });
 
@@ -70,8 +74,6 @@ function ProductAbout() {
         <div className={classes.product_img}>
           <img
             src="/static/images/products/product.png"
-            width={1200}
-            height={743}
             alt=""
           />
         </div>
