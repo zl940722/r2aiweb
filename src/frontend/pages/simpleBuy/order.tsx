@@ -25,7 +25,11 @@ import SimpleButton from "../../Components/SimpleButton";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     formControl: {
-      margin: theme.spacing(3)
+      margin: theme.spacing(3),
+      display: "flex",
+      flexFlow: 'unset',
+      alignItems: "center",
+      marginLeft: 0
     },
     bg: {
       background: "#fff",
@@ -68,9 +72,12 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "10.5rem",
       height: "3.2rem",
       fontWeight: "bold",
-      border:'1px solid #D3323E',
+      border: "1px solid #D3323E",
       background: "#F5F5F5 !important",
-      color:'#D3323E'
+      color: "#D3323E"
+    },
+    captcha: {
+      position:'relative'
     }
   })
 );
@@ -366,28 +373,30 @@ export default function TextFields(props: any) {
               margin="dense"
             />
 
-            <SimpleInput
-              label="请输入验证码"
-              required={true}
-              value={values.captcha}
-              allowedLength={32}
-              regex={/^[\s\S]*.*[^\s][\s\S]*$/}
-              className={classes.dense}
-              onChange={handleChange("captcha")}
-              margin="dense"
-            />
+            <div className={classes.captcha}>
+              <SimpleInput
+                label="请输入验证码"
+                required={true}
+                value={values.captcha}
+                allowedLength={32}
+                regex={/^[\s\S]*.*[^\s][\s\S]*$/}
+                className={classes.dense}
+                onChange={handleChange("captcha")}
+                margin="dense"
+              />
 
-            <img src={`/user/captcha?${captcha}`}
-                 style={{marginTop:'11px'}}
-                 alt=""
-                 onClick={() => {
-                   setCaptchas(new Date().getTime());
-                 }}
-            />
+              <img src={`/user/captcha?${captcha}`}
+                   style={{ marginTop: "11px",position:'absolute',right:10,top:16 }}
+                   alt=""
+                   onClick={() => {
+                     setCaptchas(new Date().getTime());
+                   }}
+              />
+            </div>
 
             <div>
               <FormControl component="fieldset" className={classes.formControl}>
-                {/*<FormLabel component="legend">请选择支付方式</FormLabel>*/}
+                <div style={{marginRight:20,width:'6.6rem'}}>请选择支付方式</div>
                 <RadioGroup aria-label="gender" name="gender1" value={payMethod} onChange={handleChanges}>
                   <Grid container spacing={10}>
                     <Grid item md={4}>
