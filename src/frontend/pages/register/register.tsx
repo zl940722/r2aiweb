@@ -20,9 +20,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 
 import SimpleInput from "../../Components/SimpleInput";
 import SimpleSelect from "../../Components/SimpleSelectCountry";
-// import SimpleSelect from "../src/frontend/Components/SimpleSelect";
-// import SimpleTextArea from "../src/frontend/Components/SimpleTextArea";
-import SimpleButton from "../../Components/SimpleButton";
+import CommonButton from "../../Components/CommonButton";
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -143,23 +141,6 @@ const industry = [
 //   city: string
 // }
 
-const customTheme = {
-  button: {
-    border: {
-      radius: "1.6rem"
-    },
-    color: "#FFF"
-  },
-  global: {
-    hover: {
-      color: "#2C4159",
-      background: "#FFF"
-    },
-    colors: {
-      brand: "#FFF"
-    }
-  }
-};
 export default function TextFields() {
   const classes = useStyles();
   const [values, setValues] = React.useState<any>({
@@ -512,21 +493,7 @@ export default function TextFields() {
                    }}
               />
               <p>本人同意签署贵公司的<a href="">SAAS用户协议</a></p>
-              {/*<SimpleButton*/}
-              {/*  onClick={() => _.throttle(submit, 1000)}*/}
-              {/*  label={"立即注册"}*/}
-              {/*/>*/}
-
-              <Grommet theme={customTheme} className={classes.buttonWrap}>
-                <Box align="center" pad="medium">
-                  <Button
-                    onClick={submit}
-                    hoverIndicator
-                    label={"立即注册"}
-                    className={classes.button}
-                  />
-                </Box>
-              </Grommet>
+              <CommonButton label={"立即注册"} onClick={submit}/>
             </Grid>
           </Grid>
         </Grid>

@@ -60,28 +60,37 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Index = (props: any) => {
     console.log(props, "toUse");
-    const [content, setcontent] = React.useState("试用成功");
+    const [content, setcontent] = React.useState("");
+    const [isSuccess, setSuccess] = React.useState(false);
     axios.get("/probation/applyProbation", { params: { userId: props.router.query.id } }).then((response: any) => {
       if (response.status === 200) {
         setcontent("试用成功");
+        setSuccess(true);
       }
     }).catch((error: any) => {
       if (error.response) {
         console.log(error.response.data);
         setcontent(error.response.data);
+        setSuccess(false);
       }
     });
     const classes = useStyles();
 
     return (
-      <div className={classes.bg} style={{ backgroundImage: "url(/static/images/register/loginBg.png)" }}>
-        <form className={classes.container} noValidate autoComplete="off">
-          <Grid container className={classes.grids}>
-            <Grid item md={4} className={classes.grid}>
-              {content}
-            </Grid>
-          </Grid>
-        </form>
+      <div>
+        {
+            <div style={{ background: "#F5F5F5", textAlign: "center", margin: "200px 300px 380px", padding: 200 }}>
+              <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <img style={{ width: 32, height: 32 }} src={"/static/images/price/成功@2x.png"}/><h1
+                style={{ color: "#333333" }}>试用申请提交成功！</h1>
+              </div>
+              <p>
+
+                欢迎您亲身体验R2.ai新一代人工智能自动机器建模产品。我们将把产品试用账户发送至您的邮箱。<br/>
+                您收到邮件后即可开始免费试用！如果试用需求数量非常高，试用账户的发送也许会有所延迟哦！
+              </p>
+            </div>
+        }
       </div>
     );
   }

@@ -191,26 +191,28 @@ const Header = (props) => {
             return (
               value.children ?
                 <div key={value.id}>
-                  <Tab key={value.id} className={classes.tab} label={value.name} onClick={handleClick}/>
-                  <Menu
-                    id="simple-menu"
-                    anchorEl={anchorEl}
-                    keepMounted
-                    open={Boolean(anchorEl)}
-                    onClick={handleClose}
-                  >
-                    <div key={value.id}>
-                      {
-                        _.map(value.children, (res: any) => {
-                          return (
-                            <a key={res.id} className={classes.a} href={res.link}>
-                              <MenuItem>{res.name}</MenuItem>
-                            </a>
-                          );
-                        })
-                      }
-                    </div>
-                  </Menu>
+                  <Tab key={value.id} style={{position:'relative'}} className={classes.tab} label={value.name} onClick={handleClick}/>
+                  <div style={{position:'absolute'}}>
+                    <Menu
+                      id="simple-menu"
+                      anchorEl={anchorEl}
+                      keepMounted
+                      open={Boolean(anchorEl)}
+                      onClick={handleClose}
+                    >
+                      <div key={value.id}>
+                        {
+                          _.map(value.children, (res: any) => {
+                            return (
+                              <a key={res.id} className={classes.a} href={res.link}>
+                                <MenuItem>{res.name}</MenuItem>
+                              </a>
+                            );
+                          })
+                        }
+                      </div>
+                    </Menu>
+                  </div>
                 </div>
                 :
                 <a className={classes.a} key={index} href={value.link || ""}><Tab className={classes.tab}

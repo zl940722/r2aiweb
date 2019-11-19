@@ -35,13 +35,13 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     grid: {
       flex: 1,
-      color:'#fff',
+      color: "#fff",
       margin: "2.5rem auto",
       borderRadius: ".3rem",
       // boxShadow: ".2rem .2rem .2rem #ddd",
       cursor: "pointer",
       textAlign: "center",
-      padding: '8rem'
+      padding: "8rem"
     },
     buttonWrap: {
       width: "100%",
@@ -63,16 +63,20 @@ const Index = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.bg} style={{ backgroundImage: "url(/static/images/register/loginBg.png)" }}>
-      <form className={classes.container} noValidate autoComplete="off">
-        <Grid container className={classes.grids}>
-          <Grid item md={4} className={classes.grid}>
-            <h1>您已经成功联系销售！</h1>
-            <h2>谢谢您咨询购买R2.ai新一代人工智能自动机器建模产品。我们的销售人员将尽快与您联系。</h2>
-          </Grid>
-        </Grid>
-      </form>
+
+
+    <div style={{ background: "#F5F5F5", textAlign: "center", margin: "200px 300px 380px", padding: 200 }}>
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <img style={{ width: 32, height: 32 }} src={"/static/images/price/成功@2x.png"}/><h1
+        style={{ color: "#333333" }}>您已经成功联系销售！</h1>
+      </div>
+      <p>
+
+        谢谢您咨询购买R2.ai新一代人工智能自动机器建模产品。我们的销售人员将尽快与您联系。
+      </p>
     </div>
+
+
   );
 };
 
