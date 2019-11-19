@@ -222,7 +222,7 @@ function HomeAbout() {
           </Grid>
           <Grid container xs={12} justify='center' alignItems='center' >
             <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={'img'} src={`/static/images/technical/2xz${index === 2 ? 'a' : ''}.png`} alt="2xz" onMouseOver={onOver(2)} onMouseOut={onOver(-1)} style={{ marginRight: '95px', marginLeft: '10px', textAlign: 'end' }} />
-            <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={'img'} src={`/static/images/technical/5xz${index === 5 ? 'a' : ''}.png`} alt="5xz" onMouseOver={onOver(5)} onMouseOut={onOver(-1)} style={{ marginLeft: '95px' }} />>
+            <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={'img'} src={`/static/images/technical/5xz${index === 5 ? 'a' : ''}.png`} alt="5xz" onMouseOver={onOver(5)} onMouseOut={onOver(-1)} style={{ marginLeft: '95px' }} />
             <Grid item className={classes.r2} component={'img'} src={`/static/images/technical/r2.png`} alt="r2" />
           </Grid>
           <Grid container xs={12} justify='center' alignItems='center' style={{ marginTop: '-55px' }}>
