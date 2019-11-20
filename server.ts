@@ -39,6 +39,8 @@ const upload = proxies(STRAPI_URL, "/", "/");
 
 const login = proxies(authService, "/user/login", "/");
 
+const forget = proxies(authService, "/user/forget", "/forget");
+
 const register = proxies(payService, "/user/register", "/user/register");
 
 const active = proxies(payService, "/active", "/user/activeUser");
@@ -70,6 +72,8 @@ app.prepare()
 
 
     server.use("/user/login", login);
+
+    server.post("/user/forget", forget);
 
     server.use("/user/register", register);
 
