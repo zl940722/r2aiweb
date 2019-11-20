@@ -4,8 +4,8 @@ import { makeStyles } from "@material-ui/styles";
 const useStyles = makeStyles({
   content: {
     textAlign: "center",
-    fontSize:'1rem',
-    paddingBottom:'7rem',
+    fontSize: "1rem",
+    paddingBottom: "7rem"
   },
   title: {
     color: "#333",
@@ -27,19 +27,19 @@ const useStyles = makeStyles({
       textAlign: "left",
       justifyContent: "space-between",
       height: "22rem",
-      width: '26rem',
+      width: "26rem",
       "& span,& label": {
         fontSize: "1.25rem",
         fontWight: "bold",
         display: "block",
         textAlign: "right",
-        marginBottom:'1.25rem',
+        marginBottom: "1.25rem"
       },
       "& label": {
         textAlign: "left"
       },
-      '& dd':{
-        margin:'0 2.5rem',
+      "& dd": {
+        margin: "0 2.5rem"
       }
     }
   }
@@ -62,7 +62,7 @@ export default function() {
             医疗保健组织拥有数十亿个数据点，可用于以更高的准确性提供更好的结果。AI帮助医疗机构为患者提供最佳结果，同时降低成本并提高护理质量。
           </dd>
         </dl>
-        <img src="/static/images/home/do.png" alt="" />
+        <img src="/static/images/home/do.png" alt=""/>
         <dl>
           <dd>
             <label>保险</label>

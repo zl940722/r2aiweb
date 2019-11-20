@@ -39,8 +39,6 @@ HTTP_METHOD.forEach(method => {
       opts.body = qs.stringify(filterObject(data, Boolean));
     }
 
-    console.info('Request Url:', url);
-
     return fetch(url, opts)
       .then(res => res.json())
       .then(({ errcode = 0, errmsg, data }) => {

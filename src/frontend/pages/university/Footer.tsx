@@ -20,17 +20,17 @@ const useStyles = makeStyles((theme: any) =>
       textAlign: "center"
     },
     title: {
-      color:'#fff',
+      color: "#fff",
       marginTop: "5rem",
       fontWeight: "bold",
       lineHeight: 1.5,
-      fontSize:48
+      fontSize: 48
     },
     subtitle: {
       marginTop: "2.8rem",
-      color:'#fff',
+      color: "#fff",
       lineHeight: 1.5,
-      fontSize:24
+      fontSize: 24
     },
     buttonWrap: {
       width: "100%",

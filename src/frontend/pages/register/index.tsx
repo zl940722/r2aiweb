@@ -5,7 +5,7 @@ import Register from "./register";
 function Index() {
   return (
     <>
-      <Register />
+      <Register/>
     </>
   );
 }

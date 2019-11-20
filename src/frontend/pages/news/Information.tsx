@@ -39,8 +39,8 @@ const useStyles = makeStyles({
   },
   itemTitle2: {
     marginTop: "2rem",
-    height:220,
-    overflow:'hidden'
+    height: 220,
+    overflow: "hidden"
   },
   itemDashed: {
     marginTop: "2rem",
@@ -50,7 +50,7 @@ const useStyles = makeStyles({
 });
 
 
-export default function (res: any) {
+export default function(res: any) {
   const classes = useStyles();
   return (
     <>

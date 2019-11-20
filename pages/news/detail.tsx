@@ -1,6 +1,6 @@
 import React from "react";
 import News from "../../src/frontend/pages/news/newsDetail";
-import { withRouter } from 'next/router'
+import { withRouter } from "next/router";
 import fetch from "isomorphic-unfetch";
 import url from "../../http";
 
@@ -9,8 +9,8 @@ const Index = (res: any) => {
 };
 
 Index.getInitialProps = async function(res: any) {
-  const news: any = await fetch(url + `/news/${res.asPath.split('?')[1]}`) || [];
-  const information: any =  await fetch(url + "/infors") || [];
+  const news: any = await fetch(url + `/news/${res.asPath.split("?")[1]}`) || [];
+  const information: any = await fetch(url + "/infors") || [];
   const newsData = await news.json();
   const informationData = await information.json();
 
@@ -21,11 +21,10 @@ Index.getInitialProps = async function(res: any) {
   const prevData = await newsPrev.json();
 
 
-
   return {
     news: newsData,
-    next:nextData[0],
-    prev:prevData[0],
+    next: nextData[0],
+    prev: prevData[0],
     information: informationData
   };
 };

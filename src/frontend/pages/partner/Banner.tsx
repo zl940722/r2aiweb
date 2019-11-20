@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme: any) =>
     item: {
       height: "50rem",
       backgroundSize: "cover",
-      backgroundPosition:'center'
+      backgroundPosition: "center"
     },
     itemContent: {
       maxWidth: "75rem",
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme: any) =>
       width: "100%",
       marginTop: "55%",
       paddingLeft: "0.5rem",
-      color:'#fff'
+      color: "#fff"
     },
     button: {
       width: "16.6rem",
@@ -96,7 +96,7 @@ function ProductBanner() {
   const [open, setOpen] = React.useState(false);
 
   function onHandleOpen() {
-    Router.push('/contactUs')
+    Router.push("/contactUs");
   }
 
   function onHandleClose() {

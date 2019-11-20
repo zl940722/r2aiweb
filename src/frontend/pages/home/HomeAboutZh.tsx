@@ -44,7 +44,6 @@ const useStyles = makeStyles({
 });
 
 function HomeAbout(res: any) {
-  console.log(res, "zl");
   const classes = useStyles();
   return (
     <>

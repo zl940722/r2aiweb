@@ -3,8 +3,8 @@ import { makeStyles } from "@material-ui/styles";
 import url from "../../../../http";
 import Router from "next/router";
 import { Typography, Grid } from "@material-ui/core";
-import moment from 'moment'
-import './news.css'
+import moment from "moment";
+import "./news.css";
 
 const useStyles = makeStyles({
   content: {
@@ -27,21 +27,21 @@ const useStyles = makeStyles({
   },
   items: {
     margin: "4.875rem 0 0",
-    cursor:'pointer',
-    '& img':{
-      height:'14.375rem',
-      maxWidth:'25rem'
+    cursor: "pointer",
+    "& img": {
+      height: "14.375rem",
+      maxWidth: "25rem"
     }
   },
   item: {
     maxWidth: "90%",
-    boxSizing: "border-box",
+    boxSizing: "border-box"
   },
   itemDes: {
     lineHeight: 1,
-    '& i':{
-      fontStyle:'normal',
-      padding:'0 1rem',
+    "& i": {
+      fontStyle: "normal",
+      padding: "0 1rem"
     }
   },
   itemTitle: {
@@ -60,44 +60,44 @@ const useStyles = makeStyles({
 });
 
 function HomeAbout(res: any) {
-  const {list=[],route} = res;
+  const { list = [], route } = res;
   const classes = useStyles();
   const detail = (id: any) => {
     return () => {
-      const link = route.includes('news')?'news':'resources';
+      const link = route.includes("news") ? "news" : "resources";
       Router.push(`/${link}/detail?${id}`);
     };
   };
 
   return <div className={classes.content} id='news'>
-        {list.map((value: any, index: any) => (
-          <Grid key={index} container className={classes.items} direction={"row"} onClick={detail(value.id)}>
-            <Grid item sm={4} xs={12}>
-              <div className={classes.item} style={{textAlign:'center'}}>
-                <img
-                  src={url + (value.image || {}).url}
-                  alt="R2.ai"
-                />
-              </div>
-            </Grid>
-            <Grid item sm={8} xs={12}>
-              <div className={classes.item} style={{paddingLeft:'2.5rem'}}>
-                <Typography variant={"h5"} className={classes.itemTitle}>
-                  {value.title}
-                </Typography>
-                <Typography variant={"body1"} className={classes.itemDes}>
-                  {moment(value.publishTime).format('YYYY-MM-DD')}<i>|</i>
-                  <span className={value.type}/>
-                </Typography>
-                <Typography variant={"body1"} className={classes.itemTitle2}>
-                  {value.description}
-                </Typography>
-              </div>
-            </Grid>
-            <div className={classes.itemDashed}>{}</div>
-          </Grid>
-        ))}
-      </div>
+    {list.map((value: any, index: any) => (
+      <Grid key={index} container className={classes.items} direction={"row"} onClick={detail(value.id)}>
+        <Grid item sm={4} xs={12}>
+          <div className={classes.item} style={{ textAlign: "center" }}>
+            <img
+              src={url + (value.image || {}).url}
+              alt="R2.ai"
+            />
+          </div>
+        </Grid>
+        <Grid item sm={8} xs={12}>
+          <div className={classes.item} style={{ paddingLeft: "2.5rem" }}>
+            <Typography variant={"h5"} className={classes.itemTitle}>
+              {value.title}
+            </Typography>
+            <Typography variant={"body1"} className={classes.itemDes}>
+              {moment(value.publishTime).format("YYYY-MM-DD")}<i>|</i>
+              <span className={value.type}/>
+            </Typography>
+            <Typography variant={"body1"} className={classes.itemTitle2}>
+              {value.description}
+            </Typography>
+          </div>
+        </Grid>
+        <div className={classes.itemDashed}>{}</div>
+      </Grid>
+    ))}
+  </div>;
 }
 
 export default HomeAbout;

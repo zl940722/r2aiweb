@@ -4,12 +4,12 @@ import _ from "lodash";
 import HomeBanner from "./HomeBanner";
 import HomeBannerZh from "./HomeBannerZh";
 import HomeAbout from "./HomeAbout";
-import HomeAboutZh from './HomeAboutZh'
+import HomeAboutZh from "./HomeAboutZh";
 import ContentBanner from "./ContentBanner";
 import ContentBannerZh from "./ContentBannerZh";
 import Assessment from "./Assessment";
-import AssessmentZh from './AssessmentZh'
-import NumZh from './NumZh'
+import AssessmentZh from "./AssessmentZh";
+import NumZh from "./NumZh";
 import isEn from "../../../../language";
 import WhatDoWeDoZH from "./WhatDoWeDoZH";
 import WhyDifferent from "./WhyDifferent";
@@ -19,9 +19,7 @@ import WhatDoWeDo from "./WhatDoWeDo";
 function Home(res: any) {
 
   const lists = res.data;
-  const {url} = res;
-  console.log(11,res)
-
+  const { url } = res;
   const banner = _.find(lists, (data: any) => {
     return data.name === "banner";
   });

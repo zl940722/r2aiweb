@@ -28,7 +28,7 @@ const useStyles = makeStyles({
   },
   item: {
     maxWidth: "90%",
-    marginBottom:30,
+    marginBottom: 30,
     boxSizing: "border-box"
   }
 });

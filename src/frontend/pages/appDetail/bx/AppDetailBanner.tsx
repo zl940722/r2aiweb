@@ -9,7 +9,7 @@ const useStyles = makeStyles({
   item: {
     height: "50rem",
     backgroundSize: "cover",
-    backgroundPosition:'center'
+    backgroundPosition: "center"
   },
   itemContent: {
     maxWidth: "75rem",

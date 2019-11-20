@@ -5,41 +5,41 @@ const useStyles = makeStyles({
   content: {
     background: "#F5F5F5",
     textAlign: "center",
-    paddingBottom:'6.375rem',
-    '& p':{
-      color:'#333',
-      fontWeight:'bold',
-      fontSize:'2.25rem',
-      paddingTop:'5rem',
+    paddingBottom: "6.375rem",
+    "& p": {
+      color: "#333",
+      fontWeight: "bold",
+      fontSize: "2.25rem",
+      paddingTop: "5rem"
     }
   },
   main: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginBlockStart: '3.5rem',
+    marginBlockStart: "3.5rem",
     marginBlockEnd: 0,
-    '& dd':{
-      border:'1px solid #ccc',
-      background:'#fff',
-      padding:'1.9375rem',
-      display:'flex',
-      color:'#333',
-      fontSize:'1rem',
-      width:'23.125rem',
-      '& span':{
-        display:'block',
-        textAlign:'left',
-        fontSize:'1.25rem',
-        paddingBottom:'0.2rem',
+    "& dd": {
+      border: "1px solid #ccc",
+      background: "#fff",
+      padding: "1.9375rem",
+      display: "flex",
+      color: "#333",
+      fontSize: "1rem",
+      width: "23.125rem",
+      "& span": {
+        display: "block",
+        textAlign: "left",
+        fontSize: "1.25rem",
+        paddingBottom: "0.2rem"
       }
     },
-    '& i':{
-      width:'2.25rem',
-      height:'3.125rem',
-      marginRight:'1.1875rem',
-      backgroundSize: 'contain',
-      backgroundRepeat:'no-repeat',
+    "& i": {
+      width: "2.25rem",
+      height: "3.125rem",
+      marginRight: "1.1875rem",
+      backgroundSize: "contain",
+      backgroundRepeat: "no-repeat"
     }
   }
 });
@@ -71,7 +71,7 @@ export default function() {
         {main.map((itm, index) => {
           return (
             <dd key={index}>
-              <i style={{backgroundImage:`url(/static/images/home/${itm.url})`}}/>
+              <i style={{ backgroundImage: `url(/static/images/home/${itm.url})` }}/>
               <div>
                 <span>{itm.title}</span>
                 {itm.content}

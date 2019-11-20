@@ -24,13 +24,13 @@ const useStyles = makeStyles((theme: any) =>
       color: "#091221",
       fontWeight: "bold",
       lineHeight: 1.5,
-      fontSize:48
+      fontSize: 48
     },
     subtitle: {
       marginTop: "2.8rem",
       color: "#091221",
       lineHeight: 1.5,
-      fontSize:24
+      fontSize: 24
     },
     buttonWrap: {
       width: "100%",

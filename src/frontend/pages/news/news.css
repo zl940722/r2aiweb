@@ -1,59 +1,61 @@
-#news .Activity:after{
-    content:'活动参会';
-    color:#50A5E7;
-}
-#news .Release:after{
-    content:'产品发布';
-    color:#E78950;
+#news .Activity:after {
+    content: '活动参会';
+    color: #50A5E7;
 }
 
-#news .Prize:after{
-    content:'参评获奖';
-    color:#E7505B;
+#news .Release:after {
+    content: '产品发布';
+    color: #E78950;
 }
 
-#news .Message:after{
-    content:'活动信息';
-    color:#E7505B;
+#news .Prize:after {
+    content: '参评获奖';
+    color: #E7505B;
 }
 
-#news .Product:after{
-    content:'产品干货';
-    color:#E7505B;
+#news .Message:after {
+    content: '活动信息';
+    color: #E7505B;
 }
 
-#news .Case:after{
-    content:'案例分析';
-    color:#E7505B;
+#news .Product:after {
+    content: '产品干货';
+    color: #E7505B;
 }
 
-.ant-pagination-item{
-    border-color:#333 !important;
+#news .Case:after {
+    content: '案例分析';
+    color: #E7505B;
 }
 
-.ant-pagination-item-active{
+.ant-pagination-item {
+    border-color: #333 !important;
+}
+
+.ant-pagination-item-active {
     background: #D3323E;
     border-color: #D3323E !important;
 }
 
-.ant-pagination-item-active a{
-    color:#fff !important;
+.ant-pagination-item-active a {
+    color: #fff !important;
 }
 
-.ant-pagination-prev{
-    border:1px solid rgba(51, 51, 51, 1);
-    color:#5B77A9;
+.ant-pagination-prev {
+    border: 1px solid rgba(51, 51, 51, 1);
+    color: #5B77A9;
     border-radius: 5px;
-    padding:0 0.7rem;
+    padding: 0 0.7rem;
 }
 
-.ant-pagination-disabled{
+.ant-pagination-disabled {
     width: 0;
     overflow: hidden;
     min-width: 0;
-    border:0;
-    padding:0;
+    border: 0;
+    padding: 0;
 }
-.ant-pagination-options-quick-jumper input{
-    border-color:#333 !important;
+
+.ant-pagination-options-quick-jumper input {
+    border-color: #333 !important;
 }

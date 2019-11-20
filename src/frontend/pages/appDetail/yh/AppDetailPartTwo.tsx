@@ -87,7 +87,7 @@ function AppDetailPartTwo() {
                 <p style={{ marginLeft: 34 }}>
                   构建起来的准入模型质量高，各项模型指标（AUC、KS、Recall等）均达到指定要求，对好客户和坏客户的判定都比较准确。
                 </p>
-                <img style={{ width: 1100 ,marginBottom: 40 }} src={"/static/images/appDetail/bank2成果@2x.png"}/>
+                <img style={{ width: 1100, marginBottom: 40 }} src={"/static/images/appDetail/bank2成果@2x.png"}/>
               </div>
 
 
@@ -100,12 +100,12 @@ function AppDetailPartTwo() {
                 </div>
                 <Grid container className={classes.grids}>
                   <Grid item md={6} className={classes.grid}>
-                    <p>1.样本收集：由某银行提供的2018年164多万行、30多列变量的个人记录，其中不良率为目标变量；  </p>
+                    <p>1.样本收集：由某银行提供的2018年164多万行、30多列变量的个人记录，其中不良率为目标变量； </p>
                     <img style={{ width: 400 }} src={"/static/images/appDetail/bank2过程1@2x.png"}/>
                   </Grid>
                   <Grid item md={6} className={classes.grid}>
                     <p>2.数据探索：用R2 Learn在正式建模前对每个变量进行可视化探索分析； </p>
-                    <img style={{ width: 400}} src={"/static/images/appDetail/bank2过程2@2x.png"}/>
+                    <img style={{ width: 400 }} src={"/static/images/appDetail/bank2过程2@2x.png"}/>
                   </Grid>
                 </Grid>
 

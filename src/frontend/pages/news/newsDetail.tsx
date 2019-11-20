@@ -72,15 +72,15 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     textAlign: "left",
-    color:'#666',
-    lineHeight:1.7,
-    fontSize:'1rem',
-    '& a':{
-      textDecoration: 'none',
-      color:'#666',
-      paddingLeft:'0.1rem',
-      '&:hover':{
-        color:'#D3323E',
+    color: "#666",
+    lineHeight: 1.7,
+    fontSize: "1rem",
+    "& a": {
+      textDecoration: "none",
+      color: "#666",
+      paddingLeft: "0.1rem",
+      "&:hover": {
+        color: "#D3323E"
       }
     }
   }
@@ -88,15 +88,15 @@ const useStyles = makeStyles({
 
 export default function(res: any) {
   const classes = useStyles();
-  const { prev={}, next={},news,route} = res;
+  const { prev = {}, next = {}, news, route } = res;
 
-  useEffect(()=>{
-    scroll(0,0);
-  },[]);
+  useEffect(() => {
+    scroll(0, 0);
+  }, []);
 
-  const link = route.includes('news')?'news':'resources';
+  const link = route.includes("news") ? "news" : "resources";
 
-  function back(){
+  function back() {
     // return Router.push(`/news/${news.type.toLowerCase()}`);
     location.href = `/${link}/${news.type.toLowerCase()}`;
   }
@@ -105,7 +105,7 @@ export default function(res: any) {
     <>
       <div className={classes.content}>
         <a href="javascript:" className={classes.back} onClick={back}>
-          &lt;-- 返回{route.includes('news')?"资讯":"社区"}列表
+          &lt;-- 返回{route.includes("news") ? "资讯" : "社区"}列表
         </a>
         <Grid container className={classes.items} direction={"row"}>
           <Grid item sm={12} xs={12}>
@@ -117,13 +117,15 @@ export default function(res: any) {
                 发布日期:{moment(news.publishTime).format("YYYY-MM-DD")}
               </Typography>
               <Typography variant={"body1"} className={classes.body}>
-                <div dangerouslySetInnerHTML={{ __html: news.content }} />
+                <div dangerouslySetInnerHTML={{ __html: news.content }}/>
               </Typography>
             </div>
           </Grid>
           <dl className={classes.others}>
-            <dd style={{display:(prev.id?'':'none')}}>上一篇<a href={`/newsDetail?${prev.id}`}>:{prev.title}</a></dd>
-            <dd style={{display:(next.id?'':'none')}}>下一篇<a href={`/newsDetail?${next.id}`}>:{next.title}</a></dd>
+            <dd style={{ display: (prev.id ? "" : "none") }}>上一篇<a href={`/newsDetail?${prev.id}`}>:{prev.title}</a>
+            </dd>
+            <dd style={{ display: (next.id ? "" : "none") }}>下一篇<a href={`/newsDetail?${next.id}`}>:{next.title}</a>
+            </dd>
           </dl>
         </Grid>
         <CommonButton label={"返回"} onClick={back}/>

@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import * as React from 'react';
-import clsx from 'clsx';
-import { useRouter } from 'next/router';
-import NextLink, { LinkProps as NextLinkProps } from 'next/link';
-import MuiLink, { LinkProps as MuiLinkProps } from '@material-ui/core/Link';
+import * as React from "react";
+import clsx from "clsx";
+import { useRouter } from "next/router";
+import NextLink, { LinkProps as NextLinkProps } from "next/link";
+import MuiLink, { LinkProps as MuiLinkProps } from "@material-ui/core/Link";
 
 type NextComposedProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & NextLinkProps;
 
@@ -31,14 +31,14 @@ interface LinkPropsBase {
   naked?: boolean;
 }
 
-type LinkProps = LinkPropsBase & NextComposedProps & Omit<MuiLinkProps, 'ref'>;
+type LinkProps = LinkPropsBase & NextComposedProps & Omit<MuiLinkProps, "ref">;
 
 // A styled version of the Next.js Link component:
 // https://nextjs.org/docs/#with-link
 function RouterLink(props: LinkProps) {
   const router = useRouter();
   const {
-    activeClassName = 'active',
+    activeClassName = "active",
     className: classNameProps,
     innerRef,
     naked,
@@ -46,7 +46,7 @@ function RouterLink(props: LinkProps) {
   } = props;
 
   const className = clsx(classNameProps, {
-    [activeClassName]: router.pathname === props.href && activeClassName,
+    [activeClassName]: router.pathname === props.href && activeClassName
   });
 
   if (naked) {
@@ -57,5 +57,5 @@ function RouterLink(props: LinkProps) {
 }
 
 export default React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => (
-  <RouterLink {...props} innerRef={ref} />
+  <RouterLink {...props} innerRef={ref}/>
 ));

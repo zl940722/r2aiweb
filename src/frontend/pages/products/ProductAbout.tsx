@@ -35,8 +35,8 @@ const useStyles = makeStyles({
     margin: "5rem 0",
     textAlign: "center",
     "& >img": {
-      maxWidth: '100%',
-      maxHeight: '100%'
+      maxWidth: "100%",
+      maxHeight: "100%"
     }
   }
 });
@@ -69,7 +69,7 @@ function ProductAbout() {
         <Typography variant={"body1"} className={classes.product_body2}>
           使用R2 Learn非常简单。您只需输入数据和定义问题，余下的工作都由R2
           Learn为您完成。
-          <br />
+          <br/>
         </Typography>
         <div className={classes.product_img}>
           <img

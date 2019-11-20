@@ -4,7 +4,7 @@ import "./global.css";
 import Link from "next/link";
 import _ from "lodash";
 import classNames from "classnames";
-import { Menu,Dropdown } from "antd";
+import { Menu, Dropdown } from "antd";
 import Router from "next/router";
 import Avatar from "@material-ui/core/Avatar";
 import axios from "axios";
@@ -29,30 +29,30 @@ const useStyles = makeStyles({
       color: "#333"
     },
     avatar: {
-      margin: 10,
+      margin: 10
     },
     index: {
       position: "absolute",
       top: 0,
       zIndex: 2,
       width: "100%",
-      minWidth:'1200px',
+      minWidth: "1200px",
       background: "transparent",
       color: "#fff",
       "& span": {
         color: "#fff"
       },
-      "& ul":{
-        background:'transparent',
-        boxShadow: 'none',
-        border:0,
-        color:'#fff',
-        "& li":{
-          color:'#fff',
+      "& ul": {
+        background: "transparent",
+        boxShadow: "none",
+        border: 0,
+        color: "#fff",
+        "& li": {
+          color: "#fff"
         }
       },
-      "& a":{
-        color:"#fff",
+      "& a": {
+        color: "#fff"
       }
     },
     user: {
@@ -152,17 +152,17 @@ const menus: InterfaceMenu[] = [
       name: "产品发布",
       children: null,
       link: "/news/release"
-    },{
+    }, {
       id: 82,
       name: "参评获奖",
       children: null,
       link: "/news/prize"
-    },{
+    }, {
       id: 83,
       name: "活动参会",
       children: null,
       link: "/news/activity"
-    }],
+    }]
   },
   {
     id: 9,
@@ -172,17 +172,17 @@ const menus: InterfaceMenu[] = [
       name: "活动信息",
       children: null,
       link: "/resources/message"
-    },{
+    }, {
       id: 42,
       name: "产品干货",
       children: null,
       link: "/resources/product"
-    },{
+    }, {
       id: 43,
       name: "案例分析",
       children: null,
       link: "/resources/case"
-    }],
+    }]
   },
   {
     id: 10,
@@ -222,14 +222,13 @@ const Header = (props) => {
   const index = props.route === "/";
 
   const handleClick = e => {
-    console.log("click ", e);
     setcurrent(e.key);
     Router.push(e.key);
   };
 
-  function logout(){
+  function logout() {
     axios.delete("/user/logout");
-    location.href='/';
+    location.href = "/";
   }
 
   const menu = (
@@ -294,9 +293,10 @@ const Header = (props) => {
           {
             props.user.active ?
               <Dropdown overlay={menu}>
-                  <span className={classes.avatar}>{props.user.email}</span>
-              </Dropdown>:
-              <div><a className={classes.login} href={"/login"}>登录</a>  <a className={classes.res} href={"/register"}>注册</a></div>
+                <span className={classes.avatar}>{props.user.email}</span>
+              </Dropdown> :
+              <div><a className={classes.login} href={"/login"}>登录</a> <a className={classes.res}
+                                                                          href={"/register"}>注册</a></div>
           }
         </span>
       </Menu>

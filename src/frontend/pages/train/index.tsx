@@ -14,12 +14,12 @@ const useStyles = makeStyles({
     width: "100%",
     marginTop: "5rem",
     paddingLeft: "0.5rem",
-    textAlign:'center'
+    textAlign: "center"
   },
   button: {
     width: "13.6rem",
     height: "4.5rem",
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
   title: {
     padding: "3rem",

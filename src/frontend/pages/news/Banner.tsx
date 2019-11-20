@@ -12,10 +12,10 @@ const useStyles = makeStyles({
 });
 
 interface Interface {
-  link:'news'|'resources'
+  link: "news" | "resources"
 }
 
-export default function (props:Interface) {
+export default function(props: Interface) {
   const classes = useStyles();
 
   return (

@@ -10,11 +10,9 @@ const Index = (res: any) => {
 
 Index.getInitialProps = async function() {
   const news: any = await fetch(url + "/news?_sort=publishTime:DESC") || [];
-  const information: any =  await fetch(url + "/infors") || [];
+  const information: any = await fetch(url + "/infors") || [];
   const newsData = await news.json();
   const informationData = await information.json();
-  console.log(newsData);
-
   return {
     news: newsData,
     information: informationData

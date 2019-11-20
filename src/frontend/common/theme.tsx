@@ -27,9 +27,9 @@ const theme = createMuiTheme({
     // },
     MuiSelect: {
       selectMenu: {
-        height: '31px !important',
+        height: "31px !important"
       }
-    },
+    }
   }
 });
 
