@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/styles";
 
 import { Typography, Grid } from "@material-ui/core";
 import url from "../../../../http";
+
 const useStyles = makeStyles({
   content: {
     maxWidth: "75rem",
@@ -43,7 +44,6 @@ const useStyles = makeStyles({
 });
 
 function HomeAbout(res: any) {
-  console.log(res, "zl");
   const classes = useStyles();
   return (
     <>

@@ -33,15 +33,15 @@ const useStyles = makeStyles({
   item: {
     maxWidth: "90%",
     boxSizing: "border-box",
-    "& p":{
-      whiteSpace: "pre-line",
+    "& p": {
+      whiteSpace: "pre-line"
     }
   },
   itemBorder: {
     width: "100%",
-    display:'flex',
+    display: "flex",
     border: "1px dashed #343f53",
-    height:1
+    height: 1
   },
   itemDes: {
     lineHeight: 2,
@@ -59,13 +59,12 @@ const useStyles = makeStyles({
 });
 
 function HomeAbout(res: any) {
-  console.log(res, "dfsadsad");
   const classes = useStyles();
   return (
     <>
       <div className={classes.content}>
-        <Typography onClick={()=> {
-          Router.back()
+        <Typography onClick={() => {
+          Router.back();
         }} className={classes.title}>返回职位列表</Typography>
         <div>
           <Grid container className={classes.items} direction={"row"}>

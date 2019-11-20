@@ -8,10 +8,10 @@ import ProductGrids from "./ProductGrids";
 function Products(res) {
   return (
     <>
-      <ProductBanner />
-      <ProductAbout />
+      <ProductBanner/>
+      <ProductAbout/>
       <ContentBanner {...res} />
-      <ProductGrids />
+      <ProductGrids/>
     </>
   );
 }

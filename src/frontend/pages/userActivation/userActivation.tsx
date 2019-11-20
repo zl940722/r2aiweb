@@ -14,7 +14,6 @@ class Index extends React.Component<any, any> {
   componentDidMount() {
     const query: any = this.props.router.asPath.split("?");
     const data = query[1].split("&");
-    console.log(data, "dsad", this.props.router.query);
     axios.defaults.withCredentials = true;
     axios.get("/active", {
       params: {
@@ -22,7 +21,6 @@ class Index extends React.Component<any, any> {
         token: (data[1].split(/=(?=.)/))[1]
       }
     }).then((res: any) => {
-      console.log(res, "ssss");
     }).catch(function(error: any) {
       if (error.response) {
         console.log(error.response.data);

@@ -2,7 +2,7 @@ import React from "react";
 import Home from "../src/frontend/pages/home";
 
 
-import { withRouter } from 'next/router'
+import { withRouter } from "next/router";
 import fetch from "isomorphic-unfetch";
 import url from "../http";
 
@@ -16,7 +16,7 @@ Index.getInitialProps = async function() {
 
   return {
     data: homeData,
-    url,
+    url
   };
 };
 

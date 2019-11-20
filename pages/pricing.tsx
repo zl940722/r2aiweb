@@ -10,7 +10,6 @@ const Index = (res: any) => {
 };
 
 Index.getInitialProps = async function(ress) {
-  console.log(ress , 'dsadsad')
   const home: any = await fetch(url + `/prices?_sort=level`) || [];
   const homeData = await home.json();
   const list: any = {

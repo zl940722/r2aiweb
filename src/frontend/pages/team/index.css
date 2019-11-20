@@ -9,7 +9,7 @@
     transition: all 0.6s;
 }
 
-.item_div{
+.item_div {
     cursor: pointer;
     width: 90%;
     margin: 0 auto;
@@ -20,10 +20,12 @@
     left: 20px;
     opacity: 0;
 }
-.item_div p{
-   padding: 0 2px;
+
+.item_div p {
+    padding: 0 2px;
     /*display: none;*/
 }
+
 .item_div:hover {
     transform: scale(1.1);
     opacity: 1;

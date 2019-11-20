@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: any) =>
     },
     menu: {
       width: 400
-    },
+    }
   })
 );
 

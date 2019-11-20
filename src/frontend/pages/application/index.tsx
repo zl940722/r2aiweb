@@ -6,8 +6,8 @@ import AppGrids from "./AppGrids";
 function Application() {
   return (
     <>
-      <AppBanner />
-      <AppGrids />
+      <AppBanner/>
+      <AppGrids/>
     </>
   );
 }

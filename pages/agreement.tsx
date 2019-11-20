@@ -14,9 +14,9 @@ export default function() {
     }}>
       <div className="agreement-2X-2G">
         <div style={{ textAlign: "center", fontSize: 18 }}>R2.ai Master Subscription Agreement (MSA)</div>
-        <div style={{ textAlign: "center", }} className="center-2P6X4">SAAS用户协议</div>
-        <div style={{ textAlign: "center", }} className="center-2P6X4">（版本1.0）</div>
-        <div style={{ textAlign: "center", }} className="center-2P6X4">公布日期: 2018/11/1</div>
+        <div style={{ textAlign: "center" }} className="center-2P6X4">SAAS用户协议</div>
+        <div style={{ textAlign: "center" }} className="center-2P6X4">（版本1.0）</div>
+        <div style={{ textAlign: "center" }} className="center-2P6X4">公布日期: 2018/11/1</div>
         <div className="paragraph-1PfrW">
         </div>
         <div className="paragraph-1PfrW">本协议是您购买及使用R2.ai.Inc（下称“R2.ai公司”或“我们”）软件和服务前，约定并接受的协议。
@@ -41,31 +41,31 @@ export default function() {
           className="paragraph-1PfrW">您知悉并且同意，R2.ai公司对于本协议具有最终解释权。一旦R2.ai公司单方面进行协议修改，应将新版协议在网站或应用上进行公示。任何本协议的修改重新公示后，对网站、应用和/或服务的用户即已生效。R2.ai公司可能要求您在进一步使用网站、应用和/或服务前同意更新后的协议。如果您不同意任何协议变更，应当停止使用相关网站、应用和/或服务。若继续使用网站、应用和/或服务，则视为您接受R2.ai公司的变更。请经常性查阅网站浏览现行协议。
         </div>
         <div className="paragraph-1PfrW"></div>
-        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center", }} >目录
+        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center" }}>目录
         </div>
-        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center", }} >1.定义
+        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center" }}>1.定义
         </div>
-        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center", }} >2.免费试用
+        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center" }}>2.免费试用
         </div>
-        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center", }} >3.我们的责任
+        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center" }}>3.我们的责任
         </div>
-        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center", }} >4.服务和内容的使用
+        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center" }}>4.服务和内容的使用
         </div>
-        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center", }} >5.已购服务的费用和付款
+        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center" }}>5.已购服务的费用和付款
         </div>
-        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center", }} >6.专有权利及许可
+        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center" }}>6.专有权利及许可
         </div>
-        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center", }} >7.保密及隐私
+        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center" }}>7.保密及隐私
         </div>
-        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center", }} >8.赔偿责任
+        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center" }}>8.赔偿责任
         </div>
-        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center", }} >9.责任限制
+        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center" }}>9.责任限制
         </div>
-        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center", }} >10.期限和终止
+        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center" }}>10.期限和终止
         </div>
-        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center", }} >11.签约、通知、适用法律与管辖权
+        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center" }}>11.签约、通知、适用法律与管辖权
         </div>
-        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center", }} >12.附则
+        <div className="paragraph_center-3B8Ob" style={{ textAlign: "center" }}>12.附则
         </div>
         <div className="paragraph_center-3B8Ob">
         </div>

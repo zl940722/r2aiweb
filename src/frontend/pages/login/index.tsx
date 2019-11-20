@@ -5,7 +5,7 @@ import Login from "./login";
 function Index() {
   return (
     <>
-      <Login />
+      <Login/>
     </>
   );
 }

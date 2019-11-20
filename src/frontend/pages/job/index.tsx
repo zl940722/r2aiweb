@@ -31,8 +31,8 @@ const useStyles = makeStyles({
     maxWidth: "90%",
     boxSizing: "border-box"
   },
-  itemh4: {    fontSize: "1.4rem",},
-  itemp: {    fontSize: "1.2rem",},
+  itemh4: { fontSize: "1.4rem" },
+  itemp: { fontSize: "1.2rem" },
   itemBorder: {
     width: "100%",
     border: "1px dashed #ccc"

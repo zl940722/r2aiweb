@@ -66,15 +66,15 @@ function ProductGrids() {
             </Typography>
             <Typography variant={"body2"} className={classes.grid_body}>
               数据质量：自动数据质量检查和修复；
-              <br />
+              <br/>
               数据探索：自动探索了解数据的关键属性；
-              <br />
+              <br/>
               特征预处理：丰富的自动数据特征预处理；
-              <br />
+              <br/>
               模型培训：自动模型培训和验证；
-              <br />
+              <br/>
               模型结果分析：按需自动分析和模型推荐；
-              <br />
+              <br/>
               模型洞察：自动提取并呈现模型洞察。
             </Typography>
           </Grid>
@@ -96,11 +96,11 @@ function ProductGrids() {
             </Typography>
             <Typography variant={"body2"} className={classes.grid_body}>
               模型部署：批量和实时部署模式；
-              <br />
+              <br/>
               模型操作监控：监控模型操作的运行状况，并在出现问题时自动向用户发出警报；
-              <br />
+              <br/>
               模型性能监控：检测模型性能下降信号，并在必要时重新优化模型。
-              <br />
+              <br/>
             </Typography>
           </Grid>
           <Grid item md={3} className={classes.grid}>
@@ -121,13 +121,13 @@ function ProductGrids() {
             </Typography>
             <Typography variant={"body2"} className={classes.grid_body}>
               使用自定义设置进行实验；
-              <br />
+              <br/>
               构建复杂的特征处理；
-              <br />
+              <br/>
               使用模型指标和图表分析建模结果；
-              <br />
+              <br/>
               能够根据业务需求对每一个建模流程中的细节进行人工干预、调整。
-              <br />
+              <br/>
             </Typography>
           </Grid>
           <Grid item md={3} className={classes.grid}>
@@ -148,11 +148,11 @@ function ProductGrids() {
             </Typography>
             <Typography variant={"body2"} className={classes.grid_body}>
               既适用于机器学习专家，更适用于业务分析人员；
-              <br />
+              <br/>
               建模周期从“月/周”级缩短到“小时/分钟”级，大幅降低试错成本；
-              <br />
+              <br/>
               以较少硬件资源即可计算出最佳预测模型，模型质量更优。
-              <br />
+              <br/>
             </Typography>
           </Grid>
         </Grid>

@@ -30,15 +30,15 @@ const useStyles = makeStyles({
     boxSizing: "border-box",
     display: "flex",
     alignItems: "center",
-    padding: '0 10px',
+    padding: "0 10px"
   },
-  itemC:{
+  itemC: {
     maxWidth: "90%",
     boxSizing: "border-box",
     display: "flex",
     alignItems: "center",
-    padding: '0 10px',
-    flexFlow:'column'
+    padding: "0 10px",
+    flexFlow: "column"
   },
   itemDes: {
     lineHeight: 2,
@@ -52,8 +52,8 @@ const useStyles = makeStyles({
     marginTop: "3rem",
     fontWeight: "bold"
   },
-  card:{
-    height:'100px'
+  card: {
+    height: "100px"
   }
 });
 
@@ -129,60 +129,60 @@ function HomeAbout() {
 
             <Grid item sm={4} xs={12} className={classes.card}>
               <div className={classes.item}>
-                <Card style={{ margin: 10,height:'10rem' }}>
+                <Card style={{ margin: 10, height: "10rem" }}>
                   <div className={classes.item}>
                     <img
                       src="/static/images/company/3.png"
                       width={"16px"}
                       alt="R2.ai"
                     />
-                    <h4 style={{ textAlign: "center",marginLeft:10 }}>
+                    <h4 style={{ textAlign: "center", marginLeft: 10 }}>
                       美国硅谷
                     </h4></div>
-                    <p style={{ padding: '0 10px' }}>
-                      R2.ai, INC R2.ai – 硅谷 (Headquarters)<br/>
-                      2228 Camino Ramon San Ramon
-                      <br/>
-                    </p>
+                  <p style={{ padding: "0 10px" }}>
+                    R2.ai, INC R2.ai – 硅谷 (Headquarters)<br/>
+                    2228 Camino Ramon San Ramon
+                    <br/>
+                  </p>
 
                 </Card>
               </div>
             </Grid>
             <Grid item sm={4} xs={12} className={classes.card}>
               <div className={classes.item}>
-                <Card style={{ margin: 10,height:'10rem' }}>
+                <Card style={{ margin: 10, height: "10rem" }}>
                   <div className={classes.item}>
                     <img
                       src="/static/images/company/3.png"
                       width={"16px"}
                       alt="R2.ai"
                     />
-                    <h4 style={{ textAlign: "center",marginLeft:10 }}>
+                    <h4 style={{ textAlign: "center", marginLeft: 10 }}>
                       杭州
-                    </h4> </div>
-                    <p style={{ padding: '0 10px' }}>
+                    </h4></div>
+                  <p style={{ padding: "0 10px" }}>
 
-                      杭州睿拓智能科技有限公司 R2.ai – 杭州<br/>
-                      杭州滨江区六和路368号海创基地 南楼2楼E2012
-                      <br/>
-                    </p>
+                    杭州睿拓智能科技有限公司 R2.ai – 杭州<br/>
+                    杭州滨江区六和路368号海创基地 南楼2楼E2012
+                    <br/>
+                  </p>
 
                 </Card>
               </div>
             </Grid>
             <Grid item sm={4} xs={12} className={classes.card}>
               <div className={classes.item}>
-                <Card style={{ margin: 10,height:'10rem' }}>
+                <Card style={{ margin: 10, height: "10rem" }}>
                   <div className={classes.item}>
                     <img
                       src="/static/images/company/3.png"
                       width={"16px"}
                       alt="R2.ai"
                     />
-                    <h4 style={{ textAlign: "center",marginLeft:10 }}>
+                    <h4 style={{ textAlign: "center", marginLeft: 10 }}>
                       上海
                     </h4></div>
-                  <p style={{ padding: '0 10px' }}>
+                  <p style={{ padding: "0 10px" }}>
                     上海机颖智能科技有限公司 R2.ai – 上海<br/>
                     上海市杨浦区政立路497号国正中心 1号楼1508室
                     <br/>

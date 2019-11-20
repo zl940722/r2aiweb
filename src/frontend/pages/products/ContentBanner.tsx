@@ -61,14 +61,13 @@ const customTheme = {
 };
 
 export default function ContentBanner(res: any) {
-  console.log(res, "dsadsa");
   const classes = useStyles();
   const toBuy = () => {
 
     Router.push({
       pathname: "/toUse",
       query: {
-        id: res.user.user.id
+        id: res.user.id
       }
     });
   };

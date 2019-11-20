@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
     formControl: {
       margin: theme.spacing(3),
       display: "flex",
-      flexFlow: 'unset',
+      flexFlow: "unset",
       alignItems: "center",
       marginLeft: 0
     },
@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: "2.5rem"
     },
     captcha: {
-      position:'relative'
+      position: "relative"
     }
   })
 );
@@ -124,7 +124,6 @@ export default function TextFields(props: any) {
   // }
 
 
-  console.log("cxx111", props.router.query.id);
   const [mPrice, setmPrice] = React.useState(0);
   const [yPrice, setyPrice] = React.useState(0);
   const [userInfo, setuserInfo] = React.useState({
@@ -133,15 +132,6 @@ export default function TextFields(props: any) {
     id: ""
   });
 
-
-  // axios.get("/price").then((response: any) => {
-  //   const { basicPrice, basicPriceYear } = response.data;
-  //   console.log(response.data);
-  //   setmPrice(basicPrice);
-  //   setyPrice(basicPriceYear);
-  // });
-
-  console.log("aaaa", mPrice, yPrice);
   const classes = useStyles();
   const [values, setValues] = React.useState({
     email: userInfo.email,
@@ -203,7 +193,6 @@ export default function TextFields(props: any) {
   const pays = () => {
     axios.get("/user/login").then((data: any) => {
       setuserInfo(data.data);
-      console.log(data, "1234568");
       const list: any = {
         email: data.data.email,
         orderType: rent,
@@ -216,11 +205,9 @@ export default function TextFields(props: any) {
         productName: "简易版"
       };
       if (payMethod === "alipay") {
-        console.log(1);
         axios.post("/alipay/createCharge", list)
           .then(async (response: any) => {
             if (response.status === 200) {
-              console.log(response, "responseresponse");
               await setResData(response);
               await setOpen(true);
               await setModal({
@@ -251,8 +238,6 @@ export default function TextFields(props: any) {
 
 
       } else if (payMethod === "unionPay") {
-        console.log(2);
-
         axios.post("/unionPay/createCharge", list)
           .then((response: any) => {
             setResData(response);
@@ -278,7 +263,6 @@ export default function TextFields(props: any) {
 
 
       } else if (payMethod === "wechat") {
-        console.log(4);
         axios.post("/wechat/createCharge", list)
           .then((response: any) => {
             setResData(response);
@@ -383,7 +367,7 @@ export default function TextFields(props: any) {
               />
 
               <img src={`/user/captcha?${captcha}`}
-                   style={{ marginTop: "11px",position:'absolute',right:10,top:16 }}
+                   style={{ marginTop: "11px", position: "absolute", right: 10, top: 16 }}
                    alt=""
                    onClick={() => {
                      setCaptchas(new Date().getTime());
@@ -393,7 +377,7 @@ export default function TextFields(props: any) {
 
             <div>
               <FormControl component="fieldset" className={classes.formControl}>
-                <div style={{marginRight:20,width:'6.6rem'}}>请选择支付方式</div>
+                <div style={{ marginRight: 20, width: "6.6rem" }}>请选择支付方式</div>
                 <RadioGroup aria-label="gender" name="gender1" value={payMethod} onChange={handleChanges}>
                   <Grid container spacing={10}>
                     <Grid item md={4}>
@@ -445,7 +429,6 @@ export default function TextFields(props: any) {
                 取消
               </Button>
               <Button onClick={() => {
-                console.log("modalSubmit", resData);
                 if (modal.type === "alipay") {
                   axios.get("/alipay/orderQuery", {
                     params: { orderId: resData.data.orderId }
@@ -458,7 +441,6 @@ export default function TextFields(props: any) {
                   axios.get("/unionPay/orderQuery", {
                     params: { orderId: resData.data.orderId }
                   }).then(result => {
-                    console.log("unionPay");
                     Router.push("/paySuccess");
                   }).catch(() => {
                     console.log("失败");
@@ -467,7 +449,6 @@ export default function TextFields(props: any) {
                   axios.get("/wechat/orderQuery", {
                     params: { orderId: resData.data.orderId }
                   }).then(result => {
-                    console.log("wechat");
                     Router.push("/paySuccess");
                   }).catch(() => {
                     console.log("失败");

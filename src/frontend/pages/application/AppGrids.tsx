@@ -30,38 +30,38 @@ const useStyles = makeStyles({
   grid_img: {
     height: 200,
     textAlign: "center",
-    marginTop: '5%',
-    marginRight:20
+    marginTop: "5%",
+    marginRight: 20
   },
   grid_name: {
     fontSize: "1.8rem"
   },
   grid_h: { fontSize: "1.6rem" },
-  grid_p: { fontSize: "1.2rem"},
-  grid_p2: { fontSize: "1.2rem",color:'#d3333e'}
+  grid_p: { fontSize: "1.2rem" },
+  grid_p2: { fontSize: "1.2rem", color: "#d3333e" }
 });
 
 const app_lists = [
   {
-    id: 'bank',
+    id: "bank",
     imgUrl: "/static/images/application/AI金融@2x.webp",
     name: "银行",
     text: "工智能和机器学习为银行提供了前所未有的机会，以赢得市场份额，降低成本并增强客户体验，同时还遵守法规并打击金融犯罪。"
   },
   {
-    id: 'insurance',
+    id: "insurance",
     imgUrl: "/static/images/application/AI保险@2x.webp",
     name: "保险",
     text: "由AI驱动的保险公司有能力提高盈利能力，提高效率并创造更好的客户体验。通过以通常所需时间的一小部分来部署分析，保险公司可以降低损失率，提供更准确的定价并实现更高的转换率。"
   },
   {
-    id: 'medical',
+    id: "medical",
     imgUrl: "/static/images/application/AI医疗@2x.webp",
     name: "医疗",
     text: "医疗保健组织拥有数十亿个数据点，可用于以更高的准确性提供更好的结果。AI帮助医疗机构为患者提供最佳结果，同时降低成本并提高护理质量。"
   },
   {
-    id: 'internet',
+    id: "internet",
     imgUrl: "/static/images/application/AI电信@2x.webp",
     name: "物联网",
     text: "物联网是在计算机互联网的基础上，利用RFID、无线数据通信等技术构造一个覆盖世界上万事万物的“InternetofThings”。在这个网络中，物品(商品)能够彼此进行“交流”，而无需人的干预。"
@@ -73,7 +73,7 @@ function AppGrids() {
   return (
     <>
       <div className={classes.content}>
-        <Grid container  spacing={6} className={classes.grids}>
+        <Grid container spacing={6} className={classes.grids}>
           {app_lists.map((value, index) => (
             <Link
               key={index}

@@ -9,22 +9,22 @@ const Index = (res: any) => {
 };
 
 Index.getInitialProps = async function(props) {
-  const {p=1} = props.query;
-  const news: any = await fetch(url + `/news?type=Prize&_sort=publishTime:DESC&_limit=5&_start=${5*(p-1)}`) || [];
+  const { p = 1 } = props.query;
+  const news: any = await fetch(url + `/news?type=Prize&_sort=publishTime:DESC&_limit=5&_start=${5 * (p - 1)}`) || [];
   const count: any = await (await fetch(url + "/news/count?type=Prize")).json();
   const information: any = await fetch(url + "/infors") || [];
   const newsData = await news.json();
   const informationData = await information.json();
 
   const tabs = [{
-    name:'产品发布',
-    key:'release',
-  },{
-    name:'参评获奖',
-    key:'prize',
-  },{
-    name:'活动参会',
-    key:'activity',
+    name: "产品发布",
+    key: "release"
+  }, {
+    name: "参评获奖",
+    key: "prize"
+  }, {
+    name: "活动参会",
+    key: "activity"
   }];
 
   return {
@@ -32,7 +32,7 @@ Index.getInitialProps = async function(props) {
     information: informationData,
     tabs,
     count,
-    page:p,
+    page: p
   };
 };
 

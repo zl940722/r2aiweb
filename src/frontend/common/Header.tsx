@@ -7,20 +7,20 @@ import { Tabs, Tab } from "@material-ui/core";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Avatar from "@material-ui/core/Avatar";
-import classNames from 'classnames'
+import classNames from "classnames";
 
 const useStyles = makeStyles({
     root: {
       flexGrow: 1,
       backgroundColor: "#fff",
       color: "#000",
-      '& span':{
+      "& span": {
         color: "#000"
       }
     },
     tab: {
       height: 70,
-      fontSize: "1rem",
+      fontSize: "1rem"
       // color: "#000000"
     },
     a: {
@@ -31,17 +31,17 @@ const useStyles = makeStyles({
       margin: 10,
       background: "#304057"
     },
-    index:{
-      position:'absolute',
-      top:0,
-      zIndex:2,
-      width:'100%',
-      background:'transparent',
-      color:'#fff',
-      '& span':{
-        color:'#fff',
+    index: {
+      position: "absolute",
+      top: 0,
+      zIndex: 2,
+      width: "100%",
+      background: "transparent",
+      color: "#fff",
+      "& span": {
+        color: "#fff"
       }
-    },
+    }
   })
 ;
 
@@ -157,7 +157,7 @@ const Header = (props) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
-  const index = props.route === '/';
+  const index = props.route === "/";
 
   function handleChange(event: React.ChangeEvent<{}>, newValue: number) {
     setValue(newValue);
@@ -174,7 +174,7 @@ const Header = (props) => {
   };
 
   return (
-    <div className={classNames(classes.root,index?classes.index:'')}>
+    <div className={classNames(classes.root, index ? classes.index : "")}>
       <Link href={"/"}>
         <img
           src="/static/images/common/logo@2x.png"
@@ -189,8 +189,9 @@ const Header = (props) => {
             return (
               value.children ?
                 <div key={value.id}>
-                  <Tab key={value.id} style={{position:'relative'}} className={classes.tab} label={value.name} onClick={handleClick}/>
-                  <div style={{position:'absolute'}}>
+                  <Tab key={value.id} style={{ position: "relative" }} className={classes.tab} label={value.name}
+                       onClick={handleClick}/>
+                  <div style={{ position: "absolute" }}>
                     <Menu
                       id="simple-menu"
                       anchorEl={anchorEl}

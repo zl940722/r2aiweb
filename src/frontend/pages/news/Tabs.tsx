@@ -5,7 +5,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import List from "./List";
 import Link from "next/link";
-import { Pagination } from 'antd';
+import { Pagination } from "antd";
 import Router from "next/router";
 
 interface TabContainerProps {
@@ -28,59 +28,58 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
-      backgroundColor: theme.palette.background.paper,
+      backgroundColor: theme.palette.background.paper
     },
-    bar:{
-      lineHeight:'5rem',
-      backgroundColor:'#091221',
+    bar: {
+      lineHeight: "5rem",
+      backgroundColor: "#091221",
       marginBlockStart: 0,
       marginBlockEnd: 0,
-      fontSize:'1rem',
-      cursor:'pointer',
-      '& a':{
-        color:'#fff',
-        textDecoration:'#fff',
+      fontSize: "1rem",
+      cursor: "pointer",
+      "& a": {
+        color: "#fff",
+        textDecoration: "#fff"
       },
-      '& dl':{
-        maxWidth:'75rem',
-        display:'flex',
-        margin:'auto',
-        '& dd':{
+      "& dl": {
+        maxWidth: "75rem",
+        display: "flex",
+        margin: "auto",
+        "& dd": {
           marginInlineStart: 0,
-          marginRight:'3.75rem',
+          marginRight: "3.75rem"
         }
       }
     },
-    on:{
-      '& a':{
-        color:'#ccc'
+    on: {
+      "& a": {
+        color: "#ccc"
       }
     },
-    page:{
-      margin:'0 auto 5.6875rem',
-      textAlign:'right',
-      maxWidth: '75rem',
+    page: {
+      margin: "0 auto 5.6875rem",
+      textAlign: "right",
+      maxWidth: "75rem"
     }
   })
 );
 
 export default function(res: any) {
   const classes = useStyles();
-  const {list,tabs=[],route,count,page=1} = res;
+  const { list, tabs = [], route, count, page = 1 } = res;
 
-  const link = route.includes('news')?'news':'resources';
+  const link = route.includes("news") ? "news" : "resources";
 
 
-  function changePage(page){
+  function changePage(page) {
     Router.push(`${route}?p=${page}`);
   }
 
   function itemRender(current, type, originalElement) {
-    console.log(arguments)
-    if (type === 'prev') {
+    if (type === "prev") {
       return <a>上一页</a>;
     }
-    if (type === 'next') {
+    if (type === "next") {
       return <a>下一页</a>;
     }
     return originalElement;
@@ -90,27 +89,27 @@ export default function(res: any) {
     <div className={classes.root}>
       <div className={classes.bar}>
         <dl>
-          {tabs.map(itm=>{
+          {tabs.map(itm => {
             return <dd
               key={itm.key}
-              className={route.includes(itm.key)?classes.on:''}>
-                 <Link href={`/${link}/${itm.key}`}>{itm.name}</Link>
-            </dd>
+              className={route.includes(itm.key) ? classes.on : ""}>
+              <Link href={`/${link}/${itm.key}`}>{itm.name}</Link>
+            </dd>;
           })}
         </dl>
       </div>
       <List list={list} route={route}/>
-     <section className={classes.page}>
-       <Pagination
-         defaultCurrent={+page}
-         pageSize={5}
-         total={count}
-         onChange={changePage}
-         showQuickJumper
-         itemRender={itemRender}
-         showTotal={total => `共 ${total} 页`}
-       />
-     </section>
+      <section className={classes.page}>
+        <Pagination
+          defaultCurrent={+page}
+          pageSize={5}
+          total={count}
+          onChange={changePage}
+          showQuickJumper
+          itemRender={itemRender}
+          showTotal={total => `共 ${total} 页`}
+        />
+      </section>
     </div>
   );
 }

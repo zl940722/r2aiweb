@@ -27,8 +27,8 @@ const useStyles = makeStyles({
     alignItems: "center"
   },
   grids: {
-    display: 'flex',
-    alignItems: 'center'
+    display: "flex",
+    alignItems: "center"
   },
   grid: {
     flex: 1,
@@ -72,11 +72,11 @@ function AppDetailPartOne(props: any) {
             </Grid>
 
             <Grid item md={4} className={classes.grid}>
-                <img style={{ width: 250 }} src={"/static/images/appDetail/IoT成果@2x.png"}/>
-              </Grid>
-              <Grid item md={4}>
-                <img style={{ width: 250 }} src={"/static/images/appDetail/IoT成果@2x.png"}/>
-              </Grid>
+              <img style={{ width: 250 }} src={"/static/images/appDetail/IoT成果@2x.png"}/>
+            </Grid>
+            <Grid item md={4}>
+              <img style={{ width: 250 }} src={"/static/images/appDetail/IoT成果@2x.png"}/>
+            </Grid>
           </Grid>
 
         </div>

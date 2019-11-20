@@ -30,12 +30,12 @@ const useStyles = makeStyles((theme: any) =>
       color: "#959DA7"
     },
     buttonWrap: {
-      color:'#fff',
-      fontSize:'40px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent:'center',
-      marginTop:'55%',
+      color: "#fff",
+      fontSize: "40px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: "55%"
     },
     button: {
       width: "13.6rem",
@@ -92,8 +92,8 @@ function ProductBanner() {
             {/*<Typography variant={"h4"} className={classes.subtitle}>*/}
             {/*  人人可用的自动机器学习建模平台*/}
             {/*</Typography>*/}
-            <div  className={classes.buttonWrap}  onClick={onHandleOpen}>
-              <img style={{width:'41px'}} src={'/static/images/products/player.png'}/>
+            <div className={classes.buttonWrap} onClick={onHandleOpen}>
+              <img style={{ width: "41px" }} src={"/static/images/products/player.png"}/>
               <span>产品视频</span>
             </div>
             {/*<Grommet className={classes.buttonWrap} theme={customTheme}>*/}

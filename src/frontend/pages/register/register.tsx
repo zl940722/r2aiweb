@@ -210,15 +210,11 @@ export default function TextFields() {
         "username": values.username
       };
 
-      console.log(values.email, "zzz", list, "list");
-
       axios.post("/user/captcha", { "captcha": values.captcha })
         .then((res: any) => {
-          console.log(res, "dasd");
           if (res.status === 200) {
             axios.post("/user/register", list)
               .then((res: any) => {
-                console.log(res, "dasd");
                 if (res.status === 200) {
                   setOpen(true);
                   setModal({
@@ -481,7 +477,7 @@ export default function TextFields() {
                 />
 
                 <img src={`/user/captcha?${captcha}`}
-                     style={{ marginTop: "11px",position:'absolute',right:10,top:16 }}
+                     style={{ marginTop: "11px", position: "absolute", right: 10, top: 16 }}
                      alt=""
                      onClick={() => {
                        setCaptchas(new Date().getTime());

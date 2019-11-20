@@ -10,11 +10,11 @@ const useStyles = makeStyles({
     padding: "2rem",
     color: "#FFF"
   },
-  content:{
-    display:'flex',
+  content: {
+    display: "flex",
     margin: "0 auto",
-    justifyContent:'center',
-    alignItems:'flex-start'
+    justifyContent: "center",
+    alignItems: "flex-start"
   },
   copyright: {
     margin: "0 20px",
@@ -58,5 +58,5 @@ function Copyright() {
 }
 
 export default function Footer() {
-  return <Copyright />;
+  return <Copyright/>;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
 
-import { Typography,Grid } from "@material-ui/core";
+import { Typography, Grid } from "@material-ui/core";
 
 const useStyles = makeStyles({
   content: {
@@ -26,14 +26,12 @@ const useStyles = makeStyles({
     display: "flex",
     alignItems: "center"
   },
-  grids: {
-
-  },
+  grids: {},
   grid: {
     flex: 1,
     // maxWidth: "17.5rem",
-    margin: ".75rem",
-  },
+    margin: ".75rem"
+  }
 });
 
 function AppDetailPartOne(props: any) {
@@ -86,7 +84,7 @@ function AppDetailPartOne(props: any) {
                 <p>2.创建目标变量：根据误差范围，选取有效范围内数据；</p>
                 <img style={{ width: 350 }} src={"/static/images/appDetail/IoT过程2@2x.png"}/>
               </Grid>
-              </Grid>
+            </Grid>
 
             <Grid container className={classes.grids}>
               <Grid item md={6} className={classes.grid}>
@@ -124,7 +122,7 @@ function AppDetailPartOne(props: any) {
             <Grid container className={classes.grids}>
               <Grid item md={6} className={classes.grid}>
                 <p>1.风机因子对发电量误差的影响：
-                  通过风机因子对模型的重要性排序可以发现某些因子，如变桨电机扭矩、半导体温度是造成发电量损失的主要因素，需格外关注与维护；  </p>
+                  通过风机因子对模型的重要性排序可以发现某些因子，如变桨电机扭矩、半导体温度是造成发电量损失的主要因素，需格外关注与维护； </p>
                 <img style={{ width: 350 }} src={"/static/images/appDetail/IoT结果1@2x.png"}/>
               </Grid>
               <Grid item md={6} className={classes.grid}>

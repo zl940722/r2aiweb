@@ -17,17 +17,17 @@ const useStyles = makeStyles({
     "& dt,& dd": {
       padding: "0 3.1875rem",
       flex: "1 0",
-      "& >div":{
-        position:'relative',
-        height:'9.125rem',
-        width:'34rem',
-        float:'right',
+      "& >div": {
+        position: "relative",
+        height: "9.125rem",
+        width: "34rem",
+        float: "right"
       }
     },
     "& dt": {
       borderRight: "1px solid #ff3366",
-      '& >div':{
-        clear:'both'
+      "& >div": {
+        clear: "both"
       }
     },
     "& i": {
@@ -39,8 +39,8 @@ const useStyles = makeStyles({
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      position:'absolute',
-      right: '-3.8rem',
+      position: "absolute",
+      right: "-3.8rem",
       "& span": {
         display: "block",
         width: "0.4rem",
@@ -49,38 +49,38 @@ const useStyles = makeStyles({
         borderRadius: "50%"
       }
     },
-    '& img':{
-      height:'2.25rem',
-      display: 'block',
-      float: 'right',
-      '& + div':{
-        clear:"both",
-        textAlign:'left',
-        color:'#666',
-        paddingTop:'1.875rem',
-        width:'34rem',
-        float:'right',
+    "& img": {
+      height: "2.25rem",
+      display: "block",
+      float: "right",
+      "& + div": {
+        clear: "both",
+        textAlign: "left",
+        color: "#666",
+        paddingTop: "1.875rem",
+        width: "34rem",
+        float: "right"
       }
     },
-    '& label':{
-      float:'right',
-      fontWeight:'bold',
+    "& label": {
+      float: "right",
+      fontWeight: "bold"
     },
     "& dd": {
-      '& >div':{
-        clear:'both',
-        float:"none",
+      "& >div": {
+        clear: "both",
+        float: "none"
       },
-      '& i':{
-        left:' -3.7rem',
+      "& i": {
+        left: " -3.7rem"
       },
-      '& img':{
-        float:'none',
-        '& +div':{
-          float:'none',
+      "& img": {
+        float: "none",
+        "& +div": {
+          float: "none"
         }
       }
-    },
+    }
   }
 });
 
@@ -93,7 +93,7 @@ function Assessment() {
         <dt>
           <div>
             <i>
-              <span />
+              <span/>
             </i>
             <img src="/static/images/home/JAKROO.png" alt=""/>
             <div>
@@ -104,7 +104,7 @@ function Assessment() {
           <div/>
           <div>
             <i>
-              <span />
+              <span/>
             </i>
             <img src="/static/images/home/shuzun.png" alt=""/>
             <div>
@@ -116,10 +116,10 @@ function Assessment() {
           </div>
         </dt>
         <dd>
-          <div style={{float:'none'}}/>
-          <div style={{float:'none'}}>
+          <div style={{ float: "none" }}/>
+          <div style={{ float: "none" }}>
             <i>
-              <span />
+              <span/>
             </i>
             <img src="/static/images/home/pingan.png" alt=""/>
             <div>
@@ -130,9 +130,9 @@ function Assessment() {
             </label>
           </div>
           <div/>
-          <div style={{height:0,float:'none'}}>
+          <div style={{ height: 0, float: "none" }}>
             <i>
-              <span />
+              <span/>
             </i>
           </div>
         </dd>

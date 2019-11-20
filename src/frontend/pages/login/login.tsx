@@ -163,11 +163,11 @@ export default function TextFields() {
   //forget
   const __email: any = useRef(null);
   const __captcha: any = useRef(null);
-  const [forget, upForget]: any = useReducer((state,action)=>{
-      setValues({});
-      setCaptchas(Date.now());
-      return action;
-  },false);
+  const [forget, upForget]: any = useReducer((state, action) => {
+    setValues({});
+    setCaptchas(Date.now());
+    return action;
+  }, false);
 
   const submit = () => {
     if (!values.email) {
@@ -184,7 +184,7 @@ export default function TextFields() {
     axios
       .put("/user/login", values)
       .then((res: any) => {
-        location.href = '/';
+        location.href = "/";
         // Router.push("/loginSucess");
         // if (res.status === 200) {
         //   axios.get("/user/login").then((data: any) => {
@@ -225,9 +225,9 @@ export default function TextFields() {
       .then((res: any) => {
         if (res.status === 200) {
           Modal.success({
-            content: '操作成功，请查看最新邮件操作',
+            content: "操作成功，请查看最新邮件操作"
           });
-          upForget(false)
+          upForget(false);
         }
       })
       .catch((err: any) => {
@@ -316,13 +316,13 @@ export default function TextFields() {
         <PageHeader
           style={{
             left: "-1.5rem",
-            position: "relative",
+            position: "relative"
           }}
           onBack={() => upForget(false)}
           title="找回密码"
           subTitle=""
         />
-        <dl style={{marginTop:'2rem'}}>
+        <dl style={{ marginTop: "2rem" }}>
           <dd>
             邮箱
             <Input

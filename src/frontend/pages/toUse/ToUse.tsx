@@ -59,7 +59,6 @@ const useStyles = makeStyles((theme: Theme) =>
 
 
 const Index = (props: any) => {
-    console.log(props, "toUse");
     const [content, setcontent] = React.useState("");
     const [isSuccess, setSuccess] = React.useState(false);
     axios.get("/probation/applyProbation", { params: { userId: props.router.query.id } }).then((response: any) => {
@@ -79,17 +78,17 @@ const Index = (props: any) => {
     return (
       <div>
         {
-            <div style={{ background: "#F5F5F5", textAlign: "center", margin: "200px 300px 380px", padding: 200 }}>
-              <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start" }}>
-                <img style={{ width: 32, height: 32 }} src={"/static/images/price/成功@2x.png"}/><h1
-                style={{ color: "#333333" }}>试用申请提交成功！</h1>
-              </div>
-              <p>
-
-                欢迎您亲身体验R2.ai新一代人工智能自动机器建模产品。我们将把产品试用账户发送至您的邮箱。<br/>
-                您收到邮件后即可开始免费试用！如果试用需求数量非常高，试用账户的发送也许会有所延迟哦！
-              </p>
+          <div style={{ background: "#F5F5F5", textAlign: "center", margin: "200px 300px 380px", padding: 200 }}>
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start" }}>
+              <img style={{ width: 32, height: 32 }} src={"/static/images/price/成功@2x.png"}/><h1
+              style={{ color: "#333333" }}>试用申请提交成功！</h1>
             </div>
+            <p>
+
+              欢迎您亲身体验R2.ai新一代人工智能自动机器建模产品。我们将把产品试用账户发送至您的邮箱。<br/>
+              您收到邮件后即可开始免费试用！如果试用需求数量非常高，试用账户的发送也许会有所延迟哦！
+            </p>
+          </div>
         }
       </div>
     );

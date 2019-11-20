@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     maxWidth: "75rem",
     margin: "0 auto",
     padding: "1.5rem 0 0",
-    overflow: "hidden",
+    overflow: "hidden"
   },
   title: {
     padding: "3rem 0 1rem 0",
@@ -137,11 +137,8 @@ const customTheme = {
 };
 
 function Pricing(res: any) {
-
-  console.log(res, "dsadasdads");
   const toBuy = (id, value) => {
     return () => {
-      console.log("df", id);
       if (id === 4) {
         Router.push({
           pathname: "/toUse",
@@ -154,7 +151,7 @@ function Pricing(res: any) {
           pathname: "/simpleBuy",
           query: {
             id: id,
-            user: JSON.stringify(res.user.user)
+            user: JSON.stringify(res.user)
           }
         });
       } else if (id === 2) {
@@ -162,7 +159,7 @@ function Pricing(res: any) {
           pathname: "/essBuy",
           query: {
             id: id,
-            user: JSON.stringify(res.user.user)
+            user: JSON.stringify(res.user)
           }
         });
       } else if (id === 1) {

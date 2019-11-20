@@ -5,7 +5,7 @@ import UserActivation from "./userActivation";
 function Index() {
   return (
     <>
-      <UserActivation />
+      <UserActivation/>
     </>
   );
 }
