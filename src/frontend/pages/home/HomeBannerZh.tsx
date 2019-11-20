@@ -30,8 +30,8 @@ export default function(res: any){
       },
     })
   },[]);
-  const {url} = res;
-  const {zh_img:img=[]} = res.content[0];
+  const {url,content=[{}]} = res;
+  const {zh_img:img=[]} = content[0];
   return <div className={"swiper-container "+classes.main}>
     <div className="swiper-wrapper">
       {
