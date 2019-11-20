@@ -32,7 +32,10 @@ const useStyles = makeStyles({
   },
   item: {
     maxWidth: "90%",
-    boxSizing: "border-box"
+    boxSizing: "border-box",
+    "& p":{
+      whiteSpace: "pre-line",
+    }
   },
   itemBorder: {
     width: "100%",

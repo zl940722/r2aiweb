@@ -72,7 +72,7 @@ const useStyles = makeStyles({
         float:"none",
       },
       '& i':{
-        left:' -6.2rem',
+        left:' -3.7rem',
       },
       '& img':{
         float:'none',

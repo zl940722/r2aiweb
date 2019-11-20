@@ -4,9 +4,10 @@ import "./global.css";
 import Link from "next/link";
 import _ from "lodash";
 import classNames from "classnames";
-import { Menu } from "antd";
+import { Menu,Dropdown } from "antd";
 import Router from "next/router";
 import Avatar from "@material-ui/core/Avatar";
+import axios from "axios";
 
 const { SubMenu } = Menu;
 const useStyles = makeStyles({
@@ -35,6 +36,7 @@ const useStyles = makeStyles({
       top: 0,
       zIndex: 2,
       width: "100%",
+      minWidth:'1200px',
       background: "transparent",
       color: "#fff",
       "& span": {
@@ -48,6 +50,9 @@ const useStyles = makeStyles({
         "& li":{
           color:'#fff',
         }
+      },
+      "& a":{
+        color:"#fff",
       }
     },
     user: {
@@ -146,7 +151,7 @@ const menus: InterfaceMenu[] = [
       id: 81,
       name: "产品发布",
       children: null,
-      link: "/news/product"
+      link: "/news/release"
     },{
       id: 82,
       name: "参评获奖",
@@ -216,12 +221,26 @@ const Header = (props) => {
 
   const index = props.route === "/";
 
-
   const handleClick = e => {
     console.log("click ", e);
     setcurrent(e.key);
     Router.push(e.key);
   };
+
+  function logout(){
+    axios.delete("/user/logout");
+    location.href='/';
+  }
+
+  const menu = (
+    <Menu>
+      <Menu.Item>
+        <a rel="noopener noreferrer" href="javascript:" onClick={logout}>
+          退出登录
+        </a>
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
     <div className={classNames(classes.root, index ? classes.index : "")}>
@@ -244,7 +263,7 @@ const Header = (props) => {
           _.map(menus, (value: any, index) => {
             return (
               value.children ?
-                <SubMenu title={<span onClick={() => {
+                <SubMenu key={index} title={<span onClick={() => {
                   setcurrent(value.link);
                   Router.push(value.link);
                 }} className="submenu-title-wrapper"> {value.name}</span>
@@ -271,11 +290,10 @@ const Header = (props) => {
         <span className={classes.user}>
           {
             props.user.active ?
-              <span className={classes.avatar}>{props.user.email}</span> :
-              <div><a className={classes.login} href={"/login"}>
-                {/*<img width={66} src={"/static/images/home/login.png"}/>*/}
-                登录</a>
-                <a className={classes.res} href={"/register"}>注册</a></div>
+              <Dropdown overlay={menu}>
+                  <span className={classes.avatar}>{props.user.email}</span>
+              </Dropdown>:
+              <div><a className={classes.login} href={"/login"}>登录</a>  <a className={classes.res} href={"/register"}>注册</a></div>
           }
 
         </span>
@@ -287,13 +305,13 @@ const Header = (props) => {
 };
 
 
-Header.getInitialProps = async function() {
-  const userInfo: any = localStorage.getItem("userInfo");
-  const user: any = JSON.parse(userInfo);
-
-  return {
-    user
-  };
-};
+// Header.getInitialProps = async function() {
+//   const userInfo: any = localStorage.getItem("userInfo");
+//   const user: any = JSON.parse(userInfo);
+//
+//   return {
+//     user
+//   };
+// };
 
 export default Header;
