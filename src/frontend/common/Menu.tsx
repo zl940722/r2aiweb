@@ -235,6 +235,11 @@ const Header = (props) => {
   const menu = (
     <Menu>
       <Menu.Item>
+        <Link href='/modifyPassword'>
+          修改密码
+        </Link>
+      </Menu.Item>
+      <Menu.Item>
         <a rel="noopener noreferrer" href="javascript:" onClick={logout}>
           退出登录
         </a>
@@ -281,8 +286,6 @@ const Header = (props) => {
                 : <Menu.Item key={value.link}>
                   {value.name}
                 </Menu.Item>
-
-
             );
           })
         }
@@ -295,23 +298,11 @@ const Header = (props) => {
               </Dropdown>:
               <div><a className={classes.login} href={"/login"}>登录</a>  <a className={classes.res} href={"/register"}>注册</a></div>
           }
-
         </span>
-
       </Menu>
     </div>
-
   );
 };
 
-
-// Header.getInitialProps = async function() {
-//   const userInfo: any = localStorage.getItem("userInfo");
-//   const user: any = JSON.parse(userInfo);
-//
-//   return {
-//     user
-//   };
-// };
 
 export default Header;
