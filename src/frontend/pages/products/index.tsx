@@ -5,12 +5,12 @@ import ProductAbout from "./ProductAbout";
 import ContentBanner from "./ContentBanner";
 import ProductGrids from "./ProductGrids";
 
-function Products() {
+function Products(res) {
   return (
     <>
       <ProductBanner />
       <ProductAbout />
-      <ContentBanner />
+      <ContentBanner {...res} />
       <ProductGrids />
     </>
   );

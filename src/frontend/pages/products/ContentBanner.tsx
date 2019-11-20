@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/styles";
 
 import { Typography } from "@material-ui/core";
 import { Grommet, Box, Button } from "grommet";
+import Router from "next/router";
 
 const useStyles = makeStyles({
   root: {
@@ -60,7 +61,18 @@ const customTheme = {
 };
 
 export default function ContentBanner(res: any) {
+  console.log(res, "dsadsa");
   const classes = useStyles();
+  const toBuy = () => {
+
+    Router.push({
+      pathname: "/toUse",
+      query: {
+        id: res.user.user.id
+      }
+    });
+  };
+
   return (
     <div
       className={classes.root}
@@ -75,6 +87,8 @@ export default function ContentBanner(res: any) {
           <Box align="center" pad="medium">
             <Button
               hoverIndicator
+              disabled={!res.user.user.active}
+              onClick={toBuy}
               label={"立即试用"}
               className={classes.button}
             />
