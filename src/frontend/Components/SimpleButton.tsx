@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme: any) =>
     button: {
       padding: "0 4.275rem",
       border: "0.0625rem solid #D3323E",
-      backgroundColor: "none !important",
+      backgroundColor: "transparent",
       color: "#D3323E"
     }
   })

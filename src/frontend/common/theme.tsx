@@ -18,14 +18,13 @@ const theme = createMuiTheme({
     }
   },
   overrides: {
-    MuiAvatar: {
-      root: {
-        width: "auto",
-        background: "#0c151a !important",
-        height: "auto",
-        borderRadius: "none"
-      }
-    },
+    // MuiAvatar: {
+    //   root: {
+    //     width: "auto",
+    //     height: "auto",
+    //     borderRadius: "none"
+    //   }
+    // },
     MuiSelect: {
       selectMenu: {
         height: '31px !important',

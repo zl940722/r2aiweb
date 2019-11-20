@@ -29,7 +29,6 @@ const useStyles = makeStyles({
     },
     avatar: {
       margin: 10,
-      background: "#304057"
     },
     index: {
       position: "absolute",
@@ -272,7 +271,7 @@ const Header = (props) => {
         <span className={classes.user}>
           {
             props.user.active ?
-              <Avatar className={classes.avatar}>{props.user.email}</Avatar> :
+              <span className={classes.avatar}>{props.user.email}</span> :
               <a className={classes.login} href={"/login"}><img width={66} src={"/static/images/home/login.png"}/>登录</a>
           }
           <a className={classes.res} href={"/register"}>注册</a>
