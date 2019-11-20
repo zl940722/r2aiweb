@@ -69,6 +69,7 @@ function HomeAbout() {
             <Grid item sm={4} xs={12}>
               <div className={classes.item}>
                 <img
+                  className={'img'}
                   src="/static/images/team/1.png"
                   width={"100%"}
                   alt="R2.ai"
@@ -85,6 +86,7 @@ function HomeAbout() {
             <Grid item sm={4} xs={12}>
               <div className={classes.item}>
                 <img
+                  className={'img'}
                   src="/static/images/team/2.png"
                   width={"100%"}
                   alt="R2.ai"
@@ -117,6 +119,7 @@ function HomeAbout() {
               <Grid item sm={4} xs={12}>
                 <div className={classes.item}>
                   <img
+                    className={'img'}
                     src="/static/images/team/1.png"
                     width={"100%"}
                     alt="R2.ai"
@@ -133,6 +136,7 @@ function HomeAbout() {
               <Grid item sm={4} xs={12}>
                 <div className={classes.item}>
                   <img
+                    className={'img'}
                     src="/static/images/team/3.png"
                     width={"100%"}
                     alt="R2.ai"
@@ -146,6 +150,7 @@ function HomeAbout() {
               <Grid item sm={4} xs={12}>
                 <div className={classes.item}>
                   <img
+                    className={'img'}
                     src="/static/images/team/4.png"
                     width={"100%"}
                     alt="R2.ai"
@@ -165,6 +170,7 @@ function HomeAbout() {
             <Grid item sm={4} xs={12}>
               <div className={classes.item}>
                 <img
+                  className={'img'}
                   src="/static/images/team/5.png"
                   width={"100%"}
                   alt="R2.ai"
