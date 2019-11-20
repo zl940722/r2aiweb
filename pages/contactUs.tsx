@@ -69,7 +69,7 @@ const customTheme = {
     }
   }
 };
-export default function TextFields() {
+export default function ContactUs() {
   const classes = useStyles();
   const [values, setValues] = React.useState<any>({
     language: "zh-CN",
@@ -198,7 +198,11 @@ export default function TextFields() {
         </Grid>
       </form>
       <SimpleDialog
-        dialogInfo={dialogInfo} setOpen={setDialogOpen}/>
+        dialogInfo={dialogInfo} setOpen={() => setDialogOpen({
+        open: false,
+        content: "",
+        type: ""
+      })}/>
     </div>
   );
 }

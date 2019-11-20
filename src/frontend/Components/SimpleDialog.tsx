@@ -2,13 +2,9 @@ import React, { useEffect } from "react";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import SimpleButton from "./SimpleButton";
-import _ from "lodash";
-import clsx from "clsx";
 
 const info = {
   warning: "温馨提醒",
@@ -43,15 +39,13 @@ const useStyles = makeStyles((theme: Theme) => ({
 export default function SimpleDialog(res: any) {
   const classes = useStyles();
   const { dialogInfo: { open, content, type }, setOpen, className, disagreeText, agreeText } = res;
-  const handleClose = () => {
-    setOpen(false);
-  };
   const headerText = info[type];
   return (
     <div>
       <Dialog
         open={open}
         className={className}
+        disableAutoFocus
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -61,8 +55,8 @@ export default function SimpleDialog(res: any) {
         </DialogContent>
         <div className={classes.footer}>
           {disagreeText ?
-            <Button onClick={handleClose} color="primary">{disagreeText || info["Disagree"]}</Button> : null}
-          <SimpleButton onClick={handleClose} label={agreeText || info["Agree"]}
+            <Button onClick={setOpen} color="primary">{disagreeText || info["Disagree"]}</Button> : null}
+          <SimpleButton onClick={setOpen} label={agreeText || info["Agree"]}
                         autoFocus className={classes.button}/>
         </div>
       </Dialog>

@@ -1,4 +1,5 @@
 import React from "react";
+import _ from "lodash";
 import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles({
@@ -58,17 +59,16 @@ interface Interface {
   user;
   modeling;
 }
-export default function(props: Interface) {
-  const { user, modeling } = props;
-  const { zh: userNum = "1000" } = user.content.find(itm => itm.name === "num");
-  const { zh: userAdd = "1" } = user.content.find(itm => itm.name === "add");
 
-  const { zh: modelingNum = "1000" } = modeling.content.find(
-    itm => itm.name === "num"
-  );
-  const { zh: modelingAdd = "1" } = modeling.content.find(
-    itm => itm.name === "add"
-  );
+const findVariableByName = (model, name) => _.find(model, itm => itm.name === name) || {};
+
+export default function(props: Interface) {
+  const { user = {}, modeling = {} } = props;
+  const { zh: userNum = "1000" } = findVariableByName(user.content, "num");
+  const { zh: userAdd = "1" } = findVariableByName(user.content, "num");
+
+  const { zh: modelingNum = "1000" } = findVariableByName(modeling.content, "num");
+  const { zh: modelingAdd = "1" } = findVariableByName(modeling.content, "add");
 
   const classes = useStyles();
   return (
@@ -79,7 +79,7 @@ export default function(props: Interface) {
           <sup className={classes.sup}>+{userAdd}</sup>
         </p>
         <span>
-          <img src="/static/images/home/user.png" alt="" />
+          <img src="/static/images/home/user.png" alt=""/>
           用户数量
         </span>
       </div>
@@ -89,7 +89,7 @@ export default function(props: Interface) {
           <sup className={classes.sup}>+{modelingAdd}</sup>
         </p>
         <span>
-          <img src="/static/images/home/deploying.png" alt="" />
+          <img src="/static/images/home/deploying.png" alt=""/>
           建模数量
         </span>
       </div>

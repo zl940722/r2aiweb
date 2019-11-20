@@ -17,7 +17,7 @@ export default class MyApp extends App {
     super(props);
     this.state = {
       user: {
-        id:'',
+        id: "",
         email: "",
         active: false
       }
@@ -28,28 +28,13 @@ export default class MyApp extends App {
   componentDidMount() {
     axios.get("/user/login").then((data: any) => {
       const userInfo = data.data;
-      userInfo&&this.setState({ user: userInfo });
+      userInfo && this.setState({ user: userInfo });
     });
-
-    // console.log(window !== undefined);	//true
-    // const userInfo: any = JSON.parse(window.localStorage.getItem("userInfo") as any);
-    // if (userInfo === null) {
-    //   this.setState({
-    //     user: {
-    //       id: "",
-    //       email: "",
-    //       active: false
-    //     }
-    //   });
-    // } else {
-    //   this.setState({ user: userInfo });
-    // }
   }
 
   render() {
     const { Component, pageProps, router } = this.props as any;
-    const {user} = this.state as any;
-    // console.log(Component, pageProps, 111);
+    const { user }: any = this.state;
     return (
       <div style={{ minWidth: 1200 }}>
         <Head>
@@ -57,8 +42,8 @@ export default class MyApp extends App {
         </Head>
         <ThemeProvider theme={theme}>
           <CssBaseline/>
-          <Header {...this.state} route={router.route} user={user}/>
-          <Component user={this.state} {...pageProps} route={router.route}/>
+          <Header route={router.route} user={user}/>
+          <Component user={user} {...pageProps} route={router.route}/>
           <Footer/>
         </ThemeProvider>
       </div>

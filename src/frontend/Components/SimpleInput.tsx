@@ -55,7 +55,6 @@ const SimpleInput = (res: any) => {
         </div> : null
       }
       <TextField
-        id="standard-dense"
         variant="outlined"
         fullWidth={true}
         className={clsx(classes.textField, className)}

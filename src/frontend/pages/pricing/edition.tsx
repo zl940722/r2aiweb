@@ -146,7 +146,7 @@ function Pricing(res: any) {
         Router.push({
           pathname: "/toUse",
           query: {
-            id: res.user.user.id
+            id: res.user.id
           }
         });
       } else if (id === 3) {
@@ -192,7 +192,7 @@ function Pricing(res: any) {
                       <Grommet className={classes.buttonWrap} theme={customTheme}>
                         <Button
                           hoverIndicator
-                          disabled={!res.user.user.active}
+                          disabled={!res.user.active}
                           label={value.button_zh}
                           className={classes.button}
                           onClick={toBuy(value.id, value)}

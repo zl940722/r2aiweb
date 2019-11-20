@@ -263,7 +263,7 @@ const Header = (props) => {
           _.map(menus, (value: any, index) => {
             return (
               value.children ?
-                <SubMenu title={<span onClick={() => {
+                <SubMenu key={index} title={<span onClick={() => {
                   setcurrent(value.link);
                   Router.push(value.link);
                 }} className="submenu-title-wrapper"> {value.name}</span>
