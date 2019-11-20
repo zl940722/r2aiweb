@@ -165,6 +165,7 @@ export default function TextFields() {
   const __captcha: any = useRef(null);
   const [forget, upForget]: any = useReducer((state,action)=>{
       setValues({});
+      setCaptchas(Date.now());
       return action;
   },false);
 
@@ -183,12 +184,14 @@ export default function TextFields() {
     axios
       .put("/user/login", values)
       .then((res: any) => {
-        if (res.status === 200) {
-          axios.get("/user/login").then((data: any) => {
-            localStorage.setItem("userInfo", JSON.stringify(data.data));
-            Router.push("/loginSucess");
-          });
-        }
+        location.href = '/';
+        // Router.push("/loginSucess");
+        // if (res.status === 200) {
+        //   axios.get("/user/login").then((data: any) => {
+        //     localStorage.setItem("userInfo", JSON.stringify(data.data));
+        //     Router.push("/loginSucess");
+        //   });
+        // }
       })
       .catch((err: any) => {
         const result =
