@@ -9,7 +9,6 @@ RUN yarn config set registry https://registry.npm.taobao.org \
 && yarn --production
 
 COPY . $PROJECT_DIR
-
-RUN npm run build:all
+#RUN npm run build
 
 CMD npm start
