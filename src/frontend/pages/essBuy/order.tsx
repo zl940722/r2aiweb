@@ -18,6 +18,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Router from "next/router";
 import SimpleInput from "../../Components/SimpleInput";
 import SimpleSelect from "../../Components/SimpleSelectCountry";
+import SimpleButton from "../../Components/SimpleButton";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -66,12 +67,9 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingTop: "2.5rem"
     },
     button: {
-      width: "10.5rem",
-      height: "3.2rem",
-      fontWeight: "bold",
-      border: "1px solid #D3323E",
-      background: "#F5F5F5 !important",
-      color: "#D3323E"
+      display: "flex",
+      justifyContent: "center",
+      marginTop: "2.5rem"
     },
     captcha: {
       position: "relative"
@@ -100,11 +98,11 @@ const customTheme = {
 
 const pay = [
   {
-    value: "Monthly",
-    label: "月租"
+    code: "Monthly",
+    name: "月租"
   }, {
-    value: "Annual",
-    label: "年租"
+    code: "Annual",
+    name: "年租"
   }
 ];
 
@@ -408,17 +406,13 @@ export default function TextFields(props: any) {
 
             </div>
 
-            {/*<p>本人同意签署贵公司的<a href="www.baidu.com">SAAS用户协议</a></p>*/}
-            <Grommet theme={customTheme} className={classes.buttonWrap}>
-              <Box align="center" pad="medium">
-                <Button
-                  onClick={buy}
-                  hoverIndicator
-                  label={"提交订单"}
-                  className={classes.button}
-                />
-              </Box>
-            </Grommet>
+            <p>本人同意签署贵公司的<a href="/agreement">SAAS用户协议</a></p>
+            <div className={classes.button}>
+              <SimpleButton
+                onClick={buy}
+                label={"提交订单"}
+              />
+            </div>
           </Grid>
         </Grid>
         <div>
@@ -436,46 +430,50 @@ export default function TextFields(props: any) {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={() => {
-                setOpen(false);
-              }} color="primary">
-                取消
-              </Button>
-              <Button onClick={() => {
-                console.log("modalSubmit", resData);
-                if (modal.type === "alipay") {
-                  axios.get("/alipay/orderQuery", {
-                    params: { orderId: resData.data.orderId }
-                  }).then(result => {
-                    Router.push("/paysuccess");
-                    // history.push('/paysuccess');
-                  }).catch(() => {
-                    console.log("失败");
-                  });
-                } else if (modal.type === "unionPay") {
-                  axios.get("/unionPay/orderQuery", {
-                    params: { orderId: resData.data.orderId }
-                  }).then(result => {
-                    console.log("unionPay");
-                    Router.push("/paysuccess");
-                  }).catch(() => {
-                    console.log("失败");
-                  });
-                } else if (modal.type === "wechat") {
-                  axios.get("/wechat/orderQuery", {
-                    params: { orderId: resData.data.orderId }
-                  }).then(result => {
-                    console.log("wechat");
-                    Router.push("/paysuccess");
-                  }).catch(() => {
-                    console.log("失败");
-                  });
-                } else if ((modal.type === "error")) {
+              <SimpleButton
+                style={{ height: "2.375rem",padding:'10px !important'}}
+                onClick={() => {
                   setOpen(false);
-                }
-              }} color="primary" autoFocus>
-                确定
-              </Button>
+                }}
+                label={"取消"}
+              />
+              <SimpleButton
+                style={{ height: "2.375rem",}}
+                onClick={() => {
+                  console.log("modalSubmit", resData);
+                  if (modal.type === "alipay") {
+                    axios.get("/alipay/orderQuery", {
+                      params: { orderId: resData.data.orderId }
+                    }).then(result => {
+                      Router.push("/paysuccess");
+                      // history.push('/paysuccess');
+                    }).catch(() => {
+                      console.log("失败");
+                    });
+                  } else if (modal.type === "unionPay") {
+                    axios.get("/unionPay/orderQuery", {
+                      params: { orderId: resData.data.orderId }
+                    }).then(result => {
+                      console.log("unionPay");
+                      Router.push("/paysuccess");
+                    }).catch(() => {
+                      console.log("失败");
+                    });
+                  } else if (modal.type === "wechat") {
+                    axios.get("/wechat/orderQuery", {
+                      params: { orderId: resData.data.orderId }
+                    }).then(result => {
+                      console.log("wechat");
+                      Router.push("/paysuccess");
+                    }).catch(() => {
+                      console.log("失败");
+                    });
+                  } else if ((modal.type === "error")) {
+                    setOpen(false);
+                  }
+                }}
+                label={"确定"}
+              />
             </DialogActions>
           </Dialog>
         </div>

@@ -69,12 +69,9 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingTop: "2.5rem"
     },
     button: {
-      width: "10.5rem",
-      height: "3.2rem",
-      fontWeight: "bold",
-      border: "1px solid #D3323E",
-      background: "#F5F5F5 !important",
-      color: "#D3323E"
+      display: "flex",
+      justifyContent: "center",
+      marginTop: "2.5rem"
     },
     captcha: {
       position:'relative'
@@ -417,21 +414,14 @@ export default function TextFields(props: any) {
 
             </div>
 
-            {/*<p>本人同意签署贵公司的<a href="www.baidu.com">SAAS用户协议</a></p>*/}
-            <Grommet theme={customTheme} className={classes.buttonWrap}>
-              <Box align="center" pad="medium">
-                {/*<SimpleButton*/}
-                {/*  onClick={buy}*/}
-                {/*  label={"提交订单"}*/}
-                {/*/>*/}
-                <Button
-                  onClick={buy}
-                  hoverIndicator
-                  label={"提交订单"}
-                  className={classes.button}
-                />
-              </Box>
-            </Grommet>
+            <p>本人同意签署贵公司的<a href="/agreement">SAAS用户协议</a></p>
+
+            <div className={classes.button}>
+              <SimpleButton
+                onClick={buy}
+                label={"提交订单"}
+              />
+            </div>
           </Grid>
         </Grid>
         <div>

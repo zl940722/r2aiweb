@@ -20,7 +20,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 
 import SimpleInput from "../../Components/SimpleInput";
 import SimpleSelect from "../../Components/SimpleSelectCountry";
-import CommonButton from "../../Components/CommonButton";
+import CommonButton from "../../Components/SimpleButton";
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -66,12 +66,9 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingTop: "2.5rem"
     },
     button: {
-      width: "10.5rem",
-      height: "3.2rem",
-      fontWeight: "bold",
-      border: "1px solid #D3323E",
-      background: "#F5F5F5 !important",
-      color: "#D3323E"
+      display: "flex",
+      justifyContent: "center",
+      marginTop: "2.5rem"
     },
     main: {
       display: "flex",
@@ -509,8 +506,13 @@ export default function TextFields() {
               {/*       setCaptchas(new Date().getTime());*/}
               {/*     }}*/}
               {/*/>*/}
-              <p>本人同意签署贵公司的<a href="">SAAS用户协议</a></p>
-              <CommonButton label={"立即注册"} onClick={submit}/>
+              <p>本人同意签署贵公司的<a href="/agreement">SAAS用户协议</a></p>
+              <div className={classes.button}>
+                <CommonButton
+                  onClick={submit}
+                  label={"立即注册"}
+                />
+              </div>
             </Grid>
           </Grid>
         </Grid>
