@@ -272,7 +272,10 @@ const Header = (props) => {
           {
             props.user.active ?
               <span className={classes.avatar}>{props.user.email}</span> :
-              <div><a className={classes.login} href={"/login"}>登录</a>  <a className={classes.res} href={"/register"}>注册</a></div>
+              <div><a className={classes.login} href={"/login"}>
+                {/*<img width={66} src={"/static/images/home/login.png"}/>*/}
+                登录</a>
+                <a className={classes.res} href={"/register"}>注册</a></div>
           }
 
         </span>

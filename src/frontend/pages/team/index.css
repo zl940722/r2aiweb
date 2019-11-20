@@ -10,7 +10,8 @@ img {
 }
 
 .item_div{
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
     font-size: 14px;
     position: absolute;
     color: #fff;
@@ -19,7 +20,7 @@ img {
     opacity: 0;
 }
 .item_div p{
-
+   padding: 0 2px;
     /*display: none;*/
 }
 .item_div:hover {
