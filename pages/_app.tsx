@@ -29,7 +29,10 @@ export default class MyApp extends App {
     axios.get("/user/login").then((data: any) => {
       const userInfo = data.data;
       userInfo && this.setState({ user: userInfo });
+    }).catch((err: any) => {
+      console.log(err);
     });
+    ;
   }
 
   render() {
