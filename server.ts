@@ -9,7 +9,7 @@ const messageService = process.env.MESSAGE_SERVICE || "http://localhost:8088";
 const authService = process.env.AUTH_SERVICE || "http://localhost:8088";
 const payService = process.env.PAY_SERVICE || "http://192.168.0.105:8090";
 const payBff = process.env.PAY_BFF || "http://192.168.0.105:8091";
-const STRAPI_URL = process.env.STRAPI_URL || "http://localhost:1337";
+const strapiService = process.env.STRAPI_URL || "http://localhost:1337";
 const basicPrice = process.env.BASIC_PRICE || 199.98;
 const basicPriceYear = process.env.BASIC_PRICE_YEAR || 2159.78;
 const essentialPrice = process.env.ESSENTIAL_PRICE || 1999.98;
@@ -33,75 +33,47 @@ const proxies = (target, org, url) => {
   });
 };
 
-const captcha = proxies(authService, "/user/captcha", "/captcha");
+const authServiceProxy = (originUri, uri) => proxies(authService, originUri, uri);
 
-const upload = proxies(STRAPI_URL, "/", "/");
+const strapiServiceProxy = (originUri, uri) => proxies(strapiService, originUri, uri);
 
-const login = proxies(authService, "/user/login", "/");
+const payServiceProxy = (originUri, uri) => proxies(payService, originUri, uri);
 
-const logout = proxies(authService, "/user/logout", "/");
+const payBffProxy = (originUri, uri) => proxies(payBff, originUri, uri);
 
-const forget = proxies(authService, "/user/forget", "/forget");
-
-const register = proxies(payService, "/user/register", "/user/register");
-
-const active = proxies(payService, "/active", "/user/activeUser");
-
-const alipayCreateCharge = proxies(payBff, "/alipay/createCharge", "/alipay/createCharge");
-
-const alipayOrderQuery = proxies(payBff, "/alipay/orderQuery", "/alipay/orderQuery");
-
-const unionPayCreateCharge = proxies(payBff, "/unionPay/createCharge", "/unionPay/createCharge");
-
-const unionPayOrderQuery = proxies(payBff, "/unionPay/orderQuery", "/unionPay/orderQuery");
-
-const wechatCreateCharge = proxies(payBff, "/wechat/createCharge", "/wechat/createCharge");
-
-const wechatOrderQuery = proxies(payBff, "/wechat/orderQuery", "/wechat/orderQuery");
-
-const applyProbation = proxies(payService, "/probation/applyProbation", "/probation/applyProbation");
-
-const sendMail = proxies(messageService, "user/sendMail", "mailer/sendMail");
-
+const messageServiceProxy = (originUri, uri) => proxies(messageService, originUri, uri);
 
 app.prepare()
   .then(() => {
     const server = express();
 
-    server.get("/hello", function(req: any, res: any) {
-      res.send("hello");
-    });
+    server.use("/uploads", strapiServiceProxy("/", "/"));
+    server.use("user/sendMail", messageServiceProxy("user/sendMail", "mailer/sendMail"));
+    server.use("/user/login", authServiceProxy("/user/login", "/"));
+    server.delete("/user/logout", authServiceProxy("/user/logout", "/"));
+    server.post("/user/forget", authServiceProxy("/user/forget", "/forget"));
+    server.use("/user/captcha", authServiceProxy("/user/captcha", "/captcha"));
+    server.use("/user/register", payServiceProxy("/user/register", "/user/register"));
+    server.use("/active", payServiceProxy("/active", "/user/activeUser"));
+
+    server.use("/active", payServiceProxy("/user/forgetPassword", "/user/forgetPassword"));
+
+    server.use("/active", payServiceProxy("/user/resetPassword", "/user/resetPassword"));
+
+    server.use("/probation/applyProbation", payServiceProxy("/probation/applyProbation", "/probation/applyProbation"));
 
 
-    server.use("/user/login", login);
+    server.use("/alipay/createCharge", payBffProxy("/alipay/createCharge", "/alipay/createCharge"));
 
-    server.delete("/user/logout", logout);
+    server.use("/alipay/orderQuery", payBffProxy("/alipay/orderQuery", "/alipay/orderQuery"));
 
-    server.post("/user/forget", forget);
+    server.use("/unionPay/createCharge", payBffProxy("/unionPay/createCharge", "/unionPay/createCharge"));
 
-    server.use("/user/register", register);
+    server.use("/unionPay/orderQuery", payBffProxy("/unionPay/orderQuery", "/unionPay/orderQuery"));
 
-    server.use("/active", active);
+    server.use("/wechat/createCharge", payBffProxy("/wechat/createCharge", "/wechat/createCharge"));
 
-    server.use("/uploads", upload);
-
-    server.use("/user/captcha", captcha);
-
-    server.use("/alipay/createCharge", alipayCreateCharge);
-
-    server.use("/alipay/orderQuery", alipayOrderQuery);
-
-    server.use("/unionPay/createCharge", unionPayCreateCharge);
-
-    server.use("/unionPay/orderQuery", unionPayOrderQuery);
-
-    server.use("/wechat/createCharge", wechatCreateCharge);
-
-    server.use("/wechat/orderQuery", wechatOrderQuery);
-
-    server.use("/probation/applyProbation", applyProbation);
-
-    server.use("user/sendMail", sendMail);
+    server.use("/wechat/orderQuery", payBffProxy("/wechat/orderQuery", "/wechat/orderQuery"));
 
     server.get("/price", (req, res) => {
       res.send({
