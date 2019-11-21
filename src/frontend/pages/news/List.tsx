@@ -1,9 +1,9 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
-import url from "../../../../http";
 import Router from "next/router";
 import { Typography, Grid } from "@material-ui/core";
 import moment from "moment";
+import { Empty } from 'antd';
 import "./news.css";
 
 const useStyles = makeStyles({
@@ -59,7 +59,7 @@ const useStyles = makeStyles({
   }
 });
 
-function HomeAbout(res: any) {
+export default function(res: any) {
   const { list = [], route } = res;
   const classes = useStyles();
   const detail = (id: any) => {
@@ -69,35 +69,40 @@ function HomeAbout(res: any) {
     };
   };
 
-  return <div className={classes.content} id='news'>
-    {list.map((value: any, index: any) => (
-      <Grid key={index} container className={classes.items} direction={"row"} onClick={detail(value.id)}>
-        <Grid item sm={4} xs={12}>
-          <div className={classes.item} style={{ textAlign: "center" }}>
-            <img
-              src={(value.image || {}).url}
-              alt="R2.ai"
-            />
-          </div>
+  function main() {
+    if(list.length){
+      return list.map((value: any, index: any) => (
+        <Grid key={index} container className={classes.items} direction={"row"} onClick={detail(value.id)}>
+          <Grid item sm={4} xs={12}>
+            <div className={classes.item} style={{ textAlign: "center" }}>
+              <img
+                src={(value.image || {}).url}
+                alt="R2.ai"
+              />
+            </div>
+          </Grid>
+          <Grid item sm={8} xs={12}>
+            <div className={classes.item} style={{ paddingLeft: "2.5rem" }}>
+              <Typography variant={"h5"} className={classes.itemTitle}>
+                {value.title}
+              </Typography>
+              <Typography variant={"body1"} className={classes.itemDes}>
+                {moment(value.publishTime).format("YYYY-MM-DD")}<i>|</i>
+                <span className={value.type}/>
+              </Typography>
+              <Typography variant={"body1"} className={classes.itemTitle2}>
+                {value.description}
+              </Typography>
+            </div>
+          </Grid>
+          <div className={classes.itemDashed}>{}</div>
         </Grid>
-        <Grid item sm={8} xs={12}>
-          <div className={classes.item} style={{ paddingLeft: "2.5rem" }}>
-            <Typography variant={"h5"} className={classes.itemTitle}>
-              {value.title}
-            </Typography>
-            <Typography variant={"body1"} className={classes.itemDes}>
-              {moment(value.publishTime).format("YYYY-MM-DD")}<i>|</i>
-              <span className={value.type}/>
-            </Typography>
-            <Typography variant={"body1"} className={classes.itemTitle2}>
-              {value.description}
-            </Typography>
-          </div>
-        </Grid>
-        <div className={classes.itemDashed}>{}</div>
-      </Grid>
-    ))}
-  </div>;
-}
+      ));
+    }
+    return <Empty />
+  }
 
-export default HomeAbout;
+  return <div className={classes.content} id='news'>
+    {main()}
+  </div>;
+};
