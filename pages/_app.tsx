@@ -31,8 +31,7 @@ export default class MyApp extends App {
       userInfo && this.setState({ user: userInfo });
     }).catch((err: any) => {
       console.log(err);
-    });
-    ;
+    })
   }
 
   render() {
