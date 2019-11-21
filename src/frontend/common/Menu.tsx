@@ -269,7 +269,7 @@ const Header = (props) => {
               value.children ?
                 <SubMenu key={index} title={<span onClick={() => {
                   setcurrent(value.link);
-                  Router.push(value.link);
+                  value.link&&Router.push(value.link);
                 }} className="submenu-title-wrapper"> {value.name}</span>
                 }
                 >
