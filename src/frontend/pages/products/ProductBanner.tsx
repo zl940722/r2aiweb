@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme: any) =>
 );
 
 
-function ProductBanner() {
+function ProductBanner(res: any) {
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
