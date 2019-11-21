@@ -90,7 +90,11 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: "1.5rem",
       textAlign: "center",
       borderRadius: "0.2rem",
-      display: "inline-block"
+      display: "inline-block",
+      '&:hover':{
+        background: "#193169",
+        color: "#fff !important",
+      }
     },
     forget: {
       color: "#5C8EE9",
