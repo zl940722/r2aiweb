@@ -107,7 +107,7 @@ export default function(res: any) {
           onChange={changePage}
           showQuickJumper
           itemRender={itemRender}
-          showTotal={total => `共 ${total} 页`}
+          showTotal={total => `共 ${parseInt(String(total / 5))} 页`}
         />
       </section>
     </div>

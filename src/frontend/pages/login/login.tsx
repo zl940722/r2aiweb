@@ -1,19 +1,7 @@
 import React, { ReactElement, useEffect, useReducer, useRef, useState } from "react";
-import clsx from "clsx";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import { Grid } from "@material-ui/core";
-import { Grommet, Box, Button } from "grommet";
 import axios from "axios";
-import Router from "next/router";
 import { Input, message, Modal, PageHeader } from "antd";
-
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import SimpleDialog from "../../Components/SimpleDialog";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -43,7 +31,6 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: "2.5rem auto",
       padding: "4rem",
       borderRadius: ".3rem",
-      // boxShadow: ".2rem .2rem .2rem #ddd",
       cursor: "pointer"
     },
     buttonWrap: {
@@ -114,31 +101,12 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   })
 );
-
 interface State {
   email?: string;
   password?: string;
   captcha?: string;
 }
-
-// const customTheme = {
-//   button: {
-//     border: {
-//       radius: "1.6rem"
-//     },
-//     color: "#FFF"
-//   },
-//   global: {
-//     hover: {
-//       color: "#2C4159",
-//       background: "#FFF"
-//     },
-//     colors: {
-//       brand: "#FFF"
-//     }
-//   }
-// };
-export default function TextFields() {
+export default function ():ReactElement {
   const classes = useStyles();
   const [values, setValues] = useState<State>({
     email: "",
@@ -177,21 +145,11 @@ export default function TextFields() {
     } else if (!values.captcha) {
       return _captcha.current.focus();
     }
-    // seterror({
-    //   email: false
-    // });
     axios.defaults.withCredentials = true;
     axios
       .put("/user/login", values)
-      .then((res: any) => {
+      .then(() => {
         location.href = "/";
-        // Router.push("/loginSucess");
-        // if (res.status === 200) {
-        //   axios.get("/user/login").then((data: any) => {
-        //     localStorage.setItem("userInfo", JSON.stringify(data.data));
-        //     Router.push("/loginSucess");
-        //   });
-        // }
       })
       .catch((err: any) => {
         const result =
@@ -202,13 +160,6 @@ export default function TextFields() {
           }[err.response.data] || err.response.data;
 
         message.error(result);
-
-        // setError(err.response.data);
-        // setOpen(true);
-        // setModal({
-        //   content: err.response.data,
-        //   type: "error"
-        // });
         setCaptchas(new Date().getTime());
       });
   };

@@ -75,7 +75,7 @@ function HomeAbout(res: any) {
         <Grid item sm={4} xs={12}>
           <div className={classes.item} style={{ textAlign: "center" }}>
             <img
-              src={url + (value.image || {}).url}
+              src={(value.image || {}).url}
               alt="R2.ai"
             />
           </div>

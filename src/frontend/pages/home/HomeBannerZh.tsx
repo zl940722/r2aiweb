@@ -30,13 +30,12 @@ const HomeBannerZh = (res: any) => {
       }
     });
   }, []);
-  const { url } = res;
   const img = _.get(res, "content.0.zh_img", []);
   return <div className={"swiper-container " + classes.main}>
     <div className="swiper-wrapper">
       {
         img.map(itm => <div className="swiper-slide">
-          <img width='100%' src={url + itm.url} alt=""/>
+          <img width='100%' src={itm.url} alt=""/>
         </div>)
       }
     </div>

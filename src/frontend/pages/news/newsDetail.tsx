@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/styles";
 import moment from "moment";
 import CommonButton from "../../Components/CommonButton";
 import Router from "next/router";
+import { PageHeader } from "antd";
 
 const useStyles = makeStyles({
   content: {
@@ -104,9 +105,18 @@ export default function(res: any) {
   return (
     <>
       <div className={classes.content}>
-        <a href="javascript:" className={classes.back} onClick={back}>
-          &lt;-- 返回{route.includes("news") ? "资讯" : "社区"}列表
-        </a>
+        {/*<a href="javascript:" className={classes.back} onClick={back}>*/}
+        {/*  &lt;-- 返回{route.includes("news") ? "资讯" : "社区"}列表*/}
+        {/*</a>*/}
+        <PageHeader
+          style={{
+            left: "-1.5rem",
+            position: "relative",
+          }}
+          onBack={back}
+          title={`返回${route.includes("news") ? "资讯" : "社区"}列表`}
+          subTitle=""
+        />
         <Grid container className={classes.items} direction={"row"}>
           <Grid item sm={12} xs={12}>
             <div className={classes.item}>
