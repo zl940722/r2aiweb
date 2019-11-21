@@ -45,7 +45,12 @@ export default class MyApp extends App {
         <ThemeProvider theme={theme}>
           <CssBaseline/>
           <Header route={router.route} user={user}/>
-          <Component user={user} {...pageProps} route={router.route}/>
+          <section style={{
+            // minHeight:'calc(100vh - 140px - 16.125rem)',
+            minHeight:'calc(100vh - 140px - 5.5rem)',
+          }} >
+            <Component user={user} {...pageProps} route={router.route}/>
+          </section>
           <Footer/>
         </ThemeProvider>
       </div>
