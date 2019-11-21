@@ -1,4 +1,16 @@
-/node_modules
+# dependencies
+
+node_modules/
 */**/*.ts
 */**/*.tsx
+
 !/.next
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# vscode
+.vscode
+
+*.md
