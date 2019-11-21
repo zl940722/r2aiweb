@@ -71,8 +71,13 @@ export default function(res: any) {
 
   function main() {
     if(list.length){
-      return list.map((value: any, index: any) => (
-        <Grid key={index} container className={classes.items} direction={"row"} onClick={detail(value.id)}>
+      return list.map((value: any, index: any) => {
+        const Time = ()=>{
+          if(value.publishTime){
+            return <>{moment(value.publishTime).format("YYYY-MM-DD")}<i>|</i></>
+          }
+        };
+        return <Grid key={index} container className={classes.items} direction={"row"} onClick={detail(value.id)}>
           <Grid item sm={4} xs={12}>
             <div className={classes.item} style={{ textAlign: "center" }}>
               <img
@@ -87,7 +92,7 @@ export default function(res: any) {
                 {value.title}
               </Typography>
               <Typography variant={"body1"} className={classes.itemDes}>
-                {moment(value.publishTime).format("YYYY-MM-DD")}<i>|</i>
+                {Time()}
                 <span className={value.type}/>
               </Typography>
               <Typography variant={"body1"} className={classes.itemTitle2}>
@@ -97,7 +102,7 @@ export default function(res: any) {
           </Grid>
           <div className={classes.itemDashed}>{}</div>
         </Grid>
-      ));
+      });
     }
     return <Empty />
   }

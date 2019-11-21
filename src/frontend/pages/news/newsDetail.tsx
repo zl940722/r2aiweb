@@ -123,7 +123,7 @@ export default function(res: any) {
               <Typography variant={"h5"} className={classes.itemTitle}>
                 {news.title || ""}
               </Typography>
-              <Typography variant={"body1"} className={classes.itemDes}>
+              <Typography variant={"body1"} className={classes.itemDes} style={{display:(news.publishTime?'':'none')}}>
                 发布日期:{moment(news.publishTime).format("YYYY-MM-DD")}
               </Typography>
               <Typography variant={"body1"} className={classes.body}>
