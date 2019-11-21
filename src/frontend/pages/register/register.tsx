@@ -238,6 +238,7 @@ export default function TextFields() {
           }
         }).catch((err: any) => {
         setOpen(true);
+        console.log(err.response.data)
         setModal({
           content: err.response.data,
           type: "error"
@@ -533,7 +534,7 @@ export default function TextFields() {
           </Button>
           <Button onClick={() => {
             setOpen(false);
-          }} color="primary" autoFocus>
+          }} color="primary">
             确定
           </Button>
         </DialogActions>

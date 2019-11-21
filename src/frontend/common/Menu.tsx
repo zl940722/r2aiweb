@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+
 import { makeStyles } from "@material-ui/styles";
 import "./global.css";
 import Link from "next/link";
@@ -215,11 +216,19 @@ const menus: InterfaceMenu[] = [
 ];
 
 const Header = (props) => {
+
+
   // @ts-ignore
   const classes = useStyles();
+
   const [current, setcurrent] = React.useState("/");
 
   const index = props.route === "/";
+
+  useEffect(() => {
+    setcurrent(props.route);
+  }, []);
+
 
   const handleClick = e => {
     setcurrent(e.key);
@@ -230,6 +239,7 @@ const Header = (props) => {
     axios.delete("/user/logout");
     location.href = "/";
   }
+
 
   const menu = (
     <Menu>
@@ -269,7 +279,7 @@ const Header = (props) => {
               value.children ?
                 <SubMenu key={index} title={<span onClick={() => {
                   setcurrent(value.link);
-                  value.link&&Router.push(value.link);
+                  value.link && Router.push(value.link);
                 }} className="submenu-title-wrapper"> {value.name}</span>
                 }
                 >

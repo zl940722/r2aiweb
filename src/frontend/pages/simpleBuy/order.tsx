@@ -456,7 +456,7 @@ export default function TextFields(props: any) {
                 } else if ((modal.type === "error")) {
                   setOpen(false);
                 }
-              }} color="primary" autoFocus>
+              }} color="primary" >
                 确定
               </Button>
             </DialogActions>
