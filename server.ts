@@ -48,6 +48,7 @@ app.prepare()
     const server = express();
 
     server.use("/uploads", strapiServiceProxy("/", "/"));
+    server.use("/strapi", strapiServiceProxy("/strapi", "/"));
     server.use("user/sendMail", messageServiceProxy("user/sendMail", "mailer/sendMail"));
     server.use("/user/login", authServiceProxy("/user/login", "/"));
     server.delete("/user/logout", authServiceProxy("/user/logout", "/"));

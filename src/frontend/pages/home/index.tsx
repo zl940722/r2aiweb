@@ -32,6 +32,8 @@ function Home(res: any) {
     return data.name === "modeling";
   });
 
+
+
   return (
     <>
       {
