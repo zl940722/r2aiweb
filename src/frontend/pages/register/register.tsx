@@ -289,6 +289,7 @@ export default function TextFields() {
 
               <SimpleInput
                 label="密码"
+                type="password"
                 required={true}
                 value={values.password}
                 allowedLength={12}
@@ -456,7 +457,7 @@ export default function TextFields() {
                 value={values.phone}
                 label="联系电话"
                 required={true}
-                allowedLength={32}
+                allowedLength={11}
                 regex={/^[\s\S]*.*[^\s][\s\S]*$/}
                 helperText="联系电话不能为空"
                 className={classes.dense}
