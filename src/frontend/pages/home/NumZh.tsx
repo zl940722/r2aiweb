@@ -65,7 +65,7 @@ const findVariableByName = (model, name) => _.find(model, itm => itm.name === na
 export default function(props: Interface) {
   const { user = {}, modeling = {} } = props;
   const { zh: userNum = "1000" } = findVariableByName(user.content, "num");
-  const { zh: userAdd = "1" } = findVariableByName(user.content, "num");
+  const { zh: userAdd = "1" } = findVariableByName(user.content, "add");
 
   const { zh: modelingNum = "1000" } = findVariableByName(modeling.content, "num");
   const { zh: modelingAdd = "1" } = findVariableByName(modeling.content, "add");

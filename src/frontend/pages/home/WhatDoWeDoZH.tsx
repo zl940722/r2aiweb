@@ -5,7 +5,8 @@ const useStyles = makeStyles({
   content: {
     textAlign: "center",
     fontSize: "1rem",
-    paddingBottom: "7rem"
+    paddingBottom: "7rem",
+    marginTop:'5rem',
   },
   title: {
     color: "#333",

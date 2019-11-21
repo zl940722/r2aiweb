@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/styles";
 const useStyles = makeStyles({
   content: {
     textAlign: "center",
-    fontSize: "1rem"
+    fontSize: "1rem",
   },
   title: {
     color: "#333",
