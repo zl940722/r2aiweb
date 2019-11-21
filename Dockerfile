@@ -1,14 +1,11 @@
-FROM node:10.15.3-alpine
+FROM node:12-alpine
 LABEL maintainer="r2.ai"
 
 ENV PROJECT_DIR=/portal
 WORKDIR $PROJECT_DIR
 
-COPY package.json $PROJECT_DIR/package.json
+COPY . $PROJECT_DIR
 RUN yarn config set registry https://registry.npm.taobao.org \
 && yarn --production
-
-COPY . $PROJECT_DIR
-#RUN npm run build
 
 CMD npm start
