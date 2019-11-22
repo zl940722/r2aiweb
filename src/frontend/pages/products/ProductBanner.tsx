@@ -110,7 +110,7 @@ function ProductBanner(res: any) {
       <Modal className={classes.modal} open={open} onClose={onHandleClose}>
         <div className={classes.paper}>
           <video width={"100%"} controls autoPlay>
-            <source src="/static/images/home/20190830.mp4" type="video/mp4"/>
+            <source src="/static/images/home/20190830.ogv" type="video/mp4"/>
           </video>
         </div>
       </Modal>
