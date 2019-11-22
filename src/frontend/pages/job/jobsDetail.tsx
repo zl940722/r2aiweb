@@ -95,7 +95,7 @@ function HomeAbout(res: any) {
           </Grid>
         </div>
         <div className={classes.button}>
-          <a style={{border: '1px solid #D3323E', padding: '10px 40px', borderRadius: '36px', color: '#D3323E',height:'40px',lineHeight:'40px'}} href="test@163.com">立即申请</a>
+          <a style={{border: '1px solid #D3323E', padding: '0 40px', borderRadius: '36px', color: '#D3323E',height:'40px',lineHeight:'40px'}} href="mailto:lin.zhou@r2.ai">立即申请</a>
         </div>
 
       </div>
