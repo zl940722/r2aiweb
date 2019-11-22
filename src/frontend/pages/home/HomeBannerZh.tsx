@@ -34,7 +34,7 @@ const HomeBannerZh = (res: any) => {
   return <div className={"swiper-container " + classes.main}>
     <div className="swiper-wrapper">
       {
-        img.map(itm => <div className="swiper-slide">
+        img.map((itm,index) => <div key={index} className="swiper-slide">
           <img width='100%' src={itm.url} alt=""/>
         </div>)
       }
