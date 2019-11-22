@@ -132,9 +132,9 @@ export default function(res: any) {
             </div>
           </Grid>
           <dl className={classes.others}>
-            <dd style={{ display: (prev.id ? "" : "none") }}>上一篇<a href={`/newsDetail?${prev.id}`}>:{prev.title}</a>
+            <dd style={{ display: (prev.id ? "" : "none") }}>上一篇<a href={`/${link}/detail?${prev.id}`}>:{prev.title}</a>
             </dd>
-            <dd style={{ display: (next.id ? "" : "none") }}>下一篇<a href={`/newsDetail?${next.id}`}>:{next.title}</a>
+            <dd style={{ display: (next.id ? "" : "none") }}>下一篇<a href={`/${link}/detail?${next.id}`}>:{next.title}</a>
             </dd>
           </dl>
         </Grid>
