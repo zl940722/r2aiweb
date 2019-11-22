@@ -30,7 +30,7 @@ function AppDetailPartOne(props: any) {
         </Typography>
         <div className={classes.img}>
           <img
-            src={"/static/images/appDetail/我们能做什么.png"}
+            src={"/static/images/appDetail/12.png"}
             width={"100%"}
             alt="AI 保险"
           />
