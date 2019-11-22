@@ -92,12 +92,11 @@ function HomeAbout(res: any) {
               <p>{res.data.requirement_zh}</p>
 
             </div>
-            <div className={classes.button}>
-              <a style={{border: '1px solid #D3323E', padding: '10px 40px', borderRadius: '36px', color: '#D3323E'}} href="test@163.com">立即申请</a>
-            </div>
           </Grid>
         </div>
-
+        <div className={classes.button}>
+          <a style={{border: '1px solid #D3323E', padding: '10px 40px', borderRadius: '36px', color: '#D3323E',height:'40px',lineHeight:'40px'}} href="test@163.com">立即申请</a>
+        </div>
 
       </div>
     </>
