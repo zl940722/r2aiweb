@@ -50,13 +50,13 @@ const useStyles = makeStyles({
 const customBreakpoints = {
   global: {
     breakpoints: {
-      xs: {
+      small: {
         value: 500
       },
-      sm: {
+      xsmall: {
         value: 800
       },
-      md: {
+      medium: {
         value: 1200
       }
     }
@@ -102,14 +102,6 @@ function Assessment(res: any) {
                         />
                       </div>
                       <div>
-                        {/*<div className={classes.comma}>*/}
-                        {/*  <img*/}
-                        {/*    src="/static/images/home/“@2x.png"*/}
-                        {/*    width={46}*/}
-                        {/*    height={55}*/}
-                        {/*    alt="“"*/}
-                        {/*  />*/}
-                        {/*</div>*/}
                         <Typography
                           variant="body2"
                           color="textSecondary"
@@ -136,14 +128,6 @@ function Assessment(res: any) {
                         />
                       </div>
                       <div>
-                        {/*<div className={classes.comma}>*/}
-                        {/*  <img*/}
-                        {/*    src="/static/images/home/“@2x.png"*/}
-                        {/*    width={46}*/}
-                        {/*    height={55}*/}
-                        {/*    alt="“"*/}
-                        {/*  />*/}
-                        {/*</div>*/}
                         <Typography
                           variant="body2"
                           color="textSecondary"
@@ -170,14 +154,6 @@ function Assessment(res: any) {
                         />
                       </div>
                       <div>
-                        {/*<div className={classes.comma}>*/}
-                        {/*  <img*/}
-                        {/*    src="/static/images/home/“@2x.png"*/}
-                        {/*    width={46}*/}
-                        {/*    height={55}*/}
-                        {/*    alt="“"*/}
-                        {/*  />*/}
-                        {/*</div>*/}
                         <Typography
                           variant="body2"
                           color="textSecondary"

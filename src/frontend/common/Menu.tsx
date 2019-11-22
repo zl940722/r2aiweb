@@ -93,17 +93,17 @@ const menus: InterfaceMenu[] = [
     children: [
       {
         id: 3,
-        name: "技术能力",
-        children: null,
-        link: "/technical"
-      }, {
-        id: 4,
         name: "产品",
         children: null,
         link: "/products"
+      },
+      {
+        id: 4,
+        name: "技术能力",
+        children: null,
+        link: "/technical"
       }
-    ],
-    link: "/products"
+    ]
   },
   {
     id: 5,
@@ -130,8 +130,7 @@ const menus: InterfaceMenu[] = [
         children: null,
         link: "/appDetail/internet"
       }
-    ],
-    link: "/application"
+    ]
   },
   {
     id: 6,
@@ -210,8 +209,7 @@ const menus: InterfaceMenu[] = [
         children: null,
         link: "/job"
       }
-    ],
-    link: "/aboutUs"
+    ]
   }
 ];
 
