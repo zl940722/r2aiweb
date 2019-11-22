@@ -172,7 +172,7 @@ ModifyPassword.getInitialProps = async function(props) {
         cookie:props.req.headers.cookie
       }
     });
-    user = await result.json();
+    user = result.status === 200?await result.json():{};
   }
 
   return {
