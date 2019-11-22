@@ -78,18 +78,19 @@ function AppGrids() {
             <Link
               key={index}
               href={`/appDetail/${value.id}`}
-              // as={`/appDetail/${value.id}`}
             >
-              <Grid item md={6} className={classes.grid}>
-                <div className={classes.grid_img}>
-                  <img src={`${value.imgUrl}`} width={100} alt={value.name}/>
-                </div>
-                <div className={classes.grid_name}>
-                  <h2 className={classes.grid_h}> {value.name}</h2>
-                  <p className={classes.grid_p}>  {value.text}</p>
-                  <p className={classes.grid_p2}>查看详情 ></p>
-                </div>
-              </Grid>
+              <a>
+                <Grid item md={6} className={classes.grid}>
+                  <div className={classes.grid_img}>
+                    <img src={`${value.imgUrl}`} width={100} alt={value.name}/>
+                  </div>
+                  <div className={classes.grid_name}>
+                    <h2 className={classes.grid_h}> {value.name}</h2>
+                    <p className={classes.grid_p}>  {value.text}</p>
+                    <p className={classes.grid_p2}>查看详情 ></p>
+                  </div>
+                </Grid>
+              </a>
             </Link>
           ))}
         </Grid>

@@ -10,6 +10,6 @@ COPY package.json $PROJECT_DIR/package.json
 RUN yarn config set registry https://registry.npm.taobao.org \
 && yarn --production
 
-
 COPY . $PROJECT_DIR
+
 CMD yarn start

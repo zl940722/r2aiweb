@@ -176,12 +176,14 @@ const Header = (props) => {
   return (
     <div className={classNames(classes.root, index ? classes.index : "")}>
       <Link href={"/"}>
+        <a>
         <img
           src="/static/images/common/logo@2x.png"
           width={88}
           style={{ position: "absolute", top: 16, left: 80 }}
           alt="R2.ai"
         />
+        </a>
       </Link>
       <Tabs value={value} onChange={handleChange} centered>
         {

@@ -265,12 +265,14 @@ const Header = (props) => {
         mode="horizontal"
       >
         <Link href={"/"}>
-          <img
-            src="/static/images/common/logo@2x.png"
-            width={66}
-            style={{ marginRight: "6%", marginLeft: "4%" }}
-            alt="R2.ai"
-          />
+          <a>
+            <img
+              src="/static/images/common/logo@2x.png"
+              width={66}
+              style={{ marginRight: "6%", marginLeft: "4%" }}
+              alt="R2.ai"
+            />
+          </a>
         </Link>
 
         {

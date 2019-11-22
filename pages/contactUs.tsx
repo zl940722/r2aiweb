@@ -97,6 +97,7 @@ export default function ContactUs() {
 
   const submit = () => {
     const requiredValues = _.chain(values).pick(required).values().compact().value();
+    console.log(requiredValues,checkErrorList,999999999999)
     if (requiredValues.length < required.length || checkErrorList.length > 0) {
       setDialogOpen({
         open: true,
@@ -149,7 +150,7 @@ export default function ContactUs() {
               value={mail}
               required={_.includes(required, "mail")}
               allowedLength={32}
-              regex={/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/}
+              regex={/^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/}
               helperText="请输入正确的邮箱"
               className={classes.dense}
               onChange={handleChange("mail")}
