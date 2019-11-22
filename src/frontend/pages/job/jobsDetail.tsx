@@ -52,6 +52,12 @@ const useStyles = makeStyles({
     marginBottom: "3rem",
     fontWeight: "bold"
   },
+
+  button: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "2.5rem"
+  },
   itemTitle2: {
     marginTop: "3rem",
     fontWeight: "bold"
@@ -60,6 +66,7 @@ const useStyles = makeStyles({
 
 function HomeAbout(res: any) {
   const classes = useStyles();
+  const submit = () => {}
   return (
     <>
       <div className={classes.content}>
@@ -84,6 +91,9 @@ function HomeAbout(res: any) {
               <h4>职业要求</h4>
               <p>{res.data.requirement_zh}</p>
 
+            </div>
+            <div className={classes.button}>
+              <a style={{border: '1px solid #D3323E', padding: '10px 40px', borderRadius: '36px', color: '#D3323E'}} href="test@163.com">立即申请</a>
             </div>
           </Grid>
         </div>
