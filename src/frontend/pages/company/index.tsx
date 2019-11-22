@@ -5,10 +5,28 @@ import { Typography, Grid, Card } from "@material-ui/core";
 
 const useStyles = makeStyles({
   content: {
-    maxWidth: "75rem",
+    maxWidth: "100%",
     margin: "0 auto",
     padding: "1.5rem 0 8.8rem",
     overflow: "hidden"
+  },
+  content1: {
+    maxWidth: "75rem",
+    margin: "0 auto",
+    padding: "1.5rem 0 8.8rem",
+    overflow: "hidden",
+    textAlign: "left"
+  },
+  content2: {
+    maxWidth: "100%",
+    background: "#F5F5F5"
+  },
+  content3: {
+    maxWidth: "75rem",
+    margin: "0 auto",
+    padding: "1.5rem 0 8.8rem",
+    overflow: "hidden",
+    textAlign: "left"
   },
   title: {
     padding: "3rem",
@@ -30,19 +48,20 @@ const useStyles = makeStyles({
     boxSizing: "border-box",
     display: "flex",
     alignItems: "center",
-    padding: "0 10px"
+    padding: "20px 10px 0 10px"
   },
   itemC: {
     maxWidth: "90%",
     boxSizing: "border-box",
     display: "flex",
-    alignItems: "center",
+    alignItems: "left",
     padding: "0 10px",
     flexFlow: "column"
   },
   itemDes: {
     lineHeight: 2,
-    marginBottom: "3rem"
+    marginBottom: "3rem",
+    textAlign:'left'
   },
   itemTitle: {
     marginBottom: "3rem",
@@ -62,7 +81,7 @@ function HomeAbout() {
   return (
     <>
       <div className={classes.content}>
-        <div>
+        <div className={classes.content1}>
           <Typography className={classes.title}>公司概况</Typography>
           <Grid container className={classes.items} direction={"row"}>
             <Grid item sm={6} xs={12}>
@@ -90,40 +109,42 @@ function HomeAbout() {
           </Grid>
         </div>
 
-        <div>
-          <Typography className={classes.title}>企业文化</Typography>
-          <Grid container className={classes.items} direction={"row"}>
+        <div className={classes.content2}>
+          <div className={classes.content3}>
+            <Typography className={classes.title}>企业文化</Typography>
+            <Grid container className={classes.items} direction={"row"}>
 
-            <Grid item sm={6} xs={12}>
-              <div className={classes.itemC}>
-                <Typography variant={"body1"} className={classes.itemDes}>
-                  不断创新：我们极力推动技术发展，提高产品性能；
-                </Typography>
-                <Typography variant={"body1"} className={classes.itemDes}>
-                  正直诚实：我们将赢得您的信任。 诚信是一切的基础；
-                </Typography>
-                <Typography variant={"body1"} className={classes.itemDes}>
-                  团结互助：我们重视打造专业的、支持的团队，以优化效率；
-                </Typography>
-                <Typography variant={"body1"} className={classes.itemDes}>
-                  专注理想：我们坚持不懈地追求目标和宗旨。
-                </Typography>
-              </div>
+              <Grid item sm={6} xs={12}>
+                <div className={classes.itemC}>
+                  <Typography variant={"body1"} className={classes.itemDes}>
+                    不断创新：我们极力推动技术发展，提高产品性能；
+                  </Typography>
+                  <Typography variant={"body1"} className={classes.itemDes}>
+                    正直诚实：我们将赢得您的信任。 诚信是一切的基础；
+                  </Typography>
+                  <Typography variant={"body1"} className={classes.itemDes}>
+                    团结互助：我们重视打造专业的、支持的团队，以优化效率；
+                  </Typography>
+                  <Typography variant={"body1"} className={classes.itemDes}>
+                    专注理想：我们坚持不懈地追求目标和宗旨。
+                  </Typography>
+                </div>
+              </Grid>
+              <Grid item sm={6} xs={12}>
+                <div className={classes.item}>
+                  <img
+                    src="/static/images/company/2.png"
+                    width={"100%"}
+                    alt="R2.ai"
+                  />
+                </div>
+              </Grid>
             </Grid>
-            <Grid item sm={6} xs={12}>
-              <div className={classes.item}>
-                <img
-                  src="/static/images/company/2.png"
-                  width={"100%"}
-                  alt="R2.ai"
-                />
-              </div>
-            </Grid>
-          </Grid>
+          </div>
         </div>
 
 
-        <div>
+        <div className={classes.content1}>
           <Typography className={classes.title}>公司地址</Typography>
           <Grid container className={classes.items} direction={"row"}>
 
