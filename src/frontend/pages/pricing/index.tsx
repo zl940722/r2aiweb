@@ -20,7 +20,7 @@ function Application(res: any) {
       <div
         className={classes.item}
         style={{
-          backgroundImage: "url(/static/images/price/banner价单@2x.png)"
+          backgroundImage: "url(/static/images/price/banner.png)"
         }}
       />
       <Edition {...res}/>

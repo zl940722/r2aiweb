@@ -67,7 +67,7 @@ const Index = () => {
 
     <div style={{ background: "#F5F5F5", textAlign: "center", margin: "200px 300px 380px", padding: 200 }}>
       <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start" }}>
-        <img style={{ width: 32, height: 32 }} src={"/static/images/price/成功@2x.png"}/><h1
+        <img style={{ width: 32, height: 32 }} src={"/static/images/price/succ.png"}/><h1
         style={{ color: "#333333" }}>您已经成功联系销售！</h1>
       </div>
       <p>
