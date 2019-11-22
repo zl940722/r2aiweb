@@ -3,6 +3,7 @@
     opacity: 1;
 
 }
+
 .img {
     cursor: pointer;
     transition: all 0.8s;
@@ -18,13 +19,13 @@
     height: 100%;
     font-size: 14px;
     background: RGBA(0, 0, 0, 0.4);
-    color:#fff;
+    color: #fff;
     opacity: 0;
 
 }
 
 .item_div p {
-    padding: 0 2px;
+    padding: 8px;
 }
 
 .item_div:hover {
