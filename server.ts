@@ -57,9 +57,9 @@ app.prepare()
     server.use("/user/register", payServiceProxy("/user/register", "/user/register"));
     server.use("/active", payServiceProxy("/active", "/user/activeUser"));
 
-    server.use("/active", payServiceProxy("/user/forgetPassword", "/user/forgetPassword"));
+    server.use("/user/forgetPassword", payServiceProxy("/user/forgetPassword", "/user/forgetPassword"));
 
-    server.use("/active", payServiceProxy("/user/resetPassword", "/user/resetPassword"));
+    server.use("/user/resetPassword", payServiceProxy("/user/resetPassword", "/user/resetPassword"));
 
     server.use("/probation/applyProbation", payServiceProxy("/probation/applyProbation", "/probation/applyProbation"));
 
