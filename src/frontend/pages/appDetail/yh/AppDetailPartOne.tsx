@@ -53,7 +53,7 @@ function AppDetailPartOne(props: any) {
             <Grid item md={4} className={classes.grid}>
               <div>
                 <div className={classes.icon}>
-                  <img style={{ width: 24 }} src={"/static/images/appDetail/目标@2x.png"}/>
+                  <img style={{ width: 24 }} src={"/static/images/appDetail/mb.png"}/>
                   <span style={{ fontSize: 18, marginLeft: 10 }}>项目目标</span>
                 </div>
                 <p style={{ marginLeft: 34 }}>建立机器学习模型，划定“XX通”贷款产品促活广告的投放名单。
@@ -62,7 +62,7 @@ function AppDetailPartOne(props: any) {
 
               <div>
                 <div className={classes.icon}>
-                  <img style={{ width: 24 }} src={"/static/images/appDetail/成果@2x.png"}/>
+                  <img style={{ width: 24 }} src={"/static/images/appDetail/cg.png"}/>
                   <span style={{ fontSize: 18, marginLeft: 10 }}>项目成果</span>
                 </div>
                 <p style={{ marginLeft: 34 }}>
@@ -72,10 +72,10 @@ function AppDetailPartOne(props: any) {
             </Grid>
 
             <Grid item md={4} className={classes.grid}>
-              <img style={{ width: 250 }} src={"/static/images/appDetail/IoT成果@2x.png"}/>
+              <img style={{ width: 250 }} src={"/static/images/appDetail/zyt1.png"}/>
             </Grid>
             <Grid item md={4}>
-              <img style={{ width: 250 }} src={"/static/images/appDetail/IoT成果@2x.png"}/>
+              <img style={{ width: 250 }} src={"/static/images/appDetail/tst.png"}/>
             </Grid>
           </Grid>
 

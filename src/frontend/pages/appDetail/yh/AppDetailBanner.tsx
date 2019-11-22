@@ -44,7 +44,7 @@ function AppDetailBanner() {
         <div
           className={classes.item}
           style={{
-            backgroundImage: "url(/static/images/appDetail/banner应用场景@2x.png)"
+            backgroundImage: "url(/static/images/appDetail/banneryh.png)"
           }}
         >
           {/*<div className={classes.itemContent}>*/}
