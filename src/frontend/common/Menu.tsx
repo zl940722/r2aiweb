@@ -242,9 +242,9 @@ const Header = (props) => {
   const menu = (
     <Menu>
       <Menu.Item>
-        <a href='/modifyPassword'>
-          修改密码
-        </a>
+        <Link href='/modifyPassword'>
+          <a>修改密码</a>
+        </Link>
       </Menu.Item>
       <Menu.Item>
         <a rel="noopener noreferrer" href="javascript:" onClick={logout}>

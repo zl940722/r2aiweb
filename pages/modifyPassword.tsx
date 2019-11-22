@@ -77,13 +77,7 @@ function ModifyPassword(res: any) {
 
   React.useEffect(() => {
     if (!token && !userId) {
-      axios.get("/user/login").then((data: any) => {
-        const userInfo = data.data;
-        upUserId(userInfo.id)
-      }).catch((err: any) => {
-        console.log(err);
-        res.router.push("/login");
-      });
+      res.router.push("/login");
     }
   }, []);
 
@@ -172,6 +166,13 @@ ModifyPassword.getInitialProps = async function(props) {
     const url='/user/login'
     const _user = await fetch(url);
     user = await _user.json();
+  }else{
+    const result = await fetch(process.env.AUTH_SERVICE || "http://localhost:8088",{
+      headers:{
+        cookie:props.req.headers.cookie
+      }
+    });
+    user = await result.json();
   }
 
   return {
