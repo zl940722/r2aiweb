@@ -60,6 +60,28 @@ const useStyles = makeStyles({
 
 function HomeAbout() {
   const classes = useStyles();
+  const [show, setShow] = React.useState({
+    item1: false
+  }) as any;
+  const mouseOver = (name: any) => {
+
+    return () => {
+      console.log(name);
+      setShow({
+        [name]: true
+      });
+    };
+  };
+
+  const mouseLeave = (name: any) => {
+    return () => {
+      setShow({
+        [name]: false
+      });
+      ;
+    };
+  };
+
   return (
     <>
       <div className={classes.content}>
@@ -67,9 +89,12 @@ function HomeAbout() {
           <Typography className={classes.title}>核心团队</Typography>
           <Grid container className={classes.items} direction={"row"}>
             <Grid item sm={4} xs={12}>
-              <div className={classes.item}>
+              <div className={classes.item}
+                   onMouseOver={mouseLeave("item1")}
+                   onMouseMove={mouseOver("item1")}
+                   onMouseLeave={mouseLeave("item1")}>
                 <img
-                  className={"img"}
+                  className={show.item1 ? "img_hover" : "img"}
                   src="/static/images/team/1.png"
                   width={"100%"}
                   alt="R2.ai"
@@ -86,14 +111,17 @@ function HomeAbout() {
               </div>
             </Grid>
             <Grid item sm={4} xs={12}>
-              <div className={classes.item}>
+              <div className={classes.item}
+                   onMouseOver={mouseLeave("item2")}
+                   onMouseMove={mouseOver("item2")}
+                   onMouseLeave={mouseLeave("item2")}>
                 <img
-                  className={"img"}
+                  className={show.item2 ? "img_hover" : "img"}
                   src="/static/images/team/2.png"
                   width={"100%"}
                   alt="R2.ai"
                 />
-                <div className={"item_div"}>
+                <div className={"item_div"} onMouseOver={mouseLeave} onMouseMove={mouseOver} onMouseLeave={mouseLeave}>
                   <p>孟迪</p>
                   <p>
                     首席科学家，联合创始人
@@ -120,9 +148,12 @@ function HomeAbout() {
             <Typography className={classes.title}>董事会</Typography>
             <Grid container className={classes.items} direction={"row"}>
               <Grid item sm={4} xs={12}>
-                <div className={classes.item}>
+                <div className={classes.item}
+                     onMouseOver={mouseLeave("item3")}
+                     onMouseMove={mouseOver("item3")}
+                     onMouseLeave={mouseLeave("item3")}>
                   <img
-                    className={"img"}
+                    className={show.item3 ? "img_hover" : "img"}
                     src="/static/images/team/1.png"
                     width={"100%"}
                     alt="R2.ai"
@@ -139,9 +170,12 @@ function HomeAbout() {
                 </div>
               </Grid>
               <Grid item sm={4} xs={12}>
-                <div className={classes.item}>
+                <div className={classes.item}
+                     onMouseOver={mouseLeave("item4")}
+                     onMouseMove={mouseOver("item4")}
+                     onMouseLeave={mouseLeave("item4")}>
                   <img
-                    className={"img"}
+                    className={show.item4 ? "img_hover" : "img"}
                     src="/static/images/team/3.png"
                     width={"100%"}
                     alt="R2.ai"
@@ -154,9 +188,12 @@ function HomeAbout() {
                 </div>
               </Grid>
               <Grid item sm={4} xs={12}>
-                <div className={classes.item}>
+                <div className={classes.item}
+                     onMouseOver={mouseLeave("item5")}
+                     onMouseMove={mouseOver("item5")}
+                     onMouseLeave={mouseLeave("item5")}>
                   <img
-                    className={"img"}
+                    className={show.item5 ? "img_hover" : "img"}
                     src="/static/images/team/4.png"
                     width={"100%"}
                     alt="R2.ai"
@@ -177,9 +214,12 @@ function HomeAbout() {
           <Typography className={classes.title}>顾问</Typography>
           <Grid container className={classes.items} direction={"row"}>
             <Grid item sm={4} xs={12}>
-              <div className={classes.item}>
+              <div className={classes.item}
+                   onMouseOver={mouseLeave("item6")}
+                   onMouseMove={mouseOver("item6")}
+                   onMouseLeave={mouseLeave("item6")}>
                 <img
-                  className={"img"}
+                  className={show.item6 ? "img_hover" : "img"}
                   src="/static/images/team/5.png"
                   width={"100%"}
                   alt="R2.ai"
