@@ -312,7 +312,6 @@ export default function TextFields(props: any) {
               required={true}
               value={values.product}
               allowedLength={32}
-              regex={/^[\s\S]*.*[^\s][\s\S]*$/}
               disabled
               className={classes.dense}
               onChange={handleChange("product")}
@@ -347,7 +346,6 @@ export default function TextFields(props: any) {
               required={true}
               value={values.price}
               allowedLength={32}
-              regex={/^[\s\S]*.*[^\s][\s\S]*$/}
               disabled
               className={classes.dense}
               onChange={handleChange("price")}
@@ -360,7 +358,6 @@ export default function TextFields(props: any) {
                 required={true}
                 value={values.captcha}
                 allowedLength={32}
-                regex={/^[\s\S]*.*[^\s][\s\S]*$/}
                 className={classes.dense}
                 onChange={handleChange("captcha")}
                 margin="dense"

@@ -269,8 +269,8 @@ export default function TextFields() {
                 label="用户邮箱"
                 required={true}
                 allowedLength={32}
-                regex={/^[\s\S]*.*[^\s][\s\S]*$/}
-                helperText="用户邮箱不能为空"
+                regex={/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/}
+                helperText="请输入正确的邮箱"
                 className={classes.dense}
                 onChange={handleChange("email")}
                 margin="dense"
@@ -281,7 +281,7 @@ export default function TextFields() {
                 value={values.username}
                 allowedLength={32}
                 regex={/^[\s\S]*.*[^\s][\s\S]*$/}
-                helperText="用户名不能为空"
+                helperText="请输入正确的用户姓名"
                 className={classes.dense}
                 onChange={handleChange("username")}
                 margin="dense"
@@ -293,7 +293,6 @@ export default function TextFields() {
                 required={true}
                 value={values.password}
                 allowedLength={12}
-                regex={/^[\s\S]*.*[^\s][\s\S]*$/}
                 helperText="密码不能为空"
                 className={classes.dense}
                 onChange={handleChange("password")}
@@ -305,7 +304,6 @@ export default function TextFields() {
                 required={true}
                 value={values.companyName}
                 allowedLength={32}
-                regex={/^[\s\S]*.*[^\s][\s\S]*$/}
                 helperText="公司全称不能为空"
                 className={classes.dense}
                 onChange={handleChange("companyName")}
@@ -424,7 +422,6 @@ export default function TextFields() {
                 label="公司地址"
                 required={true}
                 allowedLength={32}
-                regex={/^[\s\S]*.*[^\s][\s\S]*$/}
                 helperText="公司地址不能为空"
                 className={classes.dense}
                 onChange={handleChange("address")}
@@ -447,7 +444,6 @@ export default function TextFields() {
                 label="业务部门"
                 required={true}
                 allowedLength={32}
-                regex={/^[\s\S]*.*[^\s][\s\S]*$/}
                 helperText="业务部门不能为空"
                 className={classes.dense}
                 onChange={handleChange("department")}
@@ -458,8 +454,8 @@ export default function TextFields() {
                 label="联系电话"
                 required={true}
                 allowedLength={11}
-                regex={/^[\s\S]*.*[^\s][\s\S]*$/}
-                helperText="联系电话不能为空"
+                regex={/^(?:\+?86)?1(?:3\d{3}|5[^4\D]\d{2}|8\d{3}|7(?:[35678]\d{2}|4(?:0\d|1[0-2]|9\d))|9[189]\d{2}|66\d{2})\d{6}$/}
+                helperText="请输入正确的联系电话"
                 className={classes.dense}
                 onChange={handleChange("phone")}
                 margin="dense"
@@ -472,7 +468,6 @@ export default function TextFields() {
                   required={true}
                   value={values.captcha}
                   allowedLength={32}
-                  regex={/^[\s\S]*.*[^\s][\s\S]*$/}
                   className={classes.dense}
                   onChange={handleChange("captcha")}
                   margin="dense"
