@@ -32,7 +32,7 @@ const useStyles = makeStyles({
   },
   listItemText: {
     fontSize: "1rem",
-    lineHeight: 2
+    lineHeight: 2.2,
   },
   grid: {
     maxWidth: "7.5rem"
@@ -57,7 +57,7 @@ function AppDetailPartTwo() {
           场景验证
         </Typography>
         <List>
-          <ListItem>
+          <ListItem alignItems='flex-start'>
             <ListItemIcon>
               <Typography
                 variant={"h5"}
@@ -76,7 +76,7 @@ function AppDetailPartTwo() {
               }
             />
           </ListItem>
-          <ListItem>
+          <ListItem alignItems='flex-start'>
             <ListItemIcon>
               <Typography
                 variant={"h5"}
@@ -89,17 +89,15 @@ function AppDetailPartTwo() {
             <ListItemText
               className={classes.listItemText}
               primary={
-                <>
-                  客户拥有大量数据，但缺乏数据科学专家来建立精准机器学习模型；
-                  <br/>
-                  客户需要快速建立个性化的精准医疗险风险预测模型；
-                  <br/>
-                  机器学习模型须具有友好API，可以轻松镶嵌入客户现有商务流程。
-                </>
+                <ul style={{ listStyleType: 'disc', paddingInlineStart: '15px', lineHeight: 2.2 }}>
+                  <li>客户拥有大量数据，但缺乏数据科学专家来建立精准机器学习模型；</li>
+                  <li>客户需要快速建立个性化的精准医疗险风险预测模型；</li>
+                  <li>机器学习模型须具有友好API，可以轻松镶嵌入客户现有商务流程。</li>
+                </ul>
               }
             />
           </ListItem>
-          <ListItem>
+          <ListItem alignItems='flex-start'>
             <ListItemIcon>
               <Typography
                 variant={"h5"}
@@ -112,17 +110,15 @@ function AppDetailPartTwo() {
             <ListItemText
               className={classes.listItemText}
               primary={
-                <>
-                  降低人工智能方案开发门槛，使非数据科学家也可以使用R2.ai软件自动建立精准机器学习模型；
-                  <br/>
-                  建模质量高、速度快，预测结果准确，并节省企业计算资源；
-                  <br/>
-                  模型平稳过渡客户商务流程，模型输出结果可以自动进入用户终端应用程序。
-                </>
+                <ul style={{ listStyleType: 'disc', paddingInlineStart: '15px', lineHeight: 2.2 }}>
+                  <li>降低人工智能方案开发门槛，使非数据科学家也可以使用R2.ai软件自动建立精准机器学习模型；</li>
+                  <li>建模质量高、速度快，预测结果准确，并节省企业计算资源；</li>
+                  <li>模型平稳过渡客户商务流程，模型输出结果可以自动进入用户终端应用程序。</li>
+                </ul>
               }
             />
           </ListItem>
-          <ListItem>
+          <ListItem alignItems='flex-start'>
             <ListItemIcon>
               <Typography
                 variant={"h5"}

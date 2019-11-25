@@ -57,7 +57,7 @@ function AppDetailPartTwo() {
           场景验证
         </Typography>
         <List>
-          <ListItem>
+          <ListItem alignItems='flex-start'>
             <ListItemIcon>
               <Typography
                 variant={"h5"}
@@ -79,7 +79,7 @@ function AppDetailPartTwo() {
               }
             />
           </ListItem>
-          <ListItem>
+          <ListItem alignItems='flex-start'>
             <ListItemIcon>
               <Typography
                 variant={"h5"}
@@ -92,19 +92,15 @@ function AppDetailPartTwo() {
             <ListItemText
               className={classes.listItemText}
               primary={
-                <>
-                  ·机器学习模型能快速处理大量数据，以及测量多种变量的趋势特征
-
-
-                  <br/>
-                  ·模型预测结果需要非常精准，预测效果直接影响患者医疗方案、医疗资源配置、和医疗成本效率
-                  <br/>
-                  ·建模过程自动化，能处理从数据清洗、自动选参到建模完成的全部工作，并能在生产环境中做模型监测优化
-                </>
+                <ul style={{ listStyleType: 'disc', paddingInlineStart: '15px', lineHeight: 2.2 }}>
+                  <li>机器学习模型能快速处理大量数据，以及测量多种变量的趋势特征</li>
+                  <li>模型预测结果需要非常精准，预测效果直接影响患者医疗方案、医疗资源配置、和医疗成本效率</li>
+                  <li>建模过程自动化，能处理从数据清洗、自动选参到建模完成的全部工作，并能在生产环境中做模型监测优化</li>
+                </ul>
               }
             />
           </ListItem>
-          <ListItem>
+          <ListItem alignItems='flex-start'>
             <ListItemIcon>
               <Typography
                 variant={"h5"}
@@ -117,19 +113,15 @@ function AppDetailPartTwo() {
             <ListItemText
               className={classes.listItemText}
               primary={
-                <>
-                  ·降低人工智能方案开发门槛，使非数据科学家也可以使用R2.ai软件自动建立精准机器学习模型
-
-
-                  <br/>
-                  ·依靠并行计算架构以及R2.ai独有的优化引擎，建模速度快、并节省企业计算资源
-                  <br/>
-                  ·建模质量高、预测结果准确。R2.ai同时有优秀的自我学习能力，能在模型应用过程中不断优化
-                </>
+                <ul style={{ listStyleType: 'disc', paddingInlineStart: '15px', lineHeight: 2.2 }}>
+                  <li>降低人工智能方案开发门槛，使非数据科学家也可以使用R2.ai软件自动建立精准机器学习模型</li>
+                  <li>依靠并行计算架构以及R2.ai独有的优化引擎，建模速度快、并节省企业计算资源</li>
+                  <li>建模质量高、预测结果准确。R2.ai同时有优秀的自我学习能力，能在模型应用过程中不断优化</li>
+                </ul>
               }
             />
           </ListItem>
-          <ListItem>
+          <ListItem alignItems='flex-start'>
             <ListItemIcon>
               <Typography
                 variant={"h5"}

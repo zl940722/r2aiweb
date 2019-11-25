@@ -143,16 +143,9 @@ function Pricing(props: any) {
                 });
               }
             });
-        } else if (level === 2) {
+        } else if ([2,3].includes(index)) {
           Router.push({
             pathname: "/simpleBuy",
-            query: {
-              level,
-            }
-          });
-        } else if (level === 3) {
-          Router.push({
-            pathname: "/essBuy",
             query: {
               level,
             }
