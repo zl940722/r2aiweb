@@ -7,10 +7,12 @@ import _ from "lodash";
 import classNames from "classnames";
 import { Menu, Dropdown } from "antd";
 import Router from "next/router";
-import Avatar from "@material-ui/core/Avatar";
 import axios from "axios";
 
 const { SubMenu } = Menu;
+
+const menuStyle: any = { width: 102, textAlign: 'center' }
+
 const useStyles = makeStyles({
     root: {
       flexGrow: 1,
@@ -73,11 +75,10 @@ const useStyles = makeStyles({
 ;
 
 interface InterfaceMenu {
-  id?: number;
-  name?: string;
+  id: number;
+  name: string;
   children?: any;
-  childrens?: any;
-  link?: string | undefined;
+  link?: string;
 }
 
 const menus: InterfaceMenu[] = [
@@ -103,7 +104,8 @@ const menus: InterfaceMenu[] = [
         children: null,
         link: "/technical"
       }
-    ]
+    ],
+    link: "/products"
   },
   {
     id: 5,
@@ -130,7 +132,8 @@ const menus: InterfaceMenu[] = [
         children: null,
         link: "/appDetail/internet"
       }
-    ]
+    ],
+    link: "/application"
   },
   {
     id: 6,
@@ -162,7 +165,8 @@ const menus: InterfaceMenu[] = [
       name: "活动参会",
       children: null,
       link: "/news/activity"
-    }]
+    }],
+    link: "/news/release"
   },
   {
     id: 9,
@@ -182,7 +186,8 @@ const menus: InterfaceMenu[] = [
       name: "案例分析",
       children: null,
       link: "/resources/case"
-    }]
+    }],
+    link: "/resources/message"
   },
   {
     id: 10,
@@ -209,29 +214,17 @@ const menus: InterfaceMenu[] = [
         children: null,
         link: "/job"
       }
-    ]
+    ],
+    link: "/company"
   }
 ];
 
 const Header = (props) => {
 
-
-  // @ts-ignore
   const classes = useStyles();
-
-  const [current, setcurrent] = React.useState("/");
+  const current = props.route;
 
   const index = props.route === "/";
-
-  useEffect(() => {
-    setcurrent(props.route);
-  }, []);
-
-
-  const handleClick = e => {
-    setcurrent(e.key);
-    Router.push(e.key);
-  };
 
   function logout() {
     axios.delete("/user/logout");
@@ -254,6 +247,9 @@ const Header = (props) => {
     </Menu>
   );
 
+  const handleClick = (e) => e.key && Router.push(e.key);
+
+
   return (
     <div className={classNames(classes.root, index ? classes.index : "")}>
       <Menu
@@ -274,25 +270,19 @@ const Header = (props) => {
         </Link>
 
         {
-          _.map(menus, (value: any, index) => {
+          _.map(menus, (value: InterfaceMenu, index) => {
+            const menuLink = value.link;
             return (
               value.children ?
-                <SubMenu key={index} title={<span onClick={() => {
-                  setcurrent(value.link);
-                  value.link && Router.push(value.link);
-                }} className="submenu-title-wrapper"> {value.name}</span>
-                }
-                >
+                <SubMenu key={index} style={menuStyle}
+                         title={value.name} onTitleClick={() => menuLink && Router.push(menuLink)}>
                   {
-                    _.map(value.children, (res: any) => {
-                      return (
-                        <Menu.Item key={res.link}>{res.name}</Menu.Item>);
-                    })
+                    _.map(value.children, (res: InterfaceMenu) => <Menu.Item key={res.link}  style={menuStyle}>{res.name}</Menu.Item>)
                   }
 
                 </SubMenu>
 
-                : <Menu.Item key={value.link}>
+                : <Menu.Item key={value.link} style={menuStyle}>
                   {value.name}
                 </Menu.Item>
             );

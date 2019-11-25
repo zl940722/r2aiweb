@@ -64,12 +64,20 @@ export default function ContentBanner(res: any) {
   const classes = useStyles();
   const toBuy = () => {
 
-    Router.push({
-      pathname: "/toUse",
-      query: {
-        id: res.user.id
-      }
-    });
+    if(res.user.active){
+      Router.push({
+        pathname: "/toUse",
+        query: {
+          id: res.user.id
+        }
+      });
+    }else{
+      Router.push({
+        pathname: "/login"
+      });
+    }
+
+
   };
 
   return (
@@ -86,7 +94,6 @@ export default function ContentBanner(res: any) {
           <Box align="center" pad="medium">
             <Button
               hoverIndicator
-              disabled={!res.user.active}
               onClick={toBuy}
               label={"立即试用"}
               className={classes.button}

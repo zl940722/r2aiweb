@@ -1,23 +1,41 @@
 import React from "react";
 import { makeStyles, createStyles } from "@material-ui/styles";
 
-import { Modal } from "@material-ui/core";
+import { Modal, Paper } from "@material-ui/core";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 
 const useStyles = makeStyles((theme: any) =>
   createStyles({
+    banner: {
+      maxHeight: '650px',
+      maxWidth: "100%",
+      overflow: 'hidden',
+      margin: '0 auto',
+      display: 'flex',
+      flex: 'none',
+      justifyContent: 'center',
+      position:'relative',
+      "& >img": {
+        maxWidth: '100%',
+        maxHeight: '100%',
+        minWidth: '1000px'
+      }
+    },
     item: {
-      height: "50rem",
-      backgroundSize: "cover"
+      height: "36.25rem",
+      backgroundSize: "center"
     },
     itemContent: {
       maxWidth: "75rem",
       margin: "0 auto",
       paddingTop: "1rem",
       overflow: "hidden",
-      textAlign: "left"
+      textAlign: "left",
+      position:'absolute',
+      bottom:50,
+      left:'20%'
     },
     title: {
       marginTop: "5rem",
@@ -35,7 +53,8 @@ const useStyles = makeStyles((theme: any) =>
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      marginTop: "55%"
+      marginTop: "55%",
+
     },
     button: {
       width: "13.6rem",
@@ -79,31 +98,16 @@ function ProductBanner(res: any) {
         showStatus={false}
         showIndicators={false}
       >
-        <div
-          className={classes.item}
-          style={{ backgroundImage: "url(/static/images/products/banner.png)" }}
-        >
+        <div>
+          <div className={classes.banner}>
+            <img src="/static/images/products/banner.png" alt="technical banner"/>
+          {/*</div>*/}
           <div className={classes.itemContent}>
-            {/*<Typography variant={"h3"} className={classes.title}>*/}
-            {/*  R2 Learn-*/}
-            {/*  <br />*/}
-            {/*  智能开发，智慧运营*/}
-            {/*</Typography>*/}
-            {/*<Typography variant={"h4"} className={classes.subtitle}>*/}
-            {/*  人人可用的自动机器学习建模平台*/}
-            {/*</Typography>*/}
             <div className={classes.buttonWrap} onClick={onHandleOpen}>
               <img style={{ width: "41px" }} src={"/static/images/products/player.png"}/>
               <span>产品视频</span>
             </div>
-            {/*<Grommet className={classes.buttonWrap} theme={customTheme}>*/}
-            {/*  <Button*/}
-            {/*    hoverIndicator*/}
-            {/*    label={"产品视频"}*/}
-            {/*    className={classes.button}*/}
-            {/*    onClick={onHandleOpen}*/}
-            {/*  />*/}
-            {/*</Grommet>*/}
+          </div>
           </div>
         </div>
       </Carousel>

@@ -11,9 +11,16 @@ const useStyles = makeStyles({
     backgroundColor: "#F5F5F5"
   },
   content: {
-    maxWidth: "55rem",
+    maxWidth: "65%",
     margin: "0 auto",
-    overflow: "hidden"
+    overflow: "hidden",
+    "& img": {
+      maxHeight: '100%',
+      maxWidth: '100%'
+    },
+    "& p": {
+      fontSize: '14px'
+    }
   },
   title: {
     fontWeight: "bold"
@@ -28,7 +35,10 @@ const useStyles = makeStyles({
     fontSize: "1rem",
     lineHeight: 2
   },
-  grid: {},
+  grid: {
+    margin: '.75rem',
+    flex: 1
+  },
   grid_img: {
     paddingTop: "1rem",
     textAlign: "center"
@@ -44,7 +54,7 @@ const useStyles = makeStyles({
   },
   context_title: {
     color: "#D3323E",
-    fontSize: "1.2rem",
+    fontSize: "24px",
     fontWeight: 600
   },
   icon: {
@@ -53,7 +63,6 @@ const useStyles = makeStyles({
   },
   grids: {
     display: "flex",
-    alignItems: "center"
   }
 });
 
@@ -63,49 +72,49 @@ function AppDetailPartTwo() {
     <div className={classes.root}>
       <div className={classes.content}>
         <div className={classes.context}>
-          <p className={classes.context_title}>信用卡准入的自动化评定</p>
+          <div className={classes.context_title}>信用卡准入的自动化评定</div>
 
           <Grid container className={classes.grids}>
             <Grid item md={12} className={classes.grid}>
               <div>
                 <div className={classes.icon}>
                   <img style={{ width: 24 }} src={"/static/images/appDetail/mb.png"}/>
-                  <span style={{ fontSize: 18, marginLeft: 10 }}>项目目标</span>
+                  <span style={{ fontSize: 18, marginLeft: 10, fontSizeAdjust: 18 }}>项目目标</span>
                 </div>
-                <p style={{ marginLeft: 34 }}>根据银行提供的一年内个人记录构建信用卡客户的准入模型。
+                <p style={{ marginLeft: 34, marginBottom: 40 }}>根据银行提供的一年内个人记录构建信用卡客户的准入模型。
                 </p>
               </div>
 
-              <div>
-                <div className={classes.icon}>
+              <div style={{ marginLeft: 34 }}>
+                <div className={classes.icon} style={{ marginLeft: -34 }}>
                   <img style={{ width: 24 }} src={"/static/images/appDetail/cg.png"}/>
-                  <span style={{ fontSize: 18, marginLeft: 10 }}>项目成果</span>
+                  <span style={{ fontSize: 18, marginLeft: 10, fontSizeAdjust: 18 }}>项目成果</span>
                 </div>
-                <p style={{ marginLeft: 34 }}>
+                <p >
                   便于业务部门普及基于机器学习的建模方法，成为专家规则等传统方法的有效补充；
                 </p>
-                <p style={{ marginLeft: 34 }}>
+                <p >
                   构建起来的准入模型质量高，各项模型指标（AUC、KS、Recall等）均达到指定要求，对好客户和坏客户的判定都比较准确。
                 </p>
-                <img style={{ width: 1100, marginBottom: 40 }} src={"/static/images/appDetail/bank2cg.png"}/>
+                <img style={{ marginBottom: 40 }} src={"/static/images/appDetail/bank2cg.png"}/>
               </div>
 
 
               <div>
                 <div className={classes.icon}>
                   <img style={{ width: 24 }} src={"/static/images/appDetail/gc.png"}/>
-                  <span style={{ fontSize: 18, marginLeft: 10 }}>
+                  <span style={{ fontSize: 18, marginLeft: 10, fontSizeAdjust: 18 }}>
                             项目过程
                         </span>
                 </div>
                 <Grid container className={classes.grids}>
                   <Grid item md={6} className={classes.grid}>
                     <p>1.样本收集：由某银行提供的2018年164多万行、30多列变量的个人记录，其中不良率为目标变量； </p>
-                    <img style={{ width: 400 }} src={"/static/images/appDetail/1.png"}/>
+                    <img  src={"/static/images/appDetail/1.png"}/>
                   </Grid>
                   <Grid item md={6} className={classes.grid}>
                     <p>2.数据探索：用R2 Learn在正式建模前对每个变量进行可视化探索分析； </p>
-                    <img style={{ width: 400 }} src={"/static/images/appDetail/2.png"}/>
+                    <img  src={"/static/images/appDetail/2.png"}/>
                   </Grid>
                 </Grid>
 
@@ -114,12 +123,12 @@ function AppDetailPartTwo() {
                     <p>3.建模设置：
                       在R2 Learn 中从数据分组、算法选择、速度与准确率的权衡等多个方面进行自动建模的个性化定制；
                     </p>
-                    <img style={{ width: 400 }} src={"/static/images/appDetail/3.png"}/>
+                    <img  src={"/static/images/appDetail/3.png"}/>
                   </Grid>
                   <Grid item md={6} className={classes.grid}>
                     <p>4. 最终模型评价：利用R2 Learn 提供的交互报表得到最终模型的质量评价。
                     </p>
-                    <img style={{ width: 400 }} src={"/static/images/appDetail/4.png"}/>
+                    <img  src={"/static/images/appDetail/4.png"}/>
                   </Grid>
                 </Grid>
 
