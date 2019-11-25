@@ -143,7 +143,7 @@ function ModifyPassword(res: any) {
               onChange={handleChange("newPwd")}
               margin="dense"
             />
-            <div className={classes.button}>
+            <div className={classes.button} style={{textAlign:'center'}}>
               <SimpleButton
                 onClick={submit}
                 label={"提交"}
@@ -161,7 +161,7 @@ function ModifyPassword(res: any) {
 ModifyPassword.getInitialProps = async function(props) {
   let user;
   if(typeof Window === 'function'){
-    const url='/user/login'
+    const url='/user/login';
     const _user = await fetch(url);
     user = await _user.json();
   }else{

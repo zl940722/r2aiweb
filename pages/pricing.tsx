@@ -9,8 +9,24 @@ const Index = (res: any) => {
   return <Pricing {...res}/>;
 };
 
-Index.getInitialProps = async function(ress) {
+Index.getInitialProps = async function(props) {
+  let user;
+  if(typeof Window === 'function'){
+    const url='/user/login';
+    const _user = await fetch(url);
+    user = await _user.json();
+  }else {
+    const result = await fetch(process.env.AUTH_SERVICE || "http://localhost:8088", {
+      headers: {
+        cookie: props.req.headers.cookie
+      }
+    });
+    user = result.status === 200 ? await result.json() : {};
+  }
+
+
   const home: any = await fetch(url + `/prices?_sort=level`) || [];
+
   const homeData = await home.json();
   const list: any = {
     data_volume_zh: "模型训练数据量",
@@ -29,7 +45,8 @@ Index.getInitialProps = async function(ress) {
 
   homeData.unshift(list);
   return {
-    data: homeData
+    data: homeData,
+    user,
   };
 };
 

@@ -156,7 +156,7 @@ function Pricing(props: any) {
             }
           });
         } else if (level === 4) {
-          Router.push(`/contactSales`);
+          Router.push(`/contactUsS`);
         }
       } else {
         Router.push(`/login`);
