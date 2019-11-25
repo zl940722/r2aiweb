@@ -11,66 +11,69 @@ import Avatar from "@material-ui/core/Avatar";
 import axios from "axios";
 
 const { SubMenu } = Menu;
+
+const menuStyle: any = { width: 102, textAlign: 'center' }
+
 const useStyles = makeStyles({
-    root: {
-      flexGrow: 1,
-      backgroundColor: "#fff",
-      color: "#000",
-      "& span": {
-        color: "#000"
-      }
-    },
-    tab: {
-      height: 70,
-      fontSize: "1rem"
-      // color: "#000000"
-    },
-    a: {
-      textDecoration: "none",
-      color: "#333"
-    },
-    avatar: {
-      margin: 10
-    },
-    index: {
-      position: "absolute",
-      top: 0,
-      zIndex: 2,
-      width: "100%",
-      minWidth: "1200px",
-      background: "transparent",
-      color: "#fff",
-      "& span": {
-        color: "#fff"
-      },
-      "& ul": {
-        background: "transparent",
-        boxShadow: "none",
-        border: 0,
-        color: "#fff",
-        "& li": {
-          color: "#fff"
-        }
-      },
-      "& a": {
-        color: "#fff"
-      }
-    },
-    user: {
-      float: "right",
-      marginRight: "6%"
-    },
-    login: {
-      color: "#000",
-      marginRight: 20,
-      textDecoration: "none"
-    },
-    res: {
-      color: "#000",
-      textDecoration: "none"
+  root: {
+    flexGrow: 1,
+    backgroundColor: "#fff",
+    color: "#000",
+    "& span": {
+      color: "#000"
     }
-  })
-;
+  },
+  tab: {
+    height: 70,
+    fontSize: "1rem"
+    // color: "#000000"
+  },
+  a: {
+    textDecoration: "none",
+    color: "#333"
+  },
+  avatar: {
+    margin: 10
+  },
+  index: {
+    position: "absolute",
+    top: 0,
+    zIndex: 2,
+    width: "100%",
+    minWidth: "1200px",
+    background: "transparent",
+    color: "#fff",
+    "& span": {
+      color: "#fff"
+    },
+    "& ul": {
+      background: "transparent",
+      boxShadow: "none",
+      border: 0,
+      color: "#fff",
+      "& li": {
+        color: "#fff"
+      }
+    },
+    "& a": {
+      color: "#fff"
+    }
+  },
+  user: {
+    float: "right",
+    marginRight: "6%"
+  },
+  login: {
+    color: "#000",
+    marginRight: 20,
+    textDecoration: "none"
+  },
+  res: {
+    color: "#000",
+    textDecoration: "none"
+  }
+})
+  ;
 
 interface InterfaceMenu {
   id?: number;
@@ -277,22 +280,22 @@ const Header = (props) => {
           _.map(menus, (value: any, index) => {
             return (
               value.children ?
-                <SubMenu key={index} title={<span onClick={() => {
+                <SubMenu key={index} style={menuStyle} title={<span onClick={() => {
                   setcurrent(value.link);
                   value.link && Router.push(value.link);
-                }} className="submenu-title-wrapper"> {value.name}</span>
+                }} className="submenu-title-wrapper" > {value.name}</span>
                 }
                 >
-                  {
+                  <Menu style={menuStyle}>{
                     _.map(value.children, (res: any) => {
                       return (
-                        <Menu.Item key={res.link}>{res.name}</Menu.Item>);
+                        <Menu.Item style={menuStyle} key={res.link}>{res.name}</Menu.Item>);
                     })
-                  }
+                  }</Menu>
 
                 </SubMenu>
 
-                : <Menu.Item key={value.link}>
+                : <Menu.Item key={value.link} style={menuStyle}>
                   {value.name}
                 </Menu.Item>
             );
@@ -306,7 +309,7 @@ const Header = (props) => {
                 <span className={classes.avatar}>{props.user.email}</span>
               </Dropdown> :
               <div><a className={classes.login} href={"/login"}>登录</a> <a className={classes.res}
-                                                                          href={"/register"}>注册</a></div>
+                href={"/register"}>注册</a></div>
           }
         </span>
       </Menu>
