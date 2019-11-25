@@ -125,33 +125,31 @@ const customTheme = {
 
 function Pricing(props: any) {
   const {user={},data=[]} = props;
-  const toBuy = (id,value) => {
+  const toBuy = (level,value) => {
     return () => {
       if (user.active) {
-        if (id === 4) {
+        if (level === 1) {
           Router.push({
             pathname: "/toUse",
             query: {
               id: user.id
             }
           });
-        } else if (id === 3) {
+        } else if (level === 2) {
           Router.push({
             pathname: "/simpleBuy",
             query: {
-              id: id,
-              user: JSON.stringify(user)
+              level: level
             }
           });
-        } else if (id === 2) {
+        } else if (level === 3) {
           Router.push({
-            pathname: "/essBuy",
+            pathname: "/simpleBuy",
             query: {
-              id: id,
-              user: JSON.stringify(user)
+              level: level
             }
           });
-        } else if (id === 1) {
+        } else if (level === 4) {
           Router.push(`/contactSales`);
         }
       } else {
@@ -187,7 +185,7 @@ function Pricing(props: any) {
                                disabled={disabled()}
                                label={value.button_zh}
                                className={classes.button}
-                               onClick={toBuy(value.id, value)}
+                               onClick={toBuy(value.level, value)}
                              />
                            </Grommet>}
                     </dd>

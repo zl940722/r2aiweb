@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import clsx from "clsx";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -108,21 +108,18 @@ const pay = [
   }
 ];
 
+const procuct = [
+  {
+    code: "prod_E7zz1vwTiZxOgO",
+    name: "简易版"
+  }, {
+    code: "prod_E7zzObgS7kjaMK",
+    name: "专业版"
+  }
+];
 
 export default function TextFields(props: any) {
-
-  // let userRes: any = props.router.query.user || {};
-  // let userE: any;
-  //
-  // if (Object.keys(userRes).length !== 0) {
-  //   userE = JSON.parse(userRes);
-  // } else {
-  //   userE = {
-  //     email: "",
-  //     id: ""
-  //   };
-  // }
-
+  const level = props.router.asPath.split("=")[1];
 
   const [mPrice, setmPrice] = React.useState(0);
   const [yPrice, setyPrice] = React.useState(0);
@@ -149,6 +146,30 @@ export default function TextFields(props: any) {
   const [payMethod, setpayMethod] = React.useState("alipay");
 
   const [rent, setrent] = React.useState("");
+
+
+  const [product, setproduct] = React.useState("");
+
+
+  useEffect(() => {
+    setrent('Monthly')
+    if (level == 2) {
+      setproduct("prod_E7zz1vwTiZxOgO");
+      axios.get("/price").then((response: any) => {
+        const { basicPrice, basicPriceYear, essentialPrice, essentialPriceYear } = response.data;
+        setValues({ price: basicPrice });
+      });
+
+    } else {
+      setproduct("prod_E7zzObgS7kjaMK");
+      axios.get("/price").then((response: any) => {
+        const { basicPrice, basicPriceYear, essentialPrice, essentialPriceYear } = response.data;
+        setValues({ price: essentialPrice });
+      });
+    }
+
+
+  }, []);
 
   const handleChanges = (event: React.ChangeEvent<HTMLInputElement>) => {
     console.log(event.target.value);
@@ -307,15 +328,57 @@ export default function TextFields(props: any) {
           <Grid item md={6} className={classes.grid}>
 
 
-            <SimpleInput
+            {/*<SimpleInput*/}
+            {/*  label="购买产品"*/}
+            {/*  required={true}*/}
+            {/*  value={values.product}*/}
+            {/*  allowedLength={32}*/}
+            {/*  disabled*/}
+            {/*  className={classes.dense}*/}
+            {/*  onChange={handleChange("product")}*/}
+            {/*  margin="dense"*/}
+            {/*/>*/}
+
+            <SimpleSelect
               label="购买产品"
-              required={true}
-              value={values.product}
-              allowedLength={32}
-              disabled
+              xs={12}
               className={classes.dense}
-              onChange={handleChange("product")}
-              margin="dense"
+              value={product}
+              onChange={(e) => {
+
+                setproduct(e.target.value);
+
+
+                axios.get("/price").then((response: any) => {
+                  console.log(response.data, "response.data");
+                  const { basicPrice, basicPriceYear, essentialPrice, essentialPriceYear } = response.data;
+                  if(product === 'prod_E7zz1vwTiZxOgO'){
+                    setmPrice(basicPrice);
+                    setyPrice(basicPriceYear);
+                  }else{
+                    setmPrice(essentialPrice);
+                    setyPrice(essentialPriceYear);
+                  }
+
+                  if (e.target.value === "prod_E7zz1vwTiZxOgO") {
+                    if(rent === 'Monthly'){
+                      setValues({ price: basicPrice });
+                    }else{
+                      setValues({ price: basicPriceYear });
+                    }
+                  } else {
+                    if(rent === 'Monthly'){
+                      setValues({ price: essentialPrice });
+                    }else{
+                      setValues({ price: essentialPriceYear });
+                    }
+
+                  }
+                });
+
+              }}
+              data={procuct}
+              margin="normal"
             />
 
             <SimpleSelect
@@ -327,13 +390,29 @@ export default function TextFields(props: any) {
                 setrent(e.target.value);
 
                 axios.get("/price").then((response: any) => {
-                  const { basicPrice, basicPriceYear } = response.data;
-                  setmPrice(basicPrice);
-                  setyPrice(basicPriceYear);
+                  console.log(response.data, "response.data");
+                  const { basicPrice, basicPriceYear, essentialPrice, essentialPriceYear } = response.data;
+                  if(product === 'prod_E7zz1vwTiZxOgO'){
+                    setmPrice(basicPrice);
+                    setyPrice(basicPriceYear);
+                  }else{
+                    setmPrice(essentialPrice);
+                    setyPrice(essentialPriceYear);
+                  }
+
                   if (e.target.value === "Monthly") {
-                    setValues({ price: basicPrice });
+                    if(product === 'prod_E7zz1vwTiZxOgO'){
+                      setValues({ price: basicPrice });
+                    }else{
+                      setValues({ price: essentialPrice });
+                    }
                   } else {
-                    setValues({ price: basicPriceYear });
+                    if(product === 'prod_E7zz1vwTiZxOgO'){
+                      setValues({ price: basicPriceYear });
+                    }else{
+                      setValues({ price: essentialPriceYear });
+                    }
+
                   }
                 });
               }}
@@ -453,7 +532,7 @@ export default function TextFields(props: any) {
                 } else if ((modal.type === "error")) {
                   setOpen(false);
                 }
-              }} color="primary" >
+              }} color="primary">
                 确定
               </Button>
             </DialogActions>
