@@ -11,6 +11,21 @@ const useStyles = makeStyles({
     backgroundSize: "cover",
     backgroundPosition: "center"
   },
+  banner: {
+    maxHeight: '650px',
+    maxWidth: "100%",
+    overflow: 'hidden',
+    margin: '0 auto',
+    display: 'flex',
+    flex: 'none',
+    justifyContent: 'center',
+    position:'relative',
+    "& >img": {
+      maxWidth: '100%',
+      maxHeight: '100%',
+      minWidth: '1000px'
+    }
+  },
   itemContent: {
     maxWidth: "75rem",
     margin: "0 auto",
@@ -41,20 +56,23 @@ function AppDetailBanner() {
         showStatus={false}
         showIndicators={false}
       >
-        <div
-          className={classes.item}
-          style={{
-            backgroundImage: "url(/static/images/appDetail/11.png)"
-          }}
-        >
-          {/*<div className={classes.itemContent}>*/}
-          {/*  <Typography variant={"h3"} className={classes.title}>*/}
-          {/*    {data.name}*/}
-          {/*  </Typography>*/}
-          {/*  <Typography variant={"h5"} className={classes.body}>*/}
-          {/*    {data.des}*/}
-          {/*  </Typography>*/}
-          {/*</div>*/}
+        {/*<div*/}
+        {/*  className={classes.item}*/}
+        {/*  style={{*/}
+        {/*    backgroundImage: "url(/static/images/appDetail/11.png)"*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  /!*<div className={classes.itemContent}>*!/*/}
+        {/*  /!*  <Typography variant={"h3"} className={classes.title}>*!/*/}
+        {/*  /!*    {data.name}*!/*/}
+        {/*  /!*  </Typography>*!/*/}
+        {/*  /!*  <Typography variant={"h5"} className={classes.body}>*!/*/}
+        {/*  /!*    {data.des}*!/*/}
+        {/*  /!*  </Typography>*!/*/}
+        {/*  /!*</div>*!/*/}
+        {/*</div>*/}
+        <div className={classes.banner}>
+          <img src="/static/images/appDetail/11.png" alt="technical banner"/>
         </div>
       </Carousel>
     </>
