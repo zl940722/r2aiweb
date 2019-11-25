@@ -454,7 +454,7 @@ export default function TextFields() {
                 label="联系电话"
                 required={true}
                 allowedLength={11}
-                regex={/^(?:\+?86)?1(?:3\d{3}|5[^4\D]\d{2}|8\d{3}|7(?:[35678]\d{2}|4(?:0\d|1[0-2]|9\d))|9[189]\d{2}|66\d{2})\d{6}$/}
+                // regex={/^(?:\+?86)?1(?:3\d{3}|5[^4\D]\d{2}|8\d{3}|7(?:[35678]\d{2}|4(?:0\d|1[0-2]|9\d))|9[189]\d{2}|66\d{2})\d{6}$/}
                 helperText="请输入正确的联系电话"
                 className={classes.dense}
                 onChange={handleChange("phone")}
