@@ -17,6 +17,13 @@ const useStyles = makeStyles({
     overflow: "hidden",
     textAlign: "left"
   },
+  content1_add:{
+    maxWidth: "75rem",
+    margin: "0 auto",
+
+    overflow: "hidden",
+    textAlign: "left"
+  },
   content2: {
     maxWidth: "100%",
     background: "#F5F5F5"
@@ -29,7 +36,14 @@ const useStyles = makeStyles({
     textAlign: "left"
   },
   title: {
-    padding: "3rem",
+    padding: "2.5rem",
+    fontSize: "2rem",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  title_add:{
+    paddingTop:'2.5rem',
+    paddingBottom:'-3.5rem',
     fontSize: "2rem",
     fontWeight: "bold",
     textAlign: "center"
@@ -41,7 +55,9 @@ const useStyles = makeStyles({
     textAlign: "center"
   },
   items: {
-    margin: "5rem 0 1rem"
+    margin: "5rem 0 1rem",
+    display: "flex",
+    alignItems: "center",
   },
   item: {
     maxWidth: "90%",
@@ -99,7 +115,7 @@ function HomeAbout() {
               <div className={classes.item}>
                 <img
                   src="/static/images/company/1.png"
-                  width={"100%"}
+                  width={"550px"}
                   alt="R2.ai"
                 />
               </div>
@@ -145,7 +161,7 @@ function HomeAbout() {
                 <div className={classes.item}>
                   <img
                     src="/static/images/company/2.png"
-                    width={"100%"}
+                    width={"550px"}
                     alt="R2.ai"
                   />
                 </div>
@@ -155,8 +171,8 @@ function HomeAbout() {
         </div>
 
 
-        <div className={classes.content1}>
-          <Typography className={classes.title}>公司地址</Typography>
+        <div className={classes.content1_add}>
+          <Typography className={classes.title_add}>公司地址</Typography>
           <Grid container className={classes.items} direction={"row"}>
 
             <Grid item xs={4} >
