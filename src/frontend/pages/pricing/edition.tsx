@@ -7,6 +7,7 @@ import Router from "next/router";
 import axios from "axios";
 import './pricing.css'
 import SimpleDialog from "../../Components/SimpleDialog";
+import moment from "moment";
 
 const useStyles = makeStyles({
   content: {
@@ -164,8 +165,9 @@ function Pricing(props: any) {
     };
   };
 
-  const {type} = user;
+  const {type,endTime} = user;
   const classes = useStyles();
+  const end = endTime&&new Date(endTime)<new Date();
 
   return <div className={classes.content}>
         <div>
@@ -176,6 +178,8 @@ function Pricing(props: any) {
                     if(!type)return false;
                     if(index === 1){
                       return type > 0;
+                    }else if(end){
+                      return false;
                     }else if([2,3].includes(index)){
                       return type>1;
                     }
