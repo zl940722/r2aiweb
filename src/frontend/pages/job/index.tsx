@@ -29,10 +29,12 @@ const useStyles = makeStyles({
   },
   item: {
     maxWidth: "90%",
-    boxSizing: "border-box"
+    boxSizing: "border-box",
+    borderBottom: '1px dashed #ccc',
+    marginBottom: '50px'
   },
-  itemh4: { fontSize: "1.4rem" },
-  itemp: { fontSize: "1.2rem" },
+  itemh4: { fontSize: "24px", marginBottom: '34px', cursor: 'pointer' },
+  itemp: { fontSize: "24px", marginBottom: '34px' },
   itemBorder: {
     width: "100%",
     border: "1px dashed #ccc"
@@ -75,26 +77,26 @@ function HomeAbout(res: any) {
                   <div className={classes.item}>
                     <h4 className={classes.itemh4}>{value.name_en}</h4>
                     <p className={classes.itemp}>{value.place_en}</p>
-                    <p className={classes.itemBorder}>{}</p>
+                    {/* <p className={classes.itemBorder}>{}</p> */}
                   </div>
                 </Grid>
               ))}
             </Grid>
           </div> : <div>
-            <Typography className={classes.title}>我们在全面招聘</Typography>
-            <p className={classes.itemDes}>对精英一族，我们有丰富的职业发展机会！如果您想引领潮流，坐拥人工智能革命的最前沿，请加入我们！</p>
-            <Grid container className={classes.items} direction={"row"}>
-              {res.data.map((value: any, index: any) => (
-                <Grid key={index} item sm={6} xs={12} onClick={detail(value.id)}>
-                  <div className={classes.item}>
-                    <h4 className={classes.itemh4}>{value.name_zh}</h4>
-                    <p className={classes.itemp}>{value.place_zh}</p>
-                    <p className={classes.itemBorder}>{}</p>
-                  </div>
-                </Grid>
-              ))}
-            </Grid>
-          </div>
+              <Typography className={classes.title}>我们在全面招聘</Typography>
+              <p className={classes.itemDes}>对精英一族，我们有丰富的职业发展机会！如果您想引领潮流，坐拥人工智能革命的最前沿，请加入我们！</p>
+              <Grid container className={classes.items} direction={"row"}>
+                {res.data.map((value: any, index: any) => (
+                  <Grid key={index} item sm={6} xs={12} onClick={detail(value.id)}>
+                    <div className={classes.item}>
+                      <h4 className={classes.itemh4}>{value.name_zh}</h4>
+                      <p className={classes.itemp}>{value.place_zh}</p>
+                      {/* <p className={classes.itemBorder}>{}</p> */}
+                    </div>
+                  </Grid>
+                ))}
+              </Grid>
+            </div>
         }
 
       </div>

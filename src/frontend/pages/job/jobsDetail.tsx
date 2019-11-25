@@ -3,19 +3,27 @@ import { makeStyles } from "@material-ui/styles";
 
 import { Typography, Grid } from "@material-ui/core";
 import Router from "next/router";
+import { PageHeader } from "antd";
 
 const useStyles = makeStyles({
   content: {
-    maxWidth: "75rem",
+    width: "1200px",
     margin: "0 auto",
     padding: "1.5rem 0 8.8rem",
     overflow: "hidden"
+
+  },
+  content_div: {
+    background: "#F5F5F5",
+    lineHeight: 3,
+    padding: 20
   },
   title: {
     padding: "3rem",
     fontSize: "1rem",
     fontWeight: "bold",
-    color: "#D3323EFF"
+    color: "#D3323EFF",
+    cursor: 'pointer'
   },
   des: {
     fontSize: "1rem",
@@ -37,10 +45,15 @@ const useStyles = makeStyles({
       whiteSpace: "pre-line"
     }
   },
+  itemBorderDiv: {
+    display: "flex",
+    alignItems: "baseline"
+  },
+  itemBorderP: { width: "80px", fontSize: 16 },
   itemBorder: {
     width: "100%",
     display: "flex",
-    border: "1px dashed #343f53",
+    border: "1px dashed #5C7EB1",
     height: 1
   },
   itemDes: {
@@ -66,40 +79,63 @@ const useStyles = makeStyles({
 
 function HomeAbout(res: any) {
   const classes = useStyles();
-  const submit = () => {}
+  const submit = () => {
+  };
   return (
-    <>
-      <div className={classes.content}>
-        <Typography onClick={() => {
-          Router.back();
-        }} className={classes.title}>返回职位列表</Typography>
+    <div className={classes.content}>
+      <div onClick={() => {
+        Router.back();
+      }}>
+        <PageHeader
+          style={{
+            left: "-1.5rem",
+            position: "relative",
+            fontSize: 12
+          }}
+          onBack={() => {
+            Router.back();
+          }}
+          title={`返回列表`}
+          subTitle=""
+        />
+      </div>
+      <div className={classes.content_div}>
+
         <div>
-          <Grid container className={classes.items} direction={"row"}>
-            <div>
-              <p>{res.data.created_at}</p>
-              <h4>{res.data.name_zh}</h4>
-              <p>工作地点：{res.data.place_zh}</p>
-            </div>
-            <p className={classes.itemBorder}>{}</p>
-            <div className={classes.item}>
-              <h4>职业描述</h4>
-              <p>{res.data.describe_zh}</p>
 
-            </div>
-            <p className={classes.itemBorder}>{}</p>
-            <div className={classes.item}>
-              <h4>职业要求</h4>
-              <p>{res.data.requirement_zh}</p>
+          <div>
+            <p style={{ color: "#666666" }}>发布时间：{res.data.created_at}</p>
+            <h4 style={{ fontSize: "1.3rem" }}>{res.data.name_zh}</h4>
+            <p>工作地点：{res.data.place_zh}</p>
+          </div>
+          <div className={classes.itemBorderDiv}><h4 className={classes.itemBorderP}>职业描述</h4><p
+            className={classes.itemBorder}>{}</p></div>
+          <div className={classes.item}>
+            <p>{res.data.describe_zh}</p>
 
-            </div>
-          </Grid>
+          </div>
+          <div className={classes.itemBorderDiv}><h4 className={classes.itemBorderP}>职业要求</h4><p
+            className={classes.itemBorder}>{}</p></div>
+          <div className={classes.item}>
+            <p>{res.data.requirement_zh}</p>
+
+          </div>
+
         </div>
-        <div className={classes.button}>
-          <a style={{border: '1px solid #D3323E', padding: '0 40px', borderRadius: '36px', color: '#D3323E',height:'40px',lineHeight:'40px'}} href="mailto:lin.zhou@r2.ai">立即申请</a>
-        </div>
+
 
       </div>
-    </>
+      <div className={classes.button}>
+        <a style={{
+          border: "1px solid #D3323E",
+          padding: "0 40px",
+          borderRadius: "36px",
+          color: "#D3323E",
+          height: "40px",
+          lineHeight: "40px"
+        }} href="mailto:lin.zhou@r2.ai">立即申请</a>
+      </div>
+    </div>
   );
 }
 
