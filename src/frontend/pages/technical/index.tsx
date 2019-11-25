@@ -15,18 +15,18 @@ const useStyles = makeStyles({
     }
   },
   banner: {
-    maxHeight: '650px',
+    maxHeight: "650px",
     maxWidth: "100%",
-    overflow: 'hidden',
-    margin: '0 auto',
-    display: 'flex',
-    flex: 'none',
-    justifyContent: 'center',
-    position:'relative',
+    overflow: "hidden",
+    margin: "0 auto",
+    display: "flex",
+    flex: "none",
+    justifyContent: "center",
+    position: "relative",
     "& >img": {
-      maxWidth: '100%',
-      maxHeight: '100%',
-      minWidth: '1000px'
+      maxWidth: "100%",
+      maxHeight: "100%",
+      minWidth: "1000px"
     }
   },
   center: {
@@ -101,7 +101,7 @@ function HomeAbout() {
     "综合性的机器学习平台",
     "智能部署",
     "协作共享",
-    "全自动智能交互特征工程",
+    "自动智能交互特征工程",
     "安全使用",
     "大数据自动可视化"
   ];
@@ -109,13 +109,13 @@ function HomeAbout() {
   const content = [
     [
       "端到端一站式平台",
-      "无代码模型构建",
-      "跨行业的预测应用"
+      "机器学习模型构建",
+      "多行业应用"
     ],
     [
-      "用户数据安全",
-      "权限管理设计",
-      "私有环境部署"
+      "全方位监控",
+      "智能化迭代",
+      "批量化部署"
     ],
     [
       "多角色协作",
@@ -128,14 +128,14 @@ function HomeAbout() {
       "特征关联展示"
     ],
     [
+      "用户数据安全",
+      "用户权限管理",
+      "私有环境部署"
+    ],
+    [
       "大数据实时分析",
       "自动数据处理",
       "自动可视化"
-    ],
-    [
-      "全方位监控",
-      "智能化迭代",
-      "批量化部署"
     ]
   ];
 
@@ -148,14 +148,14 @@ function HomeAbout() {
         <Grid container xs={12} className={classes.title}>
           <Grid item xs={12} md={9} lg={7} xl={5} className={classes.center}>
             <Typography component={"h4"} variant='h4' align='center'>
-              R2独门秘籍
+              R2独门秘笈
             </Typography>
           </Grid>
         </Grid>
         <Grid container xs={12}>
           <Grid item xs={12} md={9} lg={7} xl={5} className={classes.center}>
             <Typography component={"div"} align='center'>
-              为各行业企业、个人提供世界领先的人工智能开发及应用平台，帮助客户以最简单、便捷、高效的方式， <br />建立最优质的机器学习模型，为每个有价值的业务场景自主构建AI应用，实现业务升级和企业AI赋能。
+              为各行业企业、个人提供世界领先的人工智能开发及应用平台，帮助客户以最简单、便捷、高效的方式， <br/>建立最优质的机器学习模型，为每个有价值的业务场景自主构建AI应用，实现业务升级和企业AI赋能。
             </Typography>
           </Grid>
         </Grid>
