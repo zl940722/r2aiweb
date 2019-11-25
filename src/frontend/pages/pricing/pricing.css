@@ -9,3 +9,13 @@
     text-align: center !important;
     font-weight: normal;
 }
+
+.button{
+    width: 10.5rem;
+    height: 2.5rem;
+    font-weight: bold !important;
+    font-size: 1rem !important;
+    border:2px solid rgba(49,65, 87, 1) !important;
+    padding:0 !important;
+    box-sizing: border-box !important;
+}

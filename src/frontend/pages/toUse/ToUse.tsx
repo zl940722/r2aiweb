@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-
-import { Grid } from "@material-ui/core";
 import axios from "axios";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -59,33 +57,28 @@ const useStyles = makeStyles((theme: Theme) =>
 
 
 const Index = (props: any) => {
-    const [content, setcontent] = React.useState("");
-    const [isSuccess, setSuccess] = React.useState(false);
 
-
-  useEffect(() => {
-    axios.get("/probation/applyProbation", { params: { userId: props.router.query.id } }).then((response: any) => {
-      if (response.status === 200) {
-        setcontent("试用成功");
-        setSuccess(true);
-      }
-    }).catch((error: any) => {
-      if (error.response) {
-        console.log(error.response.data);
-        setcontent(error.response.data);
-        setSuccess(false);
-      }
-    });
-  }, []);
-
-    const classes = useStyles();
+  // useEffect(() => {
+  //   axios.get("/probation/applyProbation", { params: { userId: props.router.query.id } }).then((response: any) => {
+  //     if (response.status === 200) {
+  //       setcontent("试用成功");
+  //       setSuccess(true);
+  //     }
+  //   }).catch((error: any) => {
+  //     if (error.response) {
+  //       console.log(error.response.data);
+  //       setcontent(error.response.data);
+  //       setSuccess(false);
+  //     }
+  //   });
+  // }, []);
 
     return (
       <div>
         {
           <div style={{ background: "#F5F5F5", textAlign: "center", margin: "200px 300px 380px", padding: 200 }}>
             <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start" }}>
-              <img style={{ width: 32, height: 32 }} src={"/static/images/price/succ.png"}/><h1
+              <img style={{ width: 32, height: 32 }} src={"/static/images/price/succ.png"} alt=''/><h1
               style={{ color: "#333333" }}>试用申请提交成功！</h1>
             </div>
             <p>

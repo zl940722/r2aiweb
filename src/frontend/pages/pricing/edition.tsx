@@ -4,6 +4,9 @@ import { makeStyles } from "@material-ui/styles";
 import { Typography, Grid, Card } from "@material-ui/core";
 import { Button, Grommet } from "grommet";
 import Router from "next/router";
+import axios from "axios";
+import './pricing.css'
+import { Modal } from "antd";
 
 const useStyles = makeStyles({
   content: {
@@ -83,15 +86,6 @@ const useStyles = makeStyles({
     marginTop: "3rem",
     textAlign: "center"
   },
-  button: {
-    width: '10.5rem',
-    fontWeight: "bold",
-    fontSize: '1rem',
-    border:"2px solid rgba(49, 65, 87, 1)",
-    padding:0,
-    boxSizing: "border-box",
-    height: "2.5rem",
-  }
 });
 
 const customTheme = {
@@ -123,35 +117,47 @@ const customTheme = {
   }
 };
 
+
 function Pricing(props: any) {
   const {user={},data=[]} = props;
-  const toBuy = (id,value) => {
+  const toBuy = (level,value) => {
     return () => {
       if (user.active) {
-        if (id === 4) {
-          Router.push({
-            pathname: "/toUse",
-            query: {
-              id: user.id
-            }
-          });
-        } else if (id === 3) {
+        if (level === 1) {
+          axios.get("/probation/applyProbation", { params: { userId: user.id } }).then((response: any) => {
+              if (response.status === 200) {
+                Router.push({
+                  pathname: "/toUse",
+                });
+              }else{
+                Modal.error({
+                  title: '温馨提示',
+                  content: '申请失败，请刷新后重试',
+                });
+              }
+            }).catch((error: any) => {
+              if (error.response) {
+                Modal.error({
+                  title: '温馨提示',
+                  content: '请求失败，请刷新后重试',
+                });
+              }
+            });
+        } else if (level === 2) {
           Router.push({
             pathname: "/simpleBuy",
             query: {
-              id: id,
-              user: JSON.stringify(user)
+              level,
             }
           });
-        } else if (id === 2) {
+        } else if (level === 3) {
           Router.push({
             pathname: "/essBuy",
             query: {
-              id: id,
-              user: JSON.stringify(user)
+              level,
             }
           });
-        } else if (id === 1) {
+        } else if (level === 4) {
           Router.push(`/contactSales`);
         }
       } else {
@@ -160,9 +166,8 @@ function Pricing(props: any) {
     };
   };
 
-
-  const classes = useStyles();
   const {type} = user;
+  const classes = useStyles();
   return <div className={classes.content}>
         <div>
             <Grid container className={classes.root} spacing={0}>
@@ -186,8 +191,8 @@ function Pricing(props: any) {
                                hoverIndicator
                                disabled={disabled()}
                                label={value.button_zh}
-                               className={classes.button}
-                               onClick={toBuy(value.id, value)}
+                               className='button'
+                               onClick={toBuy(value.level, value)}
                              />
                            </Grommet>}
                     </dd>
