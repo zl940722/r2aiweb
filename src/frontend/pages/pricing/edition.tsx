@@ -143,7 +143,7 @@ function Pricing(props: any) {
                 });
               }
             });
-        } else if ([2,3].includes(index)) {
+        } else if ([2,3].includes(level)) {
           Router.push({
             pathname: "/simpleBuy",
             query: {
