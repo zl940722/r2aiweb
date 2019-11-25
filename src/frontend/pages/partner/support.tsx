@@ -17,10 +17,11 @@ const useStyles = makeStyles({
     textAlign: "center"
   },
   des: {
-    fontSize: "1rem",
+    fontSize: "1.2rem",
     color: "#0C151B",
     lineHeight: 2,
-    textAlign: "center"
+    margin:'0 auto',
+    width:'70%'
   },
   items: {
     margin: "5rem 0 1rem"
