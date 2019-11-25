@@ -108,22 +108,25 @@ export default function(res: any) {
         {/*<a href="javascript:" className={classes.back} onClick={back}>*/}
         {/*  &lt;-- 返回{route.includes("news") ? "资讯" : "社区"}列表*/}
         {/*</a>*/}
-        <PageHeader
-          style={{
-            left: "-1.5rem",
-            position: "relative",
-          }}
-          onBack={back}
-          title={`返回${route.includes("news") ? "资讯" : "社区"}列表`}
-          subTitle=""
-        />
+        <div onClick={back}>
+          <PageHeader
+            style={{
+              left: "-1.5rem",
+              position: "relative"
+            }}
+            onBack={back}
+            title={`返回${route.includes("news") ? "资讯" : "社区"}列表`}
+            subTitle=""
+          />
+        </div>
         <Grid container className={classes.items} direction={"row"}>
           <Grid item sm={12} xs={12}>
             <div className={classes.item}>
               <Typography variant={"h5"} className={classes.itemTitle}>
                 {news.title || ""}
               </Typography>
-              <Typography variant={"body1"} className={classes.itemDes} style={{display:(news.publishTime?'':'none')}}>
+              <Typography variant={"body1"} className={classes.itemDes}
+                          style={{ display: (news.publishTime ? "" : "none") }}>
                 发布日期:{moment(news.publishTime).format("YYYY-MM-DD")}
               </Typography>
               <Typography variant={"body1"} className={classes.body}>
