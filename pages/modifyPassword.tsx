@@ -5,7 +5,7 @@ import axios from "axios";
 import _ from "lodash";
 
 import SimpleInput from "../src/frontend/Components/SimpleInput";
-import SimpleButton from "../src/frontend/Components/CommonButton";
+import SimpleButton from "../src/frontend/Components/SimpleButton";
 import SimpleDialog from "../src/frontend/Components/SimpleDialog";
 import { withRouter } from "next/router";
 import fetch from "isomorphic-unfetch";
@@ -145,7 +145,7 @@ function ModifyPassword(res: any) {
             />
             <div className={classes.button} style={{textAlign:'center'}}>
               <SimpleButton
-                onClick={submit}
+                onClick={_.debounce(submit, 1000)}
                 label={"提交"}
               />
             </div>
