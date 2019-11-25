@@ -7,23 +7,23 @@ import Router from "next/router";
 
 const useStyles = makeStyles({
   content: {
-    maxWidth: "75rem",
     margin: "0 auto",
-    padding: "1.5rem 0 0",
-    overflow: "hidden"
+    overflow: "hidden",
+    width:'100%',
   },
-  title: {
-    padding: "3rem 0 1rem 0",
-    fontSize: "2rem",
-    fontWeight: "bold",
-    textAlign: "center"
-  }, title2: {
-    padding: "2rem",
-    width: "84%",
+
+  title2: {
+    padding: "1.8125rem 0 1.8125rem 1.25rem",
     background: "#F5F5F5",
-    fontSize: "18px",
+    fontSize: "1rem",
     fontWeight: "bold",
-    textAlign: "left"
+    textAlign: "left",
+    color:"#333",
+    border:"1px solid #ECECEC",
+    borderWidth:'1px 0',
+    width: "calc(100% - 4px)",
+    position: "relative",
+    left: "2px",
   },
   des: {
     fontSize: "30px",
@@ -32,14 +32,28 @@ const useStyles = makeStyles({
     textAlign: "center"
   },
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    // border:"1px solid",
   },
+
   items: {
-    margin: "2rem 0 0"
+    // margin: "2rem 0 0"
   },
   item: {
     maxWidth: "90%",
     boxSizing: "border-box"
+  },
+  _item:{
+    display:"flex",
+    width:"100%",
+    margin:0,
+    '& dd':{
+      flex:1,
+      textAlign:'center',
+      paddingBottom:'5rem',
+      margin:0,
+      borderLeft:"1px solid #ECECEC",
+    },
   },
   itemsDiv: {
     width: 200,
@@ -47,65 +61,38 @@ const useStyles = makeStyles({
     textAlign: "center"
   },
   itemsContext1: {
-    fontSize: 24,
-    color: "#0C151B",
-    fontWeight: "bold"
+    fontSize: '1.5rem',
+    color: "#333",
+    fontWeight: "bold",
+    padding:"2.6875rem 0 3rem",
+    margin:0,
   },
   itemsContext2: {
-    fontSize: 24,
-    color: "#C24144",
-    fontWeight: "bold"
+    fontSize: '1.5rem',
+    color: "#D3323E",
+    fontWeight: "bold",
+    margin:0,
   },
   itemsContext3: {
-    fontSize: 16,
-    color: "#C24144",
-    fontWeight: "bold"
-  }, buttonWrap: {
+    fontSize: '1rem',
+    color: "#D3323E",
+    fontWeight: 400
+  },
+  buttonWrap: {
     width: "100%",
     marginTop: "3rem",
     textAlign: "center"
   },
   button: {
-    width: "8.6rem",
-    height: "2.5rem",
+    width: '10.5rem',
     fontWeight: "bold",
-    fontSize: 16
+    fontSize: '1rem',
+    border:"2px solid rgba(49, 65, 87, 1)",
+    padding:0,
+    boxSizing: "border-box",
+    height: "2.5rem",
   }
 });
-
-// const edition_type = [
-//   {
-//     id: 1,
-//     name: "",
-//     month: "",
-//     year: "",
-//     button: ""
-//   }, {
-//     id: 2,
-//     name: "免费试用",
-//     month: "0元/月",
-//     year: "两周期限",
-//     button: "立即试用"
-//   }, {
-//     id: 3,
-//     name: "简易版",
-//     month: "199.98元/月",
-//     year: "2159.78元/年",
-//     button: "立即购买"
-//   }, {
-//     id: 4,
-//     name: "专业版",
-//     month: "1999.98元/月",
-//     year: "21599.78元/年",
-//     button: "立即购买"
-//   }, {
-//     id: 5,
-//     name: "企业版",
-//     month: "根据需求定价",
-//     year: "支持本地部署",
-//     button: "联系销售"
-//   }
-// ];
 
 const customTheme = {
   button: {
@@ -136,78 +123,82 @@ const customTheme = {
   }
 };
 
-function Pricing(res: any) {
-  const toBuy = (id, value) => {
+function Pricing(props: any) {
+  const {user={},data=[]} = props;
+  const toBuy = (id,value) => {
     return () => {
-      if (id === 4) {
-        Router.push({
-          pathname: "/toUse",
-          query: {
-            id: res.user.id
-          }
-        });
-      } else if (id === 3) {
-        Router.push({
-          pathname: "/simpleBuy",
-          query: {
-            id: id,
-            user: JSON.stringify(res.user)
-          }
-        });
-      } else if (id === 2) {
-        Router.push({
-          pathname: "/essBuy",
-          query: {
-            id: id,
-            user: JSON.stringify(res.user)
-          }
-        });
-      } else if (id === 1) {
-        Router.push(`/contactSales`);
+      if (user.active) {
+        if (id === 4) {
+          Router.push({
+            pathname: "/toUse",
+            query: {
+              id: user.id
+            }
+          });
+        } else if (id === 3) {
+          Router.push({
+            pathname: "/simpleBuy",
+            query: {
+              id: id,
+              user: JSON.stringify(user)
+            }
+          });
+        } else if (id === 2) {
+          Router.push({
+            pathname: "/essBuy",
+            query: {
+              id: id,
+              user: JSON.stringify(user)
+            }
+          });
+        } else if (id === 1) {
+          Router.push(`/contactSales`);
+        }
+      } else {
+        Router.push(`/login`);
       }
     };
   };
 
+
   const classes = useStyles();
-  return (
-    <>
-      <div className={classes.content}>
+  const {type} = user;
+  return <div className={classes.content}>
         <div>
-          <Typography className={classes.title}>
-            价格指南
-          </Typography>
-          <Grid container className={classes.root} spacing={0}>
-            <Grid container className={classes.items} direction={"row"}>
-              {res.data.map((value: any, index: any) => (
-                <Grid key={index} item sm={2} xs={12} spacing={0}>
-                  <Card className={classes.itemsDiv}>
-                    <p className={classes.itemsContext1}>{value.name_zh}</p>
-                    <p className={classes.itemsContext2}>{value.price_zh}</p>
-                    <p className={classes.itemsContext3}>{value.price_description_zh}</p>
-                    {
-                      value.button_zh &&
-                      <Grommet className={classes.buttonWrap} theme={customTheme}>
-                        <Button
-                          hoverIndicator
-                          disabled={!res.user.active}
-                          label={value.button_zh}
-                          className={classes.button}
-                          onClick={toBuy(value.id, value)}
-                        />
-                      </Grommet>
+            <Grid container className={classes.root} spacing={0}>
+              <dl className={classes._item}>
+                {data.map((value: any, index: number) => {
+                  const disabled = () =>{
+                    if(!type)return false;
+                    if(index === 1){
+                      return type > 0;
+                    }else if([2,3].includes(index)){
+                      return type>1;
                     }
-                  </Card>
-                </Grid>
-              ))}
+                    return false
+                  };
+                  return <dd key={index}>
+                      <p className={classes.itemsContext1}>{value.name_zh}</p>
+                      <p className={classes.itemsContext2}>{value.price_zh}</p>
+                      <p className={classes.itemsContext3}>{value.price_description_zh}</p>
+                        {value.button_zh &&<Grommet className={classes.buttonWrap} theme={customTheme}>
+                             <Button
+                               hoverIndicator
+                               disabled={disabled()}
+                               label={value.button_zh}
+                               className={classes.button}
+                               onClick={toBuy(value.id, value)}
+                             />
+                           </Grommet>}
+                    </dd>
+                })}
+              </dl>
+              <Typography className={classes.title2}>
+                服务内容
+              </Typography>
             </Grid>
-            <Typography className={classes.title2}>
-              服务内容
-            </Typography>
-          </Grid>
         </div>
       </div>
-    </>
-  );
 }
 
 export default Pricing;

@@ -1,8 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
-
 import { Grid, Card } from "@material-ui/core";
 import { Button, Grommet } from "grommet";
+import './pricing.css'
 
 const useStyles = makeStyles({
   content: {
@@ -24,7 +24,29 @@ const useStyles = makeStyles({
   root: {
     flexGrow: 1
   },
-  items: {},
+  items: {
+    display:'flex',
+    width:"100%",
+    fontSize:'0.875rem',
+    lineHeight:'4.375rem',
+    margin:0,
+    '& dd':{
+      flex:1,
+      margin:0,
+      '& ul':{
+        listStyle:'none',
+        marginBlockStart: 0,
+        marginBlockEnd: 0,
+        paddingInlineStart: 0,
+        width:'auto',
+        "& li":{
+          textAlign:'left',
+          border:"1px solid #ECECEC",
+          textIndent:"1.1875rem",
+        }
+      }
+    }
+  },
   item: {
     maxWidth: "90%",
     boxSizing: "border-box"
@@ -58,9 +80,8 @@ const useStyles = makeStyles({
     height: "2.5rem",
     fontWeight: "bold",
     fontSize: 16
-  }
+  },
 });
-
 
 const customTheme = {
   button: {
@@ -88,31 +109,28 @@ const customTheme = {
     scrubber: {
       color: "#2C4159"
     }
-  }
+  },
 };
 
 function Pricing(res: any) {
   const classes = useStyles();
-  return (
-    <>
-      <div className={classes.content}>
-        <div>
+  return <div className={classes.content}>
           <Grid container className={classes.root} spacing={0}>
-            <Grid container className={classes.items} direction={"row"}>
+            <dl className={classes.items}>
               {res.data.map((value: any, index: any) => (
-                <Grid key={index} item sm={2} xs={12} spacing={0}>
-                  <Card className={classes.itemsDiv}>
-                    <p className={classes.itemsContext3}>{value.data_volume_zh}</p>
-                    <p className={classes.itemsContext3}>{value.user_number_zh}</p>
-                    <p className={classes.itemsContext3}>{value.modeling_times_zh}</p>
-                    <p className={classes.itemsContext3}>{value.predicted_row_number_zh}</p>
-                    <p className={classes.itemsContext3}>{value.storage_space_zh}</p>
-                    <p className={classes.itemsContext3}>{value.Run_same_time_zh}</p>
-                    <p className={classes.itemsContext3}>{value.Item_number_zh}</p>
-                    <p className={classes.itemsContext3}>{value.support_data_format}</p>
-                    <p className={classes.itemsContext3}>{value.api === true ? "是" : "否"}</p>
-                    <p className={classes.itemsContext3}>{value.priority_zh}</p>
-                    <p className={classes.itemsContext3}>{value.technical_support_zh}</p>
+                <dd key={index} className={index?'content':'title'}>
+                  <ul className={classes.itemsDiv}>
+                    <li className={classes.itemsContext3}>{value.data_volume_zh}</li>
+                    <li className={classes.itemsContext3}>{value.user_number_zh}</li>
+                    <li className={classes.itemsContext3}>{value.modeling_times_zh}</li>
+                    <li className={classes.itemsContext3}>{value.predicted_row_number_zh}</li>
+                    <li className={classes.itemsContext3}>{value.storage_space_zh}</li>
+                    <li className={classes.itemsContext3}>{value.Run_same_time_zh}</li>
+                    <li className={classes.itemsContext3}>{value.Item_number_zh}</li>
+                    <li className={classes.itemsContext3}>{value.support_data_format}</li>
+                    <li className={classes.itemsContext3}>{value.api === true ? "是" : "否"}</li>
+                    <li className={classes.itemsContext3}>{value.priority_zh}</li>
+                    <li className={classes.itemsContext3}>{value.technical_support_zh}</li>
                     {
                       value.button &&
                       <Grommet className={classes.buttonWrap} theme={customTheme}>
@@ -123,15 +141,12 @@ function Pricing(res: any) {
                         />
                       </Grommet>
                     }
-                  </Card>
-                </Grid>
+                  </ul>
+                </dd>
               ))}
-            </Grid>
+            </dl>
           </Grid>
-        </div>
       </div>
-    </>
-  );
 }
 
 export default Pricing;

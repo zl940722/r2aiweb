@@ -1,9 +1,8 @@
 import React from "react";
-import { Card } from "@material-ui/core";
+import { Card, Typography } from "@material-ui/core";
 import Edition from "./edition";
 import Context from "./context";
 import { makeStyles } from "@material-ui/styles";
-import { Carousel } from "react-responsive-carousel";
 
 const useStyles = makeStyles({
   item: {
@@ -26,6 +25,19 @@ const useStyles = makeStyles({
       minWidth: '1000px'
     }
   },
+  container:{
+    width:'75rem',
+    margin:'auto auto 9.0625rem',
+    boxShadow:"inset 0px 0px 5px 0px rgba(0, 0, 0, 0.35)",
+    marginBottom:'9.0625'
+  },
+  title: {
+    padding: "4rem 0",
+    fontSize: "2rem",
+    fontWeight: "bold",
+    textAlign: "center",
+    color:"#333",
+  },
 });
 
 
@@ -36,8 +48,13 @@ function Application(res: any) {
       <div className={classes.banner}>
         <img src="/static/images/price/banner.png" alt="banner"/>
       </div>
-      <Edition {...res}/>
-      <Context {...res}/>
+      <Typography className={classes.title}>
+        价格指南
+      </Typography>
+      <section className={classes.container}>
+        <Edition {...res}/>
+        <Context {...res}/>
+      </section>
     </Card>
   );
 }

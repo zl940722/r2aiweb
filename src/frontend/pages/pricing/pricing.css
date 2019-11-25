@@ -1,0 +1,11 @@
+.title{
+    flex:3 !important;
+}
+.content{
+    flex:4 !important;
+}
+
+.content li{
+    text-align: center !important;
+    font-weight: normal;
+}
