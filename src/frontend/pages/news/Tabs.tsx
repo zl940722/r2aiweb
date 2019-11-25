@@ -59,7 +59,18 @@ const useStyles = makeStyles((theme: Theme) =>
     page: {
       margin: "0 auto 5.6875rem",
       textAlign: "right",
-      maxWidth: "75rem"
+      maxWidth: "75rem",
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'flex-end',
+      '& >a':{
+        color:'#333',
+        border:'1px solid',
+        fontSize:'1rem',
+        padding:"0 0.625rem",
+        borderRadius:'10%',
+        lineHeight:'1.625rem',
+      }
     }
   })
 );
@@ -99,7 +110,7 @@ export default function(res: any) {
         </dl>
       </div>
       <List list={list} route={route}/>
-      <section className={classes.page}>
+      <section className={classes.page} style={{display:(count?'':'none')}}>
         <Pagination
           defaultCurrent={+page}
           pageSize={5}
@@ -109,6 +120,7 @@ export default function(res: any) {
           itemRender={itemRender}
           showTotal={total => `共 ${Math.ceil(total / 5)} 页`}
         />
+        <a style={{display:(count>5?'':'none')}} href="javascript:">确定</a>
       </section>
     </div>
   );
