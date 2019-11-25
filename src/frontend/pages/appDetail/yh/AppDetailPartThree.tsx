@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   },
   context_title: {
     color: "#D3323E",
-    fontSize: "1.2rem",
+    fontSize: "24px",
     fontWeight: 600
   },
   icon: {

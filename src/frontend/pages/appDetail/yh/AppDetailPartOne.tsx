@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   },
   context_title: {
     color: "#D3323E",
-    fontSize: "1.2rem",
+    fontSize: "24px",
     fontWeight: 600
   },
   icon: {
@@ -78,7 +78,7 @@ function AppDetailPartOne(props: any) {
             <Grid item xs={3} className={classes.grid}>
               <img src={"/static/images/appDetail/zyt1.png"}/>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={3} className={classes.grid}>
               <img src={"/static/images/appDetail/tst.png"}/>
             </Grid>
           </Grid>

@@ -17,6 +17,9 @@ const useStyles = makeStyles({
     "& img": {
       maxHeight: '100%',
       maxWidth: '100%'
+    },
+    "& p": {
+      fontSize: '14px'
     }
   },
   title: {
@@ -51,7 +54,7 @@ const useStyles = makeStyles({
   },
   context_title: {
     color: "#D3323E",
-    fontSize: "1.2rem",
+    fontSize: "24px",
     fontWeight: 600
   },
   icon: {
@@ -69,23 +72,23 @@ function AppDetailPartTwo() {
     <div className={classes.root}>
       <div className={classes.content}>
         <div className={classes.context}>
-          <p className={classes.context_title}>信用卡准入的自动化评定</p>
+          <div className={classes.context_title}>信用卡准入的自动化评定</div>
 
           <Grid container className={classes.grids}>
             <Grid item md={12} className={classes.grid}>
               <div>
                 <div className={classes.icon}>
                   <img style={{ width: 24 }} src={"/static/images/appDetail/mb.png"}/>
-                  <span style={{ fontSize: 18, marginLeft: 10 }}>项目目标</span>
+                  <span style={{ fontSize: 18, marginLeft: 10, fontSizeAdjust: 18 }}>项目目标</span>
                 </div>
-                <p style={{ marginLeft: 34 }}>根据银行提供的一年内个人记录构建信用卡客户的准入模型。
+                <p style={{ marginLeft: 34, marginBottom: 40 }}>根据银行提供的一年内个人记录构建信用卡客户的准入模型。
                 </p>
               </div>
 
               <div style={{ marginLeft: 34 }}>
                 <div className={classes.icon} style={{ marginLeft: -34 }}>
                   <img style={{ width: 24 }} src={"/static/images/appDetail/cg.png"}/>
-                  <span style={{ fontSize: 18, marginLeft: 10 }}>项目成果</span>
+                  <span style={{ fontSize: 18, marginLeft: 10, fontSizeAdjust: 18 }}>项目成果</span>
                 </div>
                 <p >
                   便于业务部门普及基于机器学习的建模方法，成为专家规则等传统方法的有效补充；
@@ -100,7 +103,7 @@ function AppDetailPartTwo() {
               <div>
                 <div className={classes.icon}>
                   <img style={{ width: 24 }} src={"/static/images/appDetail/gc.png"}/>
-                  <span style={{ fontSize: 18, marginLeft: 10 }}>
+                  <span style={{ fontSize: 18, marginLeft: 10, fontSizeAdjust: 18 }}>
                             项目过程
                         </span>
                 </div>
