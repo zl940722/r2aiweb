@@ -7,7 +7,6 @@ import _ from "lodash";
 import classNames from "classnames";
 import { Menu, Dropdown } from "antd";
 import Router from "next/router";
-import Avatar from "@material-ui/core/Avatar";
 import axios from "axios";
 
 const { SubMenu } = Menu;
@@ -15,72 +14,71 @@ const { SubMenu } = Menu;
 const menuStyle: any = { width: 102, textAlign: 'center' }
 
 const useStyles = makeStyles({
-  root: {
-    flexGrow: 1,
-    backgroundColor: "#fff",
-    color: "#000",
-    "& span": {
-      color: "#000"
-    }
-  },
-  tab: {
-    height: 70,
-    fontSize: "1rem"
-    // color: "#000000"
-  },
-  a: {
-    textDecoration: "none",
-    color: "#333"
-  },
-  avatar: {
-    margin: 10
-  },
-  index: {
-    position: "absolute",
-    top: 0,
-    zIndex: 2,
-    width: "100%",
-    minWidth: "1200px",
-    background: "transparent",
-    color: "#fff",
-    "& span": {
-      color: "#fff"
+    root: {
+      flexGrow: 1,
+      backgroundColor: "#fff",
+      color: "#000",
+      "& span": {
+        color: "#000"
+      }
     },
-    "& ul": {
+    tab: {
+      height: 70,
+      fontSize: "1rem"
+      // color: "#000000"
+    },
+    a: {
+      textDecoration: "none",
+      color: "#333"
+    },
+    avatar: {
+      margin: 10
+    },
+    index: {
+      position: "absolute",
+      top: 0,
+      zIndex: 2,
+      width: "100%",
+      minWidth: "1200px",
       background: "transparent",
-      boxShadow: "none",
-      border: 0,
       color: "#fff",
-      "& li": {
+      "& span": {
+        color: "#fff"
+      },
+      "& ul": {
+        background: "transparent",
+        boxShadow: "none",
+        border: 0,
+        color: "#fff",
+        "& li": {
+          color: "#fff"
+        }
+      },
+      "& a": {
         color: "#fff"
       }
     },
-    "& a": {
-      color: "#fff"
+    user: {
+      float: "right",
+      marginRight: "6%"
+    },
+    login: {
+      color: "#000",
+      marginRight: 20,
+      textDecoration: "none"
+    },
+    res: {
+      color: "#000",
+      textDecoration: "none"
     }
-  },
-  user: {
-    float: "right",
-    marginRight: "6%"
-  },
-  login: {
-    color: "#000",
-    marginRight: 20,
-    textDecoration: "none"
-  },
-  res: {
-    color: "#000",
-    textDecoration: "none"
-  }
-})
-  ;
+  })
+;
 
 interface InterfaceMenu {
-  id?: number;
-  name?: string;
+  id: number;
+  name: string;
   children?: any;
-  childrens?: any;
-  link?: string | undefined;
+  link?: string;
 }
 
 const menus: InterfaceMenu[] = [
@@ -106,7 +104,8 @@ const menus: InterfaceMenu[] = [
         children: null,
         link: "/technical"
       }
-    ]
+    ],
+    link: "/products"
   },
   {
     id: 5,
@@ -133,7 +132,8 @@ const menus: InterfaceMenu[] = [
         children: null,
         link: "/appDetail/internet"
       }
-    ]
+    ],
+    link: "/application"
   },
   {
     id: 6,
@@ -165,7 +165,8 @@ const menus: InterfaceMenu[] = [
       name: "活动参会",
       children: null,
       link: "/news/activity"
-    }]
+    }],
+    link: "/news/release"
   },
   {
     id: 9,
@@ -185,7 +186,8 @@ const menus: InterfaceMenu[] = [
       name: "案例分析",
       children: null,
       link: "/resources/case"
-    }]
+    }],
+    link: "/resources/message"
   },
   {
     id: 10,
@@ -212,29 +214,17 @@ const menus: InterfaceMenu[] = [
         children: null,
         link: "/job"
       }
-    ]
+    ],
+    link: "/company"
   }
 ];
 
 const Header = (props) => {
 
-
-  // @ts-ignore
   const classes = useStyles();
-
-  const [current, setcurrent] = React.useState("/");
+  const current = props.route;
 
   const index = props.route === "/";
-
-  useEffect(() => {
-    setcurrent(props.route);
-  }, []);
-
-
-  const handleClick = e => {
-    setcurrent(e.key);
-    Router.push(e.key);
-  };
 
   function logout() {
     axios.delete("/user/logout");
@@ -257,6 +247,9 @@ const Header = (props) => {
     </Menu>
   );
 
+  const handleClick = (e) => e.key && Router.push(e.key);
+
+
   return (
     <div className={classNames(classes.root, index ? classes.index : "")}>
       <Menu
@@ -277,21 +270,15 @@ const Header = (props) => {
         </Link>
 
         {
-          _.map(menus, (value: any, index) => {
+          _.map(menus, (value: InterfaceMenu, index) => {
+            const menuLink = value.link;
             return (
               value.children ?
-                <SubMenu key={index} style={menuStyle} title={<span onClick={() => {
-                  setcurrent(value.link);
-                  value.link && Router.push(value.link);
-                }} className="submenu-title-wrapper" > {value.name}</span>
-                }
-                >
-                  <Menu style={menuStyle}>{
-                    _.map(value.children, (res: any) => {
-                      return (
-                        <Menu.Item style={menuStyle} key={res.link}>{res.name}</Menu.Item>);
-                    })
-                  }</Menu>
+                <SubMenu key={index} style={menuStyle}
+                         title={value.name} onTitleClick={() => menuLink && Router.push(menuLink)}>
+                  {
+                    _.map(value.children, (res: InterfaceMenu) => <Menu.Item key={res.link}  style={menuStyle}>{res.name}</Menu.Item>)
+                  }
 
                 </SubMenu>
 
@@ -309,7 +296,7 @@ const Header = (props) => {
                 <span className={classes.avatar}>{props.user.email}</span>
               </Dropdown> :
               <div><a className={classes.login} href={"/login"}>登录</a> <a className={classes.res}
-                href={"/register"}>注册</a></div>
+                                                                          href={"/register"}>注册</a></div>
           }
         </span>
       </Menu>
