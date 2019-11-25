@@ -5,10 +5,14 @@ import { Typography, Grid } from "@material-ui/core";
 
 const useStyles = makeStyles({
   content: {
-    maxWidth: "55rem",
+    width: "65%",
     margin: "0 auto",
     padding: "5rem 0",
-    overflow: "hidden"
+    overflow: "hidden",
+    "& img": {
+      maxWidth: '100%',
+      maxHeight: '100%'
+    }
   },
   title: {
     fontWeight: "bold"
@@ -50,7 +54,7 @@ function AppDetailPartOne(props: any) {
           <p className={classes.context_title}>贷款产品精准营销</p>
 
           <Grid container className={classes.grids}>
-            <Grid item md={4} className={classes.grid}>
+            <Grid item xs={6} className={classes.grid}>
               <div>
                 <div className={classes.icon}>
                   <img style={{ width: 24 }} src={"/static/images/appDetail/mb.png"}/>
@@ -71,11 +75,11 @@ function AppDetailPartOne(props: any) {
               </div>
             </Grid>
 
-            <Grid item md={4} className={classes.grid}>
-              <img style={{ width: 250 }} src={"/static/images/appDetail/zyt1.png"}/>
+            <Grid item xs={3} className={classes.grid}>
+              <img src={"/static/images/appDetail/zyt1.png"}/>
             </Grid>
-            <Grid item md={4}>
-              <img style={{ width: 250 }} src={"/static/images/appDetail/tst.png"}/>
+            <Grid item xs={3}>
+              <img src={"/static/images/appDetail/tst.png"}/>
             </Grid>
           </Grid>
 
