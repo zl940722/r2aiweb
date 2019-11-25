@@ -15,19 +15,18 @@ const useStyles = makeStyles({
     }
   },
   banner: {
-    maxHeight: "50rem",
+    maxHeight: '650px',
     maxWidth: "100%",
-    overflow: "hidden",
-    margin: "0 auto",
-    display: "flex",
-    flex: "none",
-    height: "50rem",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    justifyContent: "center",
+    overflow: 'hidden',
+    margin: '0 auto',
+    display: 'flex',
+    flex: 'none',
+    justifyContent: 'center',
+    position:'relative',
     "& >img": {
-      maxWidth: "100%"
-      // maxHeight: '100%',
+      maxWidth: '100%',
+      maxHeight: '100%',
+      minWidth: '1000px'
     }
   },
   center: {

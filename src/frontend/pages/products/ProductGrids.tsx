@@ -144,7 +144,7 @@ function ProductGrids() {
               align={"center"}
               className={classes.grid_title}
             >
-              真正全流程自动机器学习建模
+              简单易用、建模速度快、高质
             </Typography>
             <Typography variant={"body2"} className={classes.grid_body}>
               既适用于机器学习专家，更适用于业务分析人员；

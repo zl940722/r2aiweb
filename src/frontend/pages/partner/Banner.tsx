@@ -16,12 +16,29 @@ const useStyles = makeStyles((theme: any) =>
       backgroundSize: "cover",
       backgroundPosition: "center"
     },
+    banner: {
+      maxHeight: '650px',
+      maxWidth: "100%",
+      overflow: 'hidden',
+      margin: '0 auto',
+      display: 'flex',
+      flex: 'none',
+      justifyContent: 'center',
+      position:'relative',
+      "& >img": {
+        maxWidth: '100%',
+        maxHeight: '100%',
+        minWidth: '1000px'
+      }
+    },
     itemContent: {
       maxWidth: "75rem",
       margin: "0 auto",
       paddingTop: "1rem",
       overflow: "hidden",
-      textAlign: "center"
+      textAlign: "left",
+      position:'absolute',
+      bottom:50,
     },
     title: {
       marginTop: "5rem",
@@ -111,10 +128,9 @@ function ProductBanner() {
         showStatus={false}
         showIndicators={false}
       >
-        <div
-          className={classes.item}
-          style={{ backgroundImage: "url(/static/images/partner/banner@2x.png)" }}
-        >
+        <div className={classes.banner}>
+          <img src="/static/images/partner/banner@2x.png" alt="banner"/>
+          {/*</div>*/}
           <div className={classes.itemContent}>
             <Grommet className={classes.buttonWrap} theme={customTheme}>
               <Button

@@ -23,6 +23,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "skipDefaultLibCheck": true,
+    "charset": "utf8",
     "noEmit": false
   },
   "exclude": [

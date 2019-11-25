@@ -139,31 +139,36 @@ const customTheme = {
 function Pricing(res: any) {
   const toBuy = (id, value) => {
     return () => {
-      if (id === 4) {
-        Router.push({
-          pathname: "/toUse",
-          query: {
-            id: res.user.id
-          }
-        });
-      } else if (id === 3) {
-        Router.push({
-          pathname: "/simpleBuy",
-          query: {
-            id: id,
-            user: JSON.stringify(res.user)
-          }
-        });
-      } else if (id === 2) {
-        Router.push({
-          pathname: "/essBuy",
-          query: {
-            id: id,
-            user: JSON.stringify(res.user)
-          }
-        });
-      } else if (id === 1) {
-        Router.push(`/contactSales`);
+
+      if (!res.user.active) {
+        if (id === 4) {
+          Router.push({
+            pathname: "/toUse",
+            query: {
+              id: res.user.id
+            }
+          });
+        } else if (id === 3) {
+          Router.push({
+            pathname: "/simpleBuy",
+            query: {
+              id: id,
+              user: JSON.stringify(res.user)
+            }
+          });
+        } else if (id === 2) {
+          Router.push({
+            pathname: "/essBuy",
+            query: {
+              id: id,
+              user: JSON.stringify(res.user)
+            }
+          });
+        } else if (id === 1) {
+          Router.push(`/contactSales`);
+        }
+      } else {
+        Router.push(`/login`);
       }
     };
   };
@@ -189,7 +194,7 @@ function Pricing(res: any) {
                       <Grommet className={classes.buttonWrap} theme={customTheme}>
                         <Button
                           hoverIndicator
-                          disabled={!res.user.active}
+                          // disabled={!res.user.active}
                           label={value.button_zh}
                           className={classes.button}
                           onClick={toBuy(value.id, value)}

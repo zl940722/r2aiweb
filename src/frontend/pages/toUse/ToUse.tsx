@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
@@ -61,6 +61,9 @@ const useStyles = makeStyles((theme: Theme) =>
 const Index = (props: any) => {
     const [content, setcontent] = React.useState("");
     const [isSuccess, setSuccess] = React.useState(false);
+
+
+  useEffect(() => {
     axios.get("/probation/applyProbation", { params: { userId: props.router.query.id } }).then((response: any) => {
       if (response.status === 200) {
         setcontent("试用成功");
@@ -73,6 +76,8 @@ const Index = (props: any) => {
         setSuccess(false);
       }
     });
+  }, []);
+
     const classes = useStyles();
 
     return (

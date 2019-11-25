@@ -72,7 +72,7 @@ function AppDetailPartOne(props: any) {
             </Grid>
 
             <Grid item md={4} className={classes.grid}>
-              <img style={{ width: 250 }} src={"/static/images/appDetail/zyt.png"}/>
+              <img style={{ width: 250 }} src={"/static/images/appDetail/zyt1.png"}/>
             </Grid>
             <Grid item md={4}>
               <img style={{ width: 250 }} src={"/static/images/appDetail/tst.png"}/>

@@ -84,8 +84,10 @@ export default function ContactUs() {
   const [checkErrorList, setCheckErrorList] = React.useState(arr);
   const handleChange = (name: string) => (event: React.ChangeEvent<HTMLInputElement>, invalid: boolean) => {
     setValues({ ...values, [name]: event.target.value });
-    let tempList: Array<string> = invalid ? _.chain(checkErrorList).concat(name).uniq().value() : _.pull(checkErrorList, name);
-    setCheckErrorList(tempList);
+    if (name !== "type") {
+      let tempList: Array<string> = invalid ? _.chain(checkErrorList).concat(name).uniq().value() : _.pull(checkErrorList, name);
+      setCheckErrorList(tempList);
+    }
   };
 
   const [dialogInfo, setDialogOpen] = React.useState({
@@ -97,7 +99,7 @@ export default function ContactUs() {
 
   const submit = () => {
     const requiredValues = _.chain(values).pick(required).values().compact().value();
-    console.log(requiredValues,checkErrorList,999999999999)
+    console.log(requiredValues, checkErrorList, 999999999999);
     if (requiredValues.length < required.length || checkErrorList.length > 0) {
       setDialogOpen({
         open: true,
@@ -191,7 +193,7 @@ export default function ContactUs() {
             />
             <div className={classes.button}>
               <SimpleButton
-                onClick={submit}
+                onClick={_.debounce(submit, 1000)}
                 label={"提交"}
               />
             </div>

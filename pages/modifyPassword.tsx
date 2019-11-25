@@ -1,18 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 import _ from "lodash";
 
 import SimpleInput from "../src/frontend/Components/SimpleInput";
-import SimpleSelect from "../src/frontend/Components/SimpleSelect";
-import SimpleTextArea from "../src/frontend/Components/SimpleTextArea";
 import SimpleButton from "../src/frontend/Components/CommonButton";
 import SimpleDialog from "../src/frontend/Components/SimpleDialog";
 import { withRouter } from "next/router";
+import fetch from "isomorphic-unfetch";
+import url from "../http";
+import Index from "./news/activity";
 
 const { parse } = require("url");
-
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -51,8 +51,10 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function ModifyPassword(res: any) {
+  const {user={}} = res;
   const parsedUrl = parse(res.router.asPath, true);
-  const { query: { token } } = parsedUrl, userId = res.user.id;
+  const { query: { token } } = parsedUrl;
+  const [userId,upUserId] = useState(user.id);
   const classes = useStyles();
   const [values, setValues] = React.useState<any>({
     oldPwd: "",
@@ -157,5 +159,25 @@ function ModifyPassword(res: any) {
     </div>
   );
 }
+
+ModifyPassword.getInitialProps = async function(props) {
+  let user;
+  if(typeof Window === 'function'){
+    const url='/user/login'
+    const _user = await fetch(url);
+    user = await _user.json();
+  }else{
+    const result = await fetch(process.env.AUTH_SERVICE || "http://localhost:8088",{
+      headers:{
+        cookie:props.req.headers.cookie
+      }
+    });
+    user = result.status === 200?await result.json():{};
+  }
+
+  return {
+    user,
+  };
+};
 
 export default withRouter(ModifyPassword);
