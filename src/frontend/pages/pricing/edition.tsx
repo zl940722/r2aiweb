@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/styles";
 
-import { Typography, Grid, Card } from "@material-ui/core";
+import { Typography, Grid } from "@material-ui/core";
 import { Button, Grommet } from "grommet";
 import Router from "next/router";
 import axios from "axios";
 import './pricing.css'
-import { Modal } from "antd";
+import SimpleDialog from "../../Components/SimpleDialog";
 
 const useStyles = makeStyles({
   content: {
@@ -120,6 +120,11 @@ const customTheme = {
 
 function Pricing(props: any) {
   const {user={},data=[]} = props;
+  const [dialogInfo, setDialogOpen] = useState({
+    open: false,
+    content: "",
+    type: ""
+  });
   const toBuy = (level,value) => {
     return () => {
       if (user.active) {
@@ -130,18 +135,18 @@ function Pricing(props: any) {
                   pathname: "/toUse",
                 });
               }else{
-                Modal.error({
-                  title: '温馨提示',
-                  content: '申请失败，请刷新后重试',
+                setDialogOpen({
+                  open: true,
+                  content: "申请失败，请刷新后重试",
+                  type: "error"
                 });
               }
-            }).catch((error: any) => {
-              if (error.response) {
-                Modal.error({
-                  title: '温馨提示',
-                  content: '请求失败，请刷新后重试',
-                });
-              }
+            }).catch(() => {
+              setDialogOpen({
+                open: true,
+                content: "请求失败，请刷新后重试",
+                type: "error"
+              });
             });
         } else if ([2,3].includes(level)) {
           Router.push({
@@ -161,6 +166,7 @@ function Pricing(props: any) {
 
   const {type} = user;
   const classes = useStyles();
+
   return <div className={classes.content}>
         <div>
             <Grid container className={classes.root} spacing={0}>
@@ -196,6 +202,8 @@ function Pricing(props: any) {
               </Typography>
             </Grid>
         </div>
+      <SimpleDialog
+      dialogInfo={dialogInfo} setOpen={setDialogOpen}/>
       </div>
 }
 

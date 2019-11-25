@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import React from "react";
+import { makeStyles, Theme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   footer: {
     display: "flex",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
     paddingBottom: "2.5rem"
   },
   button: {

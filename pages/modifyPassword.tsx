@@ -9,8 +9,6 @@ import SimpleButton from "../src/frontend/Components/CommonButton";
 import SimpleDialog from "../src/frontend/Components/SimpleDialog";
 import { withRouter } from "next/router";
 import fetch from "isomorphic-unfetch";
-import url from "../http";
-import Index from "./news/activity";
 
 const { parse } = require("url");
 

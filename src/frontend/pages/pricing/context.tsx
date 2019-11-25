@@ -128,7 +128,7 @@ function Pricing(res: any) {
                     <li className={classes.itemsContext3}>{value.Run_same_time_zh}</li>
                     <li className={classes.itemsContext3}>{value.Item_number_zh}</li>
                     <li className={classes.itemsContext3}>{value.support_data_format}</li>
-                    <li className={classes.itemsContext3}>{value.api === true ? "是" : "否"}</li>
+                    <li className={classes.itemsContext3}>{index?value.api === true ? "是" : "否":value.api}</li>
                     <li className={classes.itemsContext3}>{value.priority_zh}</li>
                     <li className={classes.itemsContext3}>{value.technical_support_zh}</li>
                     {
