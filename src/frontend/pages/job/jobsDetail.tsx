@@ -15,7 +15,8 @@ const useStyles = makeStyles({
     padding: "3rem",
     fontSize: "1rem",
     fontWeight: "bold",
-    color: "#D3323EFF"
+    color: "#D3323EFF",
+    cursor: 'pointer'
   },
   des: {
     fontSize: "1rem",
