@@ -542,7 +542,11 @@ export default function TextFields(props: any) {
                       axios.get("/unionPay/orderQuery", {
                         params: { orderId: resData.data.orderId }
                       }).then(result => {
-                        Router.push("/paySuccess");
+                        if(result.data == 'success'){
+                          Router.push("/paySuccess");
+                        }else{
+                          setOpen(false);
+                        }
                       }).catch(() => {
                         setOpen(false);
                         console.log("失败");
