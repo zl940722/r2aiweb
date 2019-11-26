@@ -240,7 +240,7 @@ export default function TextFields() {
         setOpen(true);
         console.log(err.response.data)
         setModal({
-          content: err.response.data,
+          content: '验证码错误',
           type: "error"
         });
         setCaptchas(new Date().getTime());

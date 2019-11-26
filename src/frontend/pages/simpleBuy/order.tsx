@@ -210,7 +210,7 @@ export default function TextFields(props: any) {
           }
           setOpen(true);
           setModal({
-            content: error.response.data,
+            content: '验证码错误',
             type: "error"
           });
           setCaptchas(new Date().getTime());
