@@ -223,28 +223,35 @@ export default function TextFields() {
                   });
                 }
               }).catch((error: any) => {
-                if (error.response) {
-                  console.log(error.response.data);
-                  console.log(error.response.status);
-                  console.log(error.response.headers);
-                }
-                setOpen(true);
-                setModal({
-                  content: error.response.data,
-                  type: "error"
-                });
-                setCaptchas(new Date().getTime());
+              if (error.response) {
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+              }
+              setOpen(true);
+              const message = error.response.data;
+              let errMes;
+              if (message == "You are an official user") {
+                errMes = "你已经是正式用户,请登录。";
+              } else if (message == "need active") {
+                errMes = "你已注册，请去邮箱激活。";
+              }
+              setModal({
+                content: errMes,
+                type: "error"
               });
+              setCaptchas(new Date().getTime());
+            });
           }
         }).catch((err: any) => {
-          setOpen(true);
-          console.log(err.response.data)
-          setModal({
-            content: '验证码错误',
-            type: "error"
-          });
-          setCaptchas(new Date().getTime());
+        setOpen(true);
+        console.log(err.response.data);
+        setModal({
+          content: "验证码错误",
+          type: "error"
         });
+        setCaptchas(new Date().getTime());
+      });
     }
 
 
@@ -338,7 +345,7 @@ export default function TextFields() {
                 value={values.province}
                 onChange={(event: any) => {
                   let bb: any = [];
-                  _.forEach(citise, function (o) {
+                  _.forEach(citise, function(o) {
                     if (event.target.value === _.toInteger(o.parentCode)) {
                       bb.push(o);
                       setshow({ province: true, city: true });
@@ -378,7 +385,7 @@ export default function TextFields() {
                     city: event.target.value
                   });
                   let bb: any = [];
-                  _.forEach(areas, function (o) {
+                  _.forEach(areas, function(o) {
                     if (event.target.value === _.toInteger(o.parentCode)) {
                       bb.push(o);
                       setshow({ province: true, city: true, area: true });
@@ -458,11 +465,11 @@ export default function TextFields() {
                 />
 
                 <img src={`/user/captcha?${captcha}`}
-                  style={{ marginTop: "11px", position: "absolute", right: 10, top: 16 }}
-                  alt=""
-                  onClick={() => {
-                    setCaptchas(new Date().getTime());
-                  }}
+                     style={{ marginTop: "11px", position: "absolute", right: 10, top: 16 }}
+                     alt=""
+                     onClick={() => {
+                       setCaptchas(new Date().getTime());
+                     }}
                 />
               </div>
               {/*<SimpleInput*/}
@@ -508,14 +515,15 @@ export default function TextFields() {
         </DialogContent>
         <DialogActions>
           <Button
-            style={{ border: '1px solid #D3323E', width: 138, height: 38, borderRadius: 20, color: '#D3323E' }}
+            style={{ border: "1px solid #D3323E", width: 138, height: 38, borderRadius: 20, color: "#D3323E" }}
             onClick={() => {
               setOpen(false);
             }} color="primary">
             取消
           </Button>
           <Button
-            style={{ border: '1px solid #D3323E', width: 138, height: 38, borderRadius: 20, color: '#D3323E' }} onClick={() => {
+            style={{ border: "1px solid #D3323E", width: 138, height: 38, borderRadius: 20, color: "#D3323E" }}
+            onClick={() => {
               setOpen(false);
             }} color="primary">
             确定
