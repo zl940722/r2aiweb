@@ -27,6 +27,7 @@ const useStyles = makeStyles({
       color: "#333",
       fontSize: "1rem",
       width: "23.125rem",
+      margin: '0 22.5px',
       "& span": {
         display: "block",
         textAlign: "left",

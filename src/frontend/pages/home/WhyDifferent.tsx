@@ -27,6 +27,7 @@ const useStyles = makeStyles({
       color: "#333",
       fontSize: "1rem",
       width: "23.125rem",
+      margin: '0 22.5px',
       "& span": {
         display: "block",
         textAlign: "left",
@@ -44,7 +45,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function() {
+export default function () {
   const classes = useStyles();
   const main = [
     {
@@ -71,7 +72,7 @@ export default function() {
         {main.map((itm, index) => {
           return (
             <dd key={index}>
-              <i style={{ backgroundImage: `url(/static/images/home/${itm.url})` }}/>
+              <i style={{ backgroundImage: `url(/static/images/home/${itm.url})` }} />
               <div>
                 <span>{itm.title}</span>
                 {itm.content}
