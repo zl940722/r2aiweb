@@ -6,7 +6,6 @@ import "./index.css";
 
 const useStyles = makeStyles({
   content: {
-    padding: "1.5rem 0 8.8rem",
     overflow: "hidden"
   },
   content_div: {
@@ -33,9 +32,18 @@ const useStyles = makeStyles({
   },
   items: {
     margin: "80px 0 35px",
+    "& :nth-child(3n) > div": {
+      marginLeft: "auto"
+    },
+    "& :nth-child(3n + 1) > div": {
+      marginRight: "auto"
+    },
+    "& :nth-child(3n + 2) > div": {
+      margin: "0 auto"
+    }
   },
   item: {
-    maxWidth: "90%",
+    maxWidth: "370px",
     boxSizing: "border-box",
     overflow: "hidden",
     position: "relative"
@@ -62,7 +70,6 @@ function HomeAbout() {
   const mouseOver = (name: any) => {
 
     return () => {
-      console.log(name);
       setShow({
         [name]: true
       });
@@ -86,9 +93,9 @@ function HomeAbout() {
           <Grid container className={classes.items} direction={"row"}>
             <Grid item xs={4}>
               <div className={classes.item}
-                   onMouseOver={mouseLeave("item1")}
-                   onMouseMove={mouseOver("item1")}
-                   onMouseLeave={mouseLeave("item1")}>
+                onMouseOver={mouseLeave("item1")}
+                onMouseMove={mouseOver("item1")}
+                onMouseLeave={mouseLeave("item1")}>
                 <img
                   className={show.item1 ? "img_hover" : "img"}
                   src="/static/images/team/1.png"
@@ -108,9 +115,9 @@ function HomeAbout() {
             </Grid>
             <Grid item xs={4}>
               <div className={classes.item}
-                   onMouseOver={mouseLeave("item2")}
-                   onMouseMove={mouseOver("item2")}
-                   onMouseLeave={mouseLeave("item2")}>
+                onMouseOver={mouseLeave("item2")}
+                onMouseMove={mouseOver("item2")}
+                onMouseLeave={mouseLeave("item2")}>
                 <img
                   className={show.item2 ? "img_hover" : "img"}
                   src="/static/images/team/2.png"
@@ -145,9 +152,9 @@ function HomeAbout() {
             <Grid container className={classes.items} direction={"row"}>
               <Grid item xs={4}>
                 <div className={classes.item}
-                     onMouseOver={mouseLeave("item3")}
-                     onMouseMove={mouseOver("item3")}
-                     onMouseLeave={mouseLeave("item3")}>
+                  onMouseOver={mouseLeave("item3")}
+                  onMouseMove={mouseOver("item3")}
+                  onMouseLeave={mouseLeave("item3")}>
                   <img
                     className={show.item3 ? "img_hover" : "img"}
                     src="/static/images/team/1.png"
@@ -167,9 +174,9 @@ function HomeAbout() {
               </Grid>
               <Grid item xs={4}>
                 <div className={classes.item}
-                     onMouseOver={mouseLeave("item4")}
-                     onMouseMove={mouseOver("item4")}
-                     onMouseLeave={mouseLeave("item4")}>
+                  onMouseOver={mouseLeave("item4")}
+                  onMouseMove={mouseOver("item4")}
+                  onMouseLeave={mouseLeave("item4")}>
                   <img
                     className={show.item4 ? "img_hover" : "img"}
                     src="/static/images/team/3.png"
@@ -185,9 +192,9 @@ function HomeAbout() {
               </Grid>
               <Grid item xs={4}>
                 <div className={classes.item}
-                     onMouseOver={mouseLeave("item5")}
-                     onMouseMove={mouseOver("item5")}
-                     onMouseLeave={mouseLeave("item5")}>
+                  onMouseOver={mouseLeave("item5")}
+                  onMouseMove={mouseOver("item5")}
+                  onMouseLeave={mouseLeave("item5")}>
                   <img
                     className={show.item5 ? "img_hover" : "img"}
                     src="/static/images/team/4.png"
@@ -211,9 +218,9 @@ function HomeAbout() {
           <Grid container className={classes.items} direction={"row"}>
             <Grid item xs={4}>
               <div className={classes.item}
-                   onMouseOver={mouseLeave("item6")}
-                   onMouseMove={mouseOver("item6")}
-                   onMouseLeave={mouseLeave("item6")}>
+                onMouseOver={mouseLeave("item6")}
+                onMouseMove={mouseOver("item6")}
+                onMouseLeave={mouseLeave("item6")}>
                 <img
                   className={show.item6 ? "img_hover" : "img"}
                   src="/static/images/team/5.png"
