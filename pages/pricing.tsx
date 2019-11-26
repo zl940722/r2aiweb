@@ -11,11 +11,11 @@ const Index = (res: any) => {
 
 Index.getInitialProps = async function(props) {
   let user;
-  if(typeof Window === 'function'){
-    const url='/user/login';
+  if (typeof Window === "function") {
+    const url = "/user/login";
     const _user = await fetch(url);
-    user = await _user.json();
-  }else {
+    user = _user ? await _user.json() : {};
+  } else {
     const result = await fetch(process.env.AUTH_SERVICE || "http://localhost:8088", {
       headers: {
         cookie: props.req.headers.cookie
@@ -46,7 +46,7 @@ Index.getInitialProps = async function(props) {
   homeData.unshift(list);
   return {
     data: homeData,
-    user,
+    user
   };
 };
 

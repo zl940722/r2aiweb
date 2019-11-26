@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme: any) =>
   createStyles({
     main: {
       display: "flex",
-      alignItems: "center",
+      alignItems: "baseline",
       "&  select": {
         paddingTop: "1.5rem",
         paddingBottom: "1.5rem",

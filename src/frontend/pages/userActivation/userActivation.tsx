@@ -1,8 +1,7 @@
 import React from "react";
 import { withRouter } from "next/router";
 import axios from "axios";
-
-
+import Router from "next/router";
 class Index extends React.Component<any, any> {
   constructor(props) {
     super(props);
@@ -21,6 +20,7 @@ class Index extends React.Component<any, any> {
         token: (data[1].split(/=(?=.)/))[1]
       }
     }).then((res: any) => {
+      Router.push("/login");
     }).catch(function(error: any) {
       if (error.response) {
         console.log(error.response.data);

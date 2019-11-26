@@ -131,7 +131,7 @@ function AppDetailPartOne(props: any) {
                 <img src={"/static/images/appDetail/38.png"} />
               </Grid>
               <Grid item md={6} className={classes.grid}>
-                <p>2.
+                <p>2.发电量误差对风机单因子的响应：
                 以变桨电机扭矩为例，其分布范围集中在5~10之间，变桨电机扭矩在此范围内变化，其对应的发电量误差变化如有图所示。因此通过对单因子的监控，可有效实时地预测可能造成的发电量损失；
                 </p>
                 <img src={"/static/images/appDetail/39.png"} />
