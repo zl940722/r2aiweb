@@ -11,7 +11,8 @@ const useStyles = makeStyles({
     backgroundColor: "#F5F5F5"
   },
   content: {
-    maxWidth: "65%",
+    maxWidth: "60%",
+    lineHeight: '32px',
     margin: "0 auto",
     overflow: "hidden",
     "& img": {
@@ -75,7 +76,7 @@ function AppDetailPartTwo() {
           <div className={classes.context_title}>信用卡准入的自动化评定</div>
 
           <Grid container className={classes.grids}>
-            <Grid item md={12} className={classes.grid}>
+            <Grid item xs={12} className={classes.grid}>
               <div>
                 <div className={classes.icon}>
                   <img style={{ width: 24 }} src={"/static/images/appDetail/mb.png"}/>
@@ -107,25 +108,25 @@ function AppDetailPartTwo() {
                             项目过程
                         </span>
                 </div>
-                <Grid container className={classes.grids}>
-                  <Grid item md={6} className={classes.grid}>
+                <Grid spacing={8} container className={classes.grids}>
+                  <Grid item xs={6} className={classes.grid}>
                     <p>1.样本收集：由某银行提供的2018年164多万行、30多列变量的个人记录，其中不良率为目标变量； </p>
                     <img  src={"/static/images/appDetail/1.png"}/>
                   </Grid>
-                  <Grid item md={6} className={classes.grid}>
+                  <Grid item xs={6} className={classes.grid}>
                     <p>2.数据探索：用R2 Learn在正式建模前对每个变量进行可视化探索分析； </p>
                     <img  src={"/static/images/appDetail/2.png"}/>
                   </Grid>
                 </Grid>
 
-                <Grid container className={classes.grids}>
-                  <Grid item md={6} className={classes.grid}>
+                <Grid spacing={8} container className={classes.grids}>
+                  <Grid item xs={6} className={classes.grid}>
                     <p>3.建模设置：
                       在R2 Learn 中从数据分组、算法选择、速度与准确率的权衡等多个方面进行自动建模的个性化定制；
                     </p>
                     <img  src={"/static/images/appDetail/3.png"}/>
                   </Grid>
-                  <Grid item md={6} className={classes.grid}>
+                  <Grid item xs={6} className={classes.grid}>
                     <p>4. 最终模型评价：利用R2 Learn 提供的交互报表得到最终模型的质量评价。
                     </p>
                     <img  src={"/static/images/appDetail/4.png"}/>

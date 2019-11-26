@@ -80,7 +80,7 @@ function AppGrids() {
               href={`/appDetail/${value.id}`}
             >
               {/*<a style={{color:'#333'}}>*/}
-                <Grid item md={6} className={classes.grid}>
+                <Grid item xs={6} className={classes.grid}>
                   <div className={classes.grid_img}>
                     <img src={`${value.imgUrl}`} width={100} alt={value.name}/>
                   </div>

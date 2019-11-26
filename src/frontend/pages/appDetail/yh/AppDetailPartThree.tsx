@@ -5,8 +5,9 @@ import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles({
   content: {
-    width: "65%",
+    width: "60%",
     margin: "0 auto",
+    lineHeight: '32px',
     padding: "5rem 0",
     overflow: "hidden",
     "& img": {
@@ -50,8 +51,8 @@ function AppDetailPartOne(props: any) {
           <p className={classes.context_title}>信用卡逾期还款的自动化评定
           </p>
 
-          <Grid container className={classes.grids}>
-            <Grid item md={12} className={classes.grid}>
+          <Grid spacing={8} container className={classes.grids}>
+            <Grid item xs={12} className={classes.grid}>
               <div>
                 <div className={classes.icon}>
                   <img style={{ width: 24 }} src={"/static/images/appDetail/mb.png"}/>
@@ -85,12 +86,12 @@ function AppDetailPartOne(props: any) {
                             项目过程
                         </span>
                 </div>
-                <Grid container className={classes.grids}>
-                  <Grid item md={6} className={classes.grid}>
+                <Grid spacing={8} container className={classes.grids}>
+                  <Grid item xs={6} className={classes.grid}>
                     <p>1.数据清洗： 观察数据类型，对缺失值进行填充，对分类变量和连续变量进行处理，在高级建模设置中可以对非平衡数据进行处理； </p>
                     <img src={"/static/images/appDetail/bank3gc1.png"}/>
                   </Grid>
-                  <Grid item md={6} className={classes.grid}>
+                  <Grid item xs={6} className={classes.grid}>
                     <p>2.
                       特征工程：
                       对所有变量进行自动化的特征工程处理，高级建模中可根据需求创建新变量，选择PCA, SVM等特征预处理；</p>
@@ -98,14 +99,14 @@ function AppDetailPartOne(props: any) {
                   </Grid>
                 </Grid>
 
-                <Grid container className={classes.grids}>
-                  <Grid item md={6} className={classes.grid}>
+                <Grid spacing={8} container className={classes.grids}>
+                  <Grid item xs={6} className={classes.grid}>
                     <p>3.
                       模型训练： 简易模式中，R2 Learn 将自动训练20多个模型；高级建模中，可以自 己选择不同算法，设置不同的数据集划分标准等；最后通过AUC等指标选择最佳模型；
                     </p>
                     <img src={"/static/images/appDetail/bank3gc3.png"}/>
                   </Grid>
-                  <Grid item md={6} className={classes.grid}>
+                  <Grid item xs={6} className={classes.grid}>
                     <p>4.
                       模型部署及性能检测：
                       模型训练结束后可以设定度量指标及阈值，对模型的性能进行检测，当新数据集所得到的度量值低于阈值时将会自动预警，提示用户进行新模型的训练。
