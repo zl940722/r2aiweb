@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     main: {
       display: "flex",
-      alignItems: "baseline",
+      alignItems: "center",
       "&  select": {
         paddingTop: "1.5rem",
         paddingBottom: "1.5rem",
@@ -240,7 +240,7 @@ export default function TextFields() {
         setOpen(true);
         console.log(err.response.data)
         setModal({
-          content: err.response.data,
+          content: '验证码错误',
           type: "error"
         });
         setCaptchas(new Date().getTime());

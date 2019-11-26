@@ -9,17 +9,19 @@ const useStyles = makeStyles((theme: any) =>
   createStyles({
     main: {
       display: "flex",
-      alignItems: "baseline",
+      alignItems: "center",
       "&  select": {
         paddingTop: "1.5rem",
         paddingBottom: "1.5rem",
         paddingLeft: "1rem"
       }
     },
+    reqired: { color: "red", width: "0.5rem", textAlign: "center" },
     labelCss: {
       width: "6.6rem",
       textAlign: "right",
-      marginRight: "0.75rem"
+      marginRight: "0.75rem",
+      paddingTop:'-20px'
     },
     selectTextField: {
       minHeight: "4.25rem",
@@ -42,6 +44,7 @@ const SimpleSelect = (res: any) => {
       {
         label ? <div className={labelCss || classes.labelCss}>
           <span>{label}</span>
+          <span className={classes.reqired}>{"*"}</span>
         </div> : null
       }
       <TextField
