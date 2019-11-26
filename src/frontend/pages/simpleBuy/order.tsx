@@ -501,7 +501,11 @@ export default function TextFields(props: any) {
 
               </div>
 
-              <p>本人同意签署贵公司的<a href="/agreement">SAAS用户协议</a></p>
+              <div style={{marginTop:40}} onClick={() => {
+                location.href = "/agreement";
+              }}>
+                <p>本人同意签署贵公司的<a href="/agreement">SAAS用户协议</a></p>
+              </div>
 
               <div className={classes.button}>
                 <SimpleButton
@@ -542,9 +546,9 @@ export default function TextFields(props: any) {
                       axios.get("/unionPay/orderQuery", {
                         params: { orderId: resData.data.orderId }
                       }).then(result => {
-                        if(result.data == 'success'){
+                        if (result.data == "success") {
                           Router.push("/paySuccess");
-                        }else{
+                        } else {
                           setOpen(false);
                         }
                       }).catch(() => {
