@@ -195,6 +195,7 @@ function Pricing(props: any) {
                                disabled={disabled()}
                                label={value.button_zh}
                                className='button'
+                               style={{fontSize:'1rem'}}
                                onClick={toBuy(value.level, value)}
                              />
                            </Grommet>}

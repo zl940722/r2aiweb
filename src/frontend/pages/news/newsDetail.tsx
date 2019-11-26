@@ -84,6 +84,19 @@ const useStyles = makeStyles({
         color: "#D3323E"
       }
     }
+  },
+  button:{
+    color: '#D3323E',
+    width: '10.5rem',
+    border: '1px solid #D3323E',
+    height: '3.2rem',
+    fontWeight: 'bold',
+    fontSize:'1.25rem',
+    display:'block',
+    margin:'auto',
+    lineHeight:'3.2rem',
+    textAlign:'center',
+    borderRadius:'1.6rem',
   }
 });
 
@@ -141,7 +154,8 @@ export default function(res: any) {
             </dd>
           </dl>
         </Grid>
-        <CommonButton label={"返回"} onClick={back}/>
+        <a className={classes.button} href="javascript:" onClick={back}>返回</a>
+        {/*<CommonButton label={"返回"} onClick={back}/>*/}
       </div>
     </>
   );

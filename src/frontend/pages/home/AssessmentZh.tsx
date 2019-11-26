@@ -4,6 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const useStyles = makeStyles({
   content: {
+    overflow:'hidden',
     padding: "5rem 0 12.3125rem",
     textAlign: "center",
     "& p": {
