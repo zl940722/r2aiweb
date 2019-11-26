@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme: any) =>
   createStyles({
     main: {
       display: "flex",
-      alignItems: "center",
+      alignItems: "baseline",
       "&  select": {
         paddingTop: "1.5rem",
         paddingBottom: "1.5rem",
@@ -20,15 +20,14 @@ const useStyles = makeStyles((theme: any) =>
     labelCss: {
       width: "6.6rem",
       textAlign: "right",
-      marginRight: "0.75rem",
-      paddingTop:'-20px'
+      marginRight: "0.75rem"
     },
     selectTextField: {
       minHeight: "4.25rem",
       backgroundColor: "#FFFFFF"
     },
-    menu: {
-      width: 400
+    "& >div >div": {
+      lineHeight: "31px"
     }
   })
 );
