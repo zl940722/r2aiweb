@@ -453,7 +453,7 @@ export default function TextFields(props: any) {
 
               <div className={classes.captcha}>
                 <SimpleInput
-                  label="请输入验证码"
+                  label="验证码"
                   required={true}
                   value={values.captcha}
                   allowedLength={32}
@@ -473,7 +473,7 @@ export default function TextFields(props: any) {
 
               <div>
                 <FormControl component="fieldset" className={classes.formControl}>
-                  <div style={{ marginRight: 20, width: "6.6rem" }}>请选择支付方式</div>
+                  <div style={{ marginRight: 20, width: "6.6rem" }}>选择支付方式</div>
                   <RadioGroup aria-label="gender" name="gender1" value={payMethod} onChange={handleChanges}>
                     <Grid container spacing={10}>
                       <Grid item md={4}>
