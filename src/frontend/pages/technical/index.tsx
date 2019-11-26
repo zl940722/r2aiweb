@@ -155,7 +155,7 @@ function HomeAbout() {
         <Grid container xs={12}>
           <Grid item xs={12} md={9} lg={7} xl={5} className={classes.center}>
             <Typography component={"div"} align='center'>
-              为各行业企业、个人提供世界领先的人工智能开发及应用平台，帮助客户以最简单、便捷、高效的方式， <br/>建立最优质的机器学习模型，为每个有价值的业务场景自主构建AI应用，实现业务升级和企业AI赋能。
+              为各行业企业、个人提供世界领先的人工智能开发及应用平台，帮助客户以最简单、便捷、高效的方式， <br/>建立最优质的机器学习模型，为每个有价值的业务场景自主构建&nbsp;AI&nbsp;应用，实现业务升级和企业&nbsp;AI&nbsp;赋能。&nbsp;
             </Typography>
           </Grid>
         </Grid>
