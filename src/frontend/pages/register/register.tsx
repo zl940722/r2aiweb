@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -21,7 +21,8 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import SimpleInput from "../../Components/SimpleInput";
 import SimpleSelect from "../../Components/SimpleSelectCountry";
 import CommonButton from "../../Components/SimpleButton";
-
+import { Modal } from "antd";
+import Agreement from "../../../../pages/agreement";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -177,6 +178,8 @@ export default function TextFields() {
     type: ""
   });
 
+  const [dialogInfo, setDialogOpen] = useState(false);
+
   const [cityList, setcityList] = React.useState([]) as any;
   const [areaList, setareaList] = React.useState([]) as any;
   const [captcha, setCaptchas] = React.useState("") as any;
@@ -223,28 +226,37 @@ export default function TextFields() {
                   });
                 }
               }).catch((error: any) => {
-                if (error.response) {
-                  console.log(error.response.data);
-                  console.log(error.response.status);
-                  console.log(error.response.headers);
-                }
-                setOpen(true);
-                setModal({
-                  content: error.response.data,
-                  type: "error"
-                });
-                setCaptchas(new Date().getTime());
+              if (error.response) {
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+              }
+              setOpen(true);
+              const message = error.response.data;
+              let errMes;
+              if (message == "You are an official user") {
+                errMes = "你已经是正式用户,请登录。";
+              } else if (message == "need active") {
+                errMes = "你已注册，请去邮箱激活。";
+              } else {
+                errMes = error.response.data;
+              }
+              setModal({
+                content: errMes,
+                type: "error"
               });
+              setCaptchas(new Date().getTime());
+            });
           }
         }).catch((err: any) => {
-          setOpen(true);
-          console.log(err.response.data)
-          setModal({
-            content: '验证码错误',
-            type: "error"
-          });
-          setCaptchas(new Date().getTime());
+        setOpen(true);
+        console.log(err.response.data);
+        setModal({
+          content: "验证码错误",
+          type: "error"
         });
+        setCaptchas(new Date().getTime());
+      });
     }
 
 
@@ -338,7 +350,7 @@ export default function TextFields() {
                 value={values.province}
                 onChange={(event: any) => {
                   let bb: any = [];
-                  _.forEach(citise, function (o) {
+                  _.forEach(citise, function(o) {
                     if (event.target.value === _.toInteger(o.parentCode)) {
                       bb.push(o);
                       setshow({ province: true, city: true });
@@ -378,7 +390,7 @@ export default function TextFields() {
                     city: event.target.value
                   });
                   let bb: any = [];
-                  _.forEach(areas, function (o) {
+                  _.forEach(areas, function(o) {
                     if (event.target.value === _.toInteger(o.parentCode)) {
                       bb.push(o);
                       setshow({ province: true, city: true, area: true });
@@ -458,11 +470,11 @@ export default function TextFields() {
                 />
 
                 <img src={`/user/captcha?${captcha}`}
-                  style={{ marginTop: "11px", position: "absolute", right: 10, top: 16 }}
-                  alt=""
-                  onClick={() => {
-                    setCaptchas(new Date().getTime());
-                  }}
+                     style={{ marginTop: "11px", position: "absolute", right: 10, top: 16 }}
+                     alt=""
+                     onClick={() => {
+                       setCaptchas(new Date().getTime());
+                     }}
                 />
               </div>
               {/*<SimpleInput*/}
@@ -483,7 +495,9 @@ export default function TextFields() {
               {/*       setCaptchas(new Date().getTime());*/}
               {/*     }}*/}
               {/*/>*/}
-              <p>本人同意签署贵公司的<a href="/agreement">SAAS用户协议</a></p>
+              <p style={{ marginTop: 40 }} onClick={() => {
+                setDialogOpen(true);
+              }}>本人同意签署贵公司的<a>SAAS用户协议</a></p>
               <div className={classes.button}>
                 <CommonButton
                   onClick={submit}
@@ -494,6 +508,23 @@ export default function TextFields() {
           </Grid>
         </Grid>
       </form>
+      <Modal
+        width={"80%"}
+        title=""
+        visible={dialogInfo}
+        onOk={() => {
+          setDialogOpen(false);
+        }}
+        onCancel={() => {
+          setDialogOpen(false);
+        }}
+        footer={null}
+        style={{ top: 0 }}
+
+      >
+        <Agreement/>
+      </Modal>
+
       <Dialog
         open={open}
         // onClose={handleClose}
@@ -508,14 +539,15 @@ export default function TextFields() {
         </DialogContent>
         <DialogActions>
           <Button
-            style={{ border: '1px solid #D3323E', width: 138, height: 38, borderRadius: 20, color: '#D3323E' }}
+            style={{ border: "1px solid #D3323E", width: 138, height: 38, borderRadius: 20, color: "#D3323E" }}
             onClick={() => {
               setOpen(false);
             }} color="primary">
             取消
           </Button>
           <Button
-            style={{ border: '1px solid #D3323E', width: 138, height: 38, borderRadius: 20, color: '#D3323E' }} onClick={() => {
+            style={{ border: "1px solid #D3323E", width: 138, height: 38, borderRadius: 20, color: "#D3323E" }}
+            onClick={() => {
               setOpen(false);
             }} color="primary">
             确定

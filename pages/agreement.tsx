@@ -12,21 +12,21 @@ export default function() {
       textAlign: "left",
       background: "rgb(245, 245, 245) none repeat scroll 0% 0%"
     }}>
-      <div  onClick={() => {
-        Router.back();
-      }}>
-        <PageHeader
-          style={{
-            left: "-1.5rem",
-            position: "relative"
-          }}
-          onBack={() => {
-            Router.back();
-          }}
-          title={`返回列表`}
-          subTitle=""
-        />
-      </div>
+      {/*<div  onClick={() => {*/}
+      {/*  Router.back();*/}
+      {/*}}>*/}
+      {/*  <PageHeader*/}
+      {/*    style={{*/}
+      {/*      left: "-1.5rem",*/}
+      {/*      position: "relative"*/}
+      {/*    }}*/}
+      {/*    onBack={() => {*/}
+      {/*      Router.back();*/}
+      {/*    }}*/}
+      {/*    title={`返回列表`}*/}
+      {/*    subTitle=""*/}
+      {/*  />*/}
+      {/*</div>*/}
       <div className="agreement-2X-2G">
         <div style={{ textAlign: "center", fontSize: 18 }}>R2.ai Master Subscription Agreement (MSA)</div>
         <div style={{ textAlign: "center" }} className="center-2P6X4">SAAS用户协议</div>

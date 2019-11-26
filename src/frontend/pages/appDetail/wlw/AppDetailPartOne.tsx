@@ -80,35 +80,35 @@ function AppDetailPartOne(props: any) {
                 项目过程
                         </span>
             </div>
-            <Grid container className={classes.grids}>
-              <Grid item md={6} className={classes.grid}>
+            <Grid  spacing={8} container className={classes.grids}>
+              <Grid item xs={6} className={classes.grid}>
                 <p>1.样本收集：30组风机运行数据每组4万条记录；</p>
                 <img src={"/static/images/appDetail/33.png"} />
               </Grid>
-              <Grid item md={6} className={classes.grid}>
+              <Grid item xs={6} className={classes.grid}>
                 <p>2.创建目标变量：根据误差范围，选取有效范围内数据；</p>
                 <img src={"/static/images/appDetail/34.png"} />
               </Grid>
             </Grid>
 
             <Grid container className={classes.grids}>
-              <Grid item md={6} className={classes.grid}>
+              <Grid item xs={6} className={classes.grid}>
                 <p>3.数据处理： 在有效数据内剔除异常值；</p>
                 <img src={"/static/images/appDetail/35.png"} />
               </Grid>
-              <Grid item md={6} className={classes.grid}>
+              <Grid item xs={6} className={classes.grid}>
                 <p>4.模型训练：
                   基于R2-Learn机器学习平台自动训练；
-                  使用单机环境，每组数据在30分钟内完成训练（10个备选模型）；
+                  <p style={{marginLeft:85}}>使用单机环境，每组数据在30分钟内完成训练（10个备选模型）；</p>
                 </p>
                 <img src={"/static/images/appDetail/36.png"} />
               </Grid>
             </Grid>
 
-            <Grid container className={classes.grids}>
-              <Grid item md={12} className={classes.grid}>
+            <Grid  spacing={8} container className={classes.grids}>
+              <Grid item xs={12} className={classes.grid}>
                 <p>5.
-                  测试评估：
+                   测试评估：
                   使用20%样本数据测试建模结果，拟合R-Square=0.749。</p>
               </Grid>
             </Grid>
@@ -124,22 +124,21 @@ function AppDetailPartOne(props: any) {
             </div>
 
 
-            <Grid container className={classes.grids}>
-              <Grid item md={6} className={classes.grid}>
+            <Grid  spacing={8} container className={classes.grids}>
+              <Grid item xs={6} className={classes.grid}>
                 <p>1.风机因子对发电量误差的影响：
                   通过风机因子对模型的重要性排序可以发现某些因子，如变桨电机扭矩、半导体温度是造成发电量损失的主要因素，需格外关注与维护； </p>
                 <img src={"/static/images/appDetail/38.png"} />
               </Grid>
-              <Grid item md={6} className={classes.grid}>
-                <p>2.发电量误差对风机单因子的响应：
-                以变桨电机扭矩为例，其分布范围集中在5~10之间，变桨电机扭矩在此范围内变化，其对应的发电量误差变化如有图所示。因此通过对单因子的监控，可有效实时地预测可能造成的发电量损失；
+              <Grid item xs={6} className={classes.grid}>
+                <p>2. 发电量误差对风机单因子的响应： 以变桨电机扭矩为例，其分布范围集中在5~10之间，变桨电机扭矩在此范围内变化，其对应的发电量误差变化如有图所示。因此通过对单因子的监控，可有效实时地预测可能造成的发电量损失；
                 </p>
                 <img src={"/static/images/appDetail/39.png"} />
               </Grid>
             </Grid>
 
             <Grid container className={classes.grids}>
-              <Grid item md={12} className={classes.grid}>
+              <Grid item xs={12} className={classes.grid}>
                 <p>3.
                   风机因子组合对发电量误差的影响分数：
                   采用因子间相关系数分析对其分组，统计同组因子对发电量误差的综合影响。结果发现同组内因子综合影响差异显著，根据不同组别优先级进行因子监控。
