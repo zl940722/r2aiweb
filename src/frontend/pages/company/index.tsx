@@ -78,7 +78,8 @@ const useStyles = makeStyles({
   itemDes: {
     lineHeight: 2,
     // marginBottom: "3rem",
-    textAlign: 'left'
+    textAlign: 'left',
+    padding: '15px 0'
   },
   itemTitle: {
     marginBottom: "3rem",
