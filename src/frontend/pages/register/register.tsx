@@ -235,6 +235,8 @@ export default function TextFields() {
                 errMes = "你已经是正式用户,请登录。";
               } else if (message == "need active") {
                 errMes = "你已注册，请去邮箱激活。";
+              } else {
+                errMes = error.response.data;
               }
               setModal({
                 content: errMes,
