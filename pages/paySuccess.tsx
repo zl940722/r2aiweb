@@ -3,6 +3,7 @@ import { Button } from "grommet";
 
 
 const Index: any = () => {
+
   return <div style={{ background: "#F5F5F5", textAlign: "center", margin: "200px 300px 380px", padding: 200 }}>
     <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start" }}>
       <img style={{ width: 32, height: 32,marginRight:20 }} src={"/static/images/price/succ.png"}/><h1
@@ -15,7 +16,7 @@ const Index: any = () => {
     <Button
       style={{border:'1px solid #D3323E',width:138,height:38,borderRadius:20,color:'#D3323E',marginTop:20}}
       onClick={() => {
-
+        window.location.href = 'https://admin-zh-test.r2ai.com.cn';
       }} color="primary">
       立即登录
     </Button>
