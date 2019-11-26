@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme: any) =>
       alignItems: "center",
       justifyContent: "center",
       marginTop: "55%",
-
+      cursor: 'pointer'
     },
     button: {
       width: "13.6rem",
