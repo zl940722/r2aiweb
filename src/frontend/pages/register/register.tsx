@@ -291,9 +291,10 @@ export default function TextFields() {
                 label="密码"
                 type="password"
                 required={true}
+                regex={/^\w{6,18}$/}
                 value={values.password}
                 allowedLength={12}
-                helperText="密码不能为空"
+                helperText="密码不能少于六位"
                 className={classes.dense}
                 onChange={handleChange("password")}
                 margin="dense"
