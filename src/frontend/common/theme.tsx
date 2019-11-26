@@ -27,7 +27,8 @@ const theme = createMuiTheme({
       // },
       MuiSelect: {
         selectMenu: {
-          height: "31px !important"
+          height: "31px !important",
+          lineHeight:'31px'
         }
       },
       MuiDialog: {
