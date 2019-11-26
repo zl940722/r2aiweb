@@ -512,7 +512,7 @@ export default function TextFields(props: any) {
               aria-labelledby="alert-dialog-title"
               aria-describedby="alert-dialog-description"
             >
-              <DialogTitle id="alert-dialog-title">{"提示"}</DialogTitle>
+              <DialogTitle id="alert-dialog-title">{"支付提示"}</DialogTitle>
               <DialogContent>
                 <DialogContentText id="alert-dialog-description">
                   {modal.content}
@@ -520,11 +520,40 @@ export default function TextFields(props: any) {
               </DialogContent>
               <DialogActions>
                 <Button
-                  style={{border:'1px solid #D3323E',width:138,height:38,borderRadius:20,color:'#D3323E'}}
+                  style={{width:138,height:38,borderRadius:20,color:'#D3323E'}}
                   onClick={() => {
-                  setOpen(false);
+                    if (modal.type === "alipay") {
+                      axios.get("/alipay/orderQuery", {
+                        params: { orderId: resData.data.orderId }
+                      }).then(result => {
+                        Router.push("/paySuccess");
+                      }).catch(() => {
+                        setOpen(false);
+                        console.log("失败");
+                      });
+                    } else if (modal.type === "unionPay") {
+                      axios.get("/unionPay/orderQuery", {
+                        params: { orderId: resData.data.orderId }
+                      }).then(result => {
+                        Router.push("/paySuccess");
+                      }).catch(() => {
+                        setOpen(false);
+                        console.log("失败");
+                      });
+                    } else if (modal.type === "wechat") {
+                      axios.get("/wechat/orderQuery", {
+                        params: { orderId: resData.data.orderId }
+                      }).then(result => {
+                        Router.push("/paySuccess");
+                      }).catch(() => {
+                        setOpen(false);
+                        console.log("失败");
+                      });
+                    } else if ((modal.type === "error")) {
+                      setOpen(false);
+                    }
                 }} color="primary">
-                  取消
+                  支付遇到问题？
                 </Button>
                 <Button
                   style={{border:'1px solid #D3323E',width:138,height:38,borderRadius:20,color:'#D3323E'}}
@@ -535,6 +564,7 @@ export default function TextFields(props: any) {
                     }).then(result => {
                       Router.push("/paySuccess");
                     }).catch(() => {
+                      setOpen(false);
                       console.log("失败");
                     });
                   } else if (modal.type === "unionPay") {
@@ -543,6 +573,7 @@ export default function TextFields(props: any) {
                     }).then(result => {
                       Router.push("/paySuccess");
                     }).catch(() => {
+                      setOpen(false);
                       console.log("失败");
                     });
                   } else if (modal.type === "wechat") {
@@ -551,13 +582,14 @@ export default function TextFields(props: any) {
                     }).then(result => {
                       Router.push("/paySuccess");
                     }).catch(() => {
+                      setOpen(false);
                       console.log("失败");
                     });
                   } else if ((modal.type === "error")) {
                     setOpen(false);
                   }
                 }} color="primary">
-                  确定
+                  支付完成
                 </Button>
               </DialogActions>
             </Dialog>
