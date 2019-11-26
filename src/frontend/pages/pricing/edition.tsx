@@ -185,7 +185,7 @@ function Pricing(props: any) {
                     }
                     return false
                   };
-                  return <dd key={index}>
+                  return <dd key={index} className={index?'content':'title'}>
                       <p className={classes.itemsContext1}>{value.name_zh}</p>
                       <p className={classes.itemsContext2}>{value.price_zh}</p>
                       <p className={classes.itemsContext3}>{value.price_description_zh}</p>
