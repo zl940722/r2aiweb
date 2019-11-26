@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/styles";
 
 import { Typography } from "@material-ui/core";
 import { Grommet, Box, Button } from "grommet";
 import Router from "next/router";
+import axios from "axios";
+import SimpleDialog from "../../Components/SimpleDialog";
 
 const useStyles = makeStyles({
   root: {
@@ -62,22 +64,52 @@ const customTheme = {
 
 export default function ContentBanner(res: any) {
   const classes = useStyles();
+  const {user={}} = res;
+  // const toBuy = () => {
+  //
+  //   if(res.user.active){
+  //     Router.push({
+  //       pathname: "/toUse",
+  //       query: {
+  //         id: res.user.id
+  //       }
+  //     });
+  //   }else{
+  //     Router.push({
+  //       pathname: "/login"
+  //     });
+  //   }
+  // };
+  const [dialogInfo, setDialogOpen] = useState({
+    open: false,
+    content: "",
+    type: ""
+  });
+
   const toBuy = () => {
-
-    if(res.user.active){
-      Router.push({
-        pathname: "/toUse",
-        query: {
-          id: res.user.id
-        }
-      });
-    }else{
-      Router.push({
-        pathname: "/login"
-      });
-    }
-
-
+      if (user.active) {
+          axios.get("/probation/applyProbation", { params: { userId: user.id } }).then((response: any) => {
+            if (response.status === 200) {
+              Router.push({
+                pathname: "/toUse",
+              });
+            }else{
+              setDialogOpen({
+                open: true,
+                content: "申请失败，请刷新后重试",
+                type: "error"
+              });
+            }
+          }).catch(() => {
+            setDialogOpen({
+              open: true,
+              content: "请求失败，请刷新后重试",
+              type: "error"
+            });
+          });
+      } else {
+        Router.push(`/login`);
+      }
   };
 
   return (
@@ -94,6 +126,7 @@ export default function ContentBanner(res: any) {
           <Box align="center" pad="medium">
             <Button
               hoverIndicator
+              disabled={user.type>0}
               onClick={toBuy}
               label={"立即试用"}
               className={classes.button}
@@ -101,6 +134,8 @@ export default function ContentBanner(res: any) {
           </Box>
         </Grommet>
       </div>
+      <SimpleDialog
+        dialogInfo={dialogInfo} setOpen={setDialogOpen}/>
     </div>
   );
 }

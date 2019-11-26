@@ -76,6 +76,7 @@ const useStyles = makeStyles({
     color: "#666",
     lineHeight: 1.7,
     fontSize: "1rem",
+    marginTop:'6.7rem',
     "& a": {
       textDecoration: "none",
       color: "#666",
@@ -115,9 +116,7 @@ export default function(res: any) {
     location.href = `/${link}/${news.type.toLowerCase()}`;
   }
 
-  return (
-    <>
-      <div className={classes.content}>
+  return <div className={classes.content}>
         {/*<a href="javascript:" className={classes.back} onClick={back}>*/}
         {/*  &lt;-- 返回{route.includes("news") ? "资讯" : "社区"}列表*/}
         {/*</a>*/}
@@ -157,6 +156,4 @@ export default function(res: any) {
         <a className={classes.button} href="javascript:" onClick={back}>返回</a>
         {/*<CommonButton label={"返回"} onClick={back}/>*/}
       </div>
-    </>
-  );
 }

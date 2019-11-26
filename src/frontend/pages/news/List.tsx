@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     textAlign: "center"
   },
   items: {
-    margin: "4.875rem 0 0",
+    margin: "4.8125rem 0 0",
     cursor: "pointer",
     "& img": {
       height: "14.375rem",
@@ -34,8 +34,7 @@ const useStyles = makeStyles({
     }
   },
   item: {
-    maxWidth: "90%",
-    boxSizing: "border-box"
+    boxSizing: "border-box",
   },
   itemDes: {
     lineHeight: 1,
@@ -45,16 +44,18 @@ const useStyles = makeStyles({
     }
   },
   itemTitle: {
-    marginBottom: "2rem",
+    marginBottom: "1.6875rem",
     fontWeight: "bold"
   },
   itemTitle2: {
-    marginTop: "2rem",
-    height: 220,
-    overflow: "hidden"
+    marginTop: "1.0525rem",
+    height: '13.625rem',
+    overflow: "hidden",
+    fontSize:"0.875rem",
+    lineHeight:1.88,
   },
   itemDashed: {
-    width: "96%",
+    width: "100%",
     border: "1px dashed #ccc"
   }
 });
@@ -87,7 +88,7 @@ export default function(res: any) {
             </div>
           </Grid>
           <Grid item sm={8} xs={12}>
-            <div className={classes.item} style={{ paddingLeft: "2.5rem" }}>
+            <div className={classes.item} style={{ paddingLeft: "1.9375rem" }}>
               <Typography variant={"h5"} className={classes.itemTitle}>
                 {value.title}
               </Typography>
