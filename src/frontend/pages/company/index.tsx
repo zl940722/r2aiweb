@@ -7,42 +7,44 @@ const useStyles = makeStyles({
   content: {
     maxWidth: "100%",
     margin: "0 auto",
-    padding: "1.5rem 0 8.8rem",
+    // padding: "1.5rem 0 8.8rem",
     overflow: "hidden"
   },
   content1: {
     maxWidth: "75rem",
     margin: "0 auto",
-    padding: "1.5rem 0 8.8rem",
+    // padding: "1.5rem 0 8.8rem",
+    padding:'90px 0 140px 0',
     overflow: "hidden",
     textAlign: "left"
   },
   content1_add:{
     maxWidth: "75rem",
     margin: "0 auto",
-
+    padding:'60px 0 100px 0',
     overflow: "hidden",
     textAlign: "left"
   },
   content2: {
+    padding:'90px 0 140px 0',
     maxWidth: "100%",
     background: "#F5F5F5"
   },
   content3: {
     maxWidth: "75rem",
     margin: "0 auto",
-    padding: "1.5rem 0 8.8rem",
+    // padding: "1.5rem 0 8.8rem",
     overflow: "hidden",
     textAlign: "left"
   },
   title: {
-    padding: "2.5rem",
+    // padding: "1.5rem",
     fontSize: "2rem",
     fontWeight: "bold",
     textAlign: "center"
   },
   title_add:{
-    paddingTop:'2.5rem',
+    // paddingTop:'2.5rem',
     paddingBottom:'-3.5rem',
     fontSize: "2rem",
     fontWeight: "bold",
