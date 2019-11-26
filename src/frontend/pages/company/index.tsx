@@ -14,19 +14,19 @@ const useStyles = makeStyles({
     maxWidth: "75rem",
     margin: "0 auto",
     // padding: "1.5rem 0 8.8rem",
-    padding:'90px 0 140px 0',
+    padding: '90px 0 140px 0',
     overflow: "hidden",
     textAlign: "left"
   },
-  content1_add:{
+  content1_add: {
     maxWidth: "75rem",
     margin: "0 auto",
-    padding:'60px 0 100px 0',
+    padding: '60px 0 100px 0',
     overflow: "hidden",
     textAlign: "left"
   },
   content2: {
-    padding:'90px 0 140px 0',
+    padding: '90px 0 140px 0',
     maxWidth: "100%",
     background: "#F5F5F5"
   },
@@ -43,9 +43,9 @@ const useStyles = makeStyles({
     fontWeight: "bold",
     textAlign: "center"
   },
-  title_add:{
+  title_add: {
     // paddingTop:'2.5rem',
-    paddingBottom:'-3.5rem',
+    marginBottom: '-50px',
     fontSize: "2rem",
     fontWeight: "bold",
     textAlign: "center"
@@ -57,16 +57,26 @@ const useStyles = makeStyles({
     textAlign: "center"
   },
   items: {
-    margin: "5rem 0 1rem",
+    margin: "100px 0 1rem",
     display: "flex",
     alignItems: "center",
+  },
+  imageItem: {
+    maxWidth: "90%",
+    boxSizing: "border-box",
+    display: "flex",
+    alignItems: "center",
+    "& >img": {
+      maxHeight: '100%',
+      maxWidth: '100%'
+    }
   },
   item: {
     maxWidth: "90%",
     boxSizing: "border-box",
     display: "flex",
     alignItems: "center",
-    margin: "0 auto"
+    margin: "0 auto",
   },
   itemC: {
     maxWidth: "90%",
@@ -81,7 +91,7 @@ const useStyles = makeStyles({
     lineHeight: 2,
     // marginBottom: "3rem",
     textAlign: 'left',
-    padding: '15px 0'
+    padding: '20px 0'
   },
   itemTitle: {
     marginBottom: "3rem",
@@ -96,13 +106,13 @@ const useStyles = makeStyles({
     display: 'flex',
     flex: 'auto',
     flexDirection: 'column',
-    padding: '26px 10px 26px 40px',
+    padding: '26px 20px 26px 50px',
     position: 'relative',
     justifyContent: 'space-evenly'
   },
   icon: {
     position: 'absolute',
-    left: 15
+    left: 20
   }
 });
 
@@ -115,16 +125,15 @@ function HomeAbout() {
           <Typography className={classes.title}>公司概况</Typography>
           <Grid container className={classes.items} direction={"row"}>
             <Grid item xs={6}>
-              <div className={classes.item}>
+              <div className={classes.imageItem}>
                 <img
                   src="/static/images/company/1.png"
-                  width={"550px"}
                   alt="R2.ai"
                 />
               </div>
             </Grid>
             <Grid item xs={6}>
-              <div className={classes.itemC}>
+              <div className={classes.itemC} style={{ marginLeft: 'auto' }}>
                 <Typography variant={"body1"} className={classes.itemDes}>
                   2015年，R2.ai由一群在AI和数据科学领域内最杰出、最富有想象力的团队在硅谷建立。他们致力于将大胆的创意转化为复杂现实中的实际应用。R2.ai的使命是为AI在各行业的应用赋能，大规模推动AI的普及和发展。
                 </Typography>
@@ -161,10 +170,9 @@ function HomeAbout() {
                 </div>
               </Grid>
               <Grid item xs={6}>
-                <div className={classes.item}>
+                <div className={classes.imageItem} style={{ marginLeft: 'auto' }}>
                   <img
                     src="/static/images/company/2.png"
-                    width={"550px"}
                     alt="R2.ai"
                   />
                 </div>
