@@ -187,7 +187,7 @@ const menus: InterfaceMenu[] = [
       children: null,
       link: "/resources/case"
     }],
-    link: "/resources/message"
+    link: "/resources/product"
   },
   {
     id: 10,

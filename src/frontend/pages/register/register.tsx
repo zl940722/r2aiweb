@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     main: {
       display: "flex",
-      alignItems: "baseline",
+      alignItems: "center",
       "&  select": {
         paddingTop: "1.5rem",
         paddingBottom: "1.5rem",
