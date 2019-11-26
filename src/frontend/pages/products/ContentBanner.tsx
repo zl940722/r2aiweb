@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     paddingTop: "3rem",
     color: "#FFF",
     overflow: "hidden",
-    marginRight: "25%"
+    marginRight: "20%"
   },
   title: {
     margin: "3rem 0",
@@ -32,7 +32,7 @@ const useStyles = makeStyles({
     textAlign: "center"
   },
   buttonWrap: {
-    width: "100%",
+    float: "right",
     paddingTop: "2.5rem"
   },
   button: {
@@ -88,7 +88,7 @@ export default function ContentBanner(res: any) {
       <div className={classes.content}>
         <Typography className={classes.title}>R2 Learn云平台上线</Typography>
         <Typography className={classes.des}>
-          R2 Learn 公开免费试用，开启全新建模体验！<br/>助您快速建立高质量机器学习模型！
+          R2 Learn 公开免费试用，开启全新建模体验！助您快速建立高质量机器学习模型！
         </Typography>
         <Grommet theme={customTheme} className={classes.buttonWrap}>
           <Box align="center" pad="medium">
