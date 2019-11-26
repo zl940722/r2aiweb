@@ -46,7 +46,7 @@ const app_lists = [
     id: "bank",
     imgUrl: "/static/images/application/jn.webp",
     name: "银行",
-    text: "工智能和机器学习为银行提供了前所未有的机会，以赢得市场份额，降低成本并增强客户体验，同时还遵守法规并打击金融犯罪。"
+    text: "人工智能和机器学习为银行提供了前所未有的机会，以赢得市场份额，降低成本并增强客户体验，同时还遵守法规并打击金融犯罪。"
   },
   {
     id: "insurance",

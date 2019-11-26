@@ -9,7 +9,7 @@ import { Carousel } from "react-responsive-carousel";
 const useStyles = makeStyles((theme: any) =>
   createStyles({
     item: {
-      height: "36.25rem",
+      height: "580px",
       backgroundSize: "cover"
     },
     itemContent: {

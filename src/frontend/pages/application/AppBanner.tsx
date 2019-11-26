@@ -9,6 +9,21 @@ const useStyles = makeStyles({
     height: "50rem",
     backgroundSize: "cover",
     backgroundPosition: "center"
+  },
+  banner: {
+    maxHeight: "580px",
+    maxWidth: "100%",
+    overflow: "hidden",
+    margin: "0 auto",
+    display: "flex",
+    flex: "none",
+    justifyContent: "center",
+    position: "relative",
+    "& >img": {
+      maxWidth: "100%",
+      maxHeight: "100%",
+      minWidth: "1000px"
+    }
   }
 });
 
@@ -16,21 +31,11 @@ function AppBanner() {
   const classes = useStyles();
 
   return (
-    <>
-      <Carousel
-        showThumbs={false}
-        showArrows={false}
-        showStatus={false}
-        showIndicators={false}
-      >
-        <div
-          className={classes.item}
-          style={{
-            backgroundImage: "url(/static/images/application/banner.png)"
-          }}
-        />
-      </Carousel>
-    </>
+
+    <div className={classes.banner}>
+      <img src="/static/images/application/banner.png" alt="banner"/>
+    </div>
+
   );
 }
 
