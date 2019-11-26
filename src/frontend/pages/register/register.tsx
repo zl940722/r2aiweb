@@ -223,28 +223,28 @@ export default function TextFields() {
                   });
                 }
               }).catch((error: any) => {
-              if (error.response) {
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
-              }
-              setOpen(true);
-              setModal({
-                content: error.response.data,
-                type: "error"
+                if (error.response) {
+                  console.log(error.response.data);
+                  console.log(error.response.status);
+                  console.log(error.response.headers);
+                }
+                setOpen(true);
+                setModal({
+                  content: error.response.data,
+                  type: "error"
+                });
+                setCaptchas(new Date().getTime());
               });
-              setCaptchas(new Date().getTime());
-            });
           }
         }).catch((err: any) => {
-        setOpen(true);
-        console.log(err.response.data)
-        setModal({
-          content: '验证码错误',
-          type: "error"
+          setOpen(true);
+          console.log(err.response.data)
+          setModal({
+            content: '验证码错误',
+            type: "error"
+          });
+          setCaptchas(new Date().getTime());
         });
-        setCaptchas(new Date().getTime());
-      });
     }
 
 
@@ -330,93 +330,76 @@ export default function TextFields() {
                 data={country}
                 margin="normal"
               />
-
-              {
-
-                show.province ?
-
-                  <SimpleSelect
-                    label="省"
-                    xs={12}
-                    className={classes.dense}
-                    value={values.province}
-                    onChange={(event: any) => {
-                      let bb: any = [];
-                      _.forEach(citise, function(o) {
-                        if (event.target.value === _.toInteger(o.parentCode)) {
-                          bb.push(o);
-                          setshow({ province: true, city: true });
-                          setcityList(bb);
-                          setValues({
-                            email: values.email,
-                            username: values.username,
-                            password: values.password,
-                            country: values.country,
-                            companyName: values.companyName,
-                            productName: values.productName,
-                            province: event.target.value
-                          });
-                        }
-
-                      });
-
-                    }}
-                    data={provinces}
-                    margin="normal"
-                  />
-                  : null
-              }
-              {
-
-                show.city ?
-
-                  <SimpleSelect
-                    label="市"
-                    xs={12}
-                    className={classes.dense}
-                    value={values.city}
-                    onChange={(event: any) => {
+              <SimpleSelect
+                label="省"
+                xs={12}
+                className={classes.dense}
+                value={values.province}
+                onChange={(event: any) => {
+                  let bb: any = [];
+                  _.forEach(citise, function (o) {
+                    if (event.target.value === _.toInteger(o.parentCode)) {
+                      bb.push(o);
+                      setshow({ province: true, city: true });
+                      setcityList(bb);
                       setValues({
                         email: values.email,
                         username: values.username,
                         password: values.password,
+                        country: values.country,
                         companyName: values.companyName,
                         productName: values.productName,
-                        country: values.country,
-                        province: values.province,
-                        city: event.target.value
+                        province: event.target.value
                       });
-                      let bb: any = [];
-                      _.forEach(areas, function(o) {
-                        if (event.target.value === _.toInteger(o.parentCode)) {
-                          bb.push(o);
-                          setshow({ province: true, city: true, area: true });
-                          setareaList(bb);
-                        }
+                    }
 
-                      });
-                    }}
-                    data={cityList}
-                    margin="normal"
-                  />
+                  });
 
-                  : null
-              }
-              {
+                }}
+                disabled={!show.province}
+                data={provinces}
+                margin="normal"
+              />
+              <SimpleSelect
+                label="市"
+                xs={12}
+                className={classes.dense}
+                value={values.city}
+                onChange={(event: any) => {
+                  setValues({
+                    email: values.email,
+                    username: values.username,
+                    password: values.password,
+                    companyName: values.companyName,
+                    productName: values.productName,
+                    country: values.country,
+                    province: values.province,
+                    city: event.target.value
+                  });
+                  let bb: any = [];
+                  _.forEach(areas, function (o) {
+                    if (event.target.value === _.toInteger(o.parentCode)) {
+                      bb.push(o);
+                      setshow({ province: true, city: true, area: true });
+                      setareaList(bb);
+                    }
 
-                show.area ?
-
-                  <SimpleSelect
-                    label="区"
-                    xs={12}
-                    className={classes.dense}
-                    value={values.area}
-                    onChange={handleChange("area")}
-                    data={areaList}
-                    margin="normal"
-                  />
-                  : null
-              }
+                  });
+                }}
+                data={cityList}
+                margin="normal"
+                disabled={!show.city}
+              />
+              <SimpleSelect
+                label="区"
+                xs={12}
+                className={classes.dense}
+                value={values.area}
+                onChange={handleChange("area")}
+                data={areaList}
+                margin="normal"
+                disabled={!show.area}
+              />
               <SimpleInput
                 value={values.address}
                 label="公司地址"
@@ -474,11 +457,11 @@ export default function TextFields() {
                 />
 
                 <img src={`/user/captcha?${captcha}`}
-                     style={{ marginTop: "11px", position: "absolute", right: 10, top: 16 }}
-                     alt=""
-                     onClick={() => {
-                       setCaptchas(new Date().getTime());
-                     }}
+                  style={{ marginTop: "11px", position: "absolute", right: 10, top: 16 }}
+                  alt=""
+                  onClick={() => {
+                    setCaptchas(new Date().getTime());
+                  }}
                 />
               </div>
               {/*<SimpleInput*/}
@@ -524,16 +507,16 @@ export default function TextFields() {
         </DialogContent>
         <DialogActions>
           <Button
-            style={{border:'1px solid #D3323E',width:138,height:38,borderRadius:20,color:'#D3323E'}}
+            style={{ border: '1px solid #D3323E', width: 138, height: 38, borderRadius: 20, color: '#D3323E' }}
             onClick={() => {
-            setOpen(false);
-          }} color="primary">
+              setOpen(false);
+            }} color="primary">
             取消
           </Button>
           <Button
-            style={{border:'1px solid #D3323E',width:138,height:38,borderRadius:20,color:'#D3323E'}} onClick={() => {
-            setOpen(false);
-          }} color="primary">
+            style={{ border: '1px solid #D3323E', width: 138, height: 38, borderRadius: 20, color: '#D3323E' }} onClick={() => {
+              setOpen(false);
+            }} color="primary">
             确定
           </Button>
         </DialogActions>
