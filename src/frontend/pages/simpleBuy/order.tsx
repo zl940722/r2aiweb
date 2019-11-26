@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: "center",
       marginLeft: 0
     },
-    all:{
+    all: {
       width: 1400,
       margin: "0 auto"
     },
@@ -57,15 +57,15 @@ const useStyles = makeStyles((theme: Theme) =>
       width: 400
     },
     grids: {
-      width: '100%',
+      width: "100%",
       margin: "2.5rem auto",
-      background: "#F5F5F5",
+      background: "#F5F5F5"
     },
     grid: {
       flex: 1,
       background: "#F5F5F5",
-      width: '100%',
-       margin: "2.5rem auto ",
+      width: "100%",
+      margin: "2.5rem auto ",
       // padding: "1rem",
       borderRadius: ".3rem",
       // boxShadow: ".2rem .2rem .2rem #ddd",
@@ -157,11 +157,13 @@ export default function TextFields(props: any) {
 
   const [product, setproduct] = React.useState("");
 
+  const [productName, setproductName] = React.useState("");
 
   useEffect(() => {
-    setrent('Monthly')
+    setrent("Monthly");
     if (level == 2) {
       setproduct("prod_E7zz1vwTiZxOgO");
+      setproductName("Basic");
       axios.get("/price").then((response: any) => {
         const { basicPrice, basicPriceYear, essentialPrice, essentialPriceYear } = response.data;
         setValues({ price: basicPrice });
@@ -169,6 +171,7 @@ export default function TextFields(props: any) {
 
     } else {
       setproduct("prod_E7zzObgS7kjaMK");
+      setproductName("Essential");
       axios.get("/price").then((response: any) => {
         const { basicPrice, basicPriceYear, essentialPrice, essentialPriceYear } = response.data;
         setValues({ price: essentialPrice });
@@ -210,7 +213,7 @@ export default function TextFields(props: any) {
           }
           setOpen(true);
           setModal({
-            content: '验证码错误',
+            content: "验证码错误",
             type: "error"
           });
           setCaptchas(new Date().getTime());
@@ -227,10 +230,10 @@ export default function TextFields(props: any) {
         price: values.price * 100,
         renew: false,
         totalPrice: values.price * 100,
-        productId: "prod_E7zz1vwTiZxOgO",
+        productId: procuct,
         language: "zh-CN",
         duration: 1,
-        productName: "简易版"
+        productName: productName
       };
       if (payMethod === "alipay") {
         axios.post("/alipay/createCharge", list)
@@ -325,7 +328,7 @@ export default function TextFields(props: any) {
   return (
     <div className={classes.all}>
       <div className={classes.bg}>
-        <div  onClick={() => {
+        <div onClick={() => {
           Router.back();
         }}>
           <PageHeader
@@ -340,7 +343,7 @@ export default function TextFields(props: any) {
             subTitle=""
           />
         </div>
-        <h1 style={{ textAlign: "center", marginTop: 40,fontWeight:'bold',fontSize:'1.6rem' }}>产品购买</h1>
+        <h1 style={{ textAlign: "center", marginTop: 40, fontWeight: "bold", fontSize: "1.6rem" }}>产品购买</h1>
         <form className={classes.container} noValidate autoComplete="off">
 
           <Grid container className={classes.grids}>
@@ -372,24 +375,27 @@ export default function TextFields(props: any) {
                   axios.get("/price").then((response: any) => {
                     console.log(response.data, "response.data");
                     const { basicPrice, basicPriceYear, essentialPrice, essentialPriceYear } = response.data;
-                    if(product === 'prod_E7zz1vwTiZxOgO'){
+                    if (product === "prod_E7zz1vwTiZxOgO") {
                       setmPrice(basicPrice);
                       setyPrice(basicPriceYear);
-                    }else{
+                      setproductName("Basic");
+                    } else {
                       setmPrice(essentialPrice);
                       setyPrice(essentialPriceYear);
+                      setproductName("Essential");
                     }
 
                     if (e.target.value === "prod_E7zz1vwTiZxOgO") {
-                      if(rent === 'Monthly'){
+                      if (rent === "Monthly") {
                         setValues({ price: basicPrice });
-                      }else{
+                      } else {
                         setValues({ price: basicPriceYear });
                       }
+
                     } else {
-                      if(rent === 'Monthly'){
+                      if (rent === "Monthly") {
                         setValues({ price: essentialPrice });
-                      }else{
+                      } else {
                         setValues({ price: essentialPriceYear });
                       }
 
@@ -412,24 +418,24 @@ export default function TextFields(props: any) {
                   axios.get("/price").then((response: any) => {
                     console.log(response.data, "response.data");
                     const { basicPrice, basicPriceYear, essentialPrice, essentialPriceYear } = response.data;
-                    if(product === 'prod_E7zz1vwTiZxOgO'){
+                    if (product === "prod_E7zz1vwTiZxOgO") {
                       setmPrice(basicPrice);
                       setyPrice(basicPriceYear);
-                    }else{
+                    } else {
                       setmPrice(essentialPrice);
                       setyPrice(essentialPriceYear);
                     }
 
                     if (e.target.value === "Monthly") {
-                      if(product === 'prod_E7zz1vwTiZxOgO'){
+                      if (product === "prod_E7zz1vwTiZxOgO") {
                         setValues({ price: basicPrice });
-                      }else{
+                      } else {
                         setValues({ price: essentialPrice });
                       }
                     } else {
-                      if(product === 'prod_E7zz1vwTiZxOgO'){
+                      if (product === "prod_E7zz1vwTiZxOgO") {
                         setValues({ price: basicPriceYear });
-                      }else{
+                      } else {
                         setValues({ price: essentialPriceYear });
                       }
 
@@ -486,7 +492,8 @@ export default function TextFields(props: any) {
                       </Grid>
                       <Grid item md={4}>
                         <FormControlLabel value="wechat" control={<Radio/>}
-                                          label={<img style={{ width: 120 }} src='/static/images/price/weixin@2x.png'/>}/>
+                                          label={<img style={{ width: 120 }}
+                                                      src='/static/images/price/weixin@2x.png'/>}/>
                       </Grid>
                     </Grid>
                   </RadioGroup>
@@ -520,7 +527,7 @@ export default function TextFields(props: any) {
               </DialogContent>
               <DialogActions>
                 <Button
-                  style={{width:138,height:38,borderRadius:20,color:'#D3323E'}}
+                  style={{ width: 138, height: 38, borderRadius: 20, color: "#D3323E" }}
                   onClick={() => {
                     if (modal.type === "alipay") {
                       axios.get("/alipay/orderQuery", {
@@ -552,43 +559,43 @@ export default function TextFields(props: any) {
                     } else if ((modal.type === "error")) {
                       setOpen(false);
                     }
-                }} color="primary">
+                  }} color="primary">
                   支付遇到问题？
                 </Button>
                 <Button
-                  style={{border:'1px solid #D3323E',width:138,height:38,borderRadius:20,color:'#D3323E'}}
+                  style={{ border: "1px solid #D3323E", width: 138, height: 38, borderRadius: 20, color: "#D3323E" }}
                   onClick={() => {
-                  if (modal.type === "alipay") {
-                    axios.get("/alipay/orderQuery", {
-                      params: { orderId: resData.data.orderId }
-                    }).then(result => {
-                      Router.push("/paySuccess");
-                    }).catch(() => {
+                    if (modal.type === "alipay") {
+                      axios.get("/alipay/orderQuery", {
+                        params: { orderId: resData.data.orderId }
+                      }).then(result => {
+                        Router.push("/paySuccess");
+                      }).catch(() => {
+                        setOpen(false);
+                        console.log("失败");
+                      });
+                    } else if (modal.type === "unionPay") {
+                      axios.get("/unionPay/orderQuery", {
+                        params: { orderId: resData.data.orderId }
+                      }).then(result => {
+                        Router.push("/paySuccess");
+                      }).catch(() => {
+                        setOpen(false);
+                        console.log("失败");
+                      });
+                    } else if (modal.type === "wechat") {
+                      axios.get("/wechat/orderQuery", {
+                        params: { orderId: resData.data.orderId }
+                      }).then(result => {
+                        Router.push("/paySuccess");
+                      }).catch(() => {
+                        setOpen(false);
+                        console.log("失败");
+                      });
+                    } else if ((modal.type === "error")) {
                       setOpen(false);
-                      console.log("失败");
-                    });
-                  } else if (modal.type === "unionPay") {
-                    axios.get("/unionPay/orderQuery", {
-                      params: { orderId: resData.data.orderId }
-                    }).then(result => {
-                      Router.push("/paySuccess");
-                    }).catch(() => {
-                      setOpen(false);
-                      console.log("失败");
-                    });
-                  } else if (modal.type === "wechat") {
-                    axios.get("/wechat/orderQuery", {
-                      params: { orderId: resData.data.orderId }
-                    }).then(result => {
-                      Router.push("/paySuccess");
-                    }).catch(() => {
-                      setOpen(false);
-                      console.log("失败");
-                    });
-                  } else if ((modal.type === "error")) {
-                    setOpen(false);
-                  }
-                }} color="primary">
+                    }
+                  }} color="primary">
                   支付完成
                 </Button>
               </DialogActions>
