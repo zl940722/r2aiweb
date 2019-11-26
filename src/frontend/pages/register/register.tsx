@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -21,7 +21,8 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import SimpleInput from "../../Components/SimpleInput";
 import SimpleSelect from "../../Components/SimpleSelectCountry";
 import CommonButton from "../../Components/SimpleButton";
-
+import { Modal } from "antd";
+import Agreement from "../../../../pages/agreement";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -176,6 +177,8 @@ export default function TextFields() {
     content: "",
     type: ""
   });
+
+  const [dialogInfo, setDialogOpen] = useState(false);
 
   const [cityList, setcityList] = React.useState([]) as any;
   const [areaList, setareaList] = React.useState([]) as any;
@@ -492,7 +495,9 @@ export default function TextFields() {
               {/*       setCaptchas(new Date().getTime());*/}
               {/*     }}*/}
               {/*/>*/}
-              <p>本人同意签署贵公司的<a href="/agreement">SAAS用户协议</a></p>
+              <p style={{ marginTop: 40 }} onClick={() => {
+                setDialogOpen(true);
+              }}>本人同意签署贵公司的<a>SAAS用户协议</a></p>
               <div className={classes.button}>
                 <CommonButton
                   onClick={submit}
@@ -503,6 +508,23 @@ export default function TextFields() {
           </Grid>
         </Grid>
       </form>
+      <Modal
+        width={"80%"}
+        title=""
+        visible={dialogInfo}
+        onOk={() => {
+          setDialogOpen(false);
+        }}
+        onCancel={() => {
+          setDialogOpen(false);
+        }}
+        footer={null}
+        style={{ top: 0 }}
+
+      >
+        <Agreement/>
+      </Modal>
+
       <Dialog
         open={open}
         // onClose={handleClose}

@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
-import { PageHeader } from "antd";
+import { Modal, PageHeader } from "antd";
 import { Grid } from "@material-ui/core";
 import { Grommet, Box, Button } from "grommet";
 import Radio from "@material-ui/core/Radio";
@@ -22,6 +22,7 @@ import Router from "next/router";
 import SimpleInput from "../../Components/SimpleInput";
 import SimpleSelect from "../../Components/SimpleSelectCountry";
 import SimpleButton from "../../Components/SimpleButton";
+import Agreement from "../../../../pages/agreement";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -323,7 +324,7 @@ export default function TextFields(props: any) {
       console.log("error", error);
     });
   };
-
+  const [dialogInfo, setDialogOpen] = useState(false);
 
   return (
     <div className={classes.all}>
@@ -502,9 +503,9 @@ export default function TextFields(props: any) {
               </div>
 
               <div style={{marginTop:40}} onClick={() => {
-                location.href = "/agreement";
+                setDialogOpen(true);
               }}>
-                <p>本人同意签署贵公司的<a href="/agreement">SAAS用户协议</a></p>
+                <p>本人同意签署贵公司的<a>SAAS用户协议</a></p>
               </div>
 
               <div className={classes.button}>
@@ -516,7 +517,22 @@ export default function TextFields(props: any) {
             </Grid>
           </Grid>
           <div>
+            <Modal
+              width={"80%"}
+              title=""
+              visible={dialogInfo}
+              onOk={() => {
+                setDialogOpen(false);
+              }}
+              onCancel={() => {
+                setDialogOpen(false);
+              }}
+              footer={null}
+              style={{ top: 0 }}
 
+            >
+              <Agreement/>
+            </Modal>
             <Dialog
               open={open}
               // onClose={handleClose}
