@@ -9,7 +9,7 @@ import { Carousel } from "react-responsive-carousel";
 const useStyles = makeStyles((theme: any) =>
   createStyles({
     banner: {
-      maxHeight: '650px',
+      maxHeight: "580px",
       maxWidth: "100%",
       overflow: 'hidden',
       margin: '0 auto',
