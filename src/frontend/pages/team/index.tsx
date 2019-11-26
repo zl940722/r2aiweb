@@ -6,25 +6,21 @@ import "./index.css";
 
 const useStyles = makeStyles({
   content: {
-
     padding: "1.5rem 0 8.8rem",
     overflow: "hidden"
   },
   content_div: {
     maxWidth: "75rem",
     margin: "0 auto",
-    marginBottom: 60
+    padding: '100px 0',
   },
   content_div2: {
-    background: "#F5F5F5"
-  },
-  content_div3: {
-    maxWidth: "75rem",
-    margin: "0 auto",
-    paddingBottom: 60
+    background: "#F5F5F5",
+    "& :after": {
+      content: ''
+    }
   },
   title: {
-    padding: "3rem",
     fontSize: "2rem",
     fontWeight: "bold",
     textAlign: "center"
@@ -36,7 +32,7 @@ const useStyles = makeStyles({
     textAlign: "center"
   },
   items: {
-    margin: "2rem 0 1rem"
+    margin: "80px 0 35px",
   },
   item: {
     maxWidth: "90%",
@@ -88,7 +84,7 @@ function HomeAbout() {
         <div className={classes.content_div}>
           <Typography className={classes.title}>核心团队</Typography>
           <Grid container className={classes.items} direction={"row"}>
-            <Grid item sm={4} xs={12}>
+            <Grid item xs={4}>
               <div className={classes.item}
                    onMouseOver={mouseLeave("item1")}
                    onMouseMove={mouseOver("item1")}
@@ -110,7 +106,7 @@ function HomeAbout() {
                 </div>
               </div>
             </Grid>
-            <Grid item sm={4} xs={12}>
+            <Grid item xs={4}>
               <div className={classes.item}
                    onMouseOver={mouseLeave("item2")}
                    onMouseMove={mouseOver("item2")}
@@ -131,7 +127,7 @@ function HomeAbout() {
                 </div>
               </div>
             </Grid>
-            {/*<Grid item sm={4} xs={12}>*/}
+            {/*<Grid item xs={4}>*/}
             {/*  <div className={classes.item}>*/}
             {/*    <img*/}
             {/*      src="/static/images/team/3.png"*/}
@@ -144,10 +140,10 @@ function HomeAbout() {
         </div>
 
         <div className={classes.content_div2}>
-          <div className={classes.content_div3}>
+          <div className={classes.content_div}>
             <Typography className={classes.title}>董事会</Typography>
             <Grid container className={classes.items} direction={"row"}>
-              <Grid item sm={4} xs={12}>
+              <Grid item xs={4}>
                 <div className={classes.item}
                      onMouseOver={mouseLeave("item3")}
                      onMouseMove={mouseOver("item3")}
@@ -169,7 +165,7 @@ function HomeAbout() {
                   </div>
                 </div>
               </Grid>
-              <Grid item sm={4} xs={12}>
+              <Grid item xs={4}>
                 <div className={classes.item}
                      onMouseOver={mouseLeave("item4")}
                      onMouseMove={mouseOver("item4")}
@@ -187,7 +183,7 @@ function HomeAbout() {
                   </div>
                 </div>
               </Grid>
-              <Grid item sm={4} xs={12}>
+              <Grid item xs={4}>
                 <div className={classes.item}
                      onMouseOver={mouseLeave("item5")}
                      onMouseMove={mouseOver("item5")}
@@ -213,7 +209,7 @@ function HomeAbout() {
         <div className={classes.content_div}>
           <Typography className={classes.title}>顾问</Typography>
           <Grid container className={classes.items} direction={"row"}>
-            <Grid item sm={4} xs={12}>
+            <Grid item xs={4}>
               <div className={classes.item}
                    onMouseOver={mouseLeave("item6")}
                    onMouseMove={mouseOver("item6")}
