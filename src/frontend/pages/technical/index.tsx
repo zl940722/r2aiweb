@@ -17,16 +17,16 @@ const useStyles = makeStyles({
   banner: {
     maxHeight: "580px",
     maxWidth: "100%",
-    overflow: "hidden",
-    margin: "0 auto",
-    display: "flex",
-    flex: "none",
-    justifyContent: "center",
-    position: "relative",
+    overflow: 'hidden',
+    margin: '0 auto',
+    display: 'flex',
+    flex: 'none',
+    justifyContent: 'center',
+    position:'relative',
     "& >img": {
-      maxWidth: "100%",
-      maxHeight: "100%",
-      minWidth: "1000px"
+      maxWidth: '100%',
+      maxHeight: '100%',
+      minWidth: '1000px'
     }
   },
   center: {
@@ -147,9 +147,9 @@ function HomeAbout() {
       <Grid container className={classes.content} component='div'>
         <Grid container xs={12} className={classes.title}>
           <Grid item xs={12} md={9} lg={7} xl={5} className={classes.center}>
-            <Typography component={"h4"} variant='h4' align='center'>
+            <p className={'all_title'}>
               R2独门秘笈
-            </Typography>
+            </p>
           </Grid>
         </Grid>
         <Grid container xs={12}>
@@ -207,9 +207,9 @@ function HomeAbout() {
       <Grid container className={classes.content} component='div'>
         <Grid container xs={12} className={classes.title}>
           <Grid item xs={12} md={9} lg={7} xl={5} className={classes.center}>
-            <Typography component={"h4"} variant='h4' align='center'>
+            <p className={'all_title'}>
               R2六脉神剑
-            </Typography>
+            </p>
           </Grid>
         </Grid>
         <Grid container xs={12}>

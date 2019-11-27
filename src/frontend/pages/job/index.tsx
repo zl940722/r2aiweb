@@ -69,7 +69,7 @@ function HomeAbout(res: any) {
       <div className={classes.content}>
         {
           isEn ? <div>
-            <Typography className={classes.title}>我们在全面招聘</Typography>
+            <p className={'all_title'} style={{margin:'99px 0 40px 0'}}>我们在全面招聘</p>
             <p className={classes.itemDes}>对精英一族，我们有丰富的职业发展机会！如果您想引领潮流，坐拥人工智能革命的最前沿，请加入我们！</p>
             <Grid container className={classes.items} direction={"row"}>
               {res.data.map((value: any, index: any) => (
@@ -83,7 +83,7 @@ function HomeAbout(res: any) {
               ))}
             </Grid>
           </div> : <div>
-              <Typography className={classes.title}>我们在全面招聘</Typography>
+              <p className={'all_title'} style={{margin:'99px 0 40px 0'}}>我们在全面招聘</p>
               <p className={classes.itemDes}>对精英一族，我们有丰富的职业发展机会！如果您想引领潮流，坐拥人工智能革命的最前沿，请加入我们！</p>
               <Grid container className={classes.items} direction={"row"}>
                 {res.data.map((value: any, index: any) => (

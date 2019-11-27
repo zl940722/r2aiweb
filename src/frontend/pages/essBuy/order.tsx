@@ -281,7 +281,7 @@ export default function TextFields(props: any) {
 
   return (
     <div className={classes.bg}>
-      <h1 style={{ textAlign: "center", marginTop: 100 }}>产品购买</h1>
+      <h1 className={"all_title"} style={{ textAlign: "center", marginTop: 100, fontSize: 36 }}>产品购买</h1>
       <form className={classes.container} noValidate autoComplete="off">
         <Grid container className={classes.grids}>
           <Grid item md={6} className={classes.grid}>

@@ -64,7 +64,7 @@ const customTheme = {
 
 export default function ContentBanner(res: any) {
   const classes = useStyles();
-  const {user={}} = res;
+  const { user = {} } = res;
   // const toBuy = () => {
   //
   //   if(res.user.active){
@@ -87,29 +87,29 @@ export default function ContentBanner(res: any) {
   });
 
   const toBuy = () => {
-      if (user.active) {
-          axios.get("/probation/applyProbation", { params: { userId: user.id } }).then((response: any) => {
-            if (response.status === 200) {
-              Router.push({
-                pathname: "/toUse",
-              });
-            }else{
-              setDialogOpen({
-                open: true,
-                content: "申请失败，请刷新后重试",
-                type: "error"
-              });
-            }
-          }).catch(() => {
-            setDialogOpen({
-              open: true,
-              content: "请求失败，请刷新后重试",
-              type: "error"
-            });
+    if (user.active) {
+      axios.get("/probation/applyProbation", { params: { userId: user.id } }).then((response: any) => {
+        if (response.status === 200) {
+          Router.push({
+            pathname: "/toUse"
           });
-      } else {
-        Router.push(`/login`);
-      }
+        } else {
+          setDialogOpen({
+            open: true,
+            content: "申请失败，请刷新后重试",
+            type: "error"
+          });
+        }
+      }).catch(() => {
+        setDialogOpen({
+          open: true,
+          content: "请求失败，请刷新后重试",
+          type: "error"
+        });
+      });
+    } else {
+      Router.push(`/login`);
+    }
   };
 
   return (
@@ -119,14 +119,14 @@ export default function ContentBanner(res: any) {
     >
       <div className={classes.content}>
         <Typography className={classes.title}>R2 Learn云平台上线</Typography>
-        <Typography className={classes.des}>
+        <Typography className={classes.des} style={{ fontSize: 18 }}>
           R2 Learn 公开免费试用，开启全新建模体验！助您快速建立高质量机器学习模型！
         </Typography>
         <Grommet theme={customTheme} className={classes.buttonWrap}>
           <Box align="center" pad="medium">
             <Button
               hoverIndicator
-              disabled={user.type>0}
+              disabled={user.type > 0}
               onClick={toBuy}
               label={"立即试用"}
               className={classes.button}

@@ -46,9 +46,9 @@ function ProductAbout() {
   return (
     <>
       <div className={classes.content}>
-        <Typography variant={"h4"} align={"center"} className={classes.title}>
+        <p className={'all_title'}>
           R2 Learn赋能企业自主开发AI应用
-        </Typography>
+        </p>
         <Typography
           variant={"h5"}
           align={"center"}

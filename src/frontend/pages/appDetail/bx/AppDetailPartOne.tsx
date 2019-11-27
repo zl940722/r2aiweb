@@ -25,9 +25,9 @@ function AppDetailPartOne(props: any) {
   return (
     <>
       <div className={classes.content}>
-        <Typography variant={"h4"} align={"center"} className={classes.title}>
+        <p className={'all_title'}>
           我们能做什么
-        </Typography>
+        </p>
         <div className={classes.img}>
           <img
             src={"/static/images/appDetail/12.png"}
