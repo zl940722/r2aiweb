@@ -99,7 +99,6 @@ export default function ContactUs() {
 
   const submit = () => {
     const requiredValues = _.chain(values).pick(required).values().compact().value();
-    console.log(requiredValues, checkErrorList, 999999999999);
     if (requiredValues.length < required.length || checkErrorList.length > 0) {
       setDialogOpen({
         open: true,
@@ -110,12 +109,22 @@ export default function ContactUs() {
       axios.post("user/sendMail", {
         "data": values,
         "emailType": "contact"
-      }).then(() => setDialogOpen({
-        open: true,
-        content: "联系成功",
-        type: "tooltip"
-      }))
-        .catch((err: any) => {
+      }).then(() =>{
+        setDialogOpen({
+          open: true,
+          content: "联系成功",
+          type: "tooltip"
+        });
+        setValues({
+          language: "zh-CN",
+          type: "获取试用版",
+          name: "",
+          mail: "",
+          phone: "",
+          company: "",
+          message: ""
+        })
+      }).catch((err: any) => {
           setDialogOpen({
             open: true,
             content: err.response.data,
