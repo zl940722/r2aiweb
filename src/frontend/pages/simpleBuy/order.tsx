@@ -116,7 +116,7 @@ const pay = [
   }
 ];
 
-const procuct = [
+const procucts = [
   {
     code: "prod_E7zz1vwTiZxOgO",
     name: "简易版"
@@ -237,7 +237,7 @@ export default function TextFields(props: any) {
         price: values.price * 100,
         renew: false,
         totalPrice: values.price * 100,
-        productId: procuct,
+        productId: product,
         language: "zh-CN",
         duration: 1,
         productName: productName
@@ -396,7 +396,7 @@ export default function TextFields(props: any) {
                   axios.get("/price").then((response: any) => {
                     console.log(response.data, "response.data");
                     const { basicPrice, basicPriceYear, essentialPrice, essentialPriceYear } = response.data;
-                    if (product === "prod_E7zz1vwTiZxOgO") {
+                    if (e.target.value === "prod_E7zz1vwTiZxOgO") {
                       setmPrice(basicPrice);
                       setyPrice(basicPriceYear);
                       setproductName("Basic");
@@ -424,7 +424,7 @@ export default function TextFields(props: any) {
                   });
 
                 }}
-                data={procuct}
+                data={procucts}
                 margin="normal"
               />
 
