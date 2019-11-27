@@ -556,13 +556,13 @@ export default function TextFields() {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button
-            style={{ border: "1px solid #D3323E", width: 138, height: 38, borderRadius: 20, color: "#D3323E" }}
-            onClick={() => {
-              setOpen(false);
-            }} color="primary">
-            取消
-          </Button>
+          {/*<Button*/}
+          {/*  style={{ border: "1px solid #D3323E", width: 138, height: 38, borderRadius: 20, color: "#D3323E" }}*/}
+          {/*  onClick={() => {*/}
+          {/*    setOpen(false);*/}
+          {/*  }} color="primary">*/}
+          {/*  取消*/}
+          {/*</Button>*/}
           <Button
             style={{ border: "1px solid #D3323E", width: 138, height: 38, borderRadius: 20, color: "#D3323E" }}
             onClick={() => {

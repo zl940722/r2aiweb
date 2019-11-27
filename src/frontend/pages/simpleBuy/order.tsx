@@ -190,7 +190,7 @@ export default function TextFields(props: any) {
   const [modal, setModal] = React.useState({
     content: "",
     type: "",
-    cancelText: "取消",
+    cancelText: "",
     okText: "确认"
   });
   const [resData, setResData] = React.useState({}) as any;
@@ -202,7 +202,7 @@ export default function TextFields(props: any) {
       setModal({
         content: "以上选项为必填，请正确填写。",
         type: "error",
-        cancelText: "取消",
+        cancelText: "",
         okText: "确认"
       });
     } else {
@@ -220,7 +220,7 @@ export default function TextFields(props: any) {
           setModal({
             content: "验证码错误",
             type: "error",
-            cancelText: "取消",
+            cancelText: "",
             okText: "确认"
           });
           setCaptchas(new Date().getTime());
@@ -260,7 +260,7 @@ export default function TextFields(props: any) {
               setModal({
                 content: "支付错误",
                 type: "error",
-                cancelText: "取消",
+                cancelText: "",
                 okText: "确认"
               });
             }
@@ -275,7 +275,7 @@ export default function TextFields(props: any) {
             setModal({
               content: error.response.data,
               type: "error",
-              cancelText: "取消",
+              cancelText: "",
               okText: "确认"
             });
           });
@@ -304,7 +304,7 @@ export default function TextFields(props: any) {
             setModal({
               content: error.response.data,
               type: "error",
-              cancelText: "取消",
+              cancelText: "",
               okText: "确认"
             });
           });
@@ -334,7 +334,7 @@ export default function TextFields(props: any) {
             setModal({
               content: error.response.data,
               type: "error",
-              cancelText: "取消",
+              cancelText: "",
               okText: "确认"
             });
           });
@@ -566,83 +566,124 @@ export default function TextFields(props: any) {
                 </DialogContentText>
               </DialogContent>
               <DialogActions>
-                <Button
-                  style={{ width: 138, height: 38, borderRadius: 20, color: "#D3323E" }}
-                  onClick={() => {
-                    if (modal.type === "alipay") {
-                      axios.get("/alipay/orderQuery", {
-                        params: { orderId: resData.data.orderId }
-                      }).then(result => {
-                        Router.push("/paySuccess");
-                      }).catch(() => {
-                        setOpen(false);
-                        console.log("失败");
-                      });
-                    } else if (modal.type === "unionPay") {
-                      axios.get("/unionPay/orderQuery", {
-                        params: { orderId: resData.data.orderId }
-                      }).then(result => {
-                        console.log(result, "result");
-                        if (result.data == "success") {
-                          Router.push("/paySuccess");
-                        } else {
+                {
+                  modal.cancelText !== '' ?
+                    <div>
+                      <Button
+                        style={{ width: 138, height: 38, borderRadius: 20, color: "#D3323E" }}
+                        onClick={() => {
+                          if (modal.type === "alipay") {
+                            axios.get("/alipay/orderQuery", {
+                              params: { orderId: resData.data.orderId }
+                            }).then(result => {
+                              Router.push("/paySuccess");
+                            }).catch(() => {
+                              setOpen(false);
+                              console.log("失败");
+                            });
+                          } else if (modal.type === "unionPay") {
+                            axios.get("/unionPay/orderQuery", {
+                              params: { orderId: resData.data.orderId }
+                            }).then(result => {
+                              console.log(result, "result");
+                              if (result.data == "success") {
+                                Router.push("/paySuccess");
+                              } else {
+                                setOpen(false);
+                              }
+                            }).catch(() => {
+                              setOpen(false);
+                              console.log("失败");
+                            });
+                          } else if (modal.type === "wechat") {
+                            axios.get("/wechat/orderQuery", {
+                              params: { orderId: resData.data.orderId }
+                            }).then(result => {
+                              Router.push("/paySuccess");
+                            }).catch(() => {
+                              setOpen(false);
+                              console.log("失败");
+                            });
+                          } else if ((modal.type === "error")) {
+                            setOpen(false);
+                          }
+                        }} color="primary">
+                        {modal.cancelText}
+                      </Button>
+                      <Button
+                        style={{ border: "1px solid #D3323E", width: 138, height: 38, borderRadius: 20, color: "#D3323E" }}
+                        onClick={() => {
+                          if (modal.type === "alipay") {
+                            axios.get("/alipay/orderQuery", {
+                              params: { orderId: resData.data.orderId }
+                            }).then(result => {
+                              Router.push("/paySuccess");
+                            }).catch(() => {
+                              setOpen(false);
+                              console.log("失败");
+                            });
+                          } else if (modal.type === "unionPay") {
+                            axios.get("/unionPay/orderQuery", {
+                              params: { orderId: resData.data.orderId }
+                            }).then(result => {
+                              Router.push("/paySuccess");
+                            }).catch(() => {
+                              setOpen(false);
+                              console.log("失败");
+                            });
+                          } else if (modal.type === "wechat") {
+                            axios.get("/wechat/orderQuery", {
+                              params: { orderId: resData.data.orderId }
+                            }).then(result => {
+                              Router.push("/paySuccess");
+                            }).catch(() => {
+                              setOpen(false);
+                              console.log("失败");
+                            });
+                          } else if ((modal.type === "error")) {
+                            setOpen(false);
+                          }
+                        }} color="primary">
+                        {modal.okText}
+                      </Button>
+                    </div>:
+                    <Button
+                      style={{ border: "1px solid #D3323E", width: 138, height: 38, borderRadius: 20, color: "#D3323E" }}
+                      onClick={() => {
+                        if (modal.type === "alipay") {
+                          axios.get("/alipay/orderQuery", {
+                            params: { orderId: resData.data.orderId }
+                          }).then(result => {
+                            Router.push("/paySuccess");
+                          }).catch(() => {
+                            setOpen(false);
+                            console.log("失败");
+                          });
+                        } else if (modal.type === "unionPay") {
+                          axios.get("/unionPay/orderQuery", {
+                            params: { orderId: resData.data.orderId }
+                          }).then(result => {
+                            Router.push("/paySuccess");
+                          }).catch(() => {
+                            setOpen(false);
+                            console.log("失败");
+                          });
+                        } else if (modal.type === "wechat") {
+                          axios.get("/wechat/orderQuery", {
+                            params: { orderId: resData.data.orderId }
+                          }).then(result => {
+                            Router.push("/paySuccess");
+                          }).catch(() => {
+                            setOpen(false);
+                            console.log("失败");
+                          });
+                        } else if ((modal.type === "error")) {
                           setOpen(false);
                         }
-                      }).catch(() => {
-                        setOpen(false);
-                        console.log("失败");
-                      });
-                    } else if (modal.type === "wechat") {
-                      axios.get("/wechat/orderQuery", {
-                        params: { orderId: resData.data.orderId }
-                      }).then(result => {
-                        Router.push("/paySuccess");
-                      }).catch(() => {
-                        setOpen(false);
-                        console.log("失败");
-                      });
-                    } else if ((modal.type === "error")) {
-                      setOpen(false);
-                    }
-                  }} color="primary">
-                  {modal.cancelText}
-                </Button>
-                <Button
-                  style={{ border: "1px solid #D3323E", width: 138, height: 38, borderRadius: 20, color: "#D3323E" }}
-                  onClick={() => {
-                    if (modal.type === "alipay") {
-                      axios.get("/alipay/orderQuery", {
-                        params: { orderId: resData.data.orderId }
-                      }).then(result => {
-                        Router.push("/paySuccess");
-                      }).catch(() => {
-                        setOpen(false);
-                        console.log("失败");
-                      });
-                    } else if (modal.type === "unionPay") {
-                      axios.get("/unionPay/orderQuery", {
-                        params: { orderId: resData.data.orderId }
-                      }).then(result => {
-                        Router.push("/paySuccess");
-                      }).catch(() => {
-                        setOpen(false);
-                        console.log("失败");
-                      });
-                    } else if (modal.type === "wechat") {
-                      axios.get("/wechat/orderQuery", {
-                        params: { orderId: resData.data.orderId }
-                      }).then(result => {
-                        Router.push("/paySuccess");
-                      }).catch(() => {
-                        setOpen(false);
-                        console.log("失败");
-                      });
-                    } else if ((modal.type === "error")) {
-                      setOpen(false);
-                    }
-                  }} color="primary">
-                  {modal.okText}
-                </Button>
+                      }} color="primary">
+                      {modal.okText}
+                    </Button>
+                }
               </DialogActions>
             </Dialog>
           </div>
