@@ -58,8 +58,9 @@ const useStyles = makeStyles({
     }
   },
   user: {
-    float: "right",
-    marginRight: "6%"
+    // float: "right",
+    right: "6%",
+    position:'absolute',
   },
   login: {
     color: "#000",
@@ -297,12 +298,12 @@ const Header = (props) => {
         <span className={classes.user}>
           {
             props.user.active ?
-              <Dropdown overlay={menu}>
                 <>
                   <a className={classes.res} style={{marginLeft:10}} href={props.PRODUCT_URL}>使用产品</a>
-                  <span className={classes.avatar}>{props.user.email}</span>
-                </>
-              </Dropdown> :
+                  <Dropdown overlay={menu}>
+                    <span className={classes.avatar}>{props.user.email}</span>
+                   </Dropdown>
+                </>:
               <div><a className={classes.login} href={"/login"}>登录</a> <a className={classes.res}
                 href={"/register"}>注册</a>
               </div>

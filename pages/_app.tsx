@@ -57,7 +57,7 @@ export default function(props) {
             minHeight: "calc(100vh - 140px - 5.5rem)"
           }}
         >
-          <Component user={user} {...pageProps} route={router.route} />
+          <Component PRODUCT_URL={PRODUCT_URL}  user={user} {...pageProps} route={router.route} />
         </section>
         <Footer />
       </ThemeProvider>
