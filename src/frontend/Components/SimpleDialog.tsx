@@ -9,6 +9,7 @@ import SimpleButton from "./SimpleButton";
 const info = {
   warning: "温馨提醒",
   error: "出现错误",
+  tooltip: "操作成功",
   Agree: "确定",
   Disagree: "取消"
 };

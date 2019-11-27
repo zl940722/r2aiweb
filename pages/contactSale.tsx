@@ -111,7 +111,11 @@ export default function ContactUs() {
       axios.post("user/sendMail", {
         "data": values,
         "emailType": "contact"
-      }).catch((err: any) => {
+      }).then(() => setDialogOpen({
+        open: true,
+        content: "联系成功",
+        type: "tooltip"
+      })).catch((err: any) => {
         setDialogOpen({
           open: true,
           content: err.response.data,
