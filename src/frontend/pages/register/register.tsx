@@ -287,13 +287,11 @@ export default function TextFields() {
 
   return (
     <div className={classes.bg}>
-      <h1 className={'all_title'} style={{ textAlign: "center", marginTop: 100 }}>免费试用申请</h1>
+      <h1 className={'all_title'} style={{ textAlign: "center", marginTop: 85 }}>免费试用申请</h1>
       <form className={classes.container} noValidate autoComplete="off">
         <Grid container className={classes.grids}>
           <Grid item lg={9} xs={12} className={classes.center}>
             <Grid item lg={10} xs={12} spacing={1} className={classes.grid}>
-
-
               <SimpleInput
                 value={values.email}
                 label="用户邮箱"

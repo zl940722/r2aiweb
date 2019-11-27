@@ -279,7 +279,7 @@ const Header = (props) => {
                 <SubMenu key={index} style={menuStyle}
                   title={value.name} onTitleClick={() => menuLink && Router.push(menuLink)}>
                   {menuLink &&
-                    <Menu.Item key={menuLink} style={{ display: 'none' }}></Menu.Item>
+                    <Menu.Item key={menuLink} style={{ display: 'none' }}/>
                   }
                   {
                     _.map(value.children, (res: InterfaceMenu) => <Menu.Item key={res.link} style={menuStyle}>{res.name}</Menu.Item>)
@@ -298,8 +298,10 @@ const Header = (props) => {
           {
             props.user.active ?
               <Dropdown overlay={menu}>
-                <span className={classes.avatar}>{props.user.email}</span>
-                <a className={classes.res} style={{marginLeft:10}} href={"/login"}>使用产品</a>
+                <>
+                  <a className={classes.res} style={{marginLeft:10}} href={props.PRODUCT_URL}>使用产品</a>
+                  <span className={classes.avatar}>{props.user.email}</span>
+                </>
               </Dropdown> :
               <div><a className={classes.login} href={"/login"}>登录</a> <a className={classes.res}
                 href={"/register"}>注册</a>

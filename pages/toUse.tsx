@@ -8,12 +8,10 @@ const Index = (res: any) => {
 
 Index.getInitialProps = async function(props) {
    let PRODUCT_URL = process.env.PRODUCT_URL || 'http://localhost:7777';
-   if(!PRODUCT_URL){
+   if(!process.env.PRODUCT_URL){
      const result: any = await fetch('/product');
-     PRODUCT_URL = await result.json();
+     PRODUCT_URL = await result.text();
    }
-
-   console.log(11,PRODUCT_URL);
 
   return {
     PRODUCT_URL
