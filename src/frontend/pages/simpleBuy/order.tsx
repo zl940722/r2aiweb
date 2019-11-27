@@ -355,12 +355,13 @@ export default function TextFields(props: any) {
           <PageHeader
             style={{
               left: "-1.5rem",
-              position: "relative"
+              position: "relative",
+              fontSize:14
             }}
             onBack={() => {
               Router.back();
             }}
-            title={`返回列表`}
+            title={`返回价单列表`}
             subTitle=""
           />
         </div>
@@ -559,9 +560,9 @@ export default function TextFields(props: any) {
               aria-labelledby="alert-dialog-title"
               aria-describedby="alert-dialog-description"
             >
-              <DialogTitle id="alert-dialog-title">{"提示"}</DialogTitle>
+              <DialogTitle style={{fontSize:24}} id="alert-dialog-title">{"提示"}</DialogTitle>
               <DialogContent>
-                <DialogContentText id="alert-dialog-description">
+                <DialogContentText style={{textAlign:'left'}}  id="alert-dialog-description">
                   {modal.content}
                 </DialogContentText>
               </DialogContent>
@@ -570,7 +571,7 @@ export default function TextFields(props: any) {
                   modal.cancelText !== '' ?
                     <div>
                       <Button
-                        style={{ width: 138, height: 38, borderRadius: 20, color: "#D3323E" }}
+                        style={{ width: 138, height: 38, borderRadius: 20, color: "#D3323E",fontSize:16 }}
                         onClick={() => {
                           if (modal.type === "alipay") {
                             axios.get("/alipay/orderQuery", {
@@ -611,7 +612,7 @@ export default function TextFields(props: any) {
                         {modal.cancelText}
                       </Button>
                       <Button
-                        style={{ border: "1px solid #D3323E", width: 138, height: 38, borderRadius: 20, color: "#D3323E" }}
+                        style={{ border: "1px solid #D3323E", width: 138, height: 38, borderRadius: 20, color: "#D3323E",fontSize:16 }}
                         onClick={() => {
                           if (modal.type === "alipay") {
                             axios.get("/alipay/orderQuery", {
@@ -653,7 +654,7 @@ export default function TextFields(props: any) {
                       </Button>
                     </div>:
                     <Button
-                      style={{ border: "1px solid #D3323E", width: 138, height: 38, borderRadius: 20, color: "#D3323E" }}
+                      style={{ border: "1px solid #D3323E", width: 138, height: 38, borderRadius: 20, color: "#D3323E",fontSize:16 }}
                       onClick={() => {
                         if (modal.type === "alipay") {
                           axios.get("/alipay/orderQuery", {
