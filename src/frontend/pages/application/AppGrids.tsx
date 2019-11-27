@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   },
   grid: {
     display: "flex",
-    alignItems: "end",
+    alignItems: "center",
     cursor: "pointer"
   },
   grid_img: {
@@ -35,9 +35,9 @@ const useStyles = makeStyles({
   grid_name: {
     fontSize: "1.8rem"
   },
-  grid_h: { fontSize: "1.6rem" },
-  grid_p: { fontSize: "1.2rem" },
-  grid_p2: { fontSize: "1.2rem", color: "#d3333e" }
+  grid_h: { fontSize: 30, fontWeight: 400 },
+  grid_p: { fontSize: 16 },
+  grid_p2: { fontSize: 16, color: "#d3333e", fontWeight: 400 }
 });
 
 const app_lists = [
@@ -79,16 +79,16 @@ function AppGrids() {
               href={`/appDetail/${value.id}`}
             >
               {/*<a style={{color:'#333'}}>*/}
-                <Grid item xs={6} className={classes.grid}>
-                  <div className={classes.grid_img}>
-                    <img src={`${value.imgUrl}`} width={100} alt={value.name}/>
-                  </div>
-                  <div className={classes.grid_name}>
-                    <h2 className={classes.grid_h}> {value.name}</h2>
-                    <p className={classes.grid_p}>  {value.text}</p>
-                    <p className={classes.grid_p2}>查看详情 ></p>
-                  </div>
-                </Grid>
+              <Grid item xs={6} className={classes.grid}>
+                <div className={classes.grid_img}>
+                  <img src={`${value.imgUrl}`} width={100} alt={value.name}/>
+                </div>
+                <div className={classes.grid_name}>
+                  <h2 className={classes.grid_h}> {value.name}</h2>
+                  <p className={classes.grid_p}>  {value.text}</p>
+                  <p className={classes.grid_p2}>查看详情 >></p>
+                </div>
+              </Grid>
               {/*</a>*/}
             </Link>
           ))}
