@@ -49,7 +49,7 @@ app.prepare()
 
     server.use("/uploads", strapiServiceProxy("/", "/"));
     server.use("/strapi", strapiServiceProxy("/strapi", "/"));
-    server.use("user/sendMail", messageServiceProxy("user/sendMail", "mailer/sendMail"));
+    server.use("/user/sendMail", messageServiceProxy("/user/sendMail", "/mailer/sendMail"));
     server.use("/user/login", authServiceProxy("/user/login", "/"));
     server.delete("/user/logout", authServiceProxy("/user/logout", "/"));
     server.post("/user/forget", authServiceProxy("/user/forget", "/forget"));
