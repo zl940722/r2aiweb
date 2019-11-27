@@ -582,6 +582,7 @@ export default function TextFields(props: any) {
                       axios.get("/unionPay/orderQuery", {
                         params: { orderId: resData.data.orderId }
                       }).then(result => {
+                        console.log(result, "result");
                         if (result.data == "success") {
                           Router.push("/paySuccess");
                         } else {

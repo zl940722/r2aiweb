@@ -161,9 +161,14 @@ export default function TextFields() {
     password: "",
     username: ""
   });
-
-  const handleChange = (name: any) => (event: React.ChangeEvent<HTMLInputElement>) => {
+  const arr: Array<string> = [];
+  const [checkErrorList, setCheckErrorList] = React.useState(arr);
+  const handleChange = (name: any) => (event: React.ChangeEvent<HTMLInputElement>, invalid: boolean) => {
     setValues({ ...values, [name]: event.target.value });
+    if (name !== "industry" || name !== "area" || name !== "city" || name !== "country" || name !== "province") {
+      let tempList: Array<string> = invalid ? _.chain(checkErrorList).concat(name).uniq().value() : _.pull(checkErrorList, name);
+      setCheckErrorList(tempList);
+    }
   };
 
   const [show, setshow] = React.useState({
@@ -184,8 +189,21 @@ export default function TextFields() {
   const [areaList, setareaList] = React.useState([]) as any;
   const [captcha, setCaptchas] = React.useState("") as any;
 
+  const required = ["email", "password", "phone"];
+
   const submit = () => {
-    if (values.address === "" || values.area === "" || values.city === ""
+
+    const requiredValues = _.chain(values).pick(required).values().compact().value();
+    console.log(requiredValues, checkErrorList, 999999999999);
+    if ((/^\w{6,18}$/).test(values.password) == false
+      || (/^(?:\+?86)?1(?:3\d{3}|5[^4\D]\d{2}|8\d{3}|7(?:[35678]\d{2}|4(?:0\d|1[0-2]|9\d))|9[189]\d{2}|66\d{2})\d{6}$/).test(values.phone) == false
+      || (/^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/).test(values.email) == false) {
+      setOpen(true);
+      setModal({
+        content: "请正确填写以上信息",
+        type: "error"
+      });
+    } else if (values.address === "" || values.area === "" || values.city === ""
       || values.companyName === "" || values.country === "" || values.department === "" || values.email === ""
       || values.industry === "" || values.phone === "" || values.province === ""
       || values.password === "" || values.username === "") {
