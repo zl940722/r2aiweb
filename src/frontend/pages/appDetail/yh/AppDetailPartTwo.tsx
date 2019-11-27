@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   },
   content: {
     maxWidth: "60%",
-    lineHeight: '32px',
+    lineHeight: '12px',
     margin: "0 auto",
     overflow: "hidden",
     "& img": {
@@ -78,11 +78,11 @@ function AppDetailPartTwo() {
           <Grid container className={classes.grids}>
             <Grid item xs={12} className={classes.grid}>
               <div>
-                <div className={classes.icon}>
+                <div className={classes.icon} style={{marginTop: 40}}>
                   <img style={{ width: 24 }} src={"/static/images/appDetail/mb.png"}/>
                   <span style={{ fontSize: 18, marginLeft: 10, fontSizeAdjust: 18 }}>项目目标</span>
                 </div>
-                <p style={{ marginLeft: 34, marginBottom: 40 }}>根据银行提供的一年内个人记录构建信用卡客户的准入模型。
+                <p style={{ marginLeft: 34, marginBottom: 40 ,marginTop:20 }}>根据银行提供的一年内个人记录构建信用卡客户的准入模型。
                 </p>
               </div>
 
@@ -91,11 +91,11 @@ function AppDetailPartTwo() {
                   <img style={{ width: 24 }} src={"/static/images/appDetail/cg.png"}/>
                   <span style={{ fontSize: 18, marginLeft: 10, fontSizeAdjust: 18 }}>项目成果</span>
                 </div>
-                <p >
-                  便于业务部门普及基于机器学习的建模方法，成为专家规则等传统方法的有效补充；
+                <p style={{ marginTop:20 }}>
+                  1.便于业务部门普及基于机器学习的建模方法，成为专家规则等传统方法的有效补充；
                 </p>
                 <p >
-                  构建起来的准入模型质量高，各项模型指标（AUC、KS、Recall等）均达到指定要求，对好客户和坏客户的判定都比较准确。
+                  2.构建起来的准入模型质量高，各项模型指标（AUC、KS、Recall等）均达到指定要求，对好客户和坏客户的判定都比较准确。
                 </p>
                 <img style={{ marginBottom: 40 }} src={"/static/images/appDetail/bank2cg.png"}/>
               </div>
@@ -121,8 +121,8 @@ function AppDetailPartTwo() {
 
                 <Grid spacing={8} container className={classes.grids}>
                   <Grid item xs={6} className={classes.grid}>
-                    <p>3.建模设置：
-                      在R2 Learn 中从数据分组、算法选择、速度与准确率的权衡等多个方面进行自动建模的个性化定制；
+                    <p style={{lineHeight:1.5}}><p style={{float:'left'}}>3.建模设置：</p>
+                      <span style={{width:'80%'}}>在R2 Learn 中从数据分组、算法选择、速度与准确率的权衡等多个方面进行自动建模的个性化定制；</span>
                     </p>
                     <img  src={"/static/images/appDetail/3.png"}/>
                   </Grid>
