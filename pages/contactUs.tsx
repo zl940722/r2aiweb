@@ -123,7 +123,7 @@ export default function ContactUs() {
   const { type, name, mail, phone, company, message } = values;
   return (
     <div className={classes.bg}>
-      <div className={classes.header}>联系合作</div>
+      <div className={classes.header}>联系我们</div>
       <form className={classes.container} noValidate>
         <Grid container className={classes.grids}>
           <Grid item lg={9} xs={10} className={classes.grid}>
