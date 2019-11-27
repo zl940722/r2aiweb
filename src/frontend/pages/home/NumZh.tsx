@@ -49,7 +49,7 @@ const useStyles = makeStyles({
     color: "#fff",
     // borderRadius: "0.5rem 0.5rem 0.5rem 0",
     position: "relative",
-    top: "-1rem",
+    top: "-2rem",
     textAlign: "center",
     lineHeight: "2rem"
   }
