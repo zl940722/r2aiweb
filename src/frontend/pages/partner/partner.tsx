@@ -53,7 +53,7 @@ function Partner() {
   return (
     <div style={{ background: "#F5F5F5" }}>
       <div className={classes.content}>
-        <Typography className={classes.title}>合作伙伴</Typography>
+        <p className={'all_title'} style={{margin:'49px auto'}}>合作伙伴</p>
         <Grid container className={classes.items} direction={"row"}>
 
           <Grid item sm={3} xs={12}>

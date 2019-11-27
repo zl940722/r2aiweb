@@ -48,7 +48,7 @@ function Mode() {
   return (
     <div style={{ background: "#F5F5F5" }}>
       <div className={classes.content}>
-        <Typography className={classes.title}>合作模式</Typography>
+        <p className={'all_title'} style={{margin:'49px auto'}}>合作模式</p>
 
         <Row>
           <Col span={8}>

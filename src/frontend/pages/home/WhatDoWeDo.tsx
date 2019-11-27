@@ -48,7 +48,7 @@ export default function() {
   const classes = useStyles();
   return (
     <section className={classes.content}>
-      <p className={classes.title}>我们在做什么</p>
+      <p className={'all_title'}>我们在做什么</p>
       R2.ai是帮助创造AI的AI。我们服务于银行、保险、医疗、新零售、物联网等行业，利用最先进的AI开发及应用技术，以快速、高质、简单、经济的方式为企业进行AI赋能。
       <div className={classes.main}>
         <dl>

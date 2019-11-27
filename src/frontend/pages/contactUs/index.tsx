@@ -63,7 +63,7 @@ function ContactUs() {
     <>
       <div className={classes.content}>
         <div>
-          <Typography className={classes.title}>公司概况</Typography>
+          <p className={'all_title'}>公司概况</p>
           <Grid container className={classes.items} direction={"row"}>
             <Grid item sm={6} xs={12}>
               <div className={classes.item}>

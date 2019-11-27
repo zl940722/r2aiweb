@@ -53,7 +53,7 @@ function Supports() {
   return (
     <div style={{ background: "#fff" }}>
       <div className={classes.content}>
-        <Typography className={classes.title}>合作伙伴支持</Typography>
+        <p className={'all_title'} style={{margin:'49px auto'}}>合作伙伴支持</p>
         <Typography
           className={classes.des}>R2.ai提供世界领先的AutoML开发和运营技术，可以轻松整合到系统集成商/服务商/行业解决方案提供商的解决方案中或镶嵌入OEM产品中，以改善整体客户体验和提升对客户的价值主张。</Typography>
         <Grid container className={classes.items} direction={"row"}>

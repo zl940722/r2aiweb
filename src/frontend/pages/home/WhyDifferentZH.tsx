@@ -66,7 +66,7 @@ export default function() {
   ];
   return (
     <section className={classes.content}>
-      <p>为何我们与众不同</p>
+      <p className={'all_title'}>为何我们与众不同</p>
       我们拥有独立研发的世界领先的AI开发及运营平台，以最简单、高效的方式为您搭建更高质的模型！
       <dl className={classes.main}>
         {main.map((itm, index) => {

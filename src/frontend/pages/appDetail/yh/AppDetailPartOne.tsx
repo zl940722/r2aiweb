@@ -48,9 +48,9 @@ function AppDetailPartOne(props: any) {
   return (
     <>
       <div className={classes.content}>
-        <Typography variant={"h4"} align={"center"} className={classes.title}>
+        <p className={'all_title'}>
           案例分析
-        </Typography>
+        </p>
         <div className={classes.context}>
           <p className={classes.context_title}>贷款产品精准营销</p>
 
