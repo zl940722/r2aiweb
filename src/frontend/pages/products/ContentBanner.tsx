@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   },
   title: {
     margin: "3rem 0",
-    fontSize: "2.25rem",
+    fontSize: 36,
     fontWeight: "bold",
     textAlign: "right"
   },

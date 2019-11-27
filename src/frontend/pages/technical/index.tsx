@@ -17,16 +17,16 @@ const useStyles = makeStyles({
   banner: {
     maxHeight: "580px",
     maxWidth: "100%",
-    overflow: 'hidden',
-    margin: '0 auto',
-    display: 'flex',
-    flex: 'none',
-    justifyContent: 'center',
-    position:'relative',
+    overflow: "hidden",
+    margin: "0 auto",
+    display: "flex",
+    flex: "none",
+    justifyContent: "center",
+    position: "relative",
     "& >img": {
-      maxWidth: '100%',
-      maxHeight: '100%',
-      minWidth: '1000px'
+      maxWidth: "100%",
+      maxHeight: "100%",
+      minWidth: "1000px"
     }
   },
   center: {
@@ -147,15 +147,18 @@ function HomeAbout() {
       <Grid container className={classes.content} component='div'>
         <Grid container xs={12} className={classes.title}>
           <Grid item xs={12} md={9} lg={7} xl={5} className={classes.center}>
-            <p className={'all_title'}>
-              R2独门秘笈
+            <p className={"all_title"}>
+              R2 独门秘笈
             </p>
           </Grid>
         </Grid>
         <Grid container xs={12}>
           <Grid item xs={12} md={9} lg={7} xl={5} className={classes.center}>
-            <Typography component={"div"} align='center'>
-              为各行业企业、个人提供世界领先的人工智能开发及应用平台，帮助客户以最简单、便捷、高效的方式， <br/>建立最优质的机器学习模型，为每个有价值的业务场景自主构建&nbsp;AI&nbsp;应用，实现业务升级和企业&nbsp;AI&nbsp;赋能。&nbsp;
+            <Typography style={{ fontSize: 17, lineHeight: 0.8, marginTop: -35, marginBottom: 30 }} component={"div"}
+                        align='left'>
+              <p style={{ color: "#D3323E" ,fontWeight:600}}>全球唯一一家同时支持有监督/无监督/时间序列分析的Auto ML公司！</p>
+              <p style={{color: "#666666" }}>为各行业企业、个人提供世界领先的人工智能开发及应用平台，帮助客户以最简单、便捷、高效的方式，</p>
+              <p style={{color: "#666666" }}>建立最优质的机器学习模型，为每个有价值的业务场景自主构建&nbsp;AI&nbsp;应用，实现业务升级和企业&nbsp;AI&nbsp;赋能。&nbsp;</p>
             </Typography>
           </Grid>
         </Grid>
@@ -193,28 +196,30 @@ function HomeAbout() {
         <Grid container xs={12} className={classes.textContent}>
           <Grid item xs={10} xl={8} className={`${classes.center} ${classes.text}`}>
             <Typography component={"li"}>
-              全流程赋能：为流程中每个步骤提供低门槛、高效率的工具和运行环境支持。
+              多算法支持： 拥有全球最丰富的Auto ML支持算法；
             </Typography>
             <Typography component={"li"}>
-              专注业务：将业务人员、科学家和开发人员从底层架构和过程实现中解脱出来，更加专注业务本身。
+
+              R2自研算法：多种自研算法可选，大幅提升建模速度，提高建模质量。
+
             </Typography>
-            <Typography component={"li"}>
-              模型周期全面覆盖：从模型训练到管理，从应用到监控模型全面周期，帮助企业实现一站式模型生命周期管理，构建流程标准，提升效率。
-            </Typography>
+            {/*<Typography component={"li"}>*/}
+            {/*  模型周期全面覆盖：从模型训练到管理，从应用到监控模型全面周期，帮助企业实现一站式模型生命周期管理，构建流程标准，提升效率。*/}
+            {/*</Typography>*/}
           </Grid>
         </Grid>
       </Grid>
       <Grid container className={classes.content} component='div'>
         <Grid container xs={12} className={classes.title}>
           <Grid item xs={12} md={9} lg={7} xl={5} className={classes.center}>
-            <p className={'all_title'}>
+            <p className={"all_title"}>
               R2六脉神剑
             </p>
           </Grid>
         </Grid>
         <Grid container xs={12}>
           <Grid item xs={12} md={9} lg={7} xl={5} className={classes.center}>
-            <Typography component={"div"} align='center'>
+            <Typography component={"div"} align='center' style={{ fontSize: 18 }}>
               为各行业企业、个人提供世界领先的人工智能开发及应用平台，实现业务升级和企业AI赋能。
             </Typography>
           </Grid>
