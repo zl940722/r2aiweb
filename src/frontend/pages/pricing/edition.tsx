@@ -179,12 +179,9 @@ function Pricing(props: any) {
                     if(index === 1){
                       return type > 0;
                     }else if(end){//过期了
-                      // console.log(type,index)
                       return false;
-                      // return type !== index;
-                    }else if([2,3].includes(index)){//买了，过期了
+                    }else if([2,3].includes(index)){//买了，可以续费
                       return type !==index
-                      // return false;
                     }
                     return false
                   };
