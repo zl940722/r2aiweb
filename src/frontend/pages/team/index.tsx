@@ -89,7 +89,7 @@ function HomeAbout() {
     <>
       <div className={classes.content}>
         <div className={classes.content_div}>
-          <Typography className={classes.title}>核心团队</Typography>
+          <p className={'all_title'}>核心团队</p>
           <Grid container className={classes.items} direction={"row"}>
             <Grid item xs={4}>
               <div className={classes.item}
@@ -148,7 +148,7 @@ function HomeAbout() {
 
         <div className={classes.content_div2}>
           <div className={classes.content_div}>
-            <Typography className={classes.title}>董事会</Typography>
+            <p className={'all_title'}>董事会</p>
             <Grid container className={classes.items} direction={"row"}>
               <Grid item xs={4}>
                 <div className={classes.item}
@@ -214,7 +214,7 @@ function HomeAbout() {
           </div>
         </div>
         <div className={classes.content_div}>
-          <Typography className={classes.title}>顾问</Typography>
+          <p className={'all_title'}>顾问</p>
           <Grid container className={classes.items} direction={"row"}>
             <Grid item xs={4}>
               <div className={classes.item}

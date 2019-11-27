@@ -89,7 +89,7 @@ function Assessment() {
   const classes = useStyles();
   return (
     <section className={classes.content}>
-      <p>客户评价</p>
+      <p className={'all_title'}>客户评价</p>
       <dl className={classes.main}>
         <dt>
           <div>

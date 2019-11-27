@@ -13,31 +13,31 @@ const useStyles = makeStyles({
   banner: {
     maxHeight: "580px",
     maxWidth: "100%",
-    overflow: 'hidden',
-    margin: '0 auto',
-    display: 'flex',
-    flex: 'none',
-    justifyContent: 'center',
-    position:'relative',
+    overflow: "hidden",
+    margin: "0 auto",
+    display: "flex",
+    flex: "none",
+    justifyContent: "center",
+    position: "relative",
     "& >img": {
-      maxWidth: '100%',
-      maxHeight: '100%',
-      minWidth: '1000px'
+      maxWidth: "100%",
+      maxHeight: "100%",
+      minWidth: "1000px"
     }
   },
-  container:{
-    width:'75rem',
-    margin:'auto auto 9.0625rem',
-    boxShadow:"inset 0px 0px 5px 0px rgba(0, 0, 0, 0.35)",
-    marginBottom:'9.0625'
+  container: {
+    width: "75rem",
+    margin: "auto auto 9.0625rem",
+    boxShadow: "inset 0px 0px 5px 0px rgba(0, 0, 0, 0.35)",
+    marginBottom: "9.0625"
   },
   title: {
     padding: "4rem 0",
     fontSize: "2rem",
     fontWeight: "bold",
     textAlign: "center",
-    color:"#333",
-  },
+    color: "#333"
+  }
 });
 
 
@@ -48,9 +48,9 @@ function Application(res: any) {
       <div className={classes.banner}>
         <img src="/static/images/price/banner.png" alt="banner"/>
       </div>
-      <Typography className={classes.title}>
+      <p className={"all_title"} style={{ marginTop: 65, marginBottom: 63 }}>
         价格指南
-      </Typography>
+      </p>
       <section className={classes.container}>
         <Edition {...res}/>
         <Context {...res}/>
