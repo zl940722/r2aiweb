@@ -167,7 +167,7 @@ function Pricing(props: any) {
 
   const {type,endTime} = user;
   const classes = useStyles();
-  const end = endTime&&new Date(endTime)<new Date();
+  const end = endTime&&new Date(endTime)<new Date();//过期了
 
   return <div className={classes.content}>
         <div>
@@ -178,10 +178,13 @@ function Pricing(props: any) {
                     if(!type)return false;
                     if(index === 1){
                       return type > 0;
-                    }else if(end){
+                    }else if(end){//过期了
+                      // console.log(type,index)
                       return false;
-                    }else if([2,3].includes(index)){
-                      return type>1;
+                      // return type !== index;
+                    }else if([2,3].includes(index)){//买了，过期了
+                      return type !==index
+                      // return false;
                     }
                     return false
                   };

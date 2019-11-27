@@ -10,20 +10,18 @@ const Index = (res: any) => {
 };
 
 Index.getInitialProps = async function(props) {
-  let user;
+  let user,_user;
   if (typeof Window === "function") {
     const url = "/user/login";
-    const _user = await fetch(url);
-    user = _user.status === 200 ? await _user.json() : {};
+    _user = await fetch(url);
   } else {
-    const result = await fetch(process.env.AUTH_SERVICE || "http://localhost:8088", {
+    _user = await fetch(process.env.AUTH_SERVICE || "http://localhost:8088", {
       headers: {
         cookie: props.req.headers.cookie
       }
     });
-    user = result.status === 200 ? await result.json() : {};
   }
-
+  user = _user.status === 200 ? await _user.json() : {};
 
   const home: any = await fetch(url + `/prices?_sort=level`) || [];
 
