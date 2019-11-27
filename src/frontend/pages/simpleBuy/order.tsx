@@ -355,12 +355,13 @@ export default function TextFields(props: any) {
           <PageHeader
             style={{
               left: "-1.5rem",
-              position: "relative"
+              position: "relative",
+              fontSize:14
             }}
             onBack={() => {
               Router.back();
             }}
-            title={`返回列表`}
+            title={`返回价单列表`}
             subTitle=""
           />
         </div>

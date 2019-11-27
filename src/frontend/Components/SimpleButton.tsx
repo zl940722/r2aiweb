@@ -10,7 +10,8 @@ const useStyles = makeStyles((theme: any) =>
       padding: "0 4.275rem",
       border: "0.0625rem solid #D3323E",
       backgroundColor: "transparent",
-      color: "#D3323E"
+      color: "#D3323E",
+      fontSize: 18
     }
   })
 );
