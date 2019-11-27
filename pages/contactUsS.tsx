@@ -75,7 +75,7 @@ export default function ContactUs() {
   const classes = useStyles();
   const [values, setValues] = React.useState<any>({
     language: "zh-CN",
-    type: "获取试用版",
+    type: "产品线下试用",
     name: "",
     mail: "",
     phone: "",
