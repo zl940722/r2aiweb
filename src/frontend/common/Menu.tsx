@@ -299,9 +299,11 @@ const Header = (props) => {
             props.user.active ?
               <Dropdown overlay={menu}>
                 <span className={classes.avatar}>{props.user.email}</span>
+                <a className={classes.res} style={{marginLeft:10}} href={"/login"}>使用产品</a>
               </Dropdown> :
               <div><a className={classes.login} href={"/login"}>登录</a> <a className={classes.res}
-                href={"/register"}>注册</a></div>
+                href={"/register"}>注册</a>
+              </div>
           }
         </span>
       </Menu>

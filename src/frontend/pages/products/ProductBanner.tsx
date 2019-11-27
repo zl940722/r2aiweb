@@ -11,16 +11,16 @@ const useStyles = makeStyles((theme: any) =>
     banner: {
       maxHeight: "580px",
       maxWidth: "100%",
-      overflow: 'hidden',
-      margin: '0 auto',
-      display: 'flex',
-      flex: 'none',
-      justifyContent: 'center',
-      position:'relative',
+      overflow: "hidden",
+      margin: "0 auto",
+      display: "flex",
+      flex: "none",
+      justifyContent: "center",
+      position: "relative",
       "& >img": {
-        maxWidth: '100%',
-        maxHeight: '100%',
-        minWidth: '1000px'
+        maxWidth: "100%",
+        maxHeight: "100%",
+        minWidth: "1000px"
       }
     },
     item: {
@@ -33,9 +33,9 @@ const useStyles = makeStyles((theme: any) =>
       paddingTop: "1rem",
       overflow: "hidden",
       textAlign: "left",
-      position:'absolute',
-      bottom:50,
-      left:'20%'
+      position: "absolute",
+      bottom: 50,
+      left: "20%"
     },
     title: {
       marginTop: "5rem",
@@ -49,12 +49,15 @@ const useStyles = makeStyles((theme: any) =>
     },
     buttonWrap: {
       color: "#fff",
-      fontSize: "40px",
+      width: 280,
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      marginTop: "55%",
-      cursor: 'pointer'
+      marginTop: "60%",
+      cursor: "pointer",
+      border: "1px solid #fff",
+      borderRadius: 80,
+      padding: "20px 0"
     },
     button: {
       width: "13.6rem",
@@ -101,13 +104,13 @@ function ProductBanner(res: any) {
         <div>
           <div className={classes.banner}>
             <img src="/static/images/products/banner.png" alt="technical banner"/>
-          {/*</div>*/}
-          <div className={classes.itemContent}>
-            <div className={classes.buttonWrap} onClick={onHandleOpen}>
-              <img style={{ width: "41px" }} src={"/static/images/products/player.png"}/>
-              <span>产品视频</span>
+            {/*</div>*/}
+            <div className={classes.itemContent}>
+              <div className={classes.buttonWrap} onClick={onHandleOpen}>
+                <img style={{ width: "36px", marginRight: 20 }} src={"/static/images/products/player.png"}/>
+                <span style={{ fontSize: 36 }}>产品视频</span>
+              </div>
             </div>
-          </div>
           </div>
         </div>
       </Carousel>
