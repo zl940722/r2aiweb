@@ -189,7 +189,9 @@ export default function TextFields(props: any) {
   const [open, setOpen] = React.useState(false);
   const [modal, setModal] = React.useState({
     content: "",
-    type: ""
+    type: "",
+    cancelText: "取消",
+    okText: "确认"
   });
   const [resData, setResData] = React.useState({}) as any;
   // const [url, seturl] = React.useState("") as any;
@@ -199,7 +201,9 @@ export default function TextFields(props: any) {
       setOpen(true);
       setModal({
         content: "以上选项为必填，请正确填写。",
-        type: "error"
+        type: "error",
+        cancelText: "取消",
+        okText: "确认"
       });
     } else {
       axios.post("/user/captcha", { "captcha": values.captcha })
@@ -215,7 +219,9 @@ export default function TextFields(props: any) {
           setOpen(true);
           setModal({
             content: "验证码错误",
-            type: "error"
+            type: "error",
+            cancelText: "取消",
+            okText: "确认"
           });
           setCaptchas(new Date().getTime());
         });
@@ -244,14 +250,18 @@ export default function TextFields(props: any) {
               await setOpen(true);
               await setModal({
                 content: "支付完成前，请不要关闭此支付验证窗口。 支付完成后，请根据您支付的情况点击下面按钮。",
-                type: "alipay"
+                type: "alipay",
+                cancelText: "支付遇到问题？",
+                okText: "支付完成"
               });
               window.open(response.data.url, "", "width=1100,height=600");
             } else {
               setOpen(true);
               setModal({
                 content: "支付错误",
-                type: "error"
+                type: "error",
+                cancelText: "取消",
+                okText: "确认"
               });
             }
           })
@@ -264,7 +274,9 @@ export default function TextFields(props: any) {
             setOpen(true);
             setModal({
               content: error.response.data,
-              type: "error"
+              type: "error",
+              cancelText: "取消",
+              okText: "确认"
             });
           });
 
@@ -276,7 +288,9 @@ export default function TextFields(props: any) {
             setOpen(true);
             setModal({
               content: "支付完成前，请不要关闭此支付验证窗口。 支付完成后，请根据您支付的情况点击下面按钮。",
-              type: "unionPay"
+              type: "unionPay",
+              cancelText: "支付遇到问题？",
+              okText: "支付完成"
             });
             window.open(response.data.url, "", "width=1100,height=600");
           })
@@ -289,7 +303,9 @@ export default function TextFields(props: any) {
             setOpen(true);
             setModal({
               content: error.response.data,
-              type: "error"
+              type: "error",
+              cancelText: "取消",
+              okText: "确认"
             });
           });
 
@@ -301,7 +317,9 @@ export default function TextFields(props: any) {
             setOpen(true);
             setModal({
               content: "支付完成前，请不要关闭此支付验证窗口。 支付完成后，请根据您支付的情况点击下面按钮。",
-              type: "wechat"
+              type: "wechat",
+              cancelText: "支付遇到问题？",
+              okText: "支付完成"
             });
             window.open(response.data.url, "", "width=1100,height=600");
             // seturl(response.data.url);
@@ -315,7 +333,9 @@ export default function TextFields(props: any) {
             setOpen(true);
             setModal({
               content: error.response.data,
-              type: "error"
+              type: "error",
+              cancelText: "取消",
+              okText: "确认"
             });
           });
 
@@ -502,7 +522,7 @@ export default function TextFields(props: any) {
 
               </div>
 
-              <div style={{marginTop:40}} onClick={() => {
+              <div style={{ marginTop: 40 }} onClick={() => {
                 setDialogOpen(true);
               }}>
                 <p>本人同意签署贵公司的<a>SAAS用户协议</a></p>
@@ -539,7 +559,7 @@ export default function TextFields(props: any) {
               aria-labelledby="alert-dialog-title"
               aria-describedby="alert-dialog-description"
             >
-              <DialogTitle id="alert-dialog-title">{"支付提示"}</DialogTitle>
+              <DialogTitle id="alert-dialog-title">{"提示"}</DialogTitle>
               <DialogContent>
                 <DialogContentText id="alert-dialog-description">
                   {modal.content}
@@ -584,7 +604,7 @@ export default function TextFields(props: any) {
                       setOpen(false);
                     }
                   }} color="primary">
-                  支付遇到问题？
+                  {modal.cancelText}
                 </Button>
                 <Button
                   style={{ border: "1px solid #D3323E", width: 138, height: 38, borderRadius: 20, color: "#D3323E" }}
@@ -620,7 +640,7 @@ export default function TextFields(props: any) {
                       setOpen(false);
                     }
                   }} color="primary">
-                  支付完成
+                  {modal.okText}
                 </Button>
               </DialogActions>
             </Dialog>
