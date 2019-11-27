@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   },
   content: {
     maxWidth: "60%",
-    lineHeight: '12px',
+    lineHeight: '22px',
     margin: "0 auto",
     overflow: "hidden",
     "& img": {
@@ -94,7 +94,7 @@ function AppDetailPartTwo() {
                 <p style={{ marginTop:20 }}>
                   1.便于业务部门普及基于机器学习的建模方法，成为专家规则等传统方法的有效补充；
                 </p>
-                <p >
+                <p style={{ marginTop:-10 }}>
                   2.构建起来的准入模型质量高，各项模型指标（AUC、KS、Recall等）均达到指定要求，对好客户和坏客户的判定都比较准确。
                 </p>
                 <img style={{ marginBottom: 40 }} src={"/static/images/appDetail/bank2cg.png"}/>
@@ -110,7 +110,7 @@ function AppDetailPartTwo() {
                 </div>
                 <Grid spacing={8} container className={classes.grids}>
                   <Grid item xs={6} className={classes.grid}>
-                    <p>1.样本收集：由某银行提供的2018年164多万行、30多列变量的个人记录，其中不良率为目标变量； </p>
+                    <p><p style={{float:'left'}}>1.样本收集：</p>由某银行提供的2018年164多万行、30多列变量的个人记录，其中不良率为目标变量； </p>
                     <img  src={"/static/images/appDetail/1.png"}/>
                   </Grid>
                   <Grid item xs={6} className={classes.grid}>

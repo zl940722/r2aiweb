@@ -102,13 +102,13 @@ function AppDetailPartOne(props: any) {
                 <Grid spacing={8} container className={classes.grids}>
                   <Grid item xs={6} className={classes.grid}>
                     <p>
-                      <p style={{float:'left'}}>3. 模型训练： </p> 简易模式中，R2 Learn 将自动训练20多个模型；高级建模中，可以自 己选择不同算法，设置不同的数据集划分标准等；最后通过AUC等指标选择最佳模型；
+                      <p style={{float:'left',height:100}}>3. 模型训练： </p> 简易模式中，R2 Learn 将自动训练20多个模型；高级建模中，可以自 己选择不同算法，设置不同的数据集划分标准等；最后通过AUC等指标选择最佳模型；
                     </p>
                     <img src={"/static/images/appDetail/bank3gc3.png"}/>
                   </Grid>
                   <Grid item xs={6} className={classes.grid}>
                     <p>
-                      <p style={{float:'left'}}>4. 模型部署及性能检测： </p>
+                      <p style={{float:'left',height:100}}>4. 模型部署及性能检测： </p>
                       模型训练结束后可以设定度量指标及阈值，对模型的性能进行检测，当新数据集所得到的度量值低于阈值时将会自动预警，提示用户进行新模型的训练。
                     </p>
                     <img src={"/static/images/appDetail/bank3gc4.png"}/>
