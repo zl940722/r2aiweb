@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
-
+import React  from "react";
 import { makeStyles } from "@material-ui/styles";
 import "./global.css";
 import Link from "next/link";
 import _ from "lodash";
 import classNames from "classnames";
-import { Menu, Dropdown } from "antd";
+import { Menu, Dropdown,Icon } from "antd";
 import Router from "next/router";
 import axios from "axios";
 
@@ -235,12 +234,15 @@ const Header = (props) => {
   const menu = (
     <Menu>
       <Menu.Item>
-        <Link href='/modifyPassword'>
-          <a>修改密码</a>
-        </Link>
+        {/*<Link href='/modifyPassword'>*/}
+        {/*  <a>修改密码</a>*/}
+        {/*</Link>*/}
+        <a href="/modifyPassword">
+          修改密码
+        </a>
       </Menu.Item>
       <Menu.Item>
-        <a rel="noopener noreferrer" href="javascript:" onClick={logout}>
+        <a href="javascript:" onClick={logout}>
           退出登录
         </a>
       </Menu.Item>
