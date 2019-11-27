@@ -14,7 +14,7 @@ Index.getInitialProps = async function(props) {
   if (typeof Window === "function") {
     const url = "/user/login";
     const _user = await fetch(url);
-    user = _user ? await _user.json() : {};
+    user = _user.status === 200 ? await _user.json() : {};
   } else {
     const result = await fetch(process.env.AUTH_SERVICE || "http://localhost:8088", {
       headers: {
