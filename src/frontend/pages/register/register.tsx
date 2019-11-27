@@ -281,7 +281,7 @@ export default function TextFields() {
                 label="用户邮箱"
                 required={true}
                 allowedLength={32}
-                regex={/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/}
+                regex={/^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/}
                 helperText="请输入正确的邮箱"
                 className={classes.dense}
                 onChange={handleChange("email")}
