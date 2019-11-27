@@ -28,7 +28,7 @@ const theme = createMuiTheme({
       MuiSelect: {
         selectMenu: {
           height: "31px !important",
-          lineHeight:'31px'
+          lineHeight: "31px"
         }
       },
       MuiDialog: {
@@ -41,6 +41,11 @@ const theme = createMuiTheme({
       MuiDialogActions: {
         root: {
           justifyContent: "center"
+        }
+      },
+      MuiTypography: {
+        body1: {
+          fontFamily: "inherit"
         }
       }
     }
