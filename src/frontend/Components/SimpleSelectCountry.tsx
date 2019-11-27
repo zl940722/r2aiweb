@@ -16,12 +16,13 @@ const useStyles = makeStyles((theme: any) =>
         paddingLeft: "1rem"
       }
     },
-    reqired: { color: "red", width: "0.5rem", textAlign: "center" },
+    reqired: { color: "red", width: "0.5rem", textAlign: "center",position:'relative',top:3,paddingLeft:1 },
     labelCss: {
       width: "6.6rem",
       textAlign: "right",
       marginRight: "0.75rem",
-      paddingTop:'-20px'
+      paddingTop:'-20px',
+      whiteSpace: 'nowrap',
     },
     selectTextField: {
       minHeight: "4.25rem",

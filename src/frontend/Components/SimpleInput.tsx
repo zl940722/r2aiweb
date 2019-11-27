@@ -10,11 +10,12 @@ const useStyles = makeStyles((theme: any) =>
       display: "flex",
       alignItems: "baseline"
     },
-    reqired: { color: "red", width: "0.5rem", textAlign: "center" },
+    reqired: { color: "red", width: "0.5rem", textAlign: "center",position:'relative',top:3,paddingLeft:1 },
     labelCss: {
       width: "6.6rem",
       textAlign: "right",
-      marginRight: "0.75rem"
+      marginRight: "0.75rem",
+      whiteSpace: 'nowrap',
     },
     textField: {
       minHeight: "4.25rem",

@@ -33,8 +33,10 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundRepeat: "no-repeat"
     },
     container: {
-      display: "flex",
-      flexWrap: "wrap"
+      width:1200,
+      margin:'62px auto 98px',
+      padding:'60px 180px 50px',
+      backgroundColor:'#F5F5F5',
     },
     textField: {
       marginLeft: theme.spacing(1),
@@ -287,11 +289,8 @@ export default function TextFields() {
 
   return (
     <div className={classes.bg}>
-      <h1 className={'all_title'} style={{ textAlign: "center", marginTop: 85 }}>免费试用申请</h1>
+      <h1 className={'all_title'} style={{ textAlign: "center", margin: '85px auto 0' }}>免费试用申请</h1>
       <form className={classes.container} noValidate autoComplete="off">
-        <Grid container className={classes.grids}>
-          <Grid item lg={9} xs={12} className={classes.center}>
-            <Grid item lg={10} xs={12} spacing={1} className={classes.grid}>
               <SimpleInput
                 value={values.email}
                 label="用户邮箱"
@@ -450,7 +449,6 @@ export default function TextFields() {
                 margin="normal"
               />
 
-
               <SimpleInput
                 value={values.department}
                 label="业务部门"
@@ -493,24 +491,6 @@ export default function TextFields() {
                      }}
                 />
               </div>
-              {/*<SimpleInput*/}
-              {/*  value={values.captcha}*/}
-              {/*  label="验证码"*/}
-              {/*  required={true}*/}
-              {/*  allowedLength={32}*/}
-              {/*  regex={/^[\s\S]*.*[^\s][\s\S]*$/}*/}
-              {/*  helperText="验证码不能为空"*/}
-              {/*  className={classes.dense}*/}
-              {/*  onChange={handleChange("captcha")}*/}
-              {/*  margin="dense"*/}
-              {/*/>*/}
-
-              {/*<img src={`/user/captcha?${captcha}`}*/}
-              {/*     alt=""*/}
-              {/*     onClick={() => {*/}
-              {/*       setCaptchas(new Date().getTime());*/}
-              {/*     }}*/}
-              {/*/>*/}
               <p style={{ marginTop: 40 }} onClick={() => {
                 setDialogOpen(true);
               }}>本人同意签署贵公司的<a>SAAS用户协议</a></p>
@@ -520,9 +500,6 @@ export default function TextFields() {
                   label={"立即注册"}
                 />
               </div>
-            </Grid>
-          </Grid>
-        </Grid>
       </form>
       <Modal
         width={"80%"}
