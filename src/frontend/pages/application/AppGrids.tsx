@@ -30,7 +30,6 @@ const useStyles = makeStyles({
   grid_img: {
     height: 200,
     textAlign: "center",
-    marginTop: "5%",
     marginRight: 20
   },
   grid_name: {
