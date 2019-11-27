@@ -14,6 +14,7 @@ const basicPrice = process.env.BASIC_PRICE || 199.98;
 const basicPriceYear = process.env.BASIC_PRICE_YEAR || 2159.78;
 const essentialPrice = process.env.ESSENTIAL_PRICE || 1999.98;
 const essentialPriceYear = process.env.ESSENTIAL_PRICE_YEAR || 21599.78;
+const PRODUCT_URL = process.env.PRODUCT_URL || 'http://localhost:7777';
 
 const proxies = (target, org, url) => {
   return proxy({
@@ -83,6 +84,10 @@ app.prepare()
         essentialPrice,
         essentialPriceYear
       });
+    });
+
+    server.get("/product", (req,res) => {
+      res.send(PRODUCT_URL);
     });
 
 

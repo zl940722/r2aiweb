@@ -1,95 +1,70 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import axios from "axios";
+import { makeStyles, createStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    bg: {
-      background: "#061122",
-      backgroundSize: "cover",
-      backgroundPosition: "50%",
-      backgroundRepeat: "no-repeat"
+const useStyles = makeStyles(() =>createStyles({
+  main:{
+    width:1200,
+    height:380,
+    backgroundColor:'#F5F5F5',
+    margin:'102px auto 118px',
+    padding:'73px 250px',
+    boxSizing: 'border-box',
+    color:'#333',
+    '& img':{
+      width: 32,
+      height:32,
+      marginRight:14,
     },
-    container: {
-      display: "flex",
-      flexWrap: "wrap"
+    '& h1':{
+      fontSize:30,
+      fontWeight:500,
+      margin:0,
     },
-    textField: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
-      width: 440
+    '& p':{
+      fontSize:16,
+      fontWeight:400,
+      lineHeight:'28px',
+      marginTop:46,
     },
-    dense: {
-      marginTop: 19
-    },
-    menu: {
-      width: 400
-    },
-    grids: {
-      width: 1900,
-      margin: "0 auto",
-      padding: "10% 0"
-    },
-    grid: {
-      flex: 1,
-      color: "#fff",
-      margin: "2.5rem auto",
-      borderRadius: ".3rem",
-      // boxShadow: ".2rem .2rem .2rem #ddd",
-      cursor: "pointer",
-      textAlign: "center",
-      fontSize: 44,
-      padding: "12rem"
-    },
-    buttonWrap: {
-      width: "100%",
-      paddingTop: "2.5rem"
-    },
-    button: {
-      width: "10.5rem",
-      height: "3.2rem",
-      fontWeight: "bold",
-      background: "#061222 !important"
+    '& a':{
+      width:168,
+      height:50,
+      border:'1px solid rgba(211, 50, 62, 1)',
+      color:'#D3323E',
+      fontSize:18,
+      fontWeight:500,
+      display:'block',
+      margin:'auto',
+      lineHeight:'50px',
+      textAlign:'center',
+      borderRadius:25,
+      marginTop:44,
     }
-  })
-);
+  },
+  top:{
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+}));
 
 
-const Index = (props: any) => {
-
-  // useEffect(() => {
-  //   axios.get("/probation/applyProbation", { params: { userId: props.router.query.id } }).then((response: any) => {
-  //     if (response.status === 200) {
-  //       setcontent("试用成功");
-  //       setSuccess(true);
-  //     }
-  //   }).catch((error: any) => {
-  //     if (error.response) {
-  //       console.log(error.response.data);
-  //       setcontent(error.response.data);
-  //       setSuccess(false);
-  //     }
-  //   });
-  // }, []);
-
-    return (
-      <div>
-        {
-          <div style={{ background: "#F5F5F5", textAlign: "center", margin: "200px 300px 380px", padding: 200 }}>
-            <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start" }}>
-              <img style={{ width: 32, height: 32 }} src={"/static/images/price/succ.png"} alt=''/><h1
-              style={{ color: "#333333" }}>试用申请提交成功！</h1>
-            </div>
-            <p>
-
-              欢迎您亲身体验R2.ai新一代人工智能自动机器建模产品。我们将把产品试用账户发送至您的邮箱。<br/>
-              您收到邮件后即可开始免费试用！如果试用需求数量非常高，试用账户的发送也许会有所延迟哦！
-            </p>
-          </div>
-        }
+const Index = (props) => {
+  const classes = useStyles();
+    return <div>
+      <div className={classes.main}>
+        <div className={classes.top}>
+          <img src={"/static/images/price/succ.png"} alt=''/>
+          <h1>试用申请提交成功！</h1>
+        </div>
+        <p>
+          欢迎您亲身体验R2.ai新一代人工智能自动机器建模产品。我们将把产品试用账户发送至您的邮箱。<br/>
+          您收到邮件后即可开始免费试用！如果试用需求数量非常高，试用账户的发送也许会有所延迟哦！
+        </p>
+        <a href={props.PRODUCT_URL} target='_blank'>产品登录</a>
       </div>
-    );
+    </div>
   }
 ;
 
