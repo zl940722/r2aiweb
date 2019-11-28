@@ -176,8 +176,10 @@ function Pricing(props: any) {
                 {data.map((value: any, index: number) => {
                   const disabled = () =>{
                     if(!type)return false;
-                    if(index === 1){
-                      return type > 0;
+                    if(type === 1){//试用用户
+                      return index === 1
+                    }else if(index === 1){
+                      return true
                     }else if(end){//过期了
                       return false;
                     }else if([2,3].includes(index)){//买了，可以续费

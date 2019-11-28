@@ -68,18 +68,18 @@ function AppDetailPartOne(props: any) {
               <div>
                 <div className={classes.icon} style={{ marginTop: 30 }}>
                   <img style={{ width: 24 }} src={"/static/images/appDetail/cg.png"}/>
-                  <span style={{ fontSize: 18, marginLeft: 10}}>项目成果</span>
+                  <span style={{ fontSize: 18, marginLeft: 10 }}>项目成果</span>
                 </div>
-                <p style={{ marginLeft: 34, marginTop: 20  }}>
+                <p style={{ marginLeft: 34, marginTop: 20 }}>
                   在不流失高意愿客户的前提下，在存量客户中仅筛选出50%的白名单客户进行短信营销，大幅缩减了广告营销开支。
                 </p>
               </div>
             </Grid>
 
-            <Grid item xs={3} className={classes.grid}>
+            <Grid item xs={3} style={{ width: "250px" }} className={classes.grid}>
               <img style={{ width: 250 }} src={"/static/images/appDetail/zyt1.png"}/>
             </Grid>
-            <Grid item xs={3} className={classes.grid}>
+            <Grid item xs={3} style={{ width: "282px" }} className={classes.grid}>
               <img style={{ width: 282 }} src={"/static/images/appDetail/tst.png"}/>
             </Grid>
           </Grid>

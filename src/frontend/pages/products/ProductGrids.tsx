@@ -44,9 +44,9 @@ function ProductGrids() {
   return (
     <>
       <div className={classes.content}>
-        <Typography variant={"h4"} align={"center"} className={classes.title}>
+        <p className={"all_title"} style={{ margin: "66px 0 66px 0" }}>
           R2 Learn直击人工智能应用痛点
-        </Typography>
+        </p>
         <Grid container className={classes.grids}>
           <Grid item md={3} className={classes.grid}>
             <div className={classes.grid_img}>

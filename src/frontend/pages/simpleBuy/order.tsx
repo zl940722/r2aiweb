@@ -352,13 +352,13 @@ export default function TextFields(props: any) {
         <div
           style={{ cursor: "pointer" }}
           onClick={() => {
-          Router.back();
-        }}>
+            Router.back();
+          }}>
           <PageHeader
             style={{
               left: "-1.5rem",
               position: "relative",
-              fontSize:14
+              fontSize: 14
             }}
             onBack={() => {
               Router.back();
@@ -367,7 +367,7 @@ export default function TextFields(props: any) {
             subTitle=""
           />
         </div>
-        <h1 style={{ textAlign: "center", marginTop: 40, fontWeight: "bold", fontSize: "1.6rem" }}>产品购买</h1>
+        <h1 style={{ textAlign: "center", marginTop: 40, fontWeight: "bold", fontSize: 36 }}>产品购买</h1>
         <form className={classes.container} noValidate autoComplete="off">
 
           <Grid container className={classes.grids}>
@@ -562,18 +562,18 @@ export default function TextFields(props: any) {
               aria-labelledby="alert-dialog-title"
               aria-describedby="alert-dialog-description"
             >
-              <DialogTitle style={{fontSize:24}} id="alert-dialog-title">{"提示"}</DialogTitle>
+              <DialogTitle style={{ fontSize: 24 }} id="alert-dialog-title">{"提示"}</DialogTitle>
               <DialogContent>
-                <DialogContentText style={{textAlign:'left'}}  id="alert-dialog-description">
+                <DialogContentText style={{ textAlign: "left" }} id="alert-dialog-description">
                   {modal.content}
                 </DialogContentText>
               </DialogContent>
               <DialogActions>
                 {
-                  modal.cancelText !== '' ?
+                  modal.cancelText !== "" ?
                     <div>
                       <Button
-                        style={{ width: 138, height: 38, borderRadius: 20, color: "#D3323E",fontSize:16 }}
+                        style={{ width: 138, height: 38, borderRadius: 20, color: "#D3323E", fontSize: 16 }}
                         onClick={() => {
                           if (modal.type === "alipay") {
                             axios.get("/alipay/orderQuery", {
@@ -614,7 +614,14 @@ export default function TextFields(props: any) {
                         {modal.cancelText}
                       </Button>
                       <Button
-                        style={{ border: "1px solid #D3323E", width: 138, height: 38, borderRadius: 20, color: "#D3323E",fontSize:16 }}
+                        style={{
+                          border: "1px solid #D3323E",
+                          width: 138,
+                          height: 38,
+                          borderRadius: 20,
+                          color: "#D3323E",
+                          fontSize: 16
+                        }}
                         onClick={() => {
                           if (modal.type === "alipay") {
                             axios.get("/alipay/orderQuery", {
@@ -654,9 +661,16 @@ export default function TextFields(props: any) {
                         }} color="primary">
                         {modal.okText}
                       </Button>
-                    </div>:
+                    </div> :
                     <Button
-                      style={{ border: "1px solid #D3323E", width: 138, height: 38, borderRadius: 20, color: "#D3323E",fontSize:16 }}
+                      style={{
+                        border: "1px solid #D3323E",
+                        width: 138,
+                        height: 38,
+                        borderRadius: 20,
+                        color: "#D3323E",
+                        fontSize: 16
+                      }}
                       onClick={() => {
                         if (modal.type === "alipay") {
                           axios.get("/alipay/orderQuery", {

@@ -7,22 +7,19 @@ const useStyles = makeStyles({
   root: {
     flexGrow: 1,
     backgroundColor: "#344155",
-    padding: "2rem",
+    padding: 31,
     color: "#FFF"
   },
   content: {
     display: "flex",
     margin: "0 auto",
     justifyContent: "center",
-    alignItems: "flex-start"
+    alignItems: "center"
   },
   copyright: {
     margin: "0 20px",
     textAlign: "left"
   },
-  copyright_img: {
-    marginBottom: "1.5rem"
-  }
 });
 
 function Copyright() {
@@ -32,16 +29,13 @@ function Copyright() {
   return (
     <div className={classes.root}>
       <div className={classes.content}>
-        <div className={classes.copyright_img}>
-          <img
-            src="/static/images/common/wechat@2x.png"
-            width={68}
-            height={68}
-            alt="R2.ai"
-          />
-        </div>
+        <img
+          src="/static/images/common/wechat@2x.png"
+          width={68}
+          height={68}
+          alt="R2.ai"
+        />
         <div className={classes.copyright}>
-
           <Typography variant={"caption"} component={"p"}>
             杭州睿拓智能科技有限公司
           </Typography>
