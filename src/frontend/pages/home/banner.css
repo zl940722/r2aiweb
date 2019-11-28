@@ -18,6 +18,8 @@
     width:8px !important;
     height:8px !important;
     border-radius: 50% !important;
+    background-color: #646f88;
+    opacity: 1;
 }
 
 .slick-dots .slick-active button{
@@ -25,4 +27,12 @@
     border-radius: 50px !important;
     background: #D3323E !important;
     height: 8px !important;
+}
+
+.swiper-pagination-bullet{
+    width:8px;
+    height:8px;
+    border-radius: 50%;
+    background-color: #646f88;
+    opacity: 1;
 }
