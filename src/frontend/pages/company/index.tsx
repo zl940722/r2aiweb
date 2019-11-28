@@ -14,19 +14,20 @@ const useStyles = makeStyles({
     maxWidth: "75rem",
     margin: "0 auto",
     // padding: "1.5rem 0 8.8rem",
-    padding: '90px 0 140px 0',
+    padding: "90px 0 140px 0",
     overflow: "hidden",
     textAlign: "left"
   },
   content1_add: {
     maxWidth: "75rem",
     margin: "0 auto",
-    padding: '60px 0 100px 0',
+    // padding: '60px 0 100px 0',
     overflow: "hidden",
+    height: 400,
     textAlign: "left"
   },
   content2: {
-    padding: '90px 0 140px 0',
+    padding: "90px 0 140px 0",
     maxWidth: "100%",
     background: "#F5F5F5"
   },
@@ -45,7 +46,7 @@ const useStyles = makeStyles({
   },
   title_add: {
     // paddingTop:'2.5rem',
-    marginBottom: '-50px',
+    marginBottom: "-50px",
     fontSize: "2rem",
     fontWeight: "bold",
     textAlign: "center"
@@ -57,17 +58,17 @@ const useStyles = makeStyles({
     textAlign: "center"
   },
   items: {
-    margin: "100px 0 1rem",
+    margin: "0 0 1rem",
     display: "flex",
-    alignItems: "center",
+    alignItems: "center"
   },
   imageItem: {
     maxWidth: "90%",
     boxSizing: "border-box",
     alignItems: "center",
     "& >img": {
-      maxHeight: '100%',
-      maxWidth: '100%'
+      maxHeight: "100%",
+      maxWidth: "100%"
     }
   },
   item: {
@@ -75,7 +76,7 @@ const useStyles = makeStyles({
     boxSizing: "border-box",
     display: "flex",
     alignItems: "center",
-    margin: "0 auto",
+    margin: "0 auto"
   },
   itemC: {
     maxWidth: "90%",
@@ -83,14 +84,14 @@ const useStyles = makeStyles({
     display: "flex",
     padding: "0 10px",
     flexFlow: "column",
-    height: '100%',
-    justifyContent: 'space-evenly'
+    height: "100%",
+    justifyContent: "space-evenly"
   },
   itemDes: {
     lineHeight: 2,
     // marginBottom: "3rem",
-    textAlign: 'left',
-    padding: '20px 0'
+    textAlign: "left",
+    padding: "20px 0"
   },
   itemTitle: {
     marginBottom: "3rem",
@@ -102,15 +103,15 @@ const useStyles = makeStyles({
   },
   card: {
     height: "150px",
-    display: 'flex',
-    flex: 'auto',
-    flexDirection: 'column',
-    padding: '26px 20px 26px 50px',
-    position: 'relative',
-    justifyContent: 'space-evenly'
+    display: "flex",
+    flex: "auto",
+    flexDirection: "column",
+    padding: "26px 20px 26px 50px",
+    position: "relative",
+    justifyContent: "space-evenly"
   },
   icon: {
-    position: 'absolute',
+    position: "absolute",
     left: 20
   }
 });
@@ -121,7 +122,7 @@ function HomeAbout() {
     <>
       <div className={classes.content}>
         <div className={classes.content1}>
-          <p className={'all_title'}>公司概况</p>
+          <p className={"all_title"}>公司概况</p>
           <Grid container className={classes.items} direction={"row"}>
             <Grid item xs={6}>
               <div className={classes.imageItem}>
@@ -132,7 +133,7 @@ function HomeAbout() {
               </div>
             </Grid>
             <Grid item xs={6}>
-              <div className={classes.itemC} style={{ marginLeft: 'auto' }}>
+              <div className={classes.itemC} style={{ marginLeft: "auto" }}>
                 <Typography variant={"body1"} className={classes.itemDes}>
                   2015年，R2.ai由一群在AI和数据科学领域内最杰出、最富有想象力的团队在硅谷建立。他们致力于将大胆的创意转化为复杂现实中的实际应用。R2.ai的使命是为AI在各行业的应用赋能，大规模推动AI的普及和发展。
                 </Typography>
@@ -149,7 +150,7 @@ function HomeAbout() {
 
         <div className={classes.content2}>
           <div className={classes.content3}>
-            <p className={'all_title'}>企业文化</p>
+            <p className={"all_title"}>企业文化</p>
             <Grid container className={classes.items} direction={"row"}>
 
               <Grid item xs={6}>
@@ -169,7 +170,7 @@ function HomeAbout() {
                 </div>
               </Grid>
               <Grid item xs={6}>
-                <div className={classes.imageItem} style={{ marginLeft: 'auto' }}>
+                <div className={classes.imageItem} style={{ marginLeft: "auto" }}>
                   <img
                     src="/static/images/company/2.png"
                     alt="R2.ai"
@@ -182,19 +183,19 @@ function HomeAbout() {
 
 
         <div className={classes.content1_add}>
-          <p className={'all_title'}>公司地址</p>
+          <p className={"all_title"} style={{marginTop:63}}>公司地址</p>
           <Grid container className={classes.items} direction={"row"}>
 
-            <Grid item xs={4} >
+            <Grid item xs={4}>
               <div className={classes.item}>
-                <Card className={classes.card} >
-                  <div >
-                    <div className={classes.icon} ><img
+                <Card className={classes.card}>
+                  <div>
+                    <div className={classes.icon}><img
                       src="/static/images/company/3.png"
                       width={"16px"}
                       alt="R2.ai"
                     /></div>
-                    <div style={{ fontSize: 18, fontWeight: 'bold' }}>
+                    <div style={{ fontSize: 18, fontWeight: "bold" }}>
                       美国硅谷
                     </div>
                   </div>
@@ -207,16 +208,16 @@ function HomeAbout() {
                 </Card>
               </div>
             </Grid>
-            <Grid item xs={4} >
+            <Grid item xs={4}>
               <div className={classes.item}>
                 <Card className={classes.card}>
-                  <div >
-                    <div className={classes.icon} ><img
+                  <div>
+                    <div className={classes.icon}><img
                       src="/static/images/company/3.png"
                       width={"16px"}
                       alt="R2.ai"
                     /></div>
-                    <div style={{ fontSize: 18, fontWeight: 'bold' }}>
+                    <div style={{ fontSize: 18, fontWeight: "bold" }}>
                       杭州
                     </div>
                   </div>
@@ -229,16 +230,16 @@ function HomeAbout() {
                 </Card>
               </div>
             </Grid>
-            <Grid item xs={4} >
+            <Grid item xs={4}>
               <div className={classes.item}>
                 <Card className={classes.card}>
-                  <div >
-                    <div className={classes.icon} ><img
+                  <div>
+                    <div className={classes.icon}><img
                       src="/static/images/company/3.png"
                       width={"16px"}
                       alt="R2.ai"
                     /></div>
-                    <div style={{ fontSize: 18, fontWeight: 'bold' }}>
+                    <div style={{ fontSize: 18, fontWeight: "bold" }}>
                       上海
                     </div>
                   </div>
