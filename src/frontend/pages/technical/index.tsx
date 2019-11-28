@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     justifyContent: "center",
     position: "relative",
     "& >img": {
-      maxWidth: "100%",
+      width: "100%",
       maxHeight: "100%",
       minWidth: "1000px"
     }
@@ -50,7 +50,7 @@ const useStyles = makeStyles({
   },
   centerDiv: {
     position: "relative",
-    width:'100%'
+    width: '100%'
   },
   iconContent: {
     marginTop: "30px",
@@ -75,15 +75,22 @@ const useStyles = makeStyles({
   },
   imageContent: {
     maxHeight: "230px",
-    maxWidth: "204px"
+    maxWidth: "204px",
   },
   r2: {
     position: "absolute",
-    width: "195px",
-    height: "196px",
+    display: 'flex',
+    flex: 'none',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    justifyContent: 'center',
+    alignItems: "center",
+    zIndex: -1,
     "& img": {
-      maxHeight: "100%",
-      maxWidth: "100%"
+      width: "195px",
+      height: "196px",
     }
   },
   images: {
@@ -91,6 +98,10 @@ const useStyles = makeStyles({
   },
   card: {
     maxWidth: "320px"
+  },
+  relative: {
+    position: 'relative',
+    zIndex: 1
   }
 });
 
@@ -151,7 +162,7 @@ function HomeAbout() {
   return (
     <Paper className={classes.root}>
       <div className={classes.banner}>
-        <img src="/static/images/technical/banner.png" alt="technical banner"/>
+        <img src="/static/images/technical/banner.png" alt="technical banner" />
       </div>
       <Grid container className={classes.content} component='div'>
         <Grid container xs={12} className={classes.title}>
@@ -164,7 +175,7 @@ function HomeAbout() {
         <Grid container xs={12}>
           <Grid item xs={12} md={9} lg={7} xl={5} className={classes.center}>
             <Typography style={{ fontSize: 17, lineHeight: 0.8, marginTop: -35, marginBottom: 30 }} component={"div"}
-                        align='left'>
+              align='left'>
               <p style={{ color: "#D3323E", fontWeight: 600 }}>全球唯一一家同时支持有监督/无监督/时间序列分析的Auto ML公司！</p>
               <p style={{ color: "#666666" }}>为各行业企业、个人提供世界领先的人工智能开发及应用平台，帮助客户以最简单、便捷、高效的方式，</p>
               <p
@@ -172,31 +183,31 @@ function HomeAbout() {
             </Typography>
           </Grid>
         </Grid>
-        <div  className={classes.centerDiv}>
+        <div className={classes.centerDiv}>
           <Grid container xs={12}>
             <Grid container xs={10} xl={8} className={`${classes.center} ${classes.iconContent}`} wrap='nowrap'>
               <Grid container xs={4} className={classes.pointer} direction='column' alignItems='center'
-                    onMouseOver={imgOver(0)} onMouseOut={imgOver(-1)}>
+                onMouseOver={imgOver(0)} onMouseOut={imgOver(-1)}>
                 <div className={classes.icon}>
-                  <img src={`/static/images/technical/auto${img === 0 ? "a" : ""}.png`} alt="auto"/>
+                  <img src={`/static/images/technical/auto${img === 0 ? "a" : ""}.png`} alt="auto" />
                 </div>
                 <Typography component={"div"} align='center' style={{ color: `${img === 0 ? "#D3323E" : "#333333"}` }}>
                   全链自动优化
                 </Typography>
               </Grid>
               <Grid container xs={4} className={classes.pointer} direction='column' alignItems='center'
-                    onMouseOver={imgOver(1)} onMouseOut={imgOver(-1)}>
+                onMouseOver={imgOver(1)} onMouseOut={imgOver(-1)}>
                 <div className={classes.icon}>
-                  <img src={`/static/images/technical/algo${img === 1 ? "a" : ""}.png`} alt="algo"/>
+                  <img src={`/static/images/technical/algo${img === 1 ? "a" : ""}.png`} alt="algo" />
                 </div>
                 <Typography component={"div"} align='center' style={{ color: `${img === 1 ? "#D3323E" : "#333333"}` }}>
                   自研算法
                 </Typography>
               </Grid>
               <Grid container xs={4} className={classes.pointer} direction='column' alignItems='center'
-                    onMouseOver={imgOver(2)} onMouseOut={imgOver(-1)}>
+                onMouseOver={imgOver(2)} onMouseOut={imgOver(-1)}>
                 <div className={classes.icon}>
-                  <img src={`/static/images/technical/simulate${img === 2 ? "a" : ""}.png`} alt="simulate"/>
+                  <img src={`/static/images/technical/simulate${img === 2 ? "a" : ""}.png`} alt="simulate" />
                 </div>
                 <Typography component={"div"} align='center' style={{ color: `${img === 2 ? "#D3323E" : "#333333"}` }}>
                   业务场景模拟优化
@@ -256,31 +267,33 @@ function HomeAbout() {
             </Typography>
           </Grid>
         </Grid>
-        <Grid container xs={12} className={classes.images}>
-          <Grid container xs={12} justify='center' alignItems='center' style={{ marginBottom: "-55px" }}>
+        <Grid container xs={12} className={classes.images} >
+          <Grid container xs={12} justify='center' alignItems='center' className={classes.relative} style={{ marginBottom: "-55px" }}>
             <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={"img"}
-                  src={`/static/images/technical/1xz${index === 1 ? "a" : ""}.png`} alt="1xz" onMouseOver={onOver(1)}
-                  onMouseOut={onOver(-1)}/>
+              src={`/static/images/technical/1xz${index === 1 ? "a" : ""}.png`} alt="1xz" onMouseOver={onOver(1)}
+              onMouseOut={onOver(-1)} />
             <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={"img"}
-                  src={`/static/images/technical/6xz${index === 6 ? "a" : ""}.png`} alt="6xz" onMouseOver={onOver(6)}
-                  onMouseOut={onOver(-1)}/>
+              src={`/static/images/technical/6xz${index === 6 ? "a" : ""}.png`} alt="6xz" onMouseOver={onOver(6)}
+              onMouseOut={onOver(-1)} />
           </Grid>
-          <Grid container xs={12} justify='center' alignItems='center'>
+          <Grid container xs={12} justify='center' alignItems='center' className={classes.relative}>
             <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={"img"}
-                  src={`/static/images/technical/2xz${index === 2 ? "a" : ""}.png`} alt="2xz" onMouseOver={onOver(2)}
-                  onMouseOut={onOver(-1)} style={{ marginRight: "95px", textAlign: "end" }}/>
+              src={`/static/images/technical/2xz${index === 2 ? "a" : ""}.png`} alt="2xz" onMouseOver={onOver(2)}
+              onMouseOut={onOver(-1)} style={{ marginRight: "95px", textAlign: "end" }} />
             <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={"img"}
-                  src={`/static/images/technical/5xz${index === 5 ? "a" : ""}.png`} alt="5xz" onMouseOver={onOver(5)}
-                  onMouseOut={onOver(-1)} style={{ marginLeft: "95px" }}/>
-            <Grid item className={classes.r2} component={"img"} src={`/static/images/technical/r2.png`} alt="r2"/>
+              src={`/static/images/technical/5xz${index === 5 ? "a" : ""}.png`} alt="5xz" onMouseOver={onOver(5)}
+              onMouseOut={onOver(-1)} style={{ marginLeft: "95px" }} />
+            <Grid item className={classes.r2}>
+              <img src={`/static/images/technical/r2.png`} alt="r2" />
+            </Grid>
           </Grid>
-          <Grid container xs={12} justify='center' alignItems='center' style={{ marginTop: "-55px" }}>
+          <Grid container xs={12} justify='center' alignItems='center' className={classes.relative} style={{ marginTop: "-55px" }}>
             <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={"img"}
-                  src={`/static/images/technical/3xz${index === 3 ? "a" : ""}.png`} alt="3xz" onMouseOver={onOver(3)}
-                  onMouseOut={onOver(-1)}/>
+              src={`/static/images/technical/3xz${index === 3 ? "a" : ""}.png`} alt="3xz" onMouseOver={onOver(3)}
+              onMouseOut={onOver(-1)} />
             <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={"img"}
-                  src={`/static/images/technical/4xz${index === 4 ? "a" : ""}.png`} alt="4xz" onMouseOver={onOver(4)}
-                  onMouseOut={onOver(-1)}/>
+              src={`/static/images/technical/4xz${index === 4 ? "a" : ""}.png`} alt="4xz" onMouseOver={onOver(4)}
+              onMouseOut={onOver(-1)} />
           </Grid>
         </Grid>
         <Popper

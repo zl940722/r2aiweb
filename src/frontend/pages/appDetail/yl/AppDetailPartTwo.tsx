@@ -139,7 +139,7 @@ function AppDetailPartTwo() {
                     <div className={classes.grid}>
                       <div className={classes.grid_img}>
                         <img
-                          src="/static/images/appDetail/1@2x.webp"
+                          src="/static/images/appDetail/1.png"
                           width={48}
                           height={48}
                           alt="全自动建模
@@ -159,7 +159,7 @@ function AppDetailPartTwo() {
                     <div className={classes.grid}>
                       <div className={classes.grid_img}>
                         <img
-                          src="/static/images/appDetail/2@2x.webp"
+                          src="/static/images/appDetail/2.png"
                           width={48}
                           height={48}
                           alt="全自动建模
@@ -179,7 +179,7 @@ function AppDetailPartTwo() {
                     <div className={classes.grid}>
                       <div className={classes.grid_img}>
                         <img
-                          src="/static/images/appDetail/3@2x.webp"
+                          src="/static/images/appDetail/3.png"
                           width={48}
                           height={48}
                           alt="全自动建模

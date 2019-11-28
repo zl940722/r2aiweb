@@ -172,7 +172,7 @@ function ModifyPassword(res: any) {
 
 ModifyPassword.getInitialProps = async function(props) {
   let user;
-  if(typeof Window === 'function'){
+  if(typeof window === 'object'){
     const url='/user/login';
     const _user = await fetch(url);
     user = await _user.json();

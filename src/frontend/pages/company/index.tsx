@@ -64,7 +64,6 @@ const useStyles = makeStyles({
   imageItem: {
     maxWidth: "90%",
     boxSizing: "border-box",
-    display: "flex",
     alignItems: "center",
     "& >img": {
       maxHeight: '100%',

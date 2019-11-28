@@ -51,7 +51,7 @@ function ProductGrids() {
           <Grid item md={3} className={classes.grid}>
             <div className={classes.grid_img}>
               <img
-                src="/static/images/products/icon1@2x.webp"
+                src="/static/images/products/icon1.png"
                 width={100}
                 height={100}
                 alt=""
@@ -81,7 +81,7 @@ function ProductGrids() {
           <Grid item md={3} className={classes.grid}>
             <div className={classes.grid_img}>
               <img
-                src="/static/images/products/icon2@2x.webp"
+                src="/static/images/products/icon2.png"
                 width={100}
                 height={100}
                 alt=""
@@ -106,7 +106,7 @@ function ProductGrids() {
           <Grid item md={3} className={classes.grid}>
             <div className={classes.grid_img}>
               <img
-                src="/static/images/products/icon3@2x.webp"
+                src="/static/images/products/icon3.png"
                 width={100}
                 height={100}
                 alt=""
@@ -133,7 +133,7 @@ function ProductGrids() {
           <Grid item md={3} className={classes.grid}>
             <div className={classes.grid_img}>
               <img
-                src="/static/images/products/icon4@2x.webp"
+                src="/static/images/products/icon4.png"
                 width={100}
                 height={100}
                 alt=""

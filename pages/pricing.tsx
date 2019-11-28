@@ -11,7 +11,7 @@ const Index = (res: any) => {
 
 Index.getInitialProps = async function(props) {
   let user,_user;
-  if (typeof Window === "function") {
+  if (typeof window === 'object') {
     const url = "/user/login";
     _user = await fetch(url);
   } else {
