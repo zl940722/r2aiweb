@@ -4,7 +4,7 @@ const proxy = require("http-proxy-middleware");
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
-const fetch = require("isomorphic-unfetch");
+const axios = require('axios');
 
 const messageService = process.env.MESSAGE_SERVICE || "http://localhost:8088";
 const authService = process.env.AUTH_SERVICE || "http://localhost:8088";
@@ -88,16 +88,19 @@ app.prepare()
     });
 
     const user = async (cookie)=>{
-      const _user = await fetch(process.env.AUTH_SERVICE || "http://localhost:8088", {
-        headers: {
-          cookie,
-        }
-      });
-      return _user.status === 200;
+      const u = await axios
+        .get(process.env.AUTH_SERVICE || "http://localhost:8088",{
+          headers: {
+            cookie,
+          }
+        });
+
+      return !!u.data.id
     };
 
     server.get("/login", async (req, res,next) => {
-      const _user = await user(req.headers.cookie);
+      const {cookie} = req.headers;
+      const _user = cookie&&await user(req.headers.cookie);
 
       if(_user){
         return res.redirect('/')
@@ -106,7 +109,8 @@ app.prepare()
     });
 
     server.get("/register", async (req, res,next) => {
-      const _user = await user(req.headers.cookie);
+      const {cookie} = req.headers;
+      const _user = cookie&&await user(req.headers.cookie);
 
       if(_user){
         return res.redirect('/')
