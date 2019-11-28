@@ -31,6 +31,7 @@ const useStyles = makeStyles({
   },
   center: {
     margin: "0 auto"
+
   },
   content: {
     padding: "80px 0 120px"
@@ -39,14 +40,22 @@ const useStyles = makeStyles({
     marginBottom: "30px"
   },
   textContent: {
-    margin: "30px 0 70px"
+    margin: "30px 0 70px",
+    position: "absolute",
+    bottom: '-130px'
   },
   text: {
     padding: "30px",
     backgroundColor: "#F5F5F5"
   },
+  centerDiv: {
+    position: "relative",
+    width:'100%'
+  },
   iconContent: {
-    marginTop: "30px"
+    marginTop: "30px",
+
+    marginBottom: 100
   },
   icon: {
     height: "37px",
@@ -87,7 +96,7 @@ const useStyles = makeStyles({
 
 function HomeAbout() {
   const classes = useStyles();
-  const [img, setImg] = useState(-1);
+  const [img, setImg] = useState(0);
   const [index, setIndex] = useState(-1);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -156,58 +165,81 @@ function HomeAbout() {
           <Grid item xs={12} md={9} lg={7} xl={5} className={classes.center}>
             <Typography style={{ fontSize: 17, lineHeight: 0.8, marginTop: -35, marginBottom: 30 }} component={"div"}
                         align='left'>
-              <p style={{ color: "#D3323E" ,fontWeight:600}}>全球唯一一家同时支持有监督/无监督/时间序列分析的Auto ML公司！</p>
-              <p style={{color: "#666666" }}>为各行业企业、个人提供世界领先的人工智能开发及应用平台，帮助客户以最简单、便捷、高效的方式，</p>
-              <p style={{color: "#666666" }}>建立最优质的机器学习模型，为每个有价值的业务场景自主构建&nbsp;AI&nbsp;应用，实现业务升级和企业&nbsp;AI&nbsp;赋能。&nbsp;</p>
+              <p style={{ color: "#D3323E", fontWeight: 600 }}>全球唯一一家同时支持有监督/无监督/时间序列分析的Auto ML公司！</p>
+              <p style={{ color: "#666666" }}>为各行业企业、个人提供世界领先的人工智能开发及应用平台，帮助客户以最简单、便捷、高效的方式，</p>
+              <p
+                style={{ color: "#666666" }}>建立最优质的机器学习模型，为每个有价值的业务场景自主构建&nbsp;AI&nbsp;应用，实现业务升级和企业&nbsp;AI&nbsp;赋能。&nbsp;</p>
             </Typography>
           </Grid>
         </Grid>
-        <Grid container xs={12}>
-          <Grid container xs={10} xl={8} className={`${classes.center} ${classes.iconContent}`} wrap='nowrap'>
-            <Grid container xs={4} className={classes.pointer} direction='column' alignItems='center'
-                  onMouseOver={imgOver(0)} onMouseOut={imgOver(-1)}>
-              <div className={classes.icon}>
-                <img src={`/static/images/technical/auto${img === 0 ? "a" : ""}.png`} alt="auto"/>
-              </div>
-              <Typography component={"div"} align='center' style={{ color: `${img === 0 ? "#D3323E" : "#333333"}` }}>
-                全链自动优化
-              </Typography>
+        <div  className={classes.centerDiv}>
+          <Grid container xs={12}>
+            <Grid container xs={10} xl={8} className={`${classes.center} ${classes.iconContent}`} wrap='nowrap'>
+              <Grid container xs={4} className={classes.pointer} direction='column' alignItems='center'
+                    onMouseOver={imgOver(0)} onMouseOut={imgOver(-1)}>
+                <div className={classes.icon}>
+                  <img src={`/static/images/technical/auto${img === 0 ? "a" : ""}.png`} alt="auto"/>
+                </div>
+                <Typography component={"div"} align='center' style={{ color: `${img === 0 ? "#D3323E" : "#333333"}` }}>
+                  全链自动优化
+                </Typography>
+              </Grid>
+              <Grid container xs={4} className={classes.pointer} direction='column' alignItems='center'
+                    onMouseOver={imgOver(1)} onMouseOut={imgOver(-1)}>
+                <div className={classes.icon}>
+                  <img src={`/static/images/technical/algo${img === 1 ? "a" : ""}.png`} alt="algo"/>
+                </div>
+                <Typography component={"div"} align='center' style={{ color: `${img === 1 ? "#D3323E" : "#333333"}` }}>
+                  自研算法
+                </Typography>
+              </Grid>
+              <Grid container xs={4} className={classes.pointer} direction='column' alignItems='center'
+                    onMouseOver={imgOver(2)} onMouseOut={imgOver(-1)}>
+                <div className={classes.icon}>
+                  <img src={`/static/images/technical/simulate${img === 2 ? "a" : ""}.png`} alt="simulate"/>
+                </div>
+                <Typography component={"div"} align='center' style={{ color: `${img === 2 ? "#D3323E" : "#333333"}` }}>
+                  业务场景模拟优化
+                </Typography>
+              </Grid>
             </Grid>
-            <Grid container xs={4} className={classes.pointer} direction='column' alignItems='center'
-                  onMouseOver={imgOver(1)} onMouseOut={imgOver(-1)}>
-              <div className={classes.icon}>
-                <img src={`/static/images/technical/algo${img === 1 ? "a" : ""}.png`} alt="algo"/>
-              </div>
-              <Typography component={"div"} align='center' style={{ color: `${img === 1 ? "#D3323E" : "#333333"}` }}>
-                自研算法
+          </Grid>
+          <Grid container xs={12} className={classes.textContent} style={{ display: `${img === 0 ? "block" : "none"}` }}>
+            <Grid item xs={10} xl={8} className={`${classes.center} ${classes.text}`}>
+              <Typography component={"li"}>
+                保证R2 Learn在模型质量上完美胜出；
               </Typography>
-            </Grid>
-            <Grid container xs={4} className={classes.pointer} direction='column' alignItems='center'
-                  onMouseOver={imgOver(2)} onMouseOut={imgOver(-1)}>
-              <div className={classes.icon}>
-                <img src={`/static/images/technical/simulate${img === 2 ? "a" : ""}.png`} alt="simulate"/>
-              </div>
-              <Typography component={"div"} align='center' style={{ color: `${img === 2 ? "#D3323E" : "#333333"}` }}>
-                业务场景模拟优化
+              <Typography component={"li"}>
+                全流程赋能，为流程中每个步骤提供高效工具和运行环境支持；
+              </Typography>
+              <Typography component={"li"}>
+                模型周期全面覆盖，帮助企业实现一站式模型生命周期管理。
               </Typography>
             </Grid>
           </Grid>
-        </Grid>
-        <Grid container xs={12} className={classes.textContent}>
-          <Grid item xs={10} xl={8} className={`${classes.center} ${classes.text}`}>
-            <Typography component={"li"}>
-              多算法支持： 拥有全球最丰富的Auto ML支持算法；
-            </Typography>
-            <Typography component={"li"}>
 
-              R2自研算法：多种自研算法可选，大幅提升建模速度，提高建模质量。
-
-            </Typography>
-            {/*<Typography component={"li"}>*/}
-            {/*  模型周期全面覆盖：从模型训练到管理，从应用到监控模型全面周期，帮助企业实现一站式模型生命周期管理，构建流程标准，提升效率。*/}
-            {/*</Typography>*/}
+          <Grid container xs={12} className={classes.textContent} style={{ display: `${img === 1 ? "block" : "none"}` }}>
+            <Grid item xs={10} xl={8} className={`${classes.center} ${classes.text}`}>
+              <Typography component={"li"}>
+                多算法支持： 拥有全球最丰富的Auto ML支持算法；
+              </Typography>
+              <Typography component={"li"}>
+                R2自研算法：多种自研算法可选，大幅提升建模速度，提高建模质量。
+              </Typography>
+            </Grid>
           </Grid>
-        </Grid>
+
+          <Grid container xs={12} className={classes.textContent} style={{ display: `${img === 2 ? "block" : "none"}` }}>
+            <Grid item xs={10} xl={8} className={`${classes.center} ${classes.text}`}>
+              <Typography component={"li"}>
+                基于独具匠心的模型指标来预测模型部署后产生的效果；
+              </Typography>
+              <Typography component={"li"}>
+                设有业务场景模拟功能“收益损失（Benefit Cost）”。
+              </Typography>
+            </Grid>
+          </Grid>
+        </div>
       </Grid>
       <Grid container className={classes.content} component='div'>
         <Grid container xs={12} className={classes.title}>

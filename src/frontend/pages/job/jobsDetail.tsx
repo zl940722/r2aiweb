@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/styles";
 import { Typography, Grid } from "@material-ui/core";
 import Router from "next/router";
 import { PageHeader } from "antd";
+import moment from "moment";
 
 const useStyles = makeStyles({
   content: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles({
     fontSize: "1rem",
     fontWeight: "bold",
     color: "#D3323EFF",
-    cursor: 'pointer'
+    cursor: "pointer"
   },
   des: {
     fontSize: "1rem",
@@ -104,7 +105,8 @@ function HomeAbout(res: any) {
         <div>
 
           <div>
-            <p style={{ color: "#666666" }}>发布时间：{res.data.created_at}</p>
+            <p
+              style={{ color: "#666666" }}>发布时间：{res.data.created_at ? moment(res.data.created_at).format("YYYY-MM-DD") : ""}</p>
             <h4 style={{ fontSize: "1.3rem" }}>{res.data.name_zh}</h4>
             <p>工作地点：{res.data.place_zh}</p>
           </div>

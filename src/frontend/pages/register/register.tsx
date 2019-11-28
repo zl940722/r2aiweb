@@ -318,7 +318,7 @@ export default function TextFields() {
                 label="密码"
                 type="password"
                 required={true}
-                regex={/^\w{6,18}$/}
+                regex={/^\w{6,1000}$/}
                 value={values.password}
                 allowedLength={12}
                 helperText="密码不能少于六位"
