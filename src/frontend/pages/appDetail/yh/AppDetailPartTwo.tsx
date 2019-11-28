@@ -111,25 +111,25 @@ function AppDetailPartTwo() {
                 <Grid spacing={8} container className={classes.grids}>
                   <Grid item xs={6} className={classes.grid}>
                     <p><p style={{float:'left'}}>1.样本收集：</p>由某银行提供的2018年164多万行、30多列变量的个人记录，其中不良率为目标变量； </p>
-                    <img  src={"/static/images/appDetail/1.png"}/>
+                    <img  src={"/static/images/appDetail/b1.png"}/>
                   </Grid>
                   <Grid item xs={6} className={classes.grid}>
-                    <p>2.数据探索：用R2 Learn在正式建模前对每个变量进行可视化探索分析； </p>
-                    <img  src={"/static/images/appDetail/2.png"}/>
+                    <p><p style={{float:'left'}}>2.数据探索：</p>用R2 Learn在正式建模前对每个变量进行可视化探索分析； </p>
+                    <img  src={"/static/images/appDetail/b2.png"}/>
                   </Grid>
                 </Grid>
 
                 <Grid spacing={8} container className={classes.grids}>
                   <Grid item xs={6} className={classes.grid}>
-                    <p style={{lineHeight:1.5}}><p style={{float:'left'}}>3.建模设置：</p>
+                    <p ><p style={{float:'left'}}>3.建模设置：</p>
                       <span style={{width:'80%'}}>在R2 Learn 中从数据分组、算法选择、速度与准确率的权衡等多个方面进行自动建模的个性化定制；</span>
                     </p>
-                    <img  src={"/static/images/appDetail/3.png"}/>
+                    <img  src={"/static/images/appDetail/b3.png"}/>
                   </Grid>
                   <Grid item xs={6} className={classes.grid}>
-                    <p>4. 最终模型评价：利用R2 Learn 提供的交互报表得到最终模型的质量评价。
+                    <p><p style={{float:'left'}}>4. 最终模型评价：</p>利用R2 Learn 提供的交互报表得到最终模型的质量评价。
                     </p>
-                    <img  src={"/static/images/appDetail/4.png"}/>
+                    <img  src={"/static/images/appDetail/b4.png"}/>
                   </Grid>
                 </Grid>
 
