@@ -14,7 +14,8 @@ const useStyles = makeStyles({
     fontWeight: "bold"
   },
   subtitle: {
-    marginTop: "1.2rem"
+    marginTop: "1.2rem",
+    fontSize: 30
   },
   product_body1: {
     maxWidth: "42rem",
@@ -46,7 +47,7 @@ function ProductAbout() {
   return (
     <>
       <div className={classes.content}>
-        <p className={'all_title'}>
+        <p className={"all_title"}>
           R2 Learn赋能企业自主开发AI应用
         </p>
         <Typography
