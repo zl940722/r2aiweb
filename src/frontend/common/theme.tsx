@@ -47,6 +47,11 @@ const theme = createMuiTheme({
         body1: {
           fontFamily: "inherit"
         }
+      },
+      MuiDialogContentText: {
+        root: {
+          textAlign: "left"
+        }
       }
     }
   })

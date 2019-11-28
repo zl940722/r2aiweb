@@ -79,6 +79,7 @@ const useStyles = makeStyles({
   },
   product:{
     background: 'transparent',
+    cursor: 'pointer'
   }
 });
 
@@ -307,6 +308,7 @@ const Header = (props) => {
                 <>
                   <Dropdown overlay={menu}>
                     <span className={classes.avatar}><Icon style={{
+                      cursor: 'pointer',
                       border: '1px solid',
                       borderRadius: '50%',
                       padding: 2,

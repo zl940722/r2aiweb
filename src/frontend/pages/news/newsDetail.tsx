@@ -120,7 +120,7 @@ export default function(res: any) {
         {/*<a href="javascript:" className={classes.back} onClick={back}>*/}
         {/*  &lt;-- 返回{route.includes("news") ? "资讯" : "社区"}列表*/}
         {/*</a>*/}
-        <div onClick={back}>
+        <div style={{cursor: 'pointer'}} onClick={back}>
           <PageHeader
             style={{
               left: "-1.5rem",
