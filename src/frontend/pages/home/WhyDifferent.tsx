@@ -27,7 +27,7 @@ const useStyles = makeStyles({
       color: "#333",
       fontSize: "1rem",
       width: "23.125rem",
-      margin: '0 22.5px',
+      margin: "0 22.5px",
       "& span": {
         display: "block",
         textAlign: "left",
@@ -45,7 +45,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function () {
+export default function() {
   const classes = useStyles();
   const main = [
     {
@@ -66,13 +66,13 @@ export default function () {
   ];
   return (
     <section className={classes.content}>
-      <p>为何我们与众不同</p>
-      我们拥有独立研发的世界领先的AI开发及运营平台，以最简单、高效的方式为您搭建更高质的模型！
+      <p className={"all_title"}>为何我们与众不同</p>
+      <p style={{ fontSize: 16,fontWeight:400 }}>我们拥有独立研发的世界领先的AI开发及运营平台，以最简单、高效的方式为您搭建更高质的模型！</p>
       <dl className={classes.main}>
         {main.map((itm, index) => {
           return (
             <dd key={index}>
-              <i style={{ backgroundImage: `url(/static/images/home/${itm.url})` }} />
+              <i style={{ backgroundImage: `url(/static/images/home/${itm.url})` }}/>
               <div>
                 <span>{itm.title}</span>
                 {itm.content}
