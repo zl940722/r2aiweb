@@ -41,17 +41,12 @@ const useStyles = makeStyles({
     height: "2rem",
     backgroundSize: "cover",
     display: "inline-block",
-    fontSize: "1rem",
-    // background: "#D3323E",
-    // width: "3rem",
-    // display: "inline-block",
-    // textAlign: "center",
+    fontSize: 16,
     color: "#fff",
-    // borderRadius: "0.5rem 0.5rem 0.5rem 0",
     position: "relative",
     top: "-2rem",
     textAlign: "center",
-    lineHeight: "2rem"
+    lineHeight: '27px',
   }
 });
 

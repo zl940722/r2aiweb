@@ -54,7 +54,7 @@ export default function(props) {
         <section
           style={{
             // minHeight:'calc(100vh - 140px - 16.125rem)',
-            minHeight: "calc(100vh - 140px - 5.5rem)"
+            minHeight: "calc(100vh - 202px)"
           }}
         >
           <Component PRODUCT_URL={PRODUCT_URL}  user={user} {...pageProps} route={router.route} />
