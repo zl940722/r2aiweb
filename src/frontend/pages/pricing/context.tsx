@@ -54,7 +54,8 @@ const useStyles = makeStyles({
   itemsDiv: {
     width: 200,
     marginBottom: 40,
-    textAlign: "center"
+    textAlign: "center",
+    padding:0,
   },
   itemsContext1: {
     fontSize: 24,
