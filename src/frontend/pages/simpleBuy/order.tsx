@@ -349,7 +349,9 @@ export default function TextFields(props: any) {
   return (
     <div className={classes.all}>
       <div className={classes.bg}>
-        <div onClick={() => {
+        <div
+          style={{ cursor: "pointer" }}
+          onClick={() => {
           Router.back();
         }}>
           <PageHeader

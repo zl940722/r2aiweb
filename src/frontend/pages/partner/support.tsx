@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     margin: "5rem 0 1rem"
   },
   item: {
-    maxWidth: "90%",
+    maxWidth: "100%",
     boxSizing: "border-box",
     display: "flex",
     justifyContent: "center",
@@ -61,13 +61,14 @@ function Supports() {
           <Grid item sm={3} xs={12}>
             <Card style={{ margin: 10 }}>
               <div className={classes.item}>
-                  <img
-                    style={{ marginBottom: 20 }}
-                    src="/static/images/partner/icon@2x.png"
-                    width={"104px"}
-                    alt="R2.ai"
-                  />
-                  <h4 style={{ textAlign: "center", fontSize: 18 }}>解决方案</h4>
+                <img
+                  style={{ marginBottom: 20, marginTop: "-50px" }}
+                  src="/static/images/partner/icon@2x.png"
+                  width={"104px"}
+                  height={"96px"}
+                  alt="R2.ai"
+                />
+                <h4 style={{ textAlign: "center", fontSize: 18 }}>解决方案</h4>
                 <p style={{ padding: 10 }}>
                   充分发挥R2领先的AI开发和落地技术，<br/>
                   提供各行业AI赋能解决方案。<br/>
@@ -83,6 +84,7 @@ function Supports() {
                   style={{ marginBottom: 20 }}
                   src="/static/images/partner/icon@2x-1.png"
                   width={"104px"}
+                  height={"96px"}
                   alt="R2.ai"
                 />
                 <h4 style={{ textAlign: "center", fontSize: 18 }}>技术培训</h4>
@@ -97,9 +99,10 @@ function Supports() {
             <Card style={{ margin: 10 }}>
               <div className={classes.item}>
                 <img
-                  style={{ marginBottom: 20 }}
+                  style={{ marginBottom: 20, marginTop: "-10px" }}
                   src="/static/images/partner/icon@2x-2.png"
                   width={"104px"}
+                  height={"96px"}
                   alt="R2.ai"
                 />
                 <h4 style={{ textAlign: "center", fontSize: 18 }}>市场营销</h4>
@@ -114,9 +117,10 @@ function Supports() {
             <Card style={{ margin: 10 }}>
               <div className={classes.item}>
                 <img
-                  style={{ marginBottom: 20 }}
+                  style={{ marginBottom: 20, marginTop: "-35px" }}
                   src="/static/images/partner/icon@2x-3.png"
                   width={"104px"}
+                  height={"96px"}
                   alt="R2.ai"
                 />
                 <h4 style={{ textAlign: "center", fontSize: 18 }}>优惠奖励</h4>
