@@ -53,9 +53,9 @@ function AppDetailPartTwo() {
   return (
     <div className={classes.root}>
       <div className={classes.content}>
-        <Typography variant={"h4"} align={"center"} className={classes.title}>
+        <p  className={'all_title'}>
           场景验证
-        </Typography>
+        </p>
         <List>
           <ListItem alignItems='flex-start'>
             <ListItemIcon>
