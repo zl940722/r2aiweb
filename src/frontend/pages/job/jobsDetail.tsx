@@ -84,9 +84,11 @@ function HomeAbout(res: any) {
   };
   return (
     <div className={classes.content}>
-      <div onClick={() => {
-        Router.back();
-      }}>
+      <div
+        style={{ cursor: "pointer" }}
+        onClick={() => {
+          Router.back();
+        }}>
         <PageHeader
           style={{
             left: "-1.5rem",
