@@ -4,7 +4,7 @@ import "./global.css";
 import Link from "next/link";
 import _ from "lodash";
 import classNames from "classnames";
-import { Menu, Dropdown, Icon } from "antd";
+import { Menu, Dropdown, Icon, Button } from "antd";
 import Router from "next/router";
 import axios from "axios";
 
@@ -55,6 +55,12 @@ const useStyles = makeStyles({
     },
     "& a": {
       color: "#fff"
+    },
+    '& i':{
+      color: "#fff"
+    },
+    '& button:hover':{
+      background:'transparent',
     }
   },
   user: {
@@ -70,9 +76,11 @@ const useStyles = makeStyles({
   res: {
     color: "#000",
     textDecoration: "none"
+  },
+  product:{
+    background: 'transparent',
   }
-})
-  ;
+});
 
 interface InterfaceMenu {
   id: number;
@@ -285,9 +293,7 @@ const Header = (props) => {
                   {
                     _.map(value.children, (res: InterfaceMenu) => <Menu.Item key={res.link} style={menuStyle}>{res.name}</Menu.Item>)
                   }
-
                 </SubMenu>
-
                 : <Menu.Item key={value.link} style={menuStyle}>
                   {value.name}
                 </Menu.Item>
@@ -299,10 +305,16 @@ const Header = (props) => {
           {
             props.user.active ?
                 <>
-                  <a className={classes.res} style={{marginLeft:10}} href={props.PRODUCT_URL}>使用产品</a>
                   <Dropdown overlay={menu}>
-                    <span className={classes.avatar}>{props.user.email}</span>
+                    <span className={classes.avatar}><Icon style={{
+                      border: '1px solid',
+                      borderRadius: '50%',
+                      padding: 2,
+                      marginRight:2
+                    }} type="user" />{props.user.email}</span>
                    </Dropdown>
+                  <Button className={classes.product} shape="round" icon="arrow-right" onClick={()=>location.href = props.PRODUCT_URL}>使用产品</Button>
+                  {/*<a className={classes.res} style={{marginLeft:10}} href={props.PRODUCT_URL}>使用产品</a>*/}
                 </>:
               <div><a className={classes.login} href={"/login"}>登录</a> <a className={classes.res}
                 href={"/register"}>注册</a>

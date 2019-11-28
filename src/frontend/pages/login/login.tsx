@@ -124,6 +124,7 @@ export default function ():ReactElement {
   });
 
   useEffect(() => {
+
     message.config({
       top: 100,
       duration: 2,

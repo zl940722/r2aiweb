@@ -4,6 +4,7 @@ const proxy = require("http-proxy-middleware");
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
+const fetch = require("isomorphic-unfetch");
 
 const messageService = process.env.MESSAGE_SERVICE || "http://localhost:8088";
 const authService = process.env.AUTH_SERVICE || "http://localhost:8088";
@@ -84,6 +85,33 @@ app.prepare()
         essentialPrice,
         essentialPriceYear
       });
+    });
+
+    const user = async (cookie)=>{
+      const _user = await fetch(process.env.AUTH_SERVICE || "http://localhost:8088", {
+        headers: {
+          cookie,
+        }
+      });
+      return _user.status === 200;
+    };
+
+    server.get("/login", async (req, res,next) => {
+      const _user = await user(req.headers.cookie);
+
+      if(_user){
+        return res.redirect('/')
+      }
+      next();
+    });
+
+    server.get("/register", async (req, res,next) => {
+      const _user = await user(req.headers.cookie);
+
+      if(_user){
+        return res.redirect('/')
+      }
+      next();
     });
 
     server.get("/product", (req,res) => {
