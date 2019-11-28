@@ -30,9 +30,7 @@ const useStyles = makeStyles({
     maxWidth: "100%",
     boxSizing: "border-box",
     display: "flex",
-    justifyContent: "center",
     flexFlow: "column",
-    alignItems: "center",
     height: "23rem"
   },
   itemDes: {
@@ -45,6 +43,12 @@ const useStyles = makeStyles({
   itemTitle2: {
     marginTop: "3rem",
     fontWeight: "bold"
+  },
+  text: {
+    fontSize: '14px',
+    padding: 10,
+    lineHeight: 2,
+    letterSpacing: 1
   }
 });
 
@@ -62,14 +66,14 @@ function Supports() {
             <Card style={{ margin: 10 }}>
               <div className={classes.item}>
                 <img
-                  style={{ marginBottom: 20, marginTop: "-50px" }}
+                  style={{ margin: "0 auto 20px" }}
                   src="/static/images/partner/icon@2x.png"
                   width={"104px"}
                   height={"96px"}
                   alt="R2.ai"
                 />
                 <h4 style={{ textAlign: "center", fontSize: 18 }}>解决方案</h4>
-                <p style={{ padding: 10 }}>
+                <p className={classes.text} >
                   充分发挥R2领先的AI开发和落地技术，<br/>
                   提供各行业AI赋能解决方案。<br/>
                   提供具体场景建模流程和应用部署介绍。<br/>
@@ -81,14 +85,14 @@ function Supports() {
             <Card style={{ margin: 10 }}>
               <div className={classes.item}>
                 <img
-                  style={{ marginBottom: 20 }}
+                  style={{ margin: "0 auto 20px" }}
                   src="/static/images/partner/icon@2x-1.png"
                   width={"104px"}
                   height={"96px"}
                   alt="R2.ai"
                 />
                 <h4 style={{ textAlign: "center", fontSize: 18 }}>技术培训</h4>
-                <p style={{ padding: 10 }}>
+                <p className={classes.text} >
                   基于R2.ai人工智能建模平台的全套技术培训，包括产品演示、建模调参、特征工程、模型部署等，以助渠道合作伙伴快速掌握技术优势、加以整合运用<br/>
                   提供客户端解决方案实施过程中的技术支持与咨询。<br/>
                 </p>
@@ -99,14 +103,14 @@ function Supports() {
             <Card style={{ margin: 10 }}>
               <div className={classes.item}>
                 <img
-                  style={{ marginBottom: 20, marginTop: "-10px" }}
+                  style={{ margin: "0 auto 20px" }}
                   src="/static/images/partner/icon@2x-2.png"
                   width={"104px"}
                   height={"96px"}
                   alt="R2.ai"
                 />
                 <h4 style={{ textAlign: "center", fontSize: 18 }}>市场营销</h4>
-                <p style={{ padding: 10 }}>
+                <p className={classes.text} >
                   R2.ai提供强有力的品牌宣传和多渠道的营销方式，与合作伙伴分享市场营销资料、市场调研信息，共同挖掘发展潜在客户。<br/>
                   合作营销，和合作伙伴进行多种方式的联合营销计划，共同作市场推广，实现共赢。<br/>
                 </p>
@@ -117,14 +121,14 @@ function Supports() {
             <Card style={{ margin: 10 }}>
               <div className={classes.item}>
                 <img
-                  style={{ marginBottom: 20, marginTop: "-35px" }}
+                  style={{ margin: "0 auto 20px" }}
                   src="/static/images/partner/icon@2x-3.png"
                   width={"104px"}
                   height={"96px"}
                   alt="R2.ai"
                 />
                 <h4 style={{ textAlign: "center", fontSize: 18 }}>优惠奖励</h4>
-                <p style={{ padding: 10 }}>
+                <p className={classes.text} >
                   基于合作伙伴的资质及渠道拓展能力，配以富有竞争力的不同级别的价格优惠和利润共享。<br/>
                   对优秀渠道合作伙伴进行年度奖励，以及技术培训和市场营销上的重点支持。<br/>
                 </p>

@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
   context: {
     margin: "5rem 0 3rem",
-    textAlign: "left"
+    textAlign: "left",
   },
   context_title: {
     color: "#D3323E",
@@ -33,12 +33,13 @@ const useStyles = makeStyles({
   },
   grids: {
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
+    justifyContent: 'space-around'
   },
   grid: {
-    flex: 1,
-    // maxWidth: "17.5rem",
-    margin: ".75rem"
+    // flex: 1,
+    // // maxWidth: "17.5rem",
+    // margin: ".75rem"
   }
 });
 
@@ -51,12 +52,12 @@ function AppDetailPartOne(props: any) {
         <p className={"all_title"}>
           案例分析
         </p>
-        <div className={classes.context}>
+        <div className={classes.context} >
           <p className={classes.context_title}>贷款产品精准营销</p>
 
-          <Grid spacing={8} container className={classes.grids}>
-            <Grid item xs={6} className={classes.grid}>
-              <div>
+          <div   className={classes.grids}>
+            <div style={{ width: "511px"}}>
+              <div style={{}}>
                 <div className={classes.icon}>
                   <img style={{ width: 24 }} src={"/static/images/appDetail/mb.png"}/>
                   <span style={{ fontSize: 18, marginLeft: 10 }}>项目目标</span>
@@ -66,7 +67,7 @@ function AppDetailPartOne(props: any) {
               </div>
 
               <div>
-                <div className={classes.icon} style={{ marginTop: 30 }}>
+                <div className={classes.icon} style={{ marginTop: 20 }}>
                   <img style={{ width: 24 }} src={"/static/images/appDetail/cg.png"}/>
                   <span style={{ fontSize: 18, marginLeft: 10 }}>项目成果</span>
                 </div>
@@ -74,15 +75,15 @@ function AppDetailPartOne(props: any) {
                   在不流失高意愿客户的前提下，在存量客户中仅筛选出50%的白名单客户进行短信营销，大幅缩减了广告营销开支。
                 </p>
               </div>
-            </Grid>
+            </div>
 
-            <Grid item xs={3} style={{ width: "250px" }} className={classes.grid}>
-              <img style={{ width: 250 }} src={"/static/images/appDetail/zyt1.png"}/>
-            </Grid>
-            <Grid item xs={3} style={{ width: "282px" }} className={classes.grid}>
-              <img style={{ width: 282 }} src={"/static/images/appDetail/tst.png"}/>
-            </Grid>
-          </Grid>
+            <div  style={{ width: "250px" }} >
+              <img style={{ width: '250px' }} src={"/static/images/appDetail/zyt1.png"}/>
+            </div>
+            <div  style={{ width: "282px !important" }}>
+              <img style={{ width: '282px'  }} src={"/static/images/appDetail/tst.png"}/>
+            </div>
+          </div>
 
         </div>
       </div>
