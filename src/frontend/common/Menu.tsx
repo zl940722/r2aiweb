@@ -77,6 +77,7 @@ const useStyles = makeStyles({
   },
   cursor: {
     cursor: 'pointer',
+    position: 'relative'
   },
   login: {
     color: "#000",
@@ -251,7 +252,14 @@ const Header = (props) => {
   }
 
   const menu = (
-    <Menu>
+    <Menu style={{
+      display: 'flex',
+      flex: 'none',
+      flexDirection: 'column',
+      width: 100,
+      justifyContent: 'center',
+      marginLeft: 'auto'
+    }}>
       <Menu.Item>
         {/*<Link href='/modifyPassword'>*/}
         {/*  <a>修改密码</a>*/}
@@ -265,7 +273,7 @@ const Header = (props) => {
           退出登录
         </a>
       </Menu.Item>
-    </Menu>
+    </Menu >
   );
 
   const handleClick = (e) => e.key && Router.push(e.key);
@@ -317,9 +325,10 @@ const Header = (props) => {
                   flex: 'auto',
                   textAlign: 'right',
                   width: 0,
-                  display: 'flex'
+                  display: 'flex',
+                  position: 'relative'
                 }}>
-                  <Dropdown className={classes.cursor} overlay={menu}>
+                  <Dropdown className={classes.cursor} overlay={menu} getPopupContainer={(el: any) => el.parentElement} placement='bottomRight'>
                     <span className={classes.avatar}><Icon style={{
                       cursor: 'pointer',
                       border: '1px solid',
@@ -327,7 +336,7 @@ const Header = (props) => {
                       padding: 2,
                       marginRight: 2
                     }} type="user" title={(props.user.email || '').split('@')[0]} />
-                      {(props.user.email || '').split('@')[0]}
+                      {(props.user.email || '').split('@')[0]}1111
                     </span>
                   </Dropdown>
                 </div>
