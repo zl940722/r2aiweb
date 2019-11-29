@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     textAlign: "center"
   },
   items: {
-    margin: "2rem 0 1rem",
+    margin: "1rem 0",
     textAlign: "center"
   },
   item: {
@@ -40,7 +40,7 @@ const useStyles = makeStyles({
     textAlign: "left"
   },
   itemTitle: {
-    marginBottom: "2rem",
+    marginBottom: "1.5rem",
     fontWeight: "bold",
     marginTop: "2rem",
     fontSize: "2.25rem",
@@ -77,6 +77,7 @@ const useStyles = makeStyles({
     lineHeight: 1.7,
     fontSize: "1rem",
     marginTop:'6.7rem',
+    marginBottom: '5.5rem',
     "& a": {
       textDecoration: "none",
       color: "#666",

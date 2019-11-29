@@ -38,6 +38,7 @@ const useStyles = makeStyles({
   },
   itemDes: {
     lineHeight: 1,
+    fontSize: 14,
     "& i": {
       fontStyle: "normal",
       padding: "0 1rem"
@@ -79,7 +80,7 @@ export default function(res: any) {
           }
         };
         return <Grid key={index} container className={classes.items} direction={"row"} onClick={detail(value.id)}>
-          <Grid item sm={4} xs={12}>
+          <Grid item xs={4}>
             <div className={classes.item} style={{ textAlign: "center" }}>
               <img
                 src={(value.image || {}).url}
@@ -87,7 +88,7 @@ export default function(res: any) {
               />
             </div>
           </Grid>
-          <Grid item sm={8} xs={12}>
+          <Grid item xs={8}>
             <div className={classes.item} style={{ paddingLeft: "1.9375rem" }}>
               <Typography variant={"h5"} className={classes.itemTitle}>
                 {value.title}

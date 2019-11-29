@@ -1,31 +1,37 @@
 #news .Activity:after {
     content: '活动参会';
     color: #50A5E7;
+    font-size: 14px;
 }
 
 #news .Release:after {
     content: '产品发布';
     color: #E78950;
+    font-size: 14px;
 }
 
 #news .Prize:after {
     content: '参评获奖';
     color: #E7505B;
+    font-size: 14px;
 }
 
 #news .Message:after {
     content: '活动信息';
     color: #E7505B;
+    font-size: 14px;
 }
 
 #news .Product:after {
     content: '产品干货';
     color: #E7505B;
+    font-size: 14px;
 }
 
 #news .Case:after {
     content: '案例分析';
     color: #E7505B;
+    font-size: 14px;
 }
 
 .ant-pagination-item {
