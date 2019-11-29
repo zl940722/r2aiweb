@@ -87,13 +87,17 @@ app.prepare()
       });
     });
 
-    const user = async (cookie)=>{
-      const u = await axios
+    const getUser = (cookie) => {
+      return axios
         .get(process.env.AUTH_SERVICE || "http://localhost:8088",{
           headers: {
             cookie,
           }
         });
+    }
+
+    const user = async (cookie)=>{
+      const u = await getUser(cookie)
 
       return !!u.data.id
     };
