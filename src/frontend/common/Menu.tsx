@@ -68,6 +68,9 @@ const useStyles = makeStyles({
     right: "6%",
     position:'absolute',
   },
+  cursor:{
+    cursor: 'pointer',
+  },
   login: {
     color: "#000",
     marginRight: 20,
@@ -303,7 +306,7 @@ const Header = (props) => {
           {
             props.user.active ?
                 <>
-                  <Dropdown overlay={menu}>
+                  <Dropdown className={classes.cursor} overlay={menu}>
                     <span className={classes.avatar}><Icon style={{
                       cursor: 'pointer',
                       border: '1px solid',
