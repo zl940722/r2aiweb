@@ -313,7 +313,6 @@ const Header = (props) => {
           {
             props.user.active ?
                 <>
-
                     <div style={{
                       flex:'auto',
                       textAlign:'right',
