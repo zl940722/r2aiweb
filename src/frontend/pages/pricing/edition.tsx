@@ -130,8 +130,8 @@ function Pricing(props: any) {
     return () => {
       if (user.active) {
         if (level === 1) {
-          axios.get("/probation/applyProbation", { params: { userId: user.id } }).then((response: any) => {
-              if (response.status === 200) {
+          axios.post("/probation/applyProbation", { params: { userId: user.id } }).then((response: any) => {
+              if (response.data.status === 200) {
                 Router.push({
                   pathname: "/toUse",
                 });
