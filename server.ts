@@ -93,13 +93,17 @@ app.prepare()
           headers: {
             cookie,
           }
-        });
+        }).then(res => res.data)
+        .catch(err => {
+          console.log(err.message, 'get user error')
+          return {}
+        })
     }
 
     const user = async (cookie)=>{
       const u = await getUser(cookie)
 
-      return !!u.data.id
+      return !!u.id
     };
 
     server.get("/login", async (req, res,next) => {
