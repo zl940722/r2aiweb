@@ -612,7 +612,7 @@ export default function TextFields(props: any) {
                         onClick={() => {
                           if (modal.type === "alipay") {
                             axios.get("/alipay/orderQuery", {
-                              params: { orderId: resData.data.orderId }
+                              params: { orderId: resData.orderId }
                             }).then(result => {
                               Router.push("/paySuccess");
                             }).catch(() => {
@@ -621,7 +621,7 @@ export default function TextFields(props: any) {
                             });
                           } else if (modal.type === "unionPay") {
                             axios.get("/unionPay/orderQuery", {
-                              params: { orderId: resData.data.orderId }
+                              params: { orderId: resData.orderId }
                             }).then(result => {
                               console.log(result, "result");
                               if (result.data == "success") {
@@ -635,7 +635,7 @@ export default function TextFields(props: any) {
                             });
                           } else if (modal.type === "wechat") {
                             axios.get("/wechat/orderQuery", {
-                              params: { orderId: resData.data.orderId }
+                              params: { orderId: resData.orderId }
                             }).then(result => {
                               Router.push("/paySuccess");
                             }).catch(() => {
@@ -660,7 +660,7 @@ export default function TextFields(props: any) {
                         onClick={() => {
                           if (modal.type === "alipay") {
                             axios.get("/alipay/orderQuery", {
-                              params: { orderId: resData.data.orderId }
+                              params: { orderId: resData.orderId }
                             }).then(result => {
                               Router.push("/paySuccess");
                             }).catch(() => {
@@ -669,7 +669,7 @@ export default function TextFields(props: any) {
                             });
                           } else if (modal.type === "unionPay") {
                             axios.get("/unionPay/orderQuery", {
-                              params: { orderId: resData.data.orderId }
+                              params: { orderId: resData.orderId }
                             }).then(result => {
                               console.log(result, "result");
                               if (result.data == "success") {
@@ -683,7 +683,7 @@ export default function TextFields(props: any) {
                             });
                           } else if (modal.type === "wechat") {
                             axios.get("/wechat/orderQuery", {
-                              params: { orderId: resData.data.orderId }
+                              params: { orderId: resData.orderId }
                             }).then(result => {
                               Router.push("/paySuccess");
                             }).catch(() => {
@@ -709,7 +709,7 @@ export default function TextFields(props: any) {
                       onClick={() => {
                         if (modal.type === "alipay") {
                           axios.get("/alipay/orderQuery", {
-                            params: { orderId: resData.data.orderId }
+                            params: { orderId: resData.orderId }
                           }).then(result => {
                             Router.push("/paySuccess");
                           }).catch(() => {
@@ -718,7 +718,7 @@ export default function TextFields(props: any) {
                           });
                         } else if (modal.type === "unionPay") {
                           axios.get("/unionPay/orderQuery", {
-                            params: { orderId: resData.data.orderId }
+                            params: { orderId: resData.orderId }
                           }).then(result => {
                             console.log(result, "result");
                             if (result.data == "success") {
@@ -732,7 +732,7 @@ export default function TextFields(props: any) {
                           });
                         } else if (modal.type === "wechat") {
                           axios.get("/wechat/orderQuery", {
-                            params: { orderId: resData.data.orderId }
+                            params: { orderId: resData.orderId }
                           }).then(result => {
                             Router.push("/paySuccess");
                           }).catch(() => {
