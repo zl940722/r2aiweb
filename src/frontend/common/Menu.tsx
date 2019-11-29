@@ -317,6 +317,7 @@ const Header = (props) => {
                       flex:'auto',
                       textAlign:'right',
                       width:0,
+                      display: 'flex'
                     }}>
                       <Dropdown className={classes.cursor} overlay={menu}>
                           <span className={classes.avatar}><Icon style={{
