@@ -11,7 +11,7 @@ import Head from "next/head";
 import axios from "axios";
 import Router from "next/router";
 
-export default function(props) {
+export default function (props) {
   const [user, upUser] = useState({
     id: "",
     email: "",
@@ -19,19 +19,20 @@ export default function(props) {
   });
 
   const [PRODUCT_URL, upPRODUCT_URL] = useState("");
+  const [init, setInit] = useState(false)
 
   useEffect(() => {
-    axios
+
+    const userPromise = axios
       .get("/user/login")
       .then((result: any) => {
-        const {data={}} = result;
+        const { data = {} } = result;
         upUser(data);
       })
       .catch((err: any) => {
         console.log(err);
-      });
-
-    axios
+      })
+    const uproducPromise = axios
       .get("/product")
       .then((data: any) => {
         const PRODUCT_URL = data.data;
@@ -39,28 +40,29 @@ export default function(props) {
       })
       .catch((err: any) => {
         console.log(err);
-      });
-  },[]);
+      })
+    const promiseArr = [userPromise, uproducPromise]
+    Promise.all(promiseArr).then(() => setInit(true))
+  }, []);
 
   const { Component, pageProps, router } = props as any;
-  return (
-    <div style={{ minWidth: 1200 }}>
-      <Head>
-        <title>R2.ai官网</title>
-      </Head>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Header route={router.route} user={user} PRODUCT_URL={PRODUCT_URL} />
-        <section
-          style={{
-            // minHeight:'calc(100vh - 140px - 16.125rem)',
-            minHeight: "calc(100vh - 202px)"
-          }}
-        >
-          <Component PRODUCT_URL={PRODUCT_URL}  user={user} {...pageProps} route={router.route} />
-        </section>
-        <Footer />
-      </ThemeProvider>
-    </div>
-  );
+  return <div style={{ minWidth: 1200 }}>
+    <Head>
+      <title>R2.ai官网</title>
+    </Head>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Header route={router.route} user={user} PRODUCT_URL={PRODUCT_URL} />
+      <section
+        style={{
+          // minHeight:'calc(100vh - 140px - 16.125rem)',
+          minHeight: "calc(100vh - 202px)"
+        }}
+      >
+        {init ? <Component PRODUCT_URL={PRODUCT_URL} user={user} {...pageProps} route={router.route} /> : null}
+      </section>
+      <Footer />
+    </ThemeProvider>
+  </div>
+    ;
 }

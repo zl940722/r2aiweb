@@ -28,7 +28,7 @@ const proxies = (target, org, url) => {
       req.headers.cookie && proxyReq.setHeader("Cookie", req.headers.cookie);
     },
     onProxyRes(proxyRes, req, res) {
-      Object.keys(proxyRes.headers).forEach(function(key) {
+      Object.keys(proxyRes.headers).forEach(function (key) {
         res.append(key, proxyRes.headers[key]);
       });
     }
@@ -44,6 +44,30 @@ const payServiceProxy = (originUri, uri) => proxies(payService, originUri, uri);
 const payBffProxy = (originUri, uri) => proxies(payBff, originUri, uri);
 
 const messageServiceProxy = (originUri, uri) => proxies(messageService, originUri, uri);
+
+const requireLoginMiddleware = async (req, res, next) => {
+  const user = await getUser(req.headers.cookie)
+  if (!user || !user.id) {
+    console.log(user)
+    res.sendStatus(500)
+    res.send("please login")
+    return
+  }
+  next()
+}
+
+const getUser = (cookie) => {
+  return axios
+    .get(process.env.AUTH_SERVICE || "http://localhost:8088", {
+      headers: {
+        cookie,
+      }
+    }).then(res => res.data)
+    .catch(err => {
+      console.log(err.message, 'get user error')
+      return null
+    })
+}
 
 app.prepare()
   .then(() => {
@@ -78,6 +102,115 @@ app.prepare()
 
     server.use("/wechat/orderQuery", payBffProxy("/wechat/orderQuery", "/wechat/orderQuery"));
 
+    server.post("/user/invoice/queryInvoiceStatus", requireLoginMiddleware, (req, res) => {
+      payServiceProxy("/user/invoice/queryInvoiceStatus", "/invoice/queryInvoiceStatus")
+    })
+
+    server.get("/user/invoices", requireLoginMiddleware, async (req, res) => {
+      const user = await getUser(req.headers.cookie)
+      try {
+        const result = await axios({
+          method: 'get',
+          params: { id: user.id },
+          url: `${payBff}/invoice/getOrderNeedInvoices`
+        })
+        const data = result.data;
+        const orderIds = data.map(order => order.id);
+        res.json({
+          status: 200,
+          message: 'ok',
+          orderIds
+        })
+      } catch (e) {
+        res.json({
+          status: 500,
+          message: e.response.data
+        })
+      }
+    })
+
+    server.post("/user/invoices", requireLoginMiddleware, async (req, res) => {
+      const {
+        language = "zh-CN",
+        type,
+        invoice,
+        name,
+        bankNo,
+        address,
+        phone,
+        personNo,
+        orderIds
+      } = req.body
+
+      const user = await getUser(req.headers.cookie)
+
+      if (!user) return res.send({
+        status: 301,
+        message: language === 'zh-CN' ? "请先登录" : 'please login first'
+      })
+
+      const required = invoice === 'Personal' ? ["type", "invoice", "name", "phone"] : ["type", "invoice", "personNo", "name", "address", "phone"]
+      for (let v of required) {
+        if (!!req.body[v]) return res.send({
+          status: 101,
+          message: language === 'zh-CN' ? "以上选项包含必填项，请正确填写。" : 'error'
+        })
+      }
+
+      if (!orderIds || !orderIds.length) return res.send({
+        status: 102,
+        message: language === 'zh-CN' ? "发票开具失败" : 'error'
+      })
+
+      try {
+        const invoiceRes = await axios({
+          method: 'get',
+          params: { id: user.id },
+          url: '/api/invoice/getOrderNeedInvoices'
+        })
+        if (!invoiceRes.data || !invoiceRes.data.length) return res.send({
+          status: 104,
+          message: language === 'zh-CN' ? "没有要开的发票" : 'error'
+        })
+        const orders = invoiceRes.data
+        if (orderIds.some(orderId => !orders.includes(orderId))) return res.send({
+          status: 105,
+          message: language === 'zh-CN' ? "已有开过发票" : 'error'
+        })
+
+        const detail = orders.filter(o => orderIds.includes(o)).map(order => {
+          return {
+            goodsname: 'r2.ai - ' + order.productName,
+            price: Number(order.totalPrice) / 100
+          }
+        });
+
+        const applyResult = await axios({
+          method: 'post',
+          url: '/api/invoice/applyInvoice',
+          data: {
+            detail,
+            orderIds,
+            invoiceType: type,
+            "basic": { id: user.id, buyername: name, phone, taxnum: personNo, address, account: bankNo }
+          }
+        })
+
+        return res.send({
+          status: 200,
+          message: 'ok',
+          fpqqlsh: applyResult.data
+        })
+
+      } catch (e) {
+        return res.send({
+          status: 103,
+          message: e.response.data
+        })
+      }
+
+    });
+
     server.get("/price", (req, res) => {
       res.send({
         basicPrice,
@@ -87,46 +220,33 @@ app.prepare()
       });
     });
 
-    const getUser = (cookie) => {
-      return axios
-        .get(process.env.AUTH_SERVICE || "http://localhost:8088",{
-          headers: {
-            cookie,
-          }
-        }).then(res => res.data)
-        .catch(err => {
-          console.log(err.message, 'get user error')
-          return null
-        })
-    }
-
-    const user = async (cookie)=>{
+    const user = async (cookie) => {
       const u = await getUser(cookie)
 
       return !!u && !!u.id
     };
 
-    server.get("/login", async (req, res,next) => {
-      const {cookie} = req.headers;
-      const _user = cookie&&await user(req.headers.cookie);
+    server.get("/login", async (req, res, next) => {
+      const { cookie } = req.headers;
+      const _user = cookie && await user(req.headers.cookie);
 
-      if(_user){
+      if (_user) {
         return res.redirect('/')
       }
       next();
     });
 
-    server.get("/register", async (req, res,next) => {
-      const {cookie} = req.headers;
-      const _user = cookie&&await user(req.headers.cookie);
+    server.get("/register", async (req, res, next) => {
+      const { cookie } = req.headers;
+      const _user = cookie && await user(req.headers.cookie);
 
-      if(_user){
+      if (_user) {
         return res.redirect('/')
       }
       next();
     });
 
-    server.get("/product", (req,res) => {
+    server.get("/product", (req, res) => {
       res.send(PRODUCT_URL);
     });
 
@@ -141,7 +261,7 @@ app.prepare()
       return handle(req, res);
     });
 
-    server.all("*", function(req, res, next) {
+    server.all("*", function (req, res, next) {
       res.header("Access-Control-Allow-Origin", "*");
       res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
       res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
@@ -162,4 +282,4 @@ app.prepare()
   });
 
 
-export {};
+export { };
