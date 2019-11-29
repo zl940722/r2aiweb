@@ -20,8 +20,8 @@ const useStyles = makeStyles({
     "& span": {
       color: "#000"
     },
-    '& ul':{
-      display:'flex',
+    '& ul': {
+      display: 'flex',
     },
 
   },
@@ -30,9 +30,9 @@ const useStyles = makeStyles({
     fontSize: "1rem"
     // color: "#000000"
   },
-  logo:{
-    cursor:'pointer',
-    margin:'0 6% 0 4%',
+  logo: {
+    cursor: 'pointer',
+    margin: '0 6% 0 4%',
   },
   a: {
     textDecoration: "none",
@@ -40,10 +40,10 @@ const useStyles = makeStyles({
   },
   avatar: {
     margin: 0,
-    overflow:'hidden',
-    textOverflow:'ellipsis',
-    width:'100%',
-    paddingRight:5,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    width: '100%',
+    paddingRight: 5,
   },
   index: {
     position: "absolute",
@@ -68,14 +68,14 @@ const useStyles = makeStyles({
     "& a": {
       color: "#fff"
     },
-    '& i':{
+    '& i': {
       color: "#fff"
     },
-    '& button:hover':{
-      background:'transparent',
+    '& button:hover': {
+      background: 'transparent',
     }
   },
-  cursor:{
+  cursor: {
     cursor: 'pointer',
   },
   login: {
@@ -87,7 +87,7 @@ const useStyles = makeStyles({
     color: "#000",
     textDecoration: "none"
   },
-  product:{
+  product: {
     background: 'transparent',
     cursor: 'pointer'
   }
@@ -296,7 +296,7 @@ const Header = (props) => {
                   title={value.name} onTitleClick={() => menuLink && Router.push(menuLink)}>
                   {
                     menuLink &&
-                    <Menu.Item key={menuLink} style={{ display: 'none' }}/>
+                    <Menu.Item key={menuLink} style={{ display: 'none' }} />
                   }
                   {
                     _.map(value.children, (res: InterfaceMenu) => <Menu.Item key={res.link} style={menuStyle}>{res.name}</Menu.Item>)
@@ -312,30 +312,31 @@ const Header = (props) => {
         <span className='main_user'>
           {
             props.user.active ?
-                <>
-                    <div style={{
-                      flex:'auto',
-                      textAlign:'right',
-                      width:0,
-                      display: 'flex'
-                    }}>
-                      <Dropdown className={classes.cursor} overlay={menu}>
-                          <span className={classes.avatar}><Icon style={{
-                            cursor: 'pointer',
-                            border: '1px solid',
-                            borderRadius: '50%',
-                            padding: 2,
-                            marginRight:2
-                          }} type="user" />
-                            {(props.user.email||'').split('@')[0]}
-                        </span>
-                      </Dropdown>
-                    </div>
-                  <Button style={{ cursor: 'pointer',
-                    display:(props.user.canLogin?'':'none')
-                  }} className={classes.product} shape="round" icon="arrow-right" onClick={()=>location.href = props.PRODUCT_URL}>使用产品</Button>
-                  {/*<a className={classes.res} style={{marginLeft:10}} href={props.PRODUCT_URL}>使用产品</a>*/}
-                </>:
+              <>
+                <div style={{
+                  flex: 'auto',
+                  textAlign: 'right',
+                  width: 0,
+                  display: 'flex'
+                }}>
+                  <Dropdown className={classes.cursor} overlay={menu}>
+                    <span className={classes.avatar}><Icon style={{
+                      cursor: 'pointer',
+                      border: '1px solid',
+                      borderRadius: '50%',
+                      padding: 2,
+                      marginRight: 2
+                    }} type="user" title={(props.user.email || '').split('@')[0]} />
+                      {(props.user.email || '').split('@')[0]}
+                    </span>
+                  </Dropdown>
+                </div>
+                <Button style={{
+                  cursor: 'pointer',
+                  display: (props.user.canLogin ? '' : 'none')
+                }} className={classes.product} shape="round" icon="arrow-right" onClick={() => location.href = props.PRODUCT_URL}>使用产品</Button>
+                {/*<a className={classes.res} style={{marginLeft:10}} href={props.PRODUCT_URL}>使用产品</a>*/}
+              </> :
               <div><a className={classes.login} href={"/login"}>登录</a> <a className={classes.res}
                 href={"/register"}>注册</a>
               </div>
