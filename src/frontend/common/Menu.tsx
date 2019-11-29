@@ -56,16 +56,16 @@ const useStyles = makeStyles({
     "& span": {
       color: "#fff"
     },
-    "& ul": {
+    "& > ul": {
       background: "transparent",
       boxShadow: "none",
       border: 0,
       color: "#fff",
-      "& li": {
+      "& > li": {
         color: "#fff"
       }
     },
-    "& a": {
+    "& > a": {
       color: "#fff"
     },
     '& i': {
