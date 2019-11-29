@@ -2,6 +2,7 @@ import React, { ReactElement, useEffect, useReducer, useRef, useState } from "re
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import axios from "axios";
 import { Input, message, Modal, PageHeader } from "antd";
+import Router from "next/router";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -45,13 +46,13 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     main: {
       backgroundImage: `url(/static/images/login/login.png)`,
-      backgroundRepeat:'no-repeat',
-      backgroundPosition:'center 5.3125rem',
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center 5.3125rem",
       height: "45rem",
       width: "76.5625rem",
       // margin: "5.3125rem auto",
       margin: "0 auto",
-      padding:'5.3125rem 0',
+      padding: "5.3125rem 0"
       // minHeight:'calc(100vh - 140px - 16.125rem)',
     },
     msg: {
@@ -94,9 +95,9 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: "center",
       borderRadius: "0.2rem",
       display: "inline-block",
-      '&:hover':{
+      "&:hover": {
         background: "#193169",
-        color: "#fff !important",
+        color: "#fff !important"
       }
     },
     forget: {
@@ -110,12 +111,14 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   })
 );
+
 interface State {
   email?: string;
   password?: string;
   captcha?: string;
 }
-export default function ():ReactElement {
+
+export default function(): ReactElement {
   const classes = useStyles();
   const [values, setValues] = useState<State>({
     email: "",
@@ -274,15 +277,18 @@ export default function ():ReactElement {
       </div>
 
       <div className={classes.msg} style={{ display: forget ? "" : "none" }}>
-        <PageHeader
-          style={{
-            left: "-1.5rem",
-            position: "relative"
-          }}
-          onBack={() => upForget(false)}
-          title="找回密码"
-          subTitle=""
-        />
+        <div style={{ cursor: "pointer" }}
+             onClick={() => upForget(false)}>
+          <PageHeader
+            style={{
+              left: "-1.5rem",
+              position: "relative"
+            }}
+            onBack={() => upForget(false)}
+            title="找回密码"
+            subTitle=""
+          />
+        </div>
         <dl style={{ marginTop: "2rem" }}>
           <dd>
             邮箱
