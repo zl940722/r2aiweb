@@ -118,7 +118,7 @@ interface State {
   captcha?: string;
 }
 
-export default function(): ReactElement {
+export default function (): ReactElement {
   const classes = useStyles();
   const [values, setValues] = useState<State>({
     email: "",
@@ -162,7 +162,8 @@ export default function(): ReactElement {
     axios
       .put("/user/login", values)
       .then(() => {
-        location.href = "/";
+        const reqp: any = getRequest()
+        location.href = reqp.redirect || '/';
       })
       .catch((err: any) => {
         const result =
@@ -206,6 +207,19 @@ export default function(): ReactElement {
         setCaptchas(new Date().getTime());
       });
   };
+
+  function getRequest() {
+    var url = window.location.search;
+    var jsonList = {};
+    if (url.indexOf("?") > -1) {
+      var str = url.slice(url.indexOf("?") + 1);
+      var strs = str.split("&");
+      for (var i = 0; i < strs.length; i++) {
+        jsonList[strs[i].split("=")[0]] = strs[i].split("=")[1];//如果出现乱码的话，可以用decodeURI()进行解码
+      }
+    }
+    return jsonList;
+  }
 
   return (
     <section className={classes.main}>
@@ -278,7 +292,7 @@ export default function(): ReactElement {
 
       <div className={classes.msg} style={{ display: forget ? "" : "none" }}>
         <div style={{ cursor: "pointer" }}
-             onClick={() => upForget(false)}>
+          onClick={() => upForget(false)}>
           <PageHeader
             style={{
               left: "-1.5rem",
