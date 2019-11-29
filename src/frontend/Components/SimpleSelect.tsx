@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: any) =>
       marginRight: "0.75rem"
     },
     selectTextField: {
-      minHeight: "4.25rem",
+      minHeight: "68px",
       backgroundColor: "#FFFFFF"
     },
     "& >div >div": {

@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   header: {
     fontSize: "1.5rem",
     textAlign: "center",
-    width: "35.75rem",
+    width: "572px",
     marginTop: "2.5rem",
     marginBottom: "1rem"
   },
