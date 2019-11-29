@@ -2,3 +2,56 @@
 #root{
   font-family: 'Source Han Sans SC', '微软雅黑', "Roboto", "Helvetica", "Arial", sans-serif;
 }
+
+@media only screen and (max-width: 2800px), only screen and (max-device-width:2800px) {
+  html,body {
+    font-size:16.875px;
+  }
+}
+@media only screen and (max-width: 1920px), only screen and (max-device-width:1920px) {
+  html, body {
+    font-size: 16px  !important
+  }
+}
+@media only screen and (max-width: 1080px), only screen and (max-device-width:1080px) {
+  html, body {
+    font-size: 16px !important
+  }
+}
+/*}*/
+/*@media only screen and (max-width: 720px), only screen and (max-device-width:720px) {*/
+/*  html, body {*/
+/*    font-size: 16px !important*/
+/*  }*/
+/*}*/
+/*@media only screen and (max-width: 640px), only screen and (max-device-width:640px) {*/
+/*  html, body {*/
+/*    font-size: 62.5% !important*/
+/*  }*/
+/*}*/
+/*@media only screen and (max-width: 600px), only screen and (max-device-width:600px) {*/
+/*  html, body {*/
+/*    font-size: 62.5% !important*/
+/*  }*/
+/*}*/
+/*@media only screen and (max-width: 540px), only screen and (max-device-width:540px) {*/
+/*  html, body {*/
+/*    font-size: 62.5% !important*/
+/*  }*/
+/*}*/
+/*@media only screen and (max-width: 480px), only screen and (max-device-width:480px) {*/
+/*  html, body {*/
+/*    font-size: 62.5% !important*/
+/*  }*/
+/*}*/
+/*@media only screen and (max-width: 414px), only screen and (max-device-width:414px) {*/
+/*  html, body {*/
+/*    font-size: 62.5% !important*/
+/*  }*/
+/*}*/
+/*@media only screen and (max-width: 400px), only screen and (max-device-width:400px) {*/
+/*  html, body {*/
+/*    font-size: 62.5% !important*/
+/*  }*/
+/*}*/
+

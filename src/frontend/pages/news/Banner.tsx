@@ -6,7 +6,7 @@ import { Carousel } from "react-responsive-carousel";
 
 const useStyles = makeStyles({
   item: {
-    height: "580px",
+    height: "36.25rem",
     backgroundSize: "cover"
   }
 });
