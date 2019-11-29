@@ -96,14 +96,14 @@ app.prepare()
         }).then(res => res.data)
         .catch(err => {
           console.log(err.message, 'get user error')
-          return {}
+          return null
         })
     }
 
     const user = async (cookie)=>{
       const u = await getUser(cookie)
 
-      return !!u.id
+      return !!u && !!u.id
     };
 
     server.get("/login", async (req, res,next) => {
