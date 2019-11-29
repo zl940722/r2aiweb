@@ -272,7 +272,7 @@ const Header = (props) => {
             <img
               src="/static/images/common/logo@2x.png"
               width={66}
-              style={{ marginRight: "6%", marginLeft: "4%" }}
+              style={{ marginRight: "6%", marginLeft: "4%" , cursor: 'pointer'}}
               alt="R2.ai"
             />
           </a>
@@ -312,7 +312,7 @@ const Header = (props) => {
                       marginRight:2
                     }} type="user" />{props.user.email}</span>
                    </Dropdown>
-                  <Button style={{
+                  <Button style={{ cursor: 'pointer',
                     display:(new Date(props.user.endTime)>new Date()?'':'none')
                   }} className={classes.product} shape="round" icon="arrow-right" onClick={()=>location.href = props.PRODUCT_URL}>使用产品</Button>
                   {/*<a className={classes.res} style={{marginLeft:10}} href={props.PRODUCT_URL}>使用产品</a>*/}
