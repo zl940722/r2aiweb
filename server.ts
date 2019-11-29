@@ -5,7 +5,6 @@ const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 const axios = require('axios');
-const moment = require('moment')
 
 const messageService = process.env.MESSAGE_SERVICE || "http://localhost:8088";
 const authService = process.env.AUTH_SERVICE || "http://localhost:8088";
@@ -88,29 +87,8 @@ app.prepare()
 
     server.use("/user/resetPassword", payServiceProxy("/user/resetPassword", "/user/resetPassword"));
 
-    server.post("/probation/applyProbation", requireLoginMiddleware, async (req, res) => {
-      const user = await getUser(req.headers.cookie)
-      const time = moment().add(1, 'm');
+    server.use("/probation/applyProbation", payServiceProxy("/probation/applyProbation", "/probation/applyProbation"));
 
-      if (user.type > 1) {
-        return res.send({
-          status: 200,
-          message: 'ok'
-        })
-      }
-
-      axios.put(`${strapiService}/dusers/${user.id}`, {
-        level: 1,
-        type: 1,
-        endTime: time.toDate(),
-        trial: false
-      })
-
-      res.send({
-        status: 200,
-        message: 'ok'
-      })
-    });
 
     server.use("/alipay/createCharge", payBffProxy("/alipay/createCharge", "/alipay/createCharge"));
 
@@ -272,34 +250,34 @@ app.prepare()
       res.send(PRODUCT_URL);
     });
 
-    server.get("/buy", async (req, res) => {
-      const { cookie = '' } = req.headers;
-      const { captcha, orderType, price, totalPrice, productId, productName, payMethod, level } = req.query;
+    server.get("/buy", async (req,res) => {
+      const {cookie=''} = req.headers;
+      const {captcha,orderType,price,totalPrice,productId,productName,payMethod,level} = req.query;
       axios({
         method: 'post',
-        url: authService + '/captcha',
-        data: {
+        url: authService+'/captcha',
+        data:{
           captcha,
         },
         headers: {
           cookie,
         },
-      }).catch(() => {
+      }).catch(()=>{
         res.status(500).json({
-          error: 'captcha error'
+          error:'captcha error'
         })
       });
 
       const user = await getUser(cookie);
-      if (!user) {
+      if(!user){
         res.status(500).json({
-          error: 'not login'
+          error:'not login'
         })
       }
 
-      if (+level > 1 && +level !== +user.level && user.endTime > new Date()) {
+      if(+level>1&&+level!== +user.level&&user.endTime>new Date()){
         res.status(500).json({
-          error: 'type error'
+          error:'type error'
         })
       }
 
@@ -318,11 +296,11 @@ app.prepare()
       axios.post(`${payBff}/${payMethod}/createCharge`, list).then(async (response: any) => {
         if (response.status === 200) {
           return res.json({
-            response: response.data
+            response:response.data
           })
         }
         res.status(500).json({
-          error: 'pay fail',
+          error:'pay fail',
         });
       }).catch((error: any) => {
         if (error.response) {
@@ -331,8 +309,8 @@ app.prepare()
           console.log(error.response.headers);
         }
         res.status(500).json({
-          error: 'pay fail',
-          content: error.response.data,
+          error:'pay fail',
+          content:error.response.data,
         });
       });
     });
