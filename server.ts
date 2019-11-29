@@ -76,7 +76,7 @@ app.prepare()
     server.use("/uploads", strapiServiceProxy("/", "/"));
     server.use("/strapi", strapiServiceProxy("/strapi", "/"));
     server.use("/user/sendMail", messageServiceProxy("/user/sendMail", "/mailer/sendMail"));
-    server.use("/user/login", authServiceProxy("/user/login", "/"));
+    // server.use("/user/login", authServiceProxy("/user/login", "/"));
     server.delete("/user/logout", authServiceProxy("/user/logout", "/"));
     server.post("/user/forget", authServiceProxy("/user/forget", "/forget"));
     server.use("/user/captcha", authServiceProxy("/user/captcha", "/captcha"));
@@ -104,7 +104,15 @@ app.prepare()
 
     server.post("/user/invoice/queryInvoiceStatus", requireLoginMiddleware, (req, res) => {
       payServiceProxy("/user/invoice/queryInvoiceStatus", "/invoice/queryInvoiceStatus")
-    })
+    });
+
+    server.get('/user/login',async (req,res)=>{
+      const user = await getUser(req.headers.cookie)||{};
+      return res.json({
+        ...user,
+        canLogin:new Date(user.endTime)>new Date()
+      })
+    });
 
     server.get("/user/invoices", requireLoginMiddleware, async (req, res) => {
       const user = await getUser(req.headers.cookie)

@@ -316,7 +316,7 @@ const Header = (props) => {
                     }} type="user" />{props.user.email}</span>
                    </Dropdown>
                   <Button style={{ cursor: 'pointer',
-                    display:(new Date(props.user.endTime)>new Date()?'':'none')
+                    display:(props.user.canLogin?'':'none')
                   }} className={classes.product} shape="round" icon="arrow-right" onClick={()=>location.href = props.PRODUCT_URL}>使用产品</Button>
                   {/*<a className={classes.res} style={{marginLeft:10}} href={props.PRODUCT_URL}>使用产品</a>*/}
                 </>:
