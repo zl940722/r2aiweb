@@ -9,7 +9,7 @@ import { Carousel } from "react-responsive-carousel";
 const useStyles = makeStyles((theme: any) =>
   createStyles({
     banner: {
-      maxHeight: "580px",
+      maxHeight: "36.25rem",
       maxWidth: "100%",
       overflow: "hidden",
       margin: "0 auto",
@@ -34,8 +34,8 @@ const useStyles = makeStyles((theme: any) =>
       overflow: "hidden",
       textAlign: "left",
       position: "absolute",
-      bottom: 50,
-      left: "20%"
+      bottom: 40,
+      left: "19%"
     },
     title: {
       marginTop: "5rem",
@@ -107,7 +107,7 @@ function ProductBanner(res: any) {
             {/*</div>*/}
             <div className={classes.itemContent}>
               <div className={classes.buttonWrap} onClick={onHandleOpen}>
-                <img style={{ width: "36px", marginRight: 20 }} src={"/static/images/products/player.png"}/>
+                <img style={{ width: 36, marginRight: 20 }} src={"/static/images/products/player.png"}/>
                 <span style={{ fontSize: 36 }}>产品视频</span>
               </div>
             </div>

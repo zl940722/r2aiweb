@@ -29,15 +29,19 @@ a:hover {
 
 .all_title {
     font-size: 36px !important;
-    font-weight: bold ;
+    font-weight: bold;
     color: rgba(51, 51, 51, 1) !important;
     text-align: center;
 }
 
 .ant-page-header-heading-title {
     font-size: 14px;
-    color:#D3323E
+    color: #D3323E
 }
-.ant-page-header-back-button{
-    color:#D3323E
+
+.ant-page-header-back-button {
+    color: #D3323E
 }
+
+
+
