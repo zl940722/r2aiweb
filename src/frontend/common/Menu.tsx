@@ -10,7 +10,7 @@ import axios from "axios";
 
 const { SubMenu } = Menu;
 
-const menuStyle: any = { width: 102, textAlign: 'center' }
+const menuStyle: any = { width: 99, textAlign: 'center' };
 
 const useStyles = makeStyles({
   root: {
@@ -19,19 +19,31 @@ const useStyles = makeStyles({
     color: "#000",
     "& span": {
       color: "#000"
-    }
+    },
+    '& ul':{
+      display:'flex',
+    },
+
   },
   tab: {
     height: 70,
     fontSize: "1rem"
     // color: "#000000"
   },
+  logo:{
+    cursor:'pointer',
+    margin:'0 6% 0 4%',
+  },
   a: {
     textDecoration: "none",
     color: "#333"
   },
   avatar: {
-    margin: 10
+    margin: 0,
+    overflow:'hidden',
+    textOverflow:'ellipsis',
+    width:'100%',
+    paddingRight:5,
   },
   index: {
     position: "absolute",
@@ -62,11 +74,6 @@ const useStyles = makeStyles({
     '& button:hover':{
       background:'transparent',
     }
-  },
-  user: {
-    // float: "right",
-    right: "6%",
-    position:'absolute',
   },
   cursor:{
     cursor: 'pointer',
@@ -271,11 +278,10 @@ const Header = (props) => {
         mode="horizontal"
       >
         <Link href={"/"}>
-          <a>
+          <a className={classes.logo}>
             <img
               src="/static/images/common/logo@2x.png"
               width={66}
-              style={{ marginRight: "6%", marginLeft: "4%" , cursor: 'pointer'}}
               alt="R2.ai"
             />
           </a>
@@ -288,7 +294,8 @@ const Header = (props) => {
               value.children ?
                 <SubMenu key={index} style={menuStyle}
                   title={value.name} onTitleClick={() => menuLink && Router.push(menuLink)}>
-                  {menuLink &&
+                  {
+                    menuLink &&
                     <Menu.Item key={menuLink} style={{ display: 'none' }}/>
                   }
                   {
@@ -302,19 +309,28 @@ const Header = (props) => {
           })
         }
 
-        <span className={classes.user}>
+        <span className='main_user'>
           {
             props.user.active ?
                 <>
-                  <Dropdown className={classes.cursor} overlay={menu}>
-                    <span className={classes.avatar}><Icon style={{
-                      cursor: 'pointer',
-                      border: '1px solid',
-                      borderRadius: '50%',
-                      padding: 2,
-                      marginRight:2
-                    }} type="user" />{props.user.email}</span>
-                   </Dropdown>
+
+                    <div style={{
+                      flex:'auto',
+                      textAlign:'right',
+                      width:0,
+                    }}>
+                      <Dropdown className={classes.cursor} overlay={menu}>
+                          <span className={classes.avatar}><Icon style={{
+                            cursor: 'pointer',
+                            border: '1px solid',
+                            borderRadius: '50%',
+                            padding: 2,
+                            marginRight:2
+                          }} type="user" />
+                            {(props.user.email||'').split('@')[0]}
+                        </span>
+                      </Dropdown>
+                    </div>
                   <Button style={{ cursor: 'pointer',
                     display:(props.user.canLogin?'':'none')
                   }} className={classes.product} shape="round" icon="arrow-right" onClick={()=>location.href = props.PRODUCT_URL}>使用产品</Button>

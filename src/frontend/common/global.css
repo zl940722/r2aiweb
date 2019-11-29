@@ -43,5 +43,15 @@ a:hover {
     color: #D3323E
 }
 
+.main_user{
+    display: inline-flex;
+    flex:auto;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 35px;
+}
 
+.main_user button{
+    flex:none;
+}
 

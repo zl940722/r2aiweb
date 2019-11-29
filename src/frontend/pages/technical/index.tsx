@@ -97,11 +97,11 @@ const useStyles = makeStyles({
     marginTop: "80px"
   },
   card: {
-    maxWidth: "320px"
+    width: 320
   },
   relative: {
     position: 'relative',
-    zIndex: 1
+    zIndex: 0
   }
 });
 
@@ -187,7 +187,7 @@ function HomeAbout() {
           <Grid container xs={12}>
             <Grid container xs={10} xl={8} className={`${classes.center} ${classes.iconContent}`} wrap='nowrap'>
               <Grid container xs={4} className={classes.pointer} direction='column' alignItems='center'
-                onMouseOver={imgOver(0)} onMouseOut={imgOver(-1)}>
+                onMouseOver={imgOver(0)} >
                 <div className={classes.icon}>
                   <img src={`/static/images/technical/auto${img === 0 ? "a" : ""}.png`} alt="auto" />
                 </div>
@@ -196,7 +196,7 @@ function HomeAbout() {
                 </Typography>
               </Grid>
               <Grid container xs={4} className={classes.pointer} direction='column' alignItems='center'
-                onMouseOver={imgOver(1)} onMouseOut={imgOver(-1)}>
+                onMouseOver={imgOver(1)} >
                 <div className={classes.icon}>
                   <img src={`/static/images/technical/algo${img === 1 ? "a" : ""}.png`} alt="algo" />
                 </div>
@@ -205,7 +205,7 @@ function HomeAbout() {
                 </Typography>
               </Grid>
               <Grid container xs={4} className={classes.pointer} direction='column' alignItems='center'
-                onMouseOver={imgOver(2)} onMouseOut={imgOver(-1)}>
+                onMouseOver={imgOver(2)} >
                 <div className={classes.icon}>
                   <img src={`/static/images/technical/simulate${img === 2 ? "a" : ""}.png`} alt="simulate" />
                 </div>
