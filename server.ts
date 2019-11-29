@@ -9,7 +9,7 @@ const axios = require('axios');
 const messageService = process.env.MESSAGE_SERVICE || "http://localhost:8088";
 const authService = process.env.AUTH_SERVICE || "http://localhost:8088";
 const payService = process.env.PAY_SERVICE || "http://192.168.0.105:8090";
-const payBff = process.env.PAY_BFF || "http://192.168.0.105:8091";
+const payBff = process.env.PAY_BFF || "http://localhost:8091";
 const strapiService = process.env.STRAPI_URL || "http://localhost:1337";
 const basicPrice = process.env.BASIC_PRICE || 199.98;
 const basicPriceYear = process.env.BASIC_PRICE_YEAR || 2159.78;
@@ -248,6 +248,71 @@ app.prepare()
 
     server.get("/product", (req, res) => {
       res.send(PRODUCT_URL);
+    });
+
+    server.get("/buy", async (req,res) => {
+      const {cookie=''} = req.headers;
+      const {captcha,orderType,price,totalPrice,productId,productName,payMethod,level} = req.query;
+      axios({
+        method: 'post',
+        url: authService+'/captcha',
+        data:{
+          captcha,
+        },
+        headers: {
+          cookie,
+        },
+      }).catch(()=>{
+        res.status(500).json({
+          error:'captcha error'
+        })
+      });
+
+      const user = await getUser(cookie);
+      if(!user){
+        res.status(500).json({
+          error:'not login'
+        })
+      }
+
+      if(+level>1&&+level!== +user.level&&user.endTime>new Date()){
+        res.status(500).json({
+          error:'type error'
+        })
+      }
+
+      const list = {
+        email: user.email,
+        orderType,
+        price,
+        renew: false,
+        totalPrice,
+        productId,
+        language: "zh-CN",
+        duration: 1,
+        productName,
+      };
+
+      axios.post(`${payBff}/${payMethod}/createCharge`, list).then(async (response: any) => {
+        if (response.status === 200) {
+          return res.json({
+            response:response.data
+          })
+        }
+        res.status(500).json({
+          error:'pay fail',
+        });
+      }).catch((error: any) => {
+        if (error.response) {
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        }
+        res.status(500).json({
+          error:'pay fail',
+          content:error.response.data,
+        });
+      });
     });
 
 

@@ -116,7 +116,7 @@ const pay = [
   }
 ];
 
-const procucts = [
+const products = [
   {
     code: "prod_E7zz1vwTiZxOgO",
     name: "简易版"
@@ -127,18 +127,19 @@ const procucts = [
 ];
 
 export default function TextFields(props: any) {
-  const level = props.router.asPath.split("=")[1];
+  const classes = useStyles();
+  const {user={}} = props;
+  const level = user.level||props.router.asPath.split("=")[1];
 
-  const [mPrice, setmPrice] = React.useState(0);
-  const [yPrice, setyPrice] = React.useState(0);
-  const [userInfo, setuserInfo] = React.useState({
+  const [mPrice, setmPrice] = useState(0);
+  const [yPrice, setyPrice] = useState(0);
+  const [userInfo, setuserInfo] = useState({
     active: false,
     email: "",
     id: ""
   });
 
-  const classes = useStyles();
-  const [values, setValues] = React.useState({
+  const [values, setValues] = useState({
     email: userInfo.email,
     username: "",
     product: "简易版",
@@ -146,57 +147,53 @@ export default function TextFields(props: any) {
     price: "",
     captcha: ""
   }) as any;
-  const [captcha, setCaptchas] = React.useState("") as any;
+  const [captcha, setCaptchas] = useState("") as any;
   const handleChange = (name: any) => (event: React.ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [name]: event.target.value });
   };
 
-  const [payMethod, setpayMethod] = React.useState("alipay");
+  const [payMethod, setpayMethod] = useState("alipay");
 
-  const [rent, setrent] = React.useState("");
+  const [rent, setrent] = useState("");
 
 
-  const [product, setproduct] = React.useState("");
+  const [product, setProduct] = useState("");
 
-  const [productName, setproductName] = React.useState("");
+  const [productName, setProductName] = useState("");
 
   useEffect(() => {
     setrent("Monthly");
     if (level == 2) {
-      setproduct("prod_E7zz1vwTiZxOgO");
-      setproductName("Basic");
+      setProduct("prod_E7zz1vwTiZxOgO");
+      setProductName("Basic");
       axios.get("/price").then((response: any) => {
-        const { basicPrice, basicPriceYear, essentialPrice, essentialPriceYear } = response.data;
+        const { basicPrice} = response.data;
         setValues({ price: basicPrice });
       });
 
     } else {
-      setproduct("prod_E7zzObgS7kjaMK");
-      setproductName("Essential");
+      setProduct("prod_E7zzObgS7kjaMK");
+      setProductName("Essential");
       axios.get("/price").then((response: any) => {
-        const { basicPrice, basicPriceYear, essentialPrice, essentialPriceYear } = response.data;
+        const {essentialPrice } = response.data;
         setValues({ price: essentialPrice });
       });
     }
-
-
-  }, []);
+  }, [level]);
 
   const handleChanges = (event: React.ChangeEvent<HTMLInputElement>) => {
     console.log(event.target.value);
     setpayMethod(event.target.value);
   };
-  const [open, setOpen] = React.useState(false);
-  const [modal, setModal] = React.useState({
+  const [open, setOpen] = useState(false);
+  const [modal, setModal] = useState({
     content: "",
     type: "",
     cancelText: "",
     okText: "确认"
   });
-  const [resData, setResData] = React.useState({}) as any;
-  // const [url, seturl] = React.useState("") as any;
+  const [resData, setResData] = useState({}) as any;
   const buy = () => {
-
     if (values.price === "" || values.captcha === "") {
       setOpen(true);
       setModal({
@@ -206,25 +203,78 @@ export default function TextFields(props: any) {
         okText: "确认"
       });
     } else {
-      axios.post("/user/captcha", { "captcha": values.captcha })
-        .then(() => {
-          pays();
-        })
-        .catch((error) => {
-          if (error.response) {
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          }
-          setOpen(true);
-          setModal({
-            content: "验证码错误",
-            type: "error",
-            cancelText: "",
-            okText: "确认"
-          });
-          setCaptchas(new Date().getTime());
+      axios.get('/buy',{
+        params:{
+          captcha: values.captcha,
+          orderType: rent,
+          price: values.price * 100,
+          renew: false,
+          totalPrice: values.price * 100,
+          productId: product,
+          language: "zh-CN",
+          duration: 1,
+          productName,
+          payMethod,
+          level,
+        }
+      }).then((result)=>{
+        let {response} = result.data;
+        setResData(response);
+        setOpen(true);
+        setModal({
+          content: "支付完成前，请不要关闭此支付验证窗口。 支付完成后，请根据您支付的情况点击下面按钮。",
+          type: payMethod,
+          cancelText: "支付遇到问题？",
+          okText: "支付完成"
         });
+        window.open(response.url, "", "width=1100,height=600");
+      }).catch((result)=>{
+        let {error,content=''} = JSON.parse(result.request.responseText);
+        switch (error) {
+          case 'captcha error':
+            content = '验证码错误';
+            break;
+          case 'not login'://未登录
+            location.href = '/login';
+            break;
+          case 'pay fail':
+            content = content||'支付错误';
+            break;
+          case 'type error':
+            content = '选择套餐错误，请刷新后重试';
+            break;
+        }
+
+        setOpen(true);
+        setModal({
+          content,
+          type: "error",
+          cancelText: "",
+          okText: "确认"
+        });
+        setCaptchas(new Date().getTime());
+      })
+
+
+      // axios.post("/user/captcha", { "captcha": values.captcha })
+      //   .then(() => {
+      //     pays();
+      //   })
+      //   .catch((error) => {
+      //     if (error.response) {
+      //       console.log(error.response.data);
+      //       console.log(error.response.status);
+      //       console.log(error.response.headers);
+      //     }
+      //     setOpen(true);
+      //     setModal({
+      //       content: "验证码错误",
+      //       type: "error",
+      //       cancelText: "",
+      //       okText: "确认"
+      //     });
+      //     setCaptchas(new Date().getTime());
+      //   });
     }
   };
 
@@ -373,40 +423,25 @@ export default function TextFields(props: any) {
           <Grid container className={classes.grids}>
 
             <Grid item md={6} className={classes.grid}>
-
-
-              {/*<SimpleInput*/}
-              {/*  label="购买产品"*/}
-              {/*  required={true}*/}
-              {/*  value={values.product}*/}
-              {/*  allowedLength={32}*/}
-              {/*  disabled*/}
-              {/*  className={classes.dense}*/}
-              {/*  onChange={handleChange("product")}*/}
-              {/*  margin="dense"*/}
-              {/*/>*/}
-
               <SimpleSelect
                 label="购买产品"
                 xs={12}
+                disabled={props.user&&(+props.user.level||+props.user.type)>1}
                 className={classes.dense}
                 value={product}
                 onChange={(e) => {
-
-                  setproduct(e.target.value);
-
-
+                  setProduct(e.target.value);
                   axios.get("/price").then((response: any) => {
                     console.log(response.data, "response.data");
                     const { basicPrice, basicPriceYear, essentialPrice, essentialPriceYear } = response.data;
                     if (e.target.value === "prod_E7zz1vwTiZxOgO") {
                       setmPrice(basicPrice);
                       setyPrice(basicPriceYear);
-                      setproductName("Basic");
+                      setProductName("Basic");
                     } else {
                       setmPrice(essentialPrice);
                       setyPrice(essentialPriceYear);
-                      setproductName("Essential");
+                      setProductName("Essential");
                     }
 
                     if (e.target.value === "prod_E7zz1vwTiZxOgO") {
@@ -427,7 +462,7 @@ export default function TextFields(props: any) {
                   });
 
                 }}
-                data={procucts}
+                data={products}
                 margin="normal"
               />
 

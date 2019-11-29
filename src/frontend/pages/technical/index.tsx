@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     }
   },
   banner: {
-    maxHeight: "580px",
+    maxHeight: "36.25rem",
     maxWidth: "100%",
     overflow: "hidden",
     margin: "0 auto",
