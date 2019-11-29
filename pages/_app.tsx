@@ -10,6 +10,7 @@ import Footer from "../src/frontend/common/Footer";
 import Head from "next/head";
 import axios from "axios";
 import Router from "next/router";
+import { Spin } from "antd";
 
 export default function (props) {
   const [user, upUser] = useState({
@@ -51,6 +52,7 @@ export default function (props) {
       <title>R2.ai官网</title>
     </Head>
     <ThemeProvider theme={theme}>
+      <Spin spinning={!init}>
       <CssBaseline />
       <Header route={router.route} user={user} PRODUCT_URL={PRODUCT_URL} />
       <section
@@ -62,6 +64,7 @@ export default function (props) {
         {init ? <Component PRODUCT_URL={PRODUCT_URL} user={user} {...pageProps} route={router.route} /> : null}
       </section>
       <Footer />
+      </Spin>
     </ThemeProvider>
   </div>
     ;
