@@ -68,7 +68,7 @@ function Mode() {
                 <div className={classes.text}><b style={{ fontSize: 16 }}>系统集成商：</b><span >有效整合R2.ai领先的人工智能自动建模平台和集成商/服务商/行业解决方案提供商的产品及服务，为各行业客户提供更优的一体化解决方案。</span></div>
 
               </div>
-              <div style={{ background: "#5377AD", height: 213, width: 1, position: 'absolute', left: '400px', top: '275px' }}>{}</div>
+              <div style={{ background: "#5377AD", height: 213, width: 1, position: 'absolute', left: '25rem', top: '17rem' }}>{}</div>
             </div>
           </Col>
           <Col span={8}>
@@ -86,7 +86,7 @@ function Mode() {
                 <div className={classes.text}><b style={{ fontSize: 16 }}>商务合作：</b><span > 链接商务网络，共享信息资源，共同拓展市场，合作营销项目，提升各自产品在市场的知名度和占有率。</span></div>
 
               </div>
-              <div style={{ background: "#5377AD", height: 213, width: 1, position: 'absolute', left: '400px', top: '275px' }}>{}</div>
+              <div style={{ background: "#5377AD", height: 213, width: 1, position: 'absolute',left: '25rem', top: '17rem'}}>{}</div>
             </div>
           </Col>
           {/*</Grid>*/}

@@ -123,7 +123,7 @@ export default function(res: any) {
         <div style={{cursor: 'pointer'}} onClick={back}>
           <PageHeader
             style={{
-              left: "-1.5rem",
+              left: "-24px",
               position: "relative"
             }}
             onBack={back}

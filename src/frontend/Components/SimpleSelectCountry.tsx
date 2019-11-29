@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: any) =>
       whiteSpace: 'nowrap',
     },
     selectTextField: {
-      minHeight: "4.25rem",
+      minHeight: "68px",
       backgroundColor: "#FFFFFF"
     },
     menu: {

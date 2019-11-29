@@ -91,7 +91,7 @@ function HomeAbout(res: any) {
         }}>
         <PageHeader
           style={{
-            left: "-1.5rem",
+            left: "-24px",
             position: "relative",
             fontSize: 12
           }}

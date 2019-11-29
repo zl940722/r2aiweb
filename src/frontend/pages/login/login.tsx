@@ -29,18 +29,18 @@ const useStyles = makeStyles((theme: Theme) =>
     grid: {
       flex: 1,
       background: "#fff",
-      margin: "2.5rem auto",
-      padding: "4rem",
+      margin: "40px auto",
+      padding: "64px",
       borderRadius: ".3rem",
       cursor: "pointer"
     },
     buttonWrap: {
       width: "100%",
-      paddingTop: "2.5rem"
+      paddingTop: "40px"
     },
     button: {
-      width: "10.5rem",
-      height: "3.2rem",
+      width: "168px",
+      height: "51px",
       fontWeight: "bold",
       background: "#061222 !important"
     },
@@ -48,39 +48,39 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundImage: `url(/static/images/login/login.png)`,
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center 5.3125rem",
-      height: "45rem",
-      width: "76.5625rem",
+      height: "725px",
+      width: "1225px",
       // margin: "5.3125rem auto",
       margin: "0 auto",
-      padding: "5.3125rem 0"
+      padding: "85px 0"
       // minHeight:'calc(100vh - 140px - 16.125rem)',
     },
     msg: {
-      paddingTop: "2.8125rem",
-      marginLeft: "41.5rem",
+      paddingTop: "45px",
+      marginLeft: "664px",
       "& p": {
         color: "#333",
-        fontSize: "1.875rem"
+        fontSize: "30px"
       },
       "& dl": {
         color: "#333",
-        fontSize: "1.125rem",
+        fontSize: "18px",
         "& dd": {
           position: "relative",
           "& img": {
             position: "absolute",
             right: "3.75rem",
-            width: "7.5625rem",
-            height: "3.125rem",
+            width: "121px",
+            height: "50px",
             bottom: 0
           }
         }
       },
       "& input": {
         display: "block",
-        width: "31.3125rem",
+        width: "500px",
         borderWidth: "0 0 1px 0",
-        margin: "1rem 0 3.25rem 0",
+        margin: "16px 0 52px 0",
         "&:hover,&:focus": {
           borderWidth: "0 0 1px 0 !important"
         }
@@ -88,10 +88,10 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     submit: {
       background: "#6177A5",
-      width: "31.25rem",
-      lineHeight: "4.25rem",
+      width: "500px",
+      lineHeight: "68px",
       color: "#fff",
-      fontSize: "1.5rem",
+      fontSize: "24px",
       textAlign: "center",
       borderRadius: "0.2rem",
       display: "inline-block",
@@ -102,12 +102,12 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     forget: {
       color: "#5C8EE9",
-      fontSize: "1.125rem",
+      fontSize: "18px",
       display: "block",
       textAlign: "right",
-      paddingRight: "3rem",
+      paddingRight: "48px",
       position: "relative",
-      top: "-2rem"
+      top: "-32px"
     }
   })
 );
@@ -295,7 +295,7 @@ export default function (): ReactElement {
           onClick={() => upForget(false)}>
           <PageHeader
             style={{
-              left: "-1.5rem",
+              left: "-24px",
               position: "relative"
             }}
             onBack={() => upForget(false)}
