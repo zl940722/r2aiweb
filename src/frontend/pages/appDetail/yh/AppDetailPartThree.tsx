@@ -5,7 +5,7 @@ import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles({
   content: {
-    width: "60%",
+    maxWidth: "75rem",
     margin: "0 auto",
     lineHeight: "22px",
     overflow: "hidden",
@@ -89,13 +89,13 @@ function AppDetailPartOne(props: any) {
                 </div>
                 <Grid spacing={8} container className={classes.grids}>
                   <Grid item xs={6} className={classes.grid}>
-                    <p style={{ fontSize: 14 }}><p style={{ float: 'left' }}>1.数据清洗： </p>
+                    <p style={{ fontSize: 14, display: 'flex' }}><p style={{ display: 'flex', flex: 'none' }}>1.数据清洗： </p>
                       观察数据类型，对缺失值进行填充，对分类变量和连续变量进行处理，在高级建模设置中可以对非平衡数据进行处理； </p>
                     <img src={"/static/images/appDetail/bank3gc1.png"} />
                   </Grid>
                   <Grid item xs={6} className={classes.grid}>
-                    <p style={{ fontSize: 14 }}>
-                      <p style={{ float: 'left' }}>2. 特征工程： </p>
+                    <p style={{ fontSize: 14, display: 'flex' }}>
+                      <p style={{ display: 'flex', flex: 'none' }}>2. 特征工程： </p>
                       对所有变量进行自动化的特征工程处理，高级建模中可根据需求创建新变量，选择PCA, SVM等特征预处理；</p>
                     <img src={"/static/images/appDetail/bank3gc2.png"} />
                   </Grid>
@@ -103,14 +103,14 @@ function AppDetailPartOne(props: any) {
 
                 <Grid spacing={8} container className={classes.grids}>
                   <Grid item xs={6} className={classes.grid}>
-                    <p style={{ fontSize: 14 }}>
-                      <p style={{ float: 'left', height: 100 }}>3. 模型训练： </p> 简易模式中，R2 Learn 将自动训练20多个模型；高级建模中，可以自 己选择不同算法，设置不同的数据集划分标准等；最后通过AUC等指标选择最佳模型；
+                    <p style={{ fontSize: 14, display: 'flex' }}>
+                      <p style={{ display: 'flex', flex: 'none' }}>3. 模型训练： </p> 简易模式中，R2 Learn 将自动训练20多个模型；高级建模中，可以自 己选择不同算法，设置不同的数据集划分标准等；最后通过AUC等指标选择最佳模型；
                     </p>
                     <img src={"/static/images/appDetail/bank3gc3.png"} />
                   </Grid>
                   <Grid item xs={6} className={classes.grid}>
-                    <p style={{ fontSize: 14 }}>
-                      <p style={{ float: 'left', height: 100 }}>4. 模型部署及性能检测： </p>
+                    <p style={{ fontSize: 14, display: 'flex' }}>
+                      <p style={{ display: 'flex', flex: 'none' }}>4. 模型部署及性能检测： </p>
                       模型训练结束后可以设定度量指标及阈值，对模型的性能进行检测，当新数据集所得到的度量值低于阈值时将会自动预警，提示用户进行新模型的训练。
                     </p>
                     <img src={"/static/images/appDetail/bank3gc4.png"} />

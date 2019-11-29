@@ -5,7 +5,7 @@ import { Typography, Grid } from "@material-ui/core";
 
 const useStyles = makeStyles({
   content: {
-    width: "60%",
+    maxWidth: "75rem",
     lineHeight: "22px",
     margin: "0 auto",
     padding: "5rem 0",
