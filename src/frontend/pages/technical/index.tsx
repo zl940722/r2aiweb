@@ -99,6 +99,9 @@ const useStyles = makeStyles({
   relative: {
     position: 'relative',
     zIndex: 0
+  },
+  liText: {
+    fontSize: 14
   }
 });
 
@@ -191,7 +194,7 @@ function HomeAbout() {
                   <div className={classes.icon}>
                     <img src={`/static/images/technical/auto${img === 0 ? "a" : ""}.png`} alt="auto" />
                   </div>
-                  <Typography component={"div"} align='center' style={{ color: `${img === 0 ? "#D3323E" : "#333333"}` }}>
+                  <Typography component={"div"} align='center' style={{ color: `${img === 0 ? "#D3323E" : "#333333"}`, fontSize: 18 }}>
                     全链自动优化
                 </Typography>
                 </Grid>
@@ -200,7 +203,7 @@ function HomeAbout() {
                   <div className={classes.icon}>
                     <img src={`/static/images/technical/algo${img === 1 ? "a" : ""}.png`} alt="algo" />
                   </div>
-                  <Typography component={"div"} align='center' style={{ color: `${img === 1 ? "#D3323E" : "#333333"}` }}>
+                  <Typography component={"div"} align='center' style={{ color: `${img === 1 ? "#D3323E" : "#333333"}`, fontSize: 18 }}>
                     自研算法
                 </Typography>
                 </Grid>
@@ -209,7 +212,7 @@ function HomeAbout() {
                   <div className={classes.icon}>
                     <img src={`/static/images/technical/simulate${img === 2 ? "a" : ""}.png`} alt="simulate" />
                   </div>
-                  <Typography component={"div"} align='center' style={{ color: `${img === 2 ? "#D3323E" : "#333333"}` }}>
+                  <Typography component={"div"} align='center' style={{ color: `${img === 2 ? "#D3323E" : "#333333"}`, fontSize: 18 }}>
                     业务场景模拟优化
                 </Typography>
                 </Grid>
@@ -223,7 +226,7 @@ function HomeAbout() {
                   ['保证R2 Learn在模型质量上完美胜出；', '全流程赋能，为流程中每个步骤提供高效工具和运行环境支持；', '模型周期全面覆盖，帮助企业实现一站式模型生命周期管理。'],
                   ['多算法支持： 拥有全球最丰富的Auto ML支持算法；', 'R2自研算法：多种自研算法可选，大幅提升建模速度，提高建模质量。'],
                   ['基于独具匠心的模型指标来预测模型部署后产生的效果；', '设有业务场景模拟功能“收益损失（Benefit Cost）”。']
-                ][img].map(v => <Typography component={"li"}>
+                ][img].map(v => <Typography component={"li"} className={classes.liText}>
                   {v}
                 </Typography>)}
               </Grid>
@@ -234,7 +237,7 @@ function HomeAbout() {
       <Grid container className={classes.content} component='div'>
         <Grid container xs={12} className={classes.title}>
           <Grid item xs={12} md={9} lg={7} xl={5} className={classes.center}>
-            <p className={"all_title"}>
+            <p className={"all_title"} style={{marginBottom: 0}}>
               R2六脉神剑
             </p>
           </Grid>
