@@ -23,6 +23,7 @@ import SimpleSelect from "../../Components/SimpleSelectCountry";
 import CommonButton from "../../Components/SimpleButton";
 import { Modal } from "antd";
 import Agreement from "../../../../pages/agreement";
+import Router from "next/router";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -33,10 +34,10 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundRepeat: "no-repeat"
     },
     container: {
-      width:1200,
-      margin:'62px auto 98px',
-      padding:'60px 180px 50px',
-      backgroundColor:'#F5F5F5',
+      width: 1200,
+      margin: "62px auto 98px",
+      padding: "60px 180px 50px",
+      backgroundColor: "#F5F5F5"
     },
     textField: {
       marginLeft: theme.spacing(1),
@@ -182,7 +183,8 @@ export default function TextFields() {
   const [open, setOpen] = React.useState(false);
   const [modal, setModal] = React.useState({
     content: "",
-    type: ""
+    type: "",
+    buttonName: ""
   });
 
   const [dialogInfo, setDialogOpen] = useState(false);
@@ -203,7 +205,8 @@ export default function TextFields() {
       setOpen(true);
       setModal({
         content: "请正确填写以上信息",
-        type: "error"
+        type: "error",
+        buttonName: "确定"
       });
     } else if (values.address === "" || values.area === "" || values.city === ""
       || values.companyName === "" || values.country === "" || values.department === "" || values.email === ""
@@ -212,7 +215,8 @@ export default function TextFields() {
       setOpen(true);
       setModal({
         content: "以上选项为必填，请正确填写。",
-        type: "error"
+        type: "error",
+        buttonName: "确定"
       });
     } else {
       const list: any = {
@@ -242,7 +246,8 @@ export default function TextFields() {
                   setOpen(true);
                   setModal({
                     content: "注册成功,请去邮箱激活！",
-                    type: "success"
+                    type: "success",
+                    buttonName: "返回登录"
                   });
                 }
               }).catch((error: any) => {
@@ -254,16 +259,21 @@ export default function TextFields() {
               setOpen(true);
               const message = error.response.data;
               let errMes;
+              let button;
               if (message == "You are an official user") {
                 errMes = "你已经是正式用户,请登录。";
+                button = "返回登录";
               } else if (message == "need active") {
                 errMes = "你已注册，请去邮箱激活。";
+                button = "返回登录";
               } else {
                 errMes = error.response.data;
+                button = "确定";
               }
               setModal({
                 content: errMes,
-                type: "error"
+                type: "error",
+                buttonName: button
               });
               setCaptchas(new Date().getTime());
             });
@@ -273,7 +283,8 @@ export default function TextFields() {
         console.log(err.response.data);
         setModal({
           content: "验证码错误",
-          type: "error"
+          type: "error",
+          buttonName: "确定"
         });
         setCaptchas(new Date().getTime());
       });
@@ -289,217 +300,217 @@ export default function TextFields() {
 
   return (
     <div className={classes.bg}>
-      <h1 className={'all_title'} style={{ textAlign: "center", margin: '85px auto 0' }}>免费试用申请</h1>
+      <h1 className={"all_title"} style={{ textAlign: "center", margin: "85px auto 0" }}>免费试用申请</h1>
       <form className={classes.container} noValidate autoComplete="off">
-              <SimpleInput
-                value={values.email}
-                label="用户邮箱"
-                required={true}
-                allowedLength={32}
-                regex={/^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/}
-                helperText="请输入正确的邮箱"
-                className={classes.dense}
-                onChange={handleChange("email")}
-                margin="dense"
-              />
-              <SimpleInput
-                label="用户姓名"
-                required={true}
-                value={values.username}
-                allowedLength={32}
-                regex={/^[\s\S]*.*[^\s][\s\S]*$/}
-                helperText="请输入正确的用户姓名"
-                className={classes.dense}
-                onChange={handleChange("username")}
-                margin="dense"
-              />
+        <SimpleInput
+          value={values.email}
+          label="用户邮箱"
+          required={true}
+          allowedLength={32}
+          regex={/^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/}
+          helperText="请输入正确的邮箱"
+          className={classes.dense}
+          onChange={handleChange("email")}
+          margin="dense"
+        />
+        <SimpleInput
+          label="用户姓名"
+          required={true}
+          value={values.username}
+          allowedLength={32}
+          regex={/^[\s\S]*.*[^\s][\s\S]*$/}
+          helperText="请输入正确的用户姓名"
+          className={classes.dense}
+          onChange={handleChange("username")}
+          margin="dense"
+        />
 
-              <SimpleInput
-                label="密码"
-                type="password"
-                required={true}
-                regex={/^\w{6,1000}$/}
-                value={values.password}
-                allowedLength={12}
-                helperText="密码不能少于六位"
-                className={classes.dense}
-                onChange={handleChange("password")}
-                margin="dense"
-              />
+        <SimpleInput
+          label="密码"
+          type="password"
+          required={true}
+          regex={/^\w{6,1000}$/}
+          value={values.password}
+          allowedLength={12}
+          helperText="密码不能少于六位"
+          className={classes.dense}
+          onChange={handleChange("password")}
+          margin="dense"
+        />
 
-              <SimpleInput
-                label="公司全称"
-                required={true}
-                value={values.companyName}
-                allowedLength={32}
-                helperText="公司全称不能为空"
-                className={classes.dense}
-                onChange={handleChange("companyName")}
-                margin="dense"
-              />
+        <SimpleInput
+          label="公司全称"
+          required={true}
+          value={values.companyName}
+          allowedLength={32}
+          helperText="公司全称不能为空"
+          className={classes.dense}
+          onChange={handleChange("companyName")}
+          margin="dense"
+        />
 
-              <SimpleSelect
-                label="国家"
-                xs={12}
-                className={classes.dense}
-                value={values.country}
-                onChange={(e: any) => {
-                  setshow({ province: true });
-                  setValues({
-                    email: values.email,
-                    username: values.username,
-                    password: values.password,
-                    companyName: values.companyName,
-                    productName: values.productName,
-                    country: e.target.value
-                  });
+        <SimpleSelect
+          label="国家"
+          xs={12}
+          className={classes.dense}
+          value={values.country}
+          onChange={(e: any) => {
+            setshow({ province: true });
+            setValues({
+              email: values.email,
+              username: values.username,
+              password: values.password,
+              companyName: values.companyName,
+              productName: values.productName,
+              country: e.target.value
+            });
 
-                }}
-                data={country}
-                margin="normal"
-              />
-              <SimpleSelect
-                label="省"
-                xs={12}
-                className={classes.dense}
-                value={values.province}
-                onChange={(event: any) => {
-                  let bb: any = [];
-                  _.forEach(citise, function(o) {
-                    if (event.target.value === _.toInteger(o.parentCode)) {
-                      bb.push(o);
-                      setshow({ province: true, city: true });
-                      setcityList(bb);
-                      setValues({
-                        email: values.email,
-                        username: values.username,
-                        password: values.password,
-                        country: values.country,
-                        companyName: values.companyName,
-                        productName: values.productName,
-                        province: event.target.value
-                      });
-                    }
+          }}
+          data={country}
+          margin="normal"
+        />
+        <SimpleSelect
+          label="省"
+          xs={12}
+          className={classes.dense}
+          value={values.province}
+          onChange={(event: any) => {
+            let bb: any = [];
+            _.forEach(citise, function(o) {
+              if (event.target.value === _.toInteger(o.parentCode)) {
+                bb.push(o);
+                setshow({ province: true, city: true });
+                setcityList(bb);
+                setValues({
+                  email: values.email,
+                  username: values.username,
+                  password: values.password,
+                  country: values.country,
+                  companyName: values.companyName,
+                  productName: values.productName,
+                  province: event.target.value
+                });
+              }
 
-                  });
+            });
 
-                }}
-                disabled={!show.province}
-                data={provinces}
-                margin="normal"
-              />
-              <SimpleSelect
-                label="市"
-                xs={12}
-                className={classes.dense}
-                value={values.city}
-                onChange={(event: any) => {
-                  setValues({
-                    email: values.email,
-                    username: values.username,
-                    password: values.password,
-                    companyName: values.companyName,
-                    productName: values.productName,
-                    country: values.country,
-                    province: values.province,
-                    city: event.target.value
-                  });
-                  let bb: any = [];
-                  _.forEach(areas, function(o) {
-                    if (event.target.value === _.toInteger(o.parentCode)) {
-                      bb.push(o);
-                      setshow({ province: true, city: true, area: true });
-                      setareaList(bb);
-                    }
+          }}
+          disabled={!show.province}
+          data={provinces}
+          margin="normal"
+        />
+        <SimpleSelect
+          label="市"
+          xs={12}
+          className={classes.dense}
+          value={values.city}
+          onChange={(event: any) => {
+            setValues({
+              email: values.email,
+              username: values.username,
+              password: values.password,
+              companyName: values.companyName,
+              productName: values.productName,
+              country: values.country,
+              province: values.province,
+              city: event.target.value
+            });
+            let bb: any = [];
+            _.forEach(areas, function(o) {
+              if (event.target.value === _.toInteger(o.parentCode)) {
+                bb.push(o);
+                setshow({ province: true, city: true, area: true });
+                setareaList(bb);
+              }
 
-                  });
-                }}
-                data={cityList}
-                margin="normal"
-                disabled={!show.city}
-              />
-              <SimpleSelect
-                label="区"
-                xs={12}
-                className={classes.dense}
-                value={values.area}
-                onChange={handleChange("area")}
-                data={areaList}
-                margin="normal"
-                disabled={!show.area}
-              />
-              <SimpleInput
-                value={values.address}
-                label="公司地址"
-                required={true}
-                allowedLength={32}
-                helperText="公司地址不能为空"
-                className={classes.dense}
-                onChange={handleChange("address")}
-                margin="dense"
-              />
+            });
+          }}
+          data={cityList}
+          margin="normal"
+          disabled={!show.city}
+        />
+        <SimpleSelect
+          label="区"
+          xs={12}
+          className={classes.dense}
+          value={values.area}
+          onChange={handleChange("area")}
+          data={areaList}
+          margin="normal"
+          disabled={!show.area}
+        />
+        <SimpleInput
+          value={values.address}
+          label="公司地址"
+          required={true}
+          allowedLength={32}
+          helperText="公司地址不能为空"
+          className={classes.dense}
+          onChange={handleChange("address")}
+          margin="dense"
+        />
 
-              <SimpleSelect
-                label="所处行业"
-                xs={12}
-                className={classes.dense}
-                value={values.industry}
-                onChange={handleChange("industry")}
-                data={industry}
-                margin="normal"
-              />
+        <SimpleSelect
+          label="所处行业"
+          xs={12}
+          className={classes.dense}
+          value={values.industry}
+          onChange={handleChange("industry")}
+          data={industry}
+          margin="normal"
+        />
 
-              <SimpleInput
-                value={values.department}
-                label="业务部门"
-                required={true}
-                allowedLength={32}
-                helperText="业务部门不能为空"
-                className={classes.dense}
-                onChange={handleChange("department")}
-                margin="dense"
-              />
-              <SimpleInput
-                value={values.phone}
-                label="联系电话"
-                required={true}
-                allowedLength={11}
-                regex={/^(?:\+?86)?1(?:3\d{3}|5[^4\D]\d{2}|8\d{3}|7(?:[35678]\d{2}|4(?:0\d|1[0-2]|9\d))|9[189]\d{2}|66\d{2})\d{6}$/}
-                helperText="请输入正确的联系电话"
-                className={classes.dense}
-                onChange={handleChange("phone")}
-                margin="dense"
-              />
+        <SimpleInput
+          value={values.department}
+          label="业务部门"
+          required={true}
+          allowedLength={32}
+          helperText="业务部门不能为空"
+          className={classes.dense}
+          onChange={handleChange("department")}
+          margin="dense"
+        />
+        <SimpleInput
+          value={values.phone}
+          label="联系电话"
+          required={true}
+          allowedLength={11}
+          regex={/^(?:\+?86)?1(?:3\d{3}|5[^4\D]\d{2}|8\d{3}|7(?:[35678]\d{2}|4(?:0\d|1[0-2]|9\d))|9[189]\d{2}|66\d{2})\d{6}$/}
+          helperText="请输入正确的联系电话"
+          className={classes.dense}
+          onChange={handleChange("phone")}
+          margin="dense"
+        />
 
 
-              <div className={classes.captcha}>
-                <SimpleInput
-                  label="请输入验证码"
-                  required={true}
-                  value={values.captcha}
-                  allowedLength={32}
-                  className={classes.dense}
-                  onChange={handleChange("captcha")}
-                  margin="dense"
-                />
+        <div className={classes.captcha}>
+          <SimpleInput
+            label="请输入验证码"
+            required={true}
+            value={values.captcha}
+            allowedLength={32}
+            className={classes.dense}
+            onChange={handleChange("captcha")}
+            margin="dense"
+          />
 
-                <img src={`/user/captcha?${captcha}`}
-                     style={{ marginTop: "11px", position: "absolute", right: 10, top: 16 }}
-                     alt=""
-                     onClick={() => {
-                       setCaptchas(new Date().getTime());
-                     }}
-                />
-              </div>
-              <p style={{ marginTop: 40 }} onClick={() => {
-                setDialogOpen(true);
-              }}>本人同意签署贵公司的<a>SAAS用户协议</a></p>
-              <div className={classes.button}>
-                <CommonButton
-                  onClick={submit}
-                  label={"立即注册"}
-                />
-              </div>
+          <img src={`/user/captcha?${captcha}`}
+               style={{ marginTop: "11px", position: "absolute", right: 10, top: 16 }}
+               alt=""
+               onClick={() => {
+                 setCaptchas(new Date().getTime());
+               }}
+          />
+        </div>
+        <p style={{ marginTop: 40 }} onClick={() => {
+          setDialogOpen(true);
+        }}>本人同意签署贵公司的<a>SAAS用户协议</a></p>
+        <div className={classes.button}>
+          <CommonButton
+            onClick={submit}
+            label={"立即注册"}
+          />
+        </div>
       </form>
       <Modal
         width={"80%"}
@@ -541,9 +552,14 @@ export default function TextFields() {
           <Button
             style={{ border: "1px solid #D3323E", width: 138, height: 38, borderRadius: 20, color: "#D3323E" }}
             onClick={() => {
-              setOpen(false);
+              if (modal.buttonName == "返回登录") {
+                setOpen(false);
+                Router.push("/login");
+              } else {
+                setOpen(false);
+              }
             }} color="primary">
-            确定
+            {modal.buttonName}
           </Button>
         </DialogActions>
       </Dialog>
