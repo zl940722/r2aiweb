@@ -88,7 +88,7 @@ function HomeAbout(res: any) {
           onBack={() => {
             Router.back();
           }}
-          title={`返回列表`}
+          title={`返回职位列表`}
           subTitle=""
         />
       </div>
