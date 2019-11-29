@@ -37,8 +37,9 @@ const useStyles = makeStyles((theme: any) =>
 const SimpleSelect = (res: any) => {
   const classes = useStyles();
   const {
-    label, labelCss, data, className
+    label, labelCss, data, className,disabled=false
   } = res;
+  console.log(122,res)
   const textFiledProps = _.omit(res, ["label", "labelCss", "inputCss", "data", "className"]);
   return (
     <div className={classes.main}>
@@ -53,6 +54,7 @@ const SimpleSelect = (res: any) => {
         margin="normal"
         variant="outlined"
         fullWidth={true}
+        disabled={disabled}
         className={clsx(classes.selectTextField, className)}
         {...textFiledProps}
         select
