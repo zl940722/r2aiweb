@@ -286,11 +286,11 @@ function HomeAbout() {
         >
           <Card className={classes.card}>
             <CardContent>
-              <Typography gutterBottom variant="h6" component="h6">
+              <Typography gutterBottom variant="h6" component="h6" style={{fontSize: 18}}>
                 {title[index - 1]}
               </Typography>
               {content[index - 1] && content[index - 1].map(c => {
-                return <Typography variant="body2" color="textSecondary" component='li'>
+                return <Typography variant="body2" color="textSecondary" component='li' style={{fontSize: 14}}>
                   {c}
                 </Typography>;
               })}
