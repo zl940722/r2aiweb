@@ -86,15 +86,6 @@ const Invoice = {
 };
 
 export default function Invoices(res) {
-  if(res.user) return null
-  useEffect(() => {
-    console.log(res)
-    // const {data} = res
-    // if(data.status !== 200) {
-    //   Router.replace("/")
-    // }
-  }, [])
-
   const classes = useStyles();
   const [values, setValues] = React.useState<any>({
     language: "zh-CN",
@@ -145,12 +136,53 @@ export default function Invoices(res) {
     content: "",
     type: ""
   });
+
+  const [error, setError] = useState({
+    error: false,
+    redirect: false,
+    message: ''
+  })
+  const [orderIds, setOrderIds] = useState(null)
+
+  useEffect(() => {
+    const { user } = res
+    if (!user) {
+      setError({
+        error: true,
+        redirect: true,
+        message: '请先登录'
+      })
+    }
+    axios.get(`/user/invoices`).then(res => {
+      const { data } = res
+      if (data.status === 200) setOrderIds(data.orderIds)
+      else setError({
+        error: true,
+        redirect: false,
+        message: '没有可开的发票'
+      })
+    })
+    // const {data} = res
+    // if(data.status !== 200) {
+    //   Router.replace("/")
+    // }
+  }, [])
+
+  useEffect(() => {
+    setDialogOpen({
+      open: true,
+      content: error.message,
+      type: "warning"
+    });
+  }, [error])
+
+
   const required = ['type', 'invoice']
   const otherRquired = values.invoice === 'Personal' ? ["name", "phone"] : ["personNo", "name", "address", "phone"]
   required.splice(required.length, 0, ...otherRquired)
 
   const submit = () => {
-    const inputData = Object.assign({}, values, values.invoice === 'Personal' ? personal : offical)
+    const inputData = Object.assign({ orderIds }, values, values.invoice === 'Personal' ? personal : offical)
     const requiredValues = _.chain(inputData).pick(required).values().compact().value();
     if (requiredValues.length < required.length || checkErrorList.length > 0) {
       setDialogOpen({
@@ -339,11 +371,14 @@ export default function Invoices(res) {
         </Grid>
       </form>
       <SimpleDialog
-        dialogInfo={dialogInfo} setOpen={() => setDialogOpen({
-          open: false,
-          content: "",
-          type: ""
-        })} />
+        dialogInfo={dialogInfo} setOpen={() => {
+          setDialogOpen({
+            open: false,
+            content: "",
+            type: ""
+          })
+          if (error.error) Router.push(`${error.redirect ? '/login?redirect=/invoices' : '/'}`)
+        }} />
     </div>
 }
 
