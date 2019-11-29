@@ -37,7 +37,7 @@ const useStyles = makeStyles({
     lineHeight: 2
   },
   grid: {
-    margin: '.75rem',
+    // margin: '.75rem',
     flex: 1
   },
   grid_img: {
@@ -50,7 +50,7 @@ const useStyles = makeStyles({
     fontWeight: "bold"
   },
   context: {
-    margin: "5rem 0 3rem",
+    margin: "4rem 0 7rem",
     textAlign: "left"
   },
   context_title: {
@@ -78,11 +78,11 @@ function AppDetailPartTwo() {
           <Grid container className={classes.grids}>
             <Grid item xs={12} className={classes.grid}>
               <div>
-                <div className={classes.icon} style={{marginTop: 40}}>
+                <div className={classes.icon} style={{marginTop: 50}}>
                   <img style={{ width: 24 }} src={"/static/images/appDetail/mb.png"}/>
                   <span style={{ fontSize: 18, marginLeft: 10, fontSizeAdjust: 18 }}>项目目标</span>
                 </div>
-                <p style={{ marginLeft: 34, marginBottom: 40 ,marginTop:20 }}>根据银行提供的一年内个人记录构建信用卡客户的准入模型。
+                <p style={{ marginLeft: 34, marginBottom: 60 ,marginTop:30 }}>根据银行提供的一年内个人记录构建信用卡客户的准入模型。
                 </p>
               </div>
 
@@ -91,18 +91,18 @@ function AppDetailPartTwo() {
                   <img style={{ width: 24 }} src={"/static/images/appDetail/cg.png"}/>
                   <span style={{ fontSize: 18, marginLeft: 10, fontSizeAdjust: 18 }}>项目成果</span>
                 </div>
-                <p style={{ marginTop:20 }}>
+                <p style={{ marginTop:30 }}>
                   1.便于业务部门普及基于机器学习的建模方法，成为专家规则等传统方法的有效补充；
                 </p>
                 <p style={{ marginTop:-10 }}>
                   2.构建起来的准入模型质量高，各项模型指标（AUC、KS、Recall等）均达到指定要求，对好客户和坏客户的判定都比较准确。
                 </p>
-                <img style={{ marginBottom: 40 }} src={"/static/images/appDetail/bank2cg.png"}/>
+                <img style={{ marginBottom: 60 }} src={"/static/images/appDetail/bank2cg.png"}/>
               </div>
 
 
               <div>
-                <div className={classes.icon}>
+                <div className={classes.icon} style={{marginBottom: 30}}>
                   <img style={{ width: 24 }} src={"/static/images/appDetail/gc.png"}/>
                   <span style={{ fontSize: 18, marginLeft: 10, fontSizeAdjust: 18 }}>
                             项目过程

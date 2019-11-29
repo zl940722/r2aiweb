@@ -28,7 +28,8 @@ const useStyles = makeStyles({
     width: "12rem",
     color: "#061222",
     fontWeight: "bold",
-    textAlign: "left"
+    textAlign: "left",
+    fontSize: 24
   },
   listItemText: {
     fontSize: "1rem",
@@ -43,7 +44,7 @@ const useStyles = makeStyles({
   },
   grid_name: {
     margin: "1.8rem 0",
-    fontSize: "1.1rem",
+    fontSize: "18px",
     fontWeight: "bold"
   }
 });
@@ -70,9 +71,9 @@ function AppDetailPartTwo() {
             <ListItemText
               className={classes.listItemText}
               primary={
-                <>
+                <div style={{fontSize: 16}}>
                   大型保险公司需要建立智能健康大数据管理平台，需要有效利用保险数据，医疗数据，个人健康数据等大数据，为个人购买医疗保险进行风险画像，从而准确推荐险种和预测风险。
-                </>
+                </div>
               }
             />
           </ListItem>
@@ -89,7 +90,7 @@ function AppDetailPartTwo() {
             <ListItemText
               className={classes.listItemText}
               primary={
-                <ul style={{ listStyleType: 'disc', paddingInlineStart: '15px', lineHeight: 2.2 }}>
+                <ul style={{ listStyleType: 'disc', paddingInlineStart: 20, lineHeight: 2.2, fontSize: 16 }}>
                   <li>客户拥有大量数据，但缺乏数据科学专家来建立精准机器学习模型；</li>
                   <li>客户需要快速建立个性化的精准医疗险风险预测模型；</li>
                   <li>机器学习模型须具有友好API，可以轻松镶嵌入客户现有商务流程。</li>
@@ -110,7 +111,7 @@ function AppDetailPartTwo() {
             <ListItemText
               className={classes.listItemText}
               primary={
-                <ul style={{ listStyleType: 'disc', paddingInlineStart: '15px', lineHeight: 2.2 }}>
+                <ul style={{ listStyleType: 'disc', paddingInlineStart: 20, lineHeight: 2.2, fontSize: 16 }}>
                   <li>降低人工智能方案开发门槛，使非数据科学家也可以使用R2.ai软件自动建立精准机器学习模型；</li>
                   <li>建模质量高、速度快，预测结果准确，并节省企业计算资源；</li>
                   <li>模型平稳过渡客户商务流程，模型输出结果可以自动进入用户终端应用程序。</li>

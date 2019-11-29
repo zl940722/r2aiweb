@@ -13,7 +13,7 @@
     cursor: pointer;
     position: absolute;
     top: 0;
-    padding: 20px;
+    padding: 30px 25px;
     left: 0;
     width: 100%;
     height: 100%;
@@ -25,10 +25,10 @@
 }
 
 .item_div p {
-    padding: 8px;
+    padding: 0 10px;
 }
 
 .item_div:hover {
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
     opacity: 1;
 }

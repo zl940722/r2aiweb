@@ -46,7 +46,7 @@ const useStyles = makeStyles({
   },
   text: {
     fontSize: "14px",
-    padding: 10,
+    padding: 15,
     lineHeight: 2,
     letterSpacing: 1
   }

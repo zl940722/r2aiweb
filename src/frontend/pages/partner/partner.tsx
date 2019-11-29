@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     margin: "0 0 3rem"
   },
   item: {
-    maxWidth: "90%",
+    margin: 10,
     boxSizing: "border-box",
     display: "flex",
     justifyContent: "center",
@@ -62,7 +62,6 @@ function Partner() {
                 src="/static/images/partner/1.png"
                 width={"280px"}
                 alt="R2.ai"
-                style={{ padding: 20 }}
               />
             </div>
           </Grid>
@@ -72,7 +71,6 @@ function Partner() {
                 src="/static/images/partner/2.png"
                 width={"280px"}
                 alt="R2.ai"
-                style={{ padding: 20 }}
               />
             </div>
           </Grid>
@@ -82,7 +80,6 @@ function Partner() {
                 src="/static/images/partner/3.png"
                 width={"280px"}
                 alt="R2.ai"
-                style={{ padding: 20 }}
               />
             </div>
           </Grid>
@@ -92,7 +89,6 @@ function Partner() {
                 src="/static/images/partner/4.png"
                 width={"280px"}
                 alt="R2.ai"
-                style={{ padding: 20 }}
               />
             </div>
           </Grid>
@@ -108,7 +104,6 @@ function Partner() {
                 src="/static/images/partner/5.png"
                 width={"280px"}
                 alt="R2.ai"
-                style={{ padding: 20 }}
               />
             </div>
           </Grid>
@@ -118,7 +113,6 @@ function Partner() {
                 src="/static/images/partner/6.png"
                 width={"280px"}
                 alt="R2.ai"
-                style={{ padding: 20 }}
               />
             </div>
           </Grid>
@@ -128,7 +122,6 @@ function Partner() {
                 src="/static/images/partner/7.png"
                 width={"280px"}
                 alt="R2.ai"
-                style={{ padding: 20 }}
               />
             </div>
           </Grid>
@@ -138,7 +131,6 @@ function Partner() {
                 src="/static/images/partner/8.png"
                 width={"280px"}
                 alt="R2.ai"
-                style={{ padding: 20 }}
               />
             </div>
           </Grid>
@@ -155,7 +147,6 @@ function Partner() {
                 src="/static/images/partner/9.png"
                 width={"280px"}
                 alt="R2.ai"
-                style={{ padding: 20 }}
               />
             </div>
           </Grid>
@@ -165,7 +156,6 @@ function Partner() {
                 src="/static/images/partner/10.png"
                 width={"280px"}
                 alt="R2.ai"
-                style={{ padding: 20 }}
               />
             </div>
           </Grid>
@@ -176,7 +166,6 @@ function Partner() {
                 src="/static/images/partner/11.png"
                 width={"280px"}
                 alt="R2.ai"
-                style={{ padding: 20 }}
               />
             </div>
           </Grid>

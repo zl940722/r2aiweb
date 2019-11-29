@@ -16,7 +16,6 @@ const useStyles = makeStyles({
   },
   content_div: {
     background: "#F5F5F5",
-    lineHeight: 3,
     padding: 20
   },
   title: {
@@ -40,41 +39,32 @@ const useStyles = makeStyles({
     padding: 20
   },
   item: {
-    maxWidth: "90%",
     boxSizing: "border-box",
+    marginTop: 20,
     "& p": {
-      whiteSpace: "pre-line"
+      whiteSpace: "pre-line",
+      lineHeight: 2,
+      fontSize: 14
     }
   },
   itemBorderDiv: {
     display: "flex",
-    alignItems: "baseline"
+    alignItems: "center",
+    marginTop: 60,
   },
-  itemBorderP: { width: "80px", fontSize: 16 },
+  itemBorderP: { display: "flex", flex: 'none', fontSize: 20, margin: 0 },
   itemBorder: {
     width: "100%",
     display: "flex",
     border: "1px dashed #5C7EB1",
-    height: 1
+    height: 1,
+    margin: 0,
+    marginLeft: 12
   },
-  itemDes: {
-    lineHeight: 2,
-    marginBottom: "3rem",
-    textAlign: "center"
-  },
-  itemTitle: {
-    marginBottom: "3rem",
-    fontWeight: "bold"
-  },
-
   button: {
     display: "flex",
     justifyContent: "center",
-    marginTop: "2.5rem"
-  },
-  itemTitle2: {
-    marginTop: "3rem",
-    fontWeight: "bold"
+    margin: "90px 0 80px"
   }
 });
 
@@ -108,9 +98,9 @@ function HomeAbout(res: any) {
 
           <div>
             <p
-              style={{ color: "#666666" }}>发布时间：{res.data.created_at ? moment(res.data.created_at).format("YYYY-MM-DD") : ""}</p>
-            <h4 style={{ fontSize: "1.3rem" }}>{res.data.name_zh}</h4>
-            <p>工作地点：{res.data.place_zh}</p>
+              style={{ color: "#666666", fontSize: 14, marginBottom: 18 }}>发布时间：{res.data.created_at ? moment(res.data.created_at).format("YYYY-MM-DD") : ""}</p>
+            <h4 style={{ fontSize: 24, marginBottom: 0 }}>{res.data.name_zh}</h4>
+            <p style={{ fontSize: 16, marginBottom: 0 }}>工作地点：{res.data.place_zh}</p>
           </div>
           <div className={classes.itemBorderDiv}><h4 className={classes.itemBorderP}>职业描述</h4><p
             className={classes.itemBorder}>{}</p></div>
@@ -127,18 +117,18 @@ function HomeAbout(res: any) {
 
         </div>
 
+        <div className={classes.button}>
+          <a style={{
+            border: "1px solid #D3323E",
+            padding: "0 40px",
+            borderRadius: "36px",
+            color: "#D3323E",
+            height: "40px",
+            lineHeight: "40px"
+          }} href="mailto:lin.zhou@r2.ai">立即申请</a>
+        </div>
+      </div>
 
-      </div>
-      <div className={classes.button}>
-        <a style={{
-          border: "1px solid #D3323E",
-          padding: "0 40px",
-          borderRadius: "36px",
-          color: "#D3323E",
-          height: "40px",
-          lineHeight: "40px"
-        }} href="mailto:lin.zhou@r2.ai">立即申请</a>
-      </div>
     </div>
   );
 }

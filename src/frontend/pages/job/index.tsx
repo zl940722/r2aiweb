@@ -73,7 +73,7 @@ function HomeAbout(res: any) {
             <p className={classes.itemDes}>对精英一族，我们有丰富的职业发展机会！如果您想引领潮流，坐拥人工智能革命的最前沿，请加入我们！</p>
             <Grid container className={classes.items} direction={"row"}>
               {res.data.map((value: any, index: any) => (
-                <Grid key={index} item sm={6} xs={12} onClick={detail(value.id)}>
+                <Grid key={index} item xs={6} onClick={detail(value.id)}>
                   <div className={classes.item}>
                     <h4 className={classes.itemh4}>{value.name_en}</h4>
                     <p className={classes.itemp}>{value.place_en}</p>
@@ -87,7 +87,7 @@ function HomeAbout(res: any) {
               <p className={classes.itemDes}>对精英一族，我们有丰富的职业发展机会！如果您想引领潮流，坐拥人工智能革命的最前沿，请加入我们！</p>
               <Grid container className={classes.items} direction={"row"}>
                 {res.data.map((value: any, index: any) => (
-                  <Grid key={index} item sm={6} xs={12} onClick={detail(value.id)}>
+                  <Grid key={index} item xs={6} onClick={detail(value.id)}>
                     <div className={classes.item}>
                       <h4 className={classes.itemh4}>{value.name_zh}</h4>
                       <p className={classes.itemp}>{value.place_zh}</p>

@@ -91,7 +91,8 @@ const useStyles = makeStyles({
     lineHeight: 2,
     // marginBottom: "3rem",
     textAlign: "left",
-    padding: "20px 0"
+    padding: "20px 0",
+    fontSize: 16
   },
   itemTitle: {
     marginBottom: "3rem",
@@ -106,13 +107,16 @@ const useStyles = makeStyles({
     display: "flex",
     flex: "auto",
     flexDirection: "column",
-    padding: "26px 20px 26px 50px",
+    padding: "26px 10px 26px 40px",
     position: "relative",
-    justifyContent: "space-evenly"
+    justifyContent: "space-evenly",
+  },
+  cardText: {
+    fontSize: 14
   },
   icon: {
     position: "absolute",
-    left: 20
+    left: 15
   }
 });
 
@@ -199,10 +203,10 @@ function HomeAbout() {
                       美国硅谷
                     </div>
                   </div>
-                  <div>
+                  <div className={classes.cardText}>
                     R2.ai, INC R2.ai – 硅谷 (Headquarters)
                   </div>
-                  <div>
+                  <div className={classes.cardText}>
                     2228 Camino Ramon San Ramon
                   </div>
                 </Card>
@@ -221,10 +225,10 @@ function HomeAbout() {
                       杭州
                     </div>
                   </div>
-                  <div>
+                  <div className={classes.cardText}>
                     杭州睿拓智能科技有限公司 R2.ai – 杭州
                   </div>
-                  <div>
+                  <div className={classes.cardText}>
                     杭州滨江区六和路368号海创基地 南楼2楼E2012
                   </div>
                 </Card>
@@ -243,10 +247,10 @@ function HomeAbout() {
                       上海
                     </div>
                   </div>
-                  <div>
+                  <div className={classes.cardText}>
                     上海机颖智能科技有限公司 R2.ai – 上海
                   </div>
-                  <div>
+                  <div className={classes.cardText}>
                     上海市杨浦区政立路497号国正中心 1号楼1508室
                   </div>
                 </Card>
