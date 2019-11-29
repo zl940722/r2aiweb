@@ -485,7 +485,7 @@ export default function TextFields() {
 
         <div className={classes.captcha}>
           <SimpleInput
-            label="请输入验证码"
+            label="输入验证码"
             required={true}
             value={values.captcha}
             allowedLength={32}
