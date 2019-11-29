@@ -173,26 +173,26 @@ app.prepare()
         productName,
       };
 
-      let content = '';
       axios.post(`${payBff}/${payMethod}/createCharge`, list).then(async (response: any) => {
         if (response.status === 200) {
           return res.json({
-            response
+            response:response.data
           })
         }
+        res.status(500).json({
+          error:'pay fail',
+        });
       }).catch((error: any) => {
         if (error.response) {
-          content = error.response.data;
           console.log(error.response.data);
           console.log(error.response.status);
           console.log(error.response.headers);
         }
-      });
-        res.status(500);
-        return res.json({
+        res.status(500).json({
           error:'pay fail',
-          content,
+          content:error.response.data,
         });
+      });
     });
 
 

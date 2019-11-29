@@ -218,7 +218,7 @@ export default function TextFields(props: any) {
           level,
         }
       }).then((result)=>{
-        let {response} = JSON.parse(result.request.responseText);
+        let {response} = result.data;
         setResData(response);
         setOpen(true);
         setModal({
@@ -227,7 +227,7 @@ export default function TextFields(props: any) {
           cancelText: "支付遇到问题？",
           okText: "支付完成"
         });
-        window.open(response.data.url, "", "width=1100,height=600");
+        window.open(response.url, "", "width=1100,height=600");
       }).catch((result)=>{
         let {error,content=''} = JSON.parse(result.request.responseText);
         switch (error) {
