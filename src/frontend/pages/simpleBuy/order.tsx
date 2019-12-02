@@ -88,23 +88,23 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
-const customTheme = {
-  button: {
-    border: {
-      radius: "1.6rem"
-    },
-    color: "#FFF"
-  },
-  global: {
-    hover: {
-      color: "#2C4159",
-      background: "#FFF"
-    },
-    colors: {
-      brand: "#FFF"
-    }
-  }
-};
+// const customTheme = {
+//   button: {
+//     border: {
+//       radius: "1.6rem"
+//     },
+//     color: "#FFF"
+//   },
+//   global: {
+//     hover: {
+//       color: "#2C4159",
+//       background: "#FFF"
+//     },
+//     colors: {
+//       brand: "#FFF"
+//     }
+//   }
+// };
 
 const pay = [
   {
@@ -126,10 +126,10 @@ const products = [
   }
 ];
 
-export default function TextFields(props: any) {
+export default function Orders(props: any) {
   const classes = useStyles();
   const {user={}} = props;
-  const level = user.level||props.router.asPath.split("=")[1];
+  const level = (user.level >1 ? +user.level:+props.router.asPath.split("=")[1])||2;
 
   const [mPrice, setmPrice] = useState(0);
   const [yPrice, setyPrice] = useState(0);
@@ -154,15 +154,14 @@ export default function TextFields(props: any) {
 
   const [payMethod, setpayMethod] = useState("alipay");
 
-  const [rent, setrent] = useState("");
+  const [rent, setrent] = useState('Monthly');
 
-
-  const [product, setProduct] = useState("");
+  const [product, setProduct] = useState(products[level - 2].code);
 
   const [productName, setProductName] = useState("");
 
   useEffect(() => {
-    setrent("Monthly");
+    // setrent("Monthly");
     if (level == 2) {
       setProduct("prod_E7zz1vwTiZxOgO");
       setProductName("Basic");
@@ -278,122 +277,122 @@ export default function TextFields(props: any) {
     }
   };
 
-  const pays = () => {
-    axios.get("/user/login").then((data: any) => {
-      setuserInfo(data.data);
-      const list: any = {
-        email: data.data.email,
-        orderType: rent,
-        price: values.price * 100,
-        renew: false,
-        totalPrice: values.price * 100,
-        productId: product,
-        language: "zh-CN",
-        duration: 1,
-        productName: productName
-      };
-      if (payMethod === "alipay") {
-        axios.post("/alipay/createCharge", list)
-          .then(async (response: any) => {
-            if (response.status === 200) {
-              await setResData(response);
-              await setOpen(true);
-              await setModal({
-                content: "支付完成前，请不要关闭此支付验证窗口。 支付完成后，请根据您支付的情况点击下面按钮。",
-                type: "alipay",
-                cancelText: "支付遇到问题？",
-                okText: "支付完成"
-              });
-              window.open(response.data.url, "", "width=1100,height=600");
-            } else {
-              setOpen(true);
-              setModal({
-                content: "支付错误",
-                type: "error",
-                cancelText: "",
-                okText: "确认"
-              });
-            }
-          })
-          .catch((error: any) => {
-            if (error.response) {
-              console.log(error.response.data);
-              console.log(error.response.status);
-              console.log(error.response.headers);
-            }
-            setOpen(true);
-            setModal({
-              content: error.response.data,
-              type: "error",
-              cancelText: "",
-              okText: "确认"
-            });
-          });
+  // const pays = () => {
+  //   axios.get("/user/login").then((data: any) => {
+  //     setuserInfo(data.data);
+  //     const list: any = {
+  //       email: data.data.email,
+  //       orderType: rent,
+  //       price: values.price * 100,
+  //       renew: false,
+  //       totalPrice: values.price * 100,
+  //       productId: product,
+  //       language: "zh-CN",
+  //       duration: 1,
+  //       productName: productName
+  //     };
+  //     if (payMethod === "alipay") {
+  //       axios.post("/alipay/createCharge", list)
+  //         .then(async (response: any) => {
+  //           if (response.status === 200) {
+  //             await setResData(response);
+  //             await setOpen(true);
+  //             await setModal({
+  //               content: "支付完成前，请不要关闭此支付验证窗口。 支付完成后，请根据您支付的情况点击下面按钮。",
+  //               type: "alipay",
+  //               cancelText: "支付遇到问题？",
+  //               okText: "支付完成"
+  //             });
+  //             window.open(response.data.url, "", "width=1100,height=600");
+  //           } else {
+  //             setOpen(true);
+  //             setModal({
+  //               content: "支付错误",
+  {/*              type: "error",*/}
+  {/*              cancelText: "",*/}
+  {/*              okText: "确认"*/}
+  {/*            });*/}
+  {/*          }*/}
+  //         })
+  //         .catch((error: any) => {
+  //           if (error.response) {
+  //             console.log(error.response.data);
+  //             console.log(error.response.status);
+  //             console.log(error.response.headers);
+  //           }
+  //           setOpen(true);
+  //           setModal({
+  //             content: error.response.data,
+  //             type: "error",
+  //             cancelText: "",
+  //             okText: "确认"
+  //           });
+  //         });
+  //
+  //
+  //     } else if (payMethod === "unionPay") {
+  //       axios.post("/unionPay/createCharge", list)
+  //         .then((response: any) => {
+  {/*          setResData(response);*/}
+  //           setOpen(true);
+  //           setModal({
+  //             content: "支付完成前，请不要关闭此支付验证窗口。 支付完成后，请根据您支付的情况点击下面按钮。",
+  //             type: "unionPay",
+  //             cancelText: "支付遇到问题？",
+  //             okText: "支付完成"
+  {/*          });*/}
+  //           window.open(response.data.url, "", "width=1100,height=600");
+  //         })
+  //         .catch((error: any) => {
+  //           if (error.response) {
+  {/*            console.log(error.response.data);*/}
+  {/*            console.log(error.response.status);*/}
+  {/*            console.log(error.response.headers);*/}
+  //           }
+  //           setOpen(true);
+  //           setModal({
+  //             content: error.response.data,
+  //             type: "error",
+  //             cancelText: "",
+  //             okText: "确认"
+  //           });
+  {/*        });*/}
 
 
-      } else if (payMethod === "unionPay") {
-        axios.post("/unionPay/createCharge", list)
-          .then((response: any) => {
-            setResData(response);
-            setOpen(true);
-            setModal({
-              content: "支付完成前，请不要关闭此支付验证窗口。 支付完成后，请根据您支付的情况点击下面按钮。",
-              type: "unionPay",
-              cancelText: "支付遇到问题？",
-              okText: "支付完成"
-            });
-            window.open(response.data.url, "", "width=1100,height=600");
-          })
-          .catch((error: any) => {
-            if (error.response) {
-              console.log(error.response.data);
-              console.log(error.response.status);
-              console.log(error.response.headers);
-            }
-            setOpen(true);
-            setModal({
-              content: error.response.data,
-              type: "error",
-              cancelText: "",
-              okText: "确认"
-            });
-          });
-
-
-      } else if (payMethod === "wechat") {
-        axios.post("/wechat/createCharge", list)
-          .then((response: any) => {
-            setResData(response);
-            setOpen(true);
-            setModal({
-              content: "支付完成前，请不要关闭此支付验证窗口。 支付完成后，请根据您支付的情况点击下面按钮。",
-              type: "wechat",
-              cancelText: "支付遇到问题？",
-              okText: "支付完成"
-            });
-            window.open(response.data.url, "", "width=1100,height=600");
-            // seturl(response.data.url);
-          })
-          .catch((error: any) => {
-            if (error.response) {
-              console.log(error.response.data);
-              console.log(error.response.status);
-              console.log(error.response.headers);
-            }
-            setOpen(true);
-            setModal({
-              content: error.response.data,
-              type: "error",
-              cancelText: "",
-              okText: "确认"
-            });
-          });
-
-      }
-    }).catch((error: any) => {
-      console.log("error", error);
-    });
-  };
+  //     } else if (payMethod === "wechat") {
+  //       axios.post("/wechat/createCharge", list)
+  //         .then((response: any) => {
+  {/*          setResData(response);*/}
+  //           setOpen(true);
+  //           setModal({
+  {/*            content: "支付完成前，请不要关闭此支付验证窗口。 支付完成后，请根据您支付的情况点击下面按钮。",*/}
+  //             type: "wechat",
+  //             cancelText: "支付遇到问题？",
+  //             okText: "支付完成"
+  //           });
+  //           window.open(response.data.url, "", "width=1100,height=600");
+  //           // seturl(response.data.url);
+  //         })
+  //         .catch((error: any) => {
+  //           if (error.response) {
+  //             console.log(error.response.data);
+  //             console.log(error.response.status);
+  //             console.log(error.response.headers);
+  //           }
+  //           setOpen(true);
+  //           setModal({
+  //             content: error.response.data,
+  //             type: "error",
+  //             cancelText: "",
+  //             okText: "确认"
+  //           });
+  //         });
+  //
+  //     }
+  //   }).catch((error: any) => {
+  //     console.log("error", error);
+  //   });
+  // };
   const [dialogInfo, setDialogOpen] = useState(false);
 
   return (
@@ -421,7 +420,6 @@ export default function TextFields(props: any) {
         <form className={classes.container} noValidate autoComplete="off">
 
           <Grid container className={classes.grids}>
-
             <Grid item md={6} className={classes.grid}>
               <SimpleSelect
                 label="购买产品"
@@ -460,7 +458,6 @@ export default function TextFields(props: any) {
 
                     }
                   });
-
                 }}
                 data={products}
                 margin="normal"
