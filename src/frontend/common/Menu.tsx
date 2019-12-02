@@ -44,6 +44,7 @@ const useStyles = makeStyles({
     textOverflow: 'ellipsis',
     maxWidth: '100%',
     paddingRight: 5,
+    fontSize: 16
   },
   index: {
     position: "absolute",
@@ -82,15 +83,18 @@ const useStyles = makeStyles({
   login: {
     color: "inherit",
     marginRight: 20,
-    textDecoration: "none"
+    textDecoration: "none",
+    fontSize: 16
   },
   res: {
     color: "inherit",
-    textDecoration: "none"
+    textDecoration: "none",
+    fontSize: 16
   },
   product: {
     background: 'transparent',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    fontSize: 16
   }
 });
 
