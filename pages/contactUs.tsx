@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
     container: {
       width: "61.12%",
       background: "#F5F5F5",
-      margin: "0 auto"
+      margin: "0 auto 80px"
     },
     dense: {
       marginTop: 19
