@@ -83,17 +83,26 @@ const useStyles = makeStyles((theme: Theme) =>
         paddingLeft: "1rem"
       }
     },
-    labelCss: {
-      width: "6.6rem",
-      textAlign: "right",
-      marginRight: "0.75rem"
-    },
+    // labelCss: {
+    //   width: "6.6rem",
+    //   textAlign: "right",
+    //   marginRight: "0.75rem"
+    // },
     selectTextField: {
       minHeight: "4.25rem",
       backgroundColor: "#FFFFFF"
     },
     captcha: {
       position: "relative"
+    },
+    reqired: { color: "red", width: "0.5rem", textAlign: "center" },
+    labelCss: {
+      width: "6.6rem",
+      textAlign: "right",
+      marginRight: "0.75rem",
+      display: 'flex',
+      flex: 'none',
+      justifyContent: 'flex-end',
     }
   })
 );
@@ -198,7 +207,7 @@ export default function TextFields() {
   const submit = () => {
 
     const requiredValues = _.chain(values).pick(required).values().compact().value();
-    console.log(requiredValues, checkErrorList, 999999999999);
+    console.log(values, 999999999999);
     if ((/^\w{6,18}$/).test(values.password) == false
       || (/^(?:\+?86)?1(?:3\d{3}|5[^4\D]\d{2}|8\d{3}|7(?:[35678]\d{2}|4(?:0\d|1[0-2]|9\d))|9[189]\d{2}|66\d{2})\d{6}$/).test(values.phone) == false
       || (/^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/).test(values.email) == false) {
@@ -208,10 +217,10 @@ export default function TextFields() {
         type: "error",
         buttonName: "确定"
       });
-    } else if (values.address === "" || values.area === "" || values.city === ""
-      || values.companyName === "" || values.country === "" || values.department === "" || values.email === ""
-      || values.industry === "" || values.phone === "" || values.province === ""
-      || values.password === "" || values.username === "") {
+    } else if (!!values.address || !!values.area || !!values.city
+      || !!values.companyName || !!values.country || !!values.department || !!values.email
+      || !!values.industry || !!values.phone || !!values.province
+      || !!values.password || !!values.username) {
       setOpen(true);
       setModal({
         content: "以上选项为必填，请正确填写。",
@@ -326,7 +335,7 @@ export default function TextFields() {
         />
 
         <SimpleInput
-          label="密码"
+          label="用户密码"
           type="password"
           required={true}
           regex={/^\w{6,1000}$/}
@@ -350,7 +359,7 @@ export default function TextFields() {
         />
 
         <SimpleSelect
-          label="国家"
+          label="国家地区"
           xs={12}
           className={classes.dense}
           value={values.country}
@@ -369,87 +378,94 @@ export default function TextFields() {
           data={country}
           margin="normal"
         />
-        <Grid container>
-          <Grid item xs={4}>
-            <SimpleSelect
-              label="省"
-              xs={12}
-              className={classes.dense}
-              value={values.province}
-              onChange={(event: any) => {
-                let bb: any = [];
-                _.forEach(citise, function (o) {
-                  if (event.target.value === _.toInteger(o.parentCode)) {
-                    bb.push(o);
-                    setshow({ province: true, city: true });
-                    setcityList(bb);
-                    setValues({
-                      email: values.email,
-                      username: values.username,
-                      password: values.password,
-                      country: values.country,
-                      companyName: values.companyName,
-                      productName: values.productName,
-                      province: event.target.value
-                    });
-                  }
+        <Grid container style={{ alignItems: 'baseline' }}>
+          <div className={classes.labelCss}>
+            <span>公司地址</span>
+            <span className={classes.reqired}>{"*"}</span>
+          </div>
+          <Grid container style={{ display: 'flex', flex: 'auto', width: 0 }}>
+            <Grid item xs={4} style={{ paddingRight: 20 }}>
+              <SimpleSelect
+                placeholder="省"
+                xs={12}
+                className={classes.dense}
+                value={values.province}
+                onChange={(event: any) => {
+                  let bb: any = [];
+                  _.forEach(citise, function (o) {
+                    if (event.target.value === _.toInteger(o.parentCode)) {
+                      bb.push(o);
+                      setshow({ province: true, city: true });
+                      setcityList(bb);
+                      setValues({
+                        email: values.email,
+                        username: values.username,
+                        password: values.password,
+                        country: values.country,
+                        companyName: values.companyName,
+                        productName: values.productName,
+                        province: event.target.value
+                      });
+                    }
 
-                });
+                  });
 
-              }}
-              disabled={!show.province}
-              data={provinces}
-              margin="normal"
-            />
-          </Grid>
-          <Grid item xs={4}>
-            <SimpleSelect
-              label="市"
-              xs={12}
-              className={classes.dense}
-              value={values.city}
-              onChange={(event: any) => {
-                setValues({
-                  email: values.email,
-                  username: values.username,
-                  password: values.password,
-                  companyName: values.companyName,
-                  productName: values.productName,
-                  country: values.country,
-                  province: values.province,
-                  city: event.target.value
-                });
-                let bb: any = [];
-                _.forEach(areas, function (o) {
-                  if (event.target.value === _.toInteger(o.parentCode)) {
-                    bb.push(o);
-                    setshow({ province: true, city: true, area: true });
-                    setareaList(bb);
-                  }
+                }}
+                disabled={!show.province}
+                data={provinces}
+                margin="normal"
+              />
+            </Grid>
+            <Grid item xs={4} style={{ padding: '0 10px' }}>
+              <SimpleSelect
+                placeholder="市"
+                xs={12}
+                className={classes.dense}
+                value={values.city}
+                onChange={(event: any) => {
+                  setValues({
+                    email: values.email,
+                    username: values.username,
+                    password: values.password,
+                    companyName: values.companyName,
+                    productName: values.productName,
+                    country: values.country,
+                    province: values.province,
+                    city: event.target.value
+                  });
+                  let bb: any = [];
+                  _.forEach(areas, function (o) {
+                    if (event.target.value === _.toInteger(o.parentCode)) {
+                      bb.push(o);
+                      setshow({ province: true, city: true, area: true });
+                      setareaList(bb);
+                    }
 
-                });
-              }}
-              data={cityList}
-              margin="normal"
-              disabled={!show.city}
-            />
-          </Grid>
-          <Grid item xs={4}>
-            <SimpleSelect
-              label="区"
-              xs={12}
-              className={classes.dense}
-              value={values.area}
-              onChange={handleChange("area")}
-              data={areaList}
-              margin="normal"
-              disabled={!show.area}
-            />
+                  });
+                }}
+                data={cityList}
+                margin="normal"
+                disabled={!show.city}
+              />
+            </Grid>
+            <Grid item xs={4} style={{ paddingLeft: 20 }}>
+              <SimpleSelect
+                placeholder="区"
+                xs={12}
+                className={classes.dense}
+                value={values.area}
+                onChange={handleChange("area")}
+                data={areaList}
+                margin="normal"
+                disabled={!show.area}
+              />
+            </Grid>
           </Grid>
         </Grid>
         <SimpleInput
           value={values.address}
-          label="公司地址"
+          label=" "//公司地址
+          placeholder="详细地址"
           required={true}
           allowedLength={32}
           helperText="公司地址不能为空"
