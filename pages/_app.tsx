@@ -23,6 +23,7 @@ export default function (props) {
   const [init, setInit] = useState(false);
   const { Component, pageProps, router } = props as any;
 
+  axios.defaults.withCredentials = true;
   useEffect(() => {
     axios
       .get("/user/login")
