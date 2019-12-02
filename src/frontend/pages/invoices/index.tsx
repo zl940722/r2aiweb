@@ -177,11 +177,12 @@ export default function Invoices(res) {
   }, [])
 
   useEffect(() => {
-    setDialogOpen({
-      open: true,
-      content: error.message,
-      type: "warning"
-    });
+    if (error.error)
+      setDialogOpen({
+        open: true,
+        content: error.message,
+        type: "warning"
+      });
   }, [error])
 
 

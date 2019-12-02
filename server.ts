@@ -198,7 +198,7 @@ app.prepare()
 
         const applyResult = await axios({
           method: 'post',
-          url: '/api/invoice/applyInvoice',
+          url: `${payBff}/invoice/applyInvoice`,
           data: {
             detail,
             orderIds,
