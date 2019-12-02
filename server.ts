@@ -140,86 +140,120 @@ app.prepare()
       }
     })
 
+    server.post("/user/test", (req, res) => {
+      console.log("/user/test")
+      let str = ''
+      req.on('data', s => {
+        str += s
+      })
+      req.on('end', () => {
+        console.log(str, 'str')
+        try {
+          console.log(str, JSON.parse(str), 'str')
+        } catch (e) {
+          console.log("ss")
+        }
+      })
+    })
+
     server.post("/user/invoices", requireLoginMiddleware, async (req, res) => {
-      const {
-        language = "zh-CN",
-        type,
-        invoice,
-        name,
-        bankNo,
-        address,
-        phone,
-        personNo,
-        orderIds
-      } = req.body
-
-      const user = await getUser(req.headers.cookie)
-
-      if (!user) return res.send({
-        status: 301,
-        message: language === 'zh-CN' ? "请先登录" : 'please login first'
+      let str = ''
+      req.on('data', s => {
+        str += s
       })
+      req.on('end', async () => {
+        let bodyData
+        try {
+          bodyData = JSON.parse(str)
+        } catch (e) {
+          console.log(e.message, 'parseError')
+          return res.send({
+            status: 501,
+            message: 'error params'
+          })
+        }
 
-      const required = invoice === 'Personal' ? ["type", "invoice", "name", "phone"] : ["type", "invoice", "personNo", "name", "address", "phone"]
-      for (let v of required) {
-        if (!!req.body[v]) return res.send({
-          status: 101,
-          message: language === 'zh-CN' ? "以上选项包含必填项，请正确填写。" : 'error'
+        console.log(bodyData, 'bodyData')
+
+        const {
+          language = "zh-CN",
+          type,
+          invoice,
+          name,
+          bankNo,
+          address,
+          phone,
+          personNo,
+          orderIds
+        } = bodyData
+
+        const user = await getUser(req.headers.cookie)
+
+        if (!user) return res.send({
+          status: 301,
+          message: language === 'zh-CN' ? "请先登录" : 'please login first'
         })
-      }
 
-      if (!orderIds || !orderIds.length) return res.send({
-        status: 102,
-        message: language === 'zh-CN' ? "发票开具失败" : 'error'
+        const required = invoice === 'Personal' ? ["type", "invoice", "name", "phone"] : ["type", "invoice", "personNo", "name", "address", "phone"]
+        for (let v of required) {
+          if (!bodyData[v]) return res.send({
+            status: 101,
+            message: language === 'zh-CN' ? "以上选项包含必填项，请正确填写。" : 'error'
+          })
+        }
+
+        if (!orderIds || !orderIds.length) return res.send({
+          status: 102,
+          message: language === 'zh-CN' ? "发票开具失败" : 'error'
+        })
+
+        try {
+          const invoiceRes = await axios({
+            method: 'get',
+            params: { userId: user.id },
+            url: `${payBff}/invoice/getOrderNeedInvoices`
+          })
+          if (!invoiceRes.data || !invoiceRes.data.length) return res.send({
+            status: 104,
+            message: language === 'zh-CN' ? "没有要开的发票" : 'error'
+          })
+          const orders = invoiceRes.data
+          const _orderIds = orders.map(o => o.id)
+          if (orderIds.some(orderId => !_orderIds.includes(orderId))) return res.send({
+            status: 105,
+            message: language === 'zh-CN' ? "已有开过发票" : 'error'
+          })
+
+          const detail = orders.filter(o => orderIds.includes(o.id)).map(order => {
+            return {
+              goodsname: 'r2.ai - ' + order.productName,
+              price: Number(order.totalPrice) / 100
+            }
+          });
+          const applyResult = await axios({
+            method: 'post',
+            url: `${payBff}/invoice/applyInvoice`,
+            data: {
+              detail,
+              orderIds,
+              invoiceType: type,
+              "basic": { id: user.id, buyername: name, phone, taxnum: personNo, address, account: bankNo }
+            }
+          })
+
+          return res.send({
+            status: 200,
+            message: 'ok',
+            fpqqlsh: applyResult.data
+          })
+
+        } catch (e) {
+          return res.send({
+            status: 103,
+            message: e.response.data
+          })
+        }
       })
-
-      try {
-        const invoiceRes = await axios({
-          method: 'get',
-          params: { userId: user.id },
-          url: `${payBff}/invoice/getOrderNeedInvoices`
-        })
-        if (!invoiceRes.data || !invoiceRes.data.length) return res.send({
-          status: 104,
-          message: language === 'zh-CN' ? "没有要开的发票" : 'error'
-        })
-        const orders = invoiceRes.data
-        if (orderIds.some(orderId => !orders.includes(orderId))) return res.send({
-          status: 105,
-          message: language === 'zh-CN' ? "已有开过发票" : 'error'
-        })
-
-        const detail = orders.filter(o => orderIds.includes(o)).map(order => {
-          return {
-            goodsname: 'r2.ai - ' + order.productName,
-            price: Number(order.totalPrice) / 100
-          }
-        });
-
-        const applyResult = await axios({
-          method: 'post',
-          url: `${payBff}/invoice/applyInvoice`,
-          data: {
-            detail,
-            orderIds,
-            invoiceType: type,
-            "basic": { id: user.id, buyername: name, phone, taxnum: personNo, address, account: bankNo }
-          }
-        })
-
-        return res.send({
-          status: 200,
-          message: 'ok',
-          fpqqlsh: applyResult.data
-        })
-
-      } catch (e) {
-        return res.send({
-          status: 103,
-          message: e.response.data
-        })
-      }
-
     });
 
     server.get("/price", (req, res) => {

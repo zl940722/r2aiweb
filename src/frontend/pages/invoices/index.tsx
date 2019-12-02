@@ -201,7 +201,7 @@ export default function Invoices(res) {
       });
     } else {
       axios.post("/user/invoices", inputData).then((res: any) => {
-        const { status, message, fpqqlsh } = res
+        const { status, message, fpqqlsh } = res.data
         if (status === 200) {
           setFinish(true)
           setFpqqlsh(fpqqlsh)
@@ -309,7 +309,7 @@ export default function Invoices(res) {
                   required={_.includes(required, "phone")}
                   allowedLength={32}
                   regex={/^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\d{8}$/}
-                  helperText="收票人手机不能为空"
+                  helperText="请输入正确的收票人手机"
                   className={classes.dense}
                   onChange={handleChangePersonal("phone")}
                   margin="dense"
