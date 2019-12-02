@@ -251,43 +251,43 @@ export default function TextFields() {
                   });
                 }
               }).catch((error: any) => {
-              if (error.response) {
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
-              }
-              setOpen(true);
-              const message = error.response.data;
-              let errMes;
-              let button;
-              if (message == "You are an official user") {
-                errMes = "你已经是正式用户,请登录。";
-                button = "返回登录";
-              } else if (message == "need active") {
-                errMes = "你已注册，请去邮箱激活。";
-                button = "返回登录";
-              } else {
-                errMes = error.response.data;
-                button = "确定";
-              }
-              setModal({
-                content: errMes,
-                type: "error",
-                buttonName: button
+                if (error.response) {
+                  console.log(error.response.data);
+                  console.log(error.response.status);
+                  console.log(error.response.headers);
+                }
+                setOpen(true);
+                const message = error.response.data;
+                let errMes;
+                let button;
+                if (message == "You are an official user") {
+                  errMes = "你已经是正式用户,请登录。";
+                  button = "返回登录";
+                } else if (message == "need active") {
+                  errMes = "你已注册，请去邮箱激活。";
+                  button = "返回登录";
+                } else {
+                  errMes = error.response.data;
+                  button = "确定";
+                }
+                setModal({
+                  content: errMes,
+                  type: "error",
+                  buttonName: button
+                });
+                setCaptchas(new Date().getTime());
               });
-              setCaptchas(new Date().getTime());
-            });
           }
         }).catch((err: any) => {
-        setOpen(true);
-        console.log(err.response.data);
-        setModal({
-          content: "验证码错误",
-          type: "error",
-          buttonName: "确定"
+          setOpen(true);
+          console.log(err.response.data);
+          setModal({
+            content: "验证码错误",
+            type: "error",
+            buttonName: "确定"
+          });
+          setCaptchas(new Date().getTime());
         });
-        setCaptchas(new Date().getTime());
-      });
     }
 
 
@@ -369,76 +369,84 @@ export default function TextFields() {
           data={country}
           margin="normal"
         />
-        <SimpleSelect
-          label="省"
-          xs={12}
-          className={classes.dense}
-          value={values.province}
-          onChange={(event: any) => {
-            let bb: any = [];
-            _.forEach(citise, function(o) {
-              if (event.target.value === _.toInteger(o.parentCode)) {
-                bb.push(o);
-                setshow({ province: true, city: true });
-                setcityList(bb);
+        <Grid container>
+          <Grid item xs={4}>
+            <SimpleSelect
+              label="省"
+              xs={12}
+              className={classes.dense}
+              value={values.province}
+              onChange={(event: any) => {
+                let bb: any = [];
+                _.forEach(citise, function (o) {
+                  if (event.target.value === _.toInteger(o.parentCode)) {
+                    bb.push(o);
+                    setshow({ province: true, city: true });
+                    setcityList(bb);
+                    setValues({
+                      email: values.email,
+                      username: values.username,
+                      password: values.password,
+                      country: values.country,
+                      companyName: values.companyName,
+                      productName: values.productName,
+                      province: event.target.value
+                    });
+                  }
+
+                });
+
+              }}
+              disabled={!show.province}
+              data={provinces}
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <SimpleSelect
+              label="市"
+              xs={12}
+              className={classes.dense}
+              value={values.city}
+              onChange={(event: any) => {
                 setValues({
                   email: values.email,
                   username: values.username,
                   password: values.password,
-                  country: values.country,
                   companyName: values.companyName,
                   productName: values.productName,
-                  province: event.target.value
+                  country: values.country,
+                  province: values.province,
+                  city: event.target.value
                 });
-              }
+                let bb: any = [];
+                _.forEach(areas, function (o) {
+                  if (event.target.value === _.toInteger(o.parentCode)) {
+                    bb.push(o);
+                    setshow({ province: true, city: true, area: true });
+                    setareaList(bb);
+                  }
 
-            });
-
-          }}
-          disabled={!show.province}
-          data={provinces}
-          margin="normal"
-        />
-        <SimpleSelect
-          label="市"
-          xs={12}
-          className={classes.dense}
-          value={values.city}
-          onChange={(event: any) => {
-            setValues({
-              email: values.email,
-              username: values.username,
-              password: values.password,
-              companyName: values.companyName,
-              productName: values.productName,
-              country: values.country,
-              province: values.province,
-              city: event.target.value
-            });
-            let bb: any = [];
-            _.forEach(areas, function(o) {
-              if (event.target.value === _.toInteger(o.parentCode)) {
-                bb.push(o);
-                setshow({ province: true, city: true, area: true });
-                setareaList(bb);
-              }
-
-            });
-          }}
-          data={cityList}
-          margin="normal"
-          disabled={!show.city}
-        />
-        <SimpleSelect
-          label="区"
-          xs={12}
-          className={classes.dense}
-          value={values.area}
-          onChange={handleChange("area")}
-          data={areaList}
-          margin="normal"
-          disabled={!show.area}
-        />
+                });
+              }}
+              data={cityList}
+              margin="normal"
+              disabled={!show.city}
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <SimpleSelect
+              label="区"
+              xs={12}
+              className={classes.dense}
+              value={values.area}
+              onChange={handleChange("area")}
+              data={areaList}
+              margin="normal"
+              disabled={!show.area}
+            />
+          </Grid>
+        </Grid>
         <SimpleInput
           value={values.address}
           label="公司地址"
@@ -495,11 +503,11 @@ export default function TextFields() {
           />
 
           <img src={`/user/captcha?${captcha}`}
-               style={{ marginTop: "11px", position: "absolute", right: 10, top: 16 }}
-               alt=""
-               onClick={() => {
-                 setCaptchas(new Date().getTime());
-               }}
+            style={{ marginTop: "11px", position: "absolute", right: 10, top: 16 }}
+            alt=""
+            onClick={() => {
+              setCaptchas(new Date().getTime());
+            }}
           />
         </div>
         <p style={{ marginTop: 40 }} onClick={() => {
@@ -526,7 +534,7 @@ export default function TextFields() {
         style={{ top: 0 }}
 
       >
-        <Agreement/>
+        <Agreement />
       </Modal>
 
       <Dialog

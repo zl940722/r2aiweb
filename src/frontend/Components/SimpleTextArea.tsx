@@ -14,7 +14,10 @@ const useStyles = makeStyles((theme: any) =>
     labelCss: {
       width: "6.6rem",
       textAlign: "right",
-      marginRight: "0.75rem"
+      marginRight: "0.75rem",
+      display: 'flex',
+      flex: 'none',
+      justifyContent: 'flex-end',
     },
     textAreaField: {
       minHeight: "4.25rem",

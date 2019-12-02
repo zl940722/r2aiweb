@@ -16,6 +16,9 @@ const useStyles = makeStyles((theme: any) =>
       textAlign: "right",
       marginRight: "0.75rem",
       whiteSpace: 'nowrap',
+      display: 'flex',
+      flex: 'none',
+      justifyContent: 'flex-end',
     },
     textField: {
       minHeight: "68px",
