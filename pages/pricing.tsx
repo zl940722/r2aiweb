@@ -9,7 +9,7 @@ const Index = (res: any) => {
   return <Pricing {...res}/>;
 };
 
-Index.getInitialProps = async function(props) {
+Index.getInitialProps = async function() {
   // let user,_user;
   // if (typeof window === 'object') {
   //   const url = "/user/login";
