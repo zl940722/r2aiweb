@@ -145,7 +145,7 @@ function HomeAbout() {
                   R2.ai是帮助创造AI的AI。该公司是新一代人工智能开发和运营平台的始创者，其尖端的AI技术可以助您自动构建精准的机器学习模型，让企业拥有自主开发AI应用的能力。
                 </Typography>
                 <Typography variant={"body1"} className={classes.itemDes}>
-                  R2.ai总部位于美国硅谷，在中国上海和杭州分别设有子公司，并正在迅速发展。
+                  作为扎根于长三角的本地化人工智能企业，R2.ai在上海、杭州分别设有公司，同时兼具硅谷基因，拥有全球最先进的高精尖AI技术，致力于推动人工智能在各行业的颠覆式创新和跨越式发展。
                 </Typography>
               </div>
             </Grid>
@@ -200,18 +200,19 @@ function HomeAbout() {
                       alt="R2.ai"
                     /></div>
                     <div style={{ fontSize: 18, fontWeight: "bold" }}>
-                      美国硅谷
+                      上海
                     </div>
                   </div>
                   <div className={classes.cardText}>
-                    R2.ai, INC R2.ai – 硅谷 (Headquarters)
+                    上海机颖智能科技有限公司 R2.ai – 上海
                   </div>
                   <div className={classes.cardText}>
-                    2228 Camino Ramon San Ramon
+                    上海市杨浦区政立路497号国正中心 1号楼1508室
                   </div>
                 </Card>
               </div>
             </Grid>
+
             <Grid item xs={4}>
               <div className={classes.item}>
                 <Card className={classes.card}>
@@ -234,6 +235,7 @@ function HomeAbout() {
                 </Card>
               </div>
             </Grid>
+
             <Grid item xs={4}>
               <div className={classes.item}>
                 <Card className={classes.card}>
@@ -244,18 +246,20 @@ function HomeAbout() {
                       alt="R2.ai"
                     /></div>
                     <div style={{ fontSize: 18, fontWeight: "bold" }}>
-                      上海
+                      美国硅谷
                     </div>
                   </div>
                   <div className={classes.cardText}>
-                    上海机颖智能科技有限公司 R2.ai – 上海
+                    R2.ai, INC R2.ai – 硅谷 (Headquarters)
                   </div>
                   <div className={classes.cardText}>
-                    上海市杨浦区政立路497号国正中心 1号楼1508室
+                    2228 Camino Ramon San Ramon
                   </div>
                 </Card>
               </div>
             </Grid>
+
+
           </Grid>
         </div>
       </div>
