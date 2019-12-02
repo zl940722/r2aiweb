@@ -145,14 +145,15 @@ export default function Invoices(res) {
   const [orderIds, setOrderIds] = useState(null)
 
   useEffect(() => {
-    const { user } = res
-    if (!user) {
-      setError({
-        error: true,
-        redirect: true,
-        message: '请先登录'
-      })
-    }
+    // const { user } = res
+    // if (!user) {
+    //   return
+    // setError({
+    //   error: true,
+    //   redirect: true,
+    //   message: '请先登录'
+    // })
+    // }
     axios.get(`/user/invoices`).then(res => {
       const { data } = res
       if (data.status === 200) setOrderIds(data.orderIds)
@@ -162,6 +163,13 @@ export default function Invoices(res) {
         message: '没有可开的发票'
       })
     })
+      .catch(() => {
+        setError({
+          error: true,
+          redirect: true,
+          message: '请先登录'
+        })
+      })
     // const {data} = res
     // if(data.status !== 200) {
     //   Router.replace("/")
