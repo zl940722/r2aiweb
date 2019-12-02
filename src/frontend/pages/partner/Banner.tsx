@@ -20,25 +20,29 @@ const useStyles = makeStyles((theme: any) =>
       maxHeight: "36.25rem",
       maxWidth: "100%",
       overflow: "hidden",
-      margin: "0 auto",
-      display: "flex",
-      flex: "none",
-      justifyContent: "center",
+      // margin: "0 auto",
+      // display: "flex",
+      // flex: "none",
+      // justifyContent: "center",
       position: "relative",
       "& >img": {
-        maxWidth: "100%",
-        maxHeight: "100%",
+        width: "100%",
+        maxHeight: "36.25rem",
         minWidth: "1000px"
       }
     },
     itemContent: {
-      maxWidth: "75rem",
-      margin: "0 auto",
-      paddingTop: "1rem",
       overflow: "hidden",
-      textAlign: "left",
-      position:'absolute',
-      bottom:50,
+      position: 'absolute',
+      bottom: 50,
+      left: 0,
+      right: 0,
+      top: 0,
+      display: 'flex',
+      flex: 'none',
+      flexDirection: 'column',
+      justifyContent: 'flex-end',
+      alignItems: 'center'
     },
     title: {
       marginTop: "5rem",
@@ -53,9 +57,6 @@ const useStyles = makeStyles((theme: any) =>
       fontSize: 30
     },
     buttonWrap: {
-      width: "100%",
-      marginTop: "55%",
-      paddingLeft: "0.5rem",
       color: "#fff"
     },
     button: {
@@ -129,7 +130,7 @@ function ProductBanner() {
         showIndicators={false}
       >
         <div className={classes.banner}>
-          <img src="/static/images/partner/banner@2x.png" alt="banner"/>
+          <img src="/static/images/partner/banner@2x.png" alt="banner" />
           {/*</div>*/}
           <div className={classes.itemContent}>
             <Grommet className={classes.buttonWrap} theme={customTheme}>
@@ -146,7 +147,7 @@ function ProductBanner() {
       <Modal className={classes.modal} open={open} onClose={onHandleClose}>
         <div className={classes.paper}>
           <video width={"100%"} controls autoPlay>
-            <source src="/static/images/home/20190830.mp4" type="video/mp4"/>
+            <source src="/static/images/home/20190830.mp4" type="video/mp4" />
           </video>
         </div>
       </Modal>
