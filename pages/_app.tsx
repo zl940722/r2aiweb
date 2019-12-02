@@ -65,17 +65,18 @@ export default function (props) {
     </Head>
     <ThemeProvider theme={theme}>
       <Spin spinning={!init}>
-        <CssBaseline />
-        <Header route={router.route} user={user} PRODUCT_URL={PRODUCT_URL} />
-        <section
-          style={{
-            // minHeight:'calc(100vh - 140px - 16.125rem)',
-            minHeight: "calc(100vh - 202px)"
-          }}
-        >
-          {init ? <Component PRODUCT_URL={PRODUCT_URL} user={user} {...pageProps} route={router.route} /> : null}
-        </section>
-        <Footer />
+      <CssBaseline />
+      <Header route={router.route} user={user} PRODUCT_URL={PRODUCT_URL} />
+      <section
+        style={{
+          // minHeight:'calc(100vh - 140px - 16.125rem)',
+          minHeight: "calc(100vh - 202px)"
+        }}
+      >
+        {init ? <Component PRODUCT_URL={PRODUCT_URL} router={router}
+                           user={user} {...pageProps} route={router.route}/> : null}
+      </section>
+      <Footer />
       </Spin>
     </ThemeProvider>
   </div>

@@ -69,7 +69,7 @@ const customTheme = {
     }
   }
 };
-export default function ContactUs() {
+export default function ContactUs(res: any) {
   const classes = useStyles();
   const [values, setValues] = React.useState<any>({
     language: "zh-CN",
@@ -95,6 +95,9 @@ export default function ContactUs() {
     content: "",
     type: ""
   });
+
+  const [redirect, setRedirect] = React.useState(false);
+
   const required = ["name", "mail", "phone", "company", "message"];
 
   const submit = () => {
@@ -112,32 +115,27 @@ export default function ContactUs() {
       }).then(() =>{
         setDialogOpen({
           open: true,
-          content: "联系成功",
+          content: "联系成功，感谢合作！",
           type: "tooltip"
         });
-        setValues({
-          language: "zh-CN",
-          type: "获取试用版",
-          name: "",
-          mail: "",
-          phone: "",
-          company: "",
-          message: ""
-        })
+        setRedirect(true);
       }).catch((err: any) => {
-          setDialogOpen({
-            open: true,
-            content: err.response.data,
-            type: "error"
-          });
+        setDialogOpen({
+          open: true,
+          content: err.response.data,
+          type: "error"
         });
+      });
     }
   };
+
+  redirect && !dialogInfo.open && setTimeout(() => res.router.push("/"), 600);
+
 
   const { type, name, mail, phone, company, message } = values;
   return (
     <div className={classes.bg}>
-      <div className={'all_title'} style={{margin:'63px auto'}}>联系我们</div>
+      <div className={"all_title"} style={{ margin: "63px auto" }}>联系我们</div>
       <form className={classes.container} noValidate>
         <Grid container className={classes.grids}>
           <Grid item lg={9} xs={10} className={classes.grid}>
@@ -215,11 +213,12 @@ export default function ContactUs() {
         </Grid>
       </form>
       <SimpleDialog
-        dialogInfo={dialogInfo} setOpen={() => setDialogOpen({
-        open: false,
-        content: "",
-        type: ""
-      })}/>
+        dialogInfo={dialogInfo}
+        setOpen={() => setDialogOpen({
+          open: false,
+          content: "",
+          type: ""
+        })}/>
     </div>
   );
 }
