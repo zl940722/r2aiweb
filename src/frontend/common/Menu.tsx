@@ -42,7 +42,7 @@ const useStyles = makeStyles({
     margin: 0,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
-    width: '100%',
+    maxWidth: '100%',
     paddingRight: 5,
   },
   index: {
@@ -256,7 +256,7 @@ const Header = (props) => {
       display: 'flex',
       flex: 'none',
       flexDirection: 'column',
-      width: 100,
+      // width: 100,
       justifyContent: 'center',
       marginLeft: 'auto'
     }}>
@@ -323,10 +323,10 @@ const Header = (props) => {
               <>
                 <div style={{
                   flex: 'auto',
-                  textAlign: 'right',
                   width: 0,
                   display: 'flex',
-                  position: 'relative'
+                  position: 'relative',
+                  justifyContent: 'flex-end'
                 }}>
                   <Dropdown className={classes.cursor} overlay={menu} getPopupContainer={(el: any) => el.parentElement} placement='bottomRight'>
                     <span className={classes.avatar}><Icon style={{
