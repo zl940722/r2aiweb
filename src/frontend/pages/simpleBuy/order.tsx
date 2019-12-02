@@ -394,7 +394,6 @@ export default function Orders(props: any) {
   //   });
   // };
   const [dialogInfo, setDialogOpen] = useState(false);
-
   return (
     <div className={classes.all}>
       <div className={classes.bg}>
@@ -418,13 +417,12 @@ export default function Orders(props: any) {
         </div>
         <h1 style={{ textAlign: "center", marginTop: 40, fontWeight: "bold", fontSize: 36 }}>产品购买</h1>
         <form className={classes.container} noValidate autoComplete="off">
-
           <Grid container className={classes.grids}>
             <Grid item md={6} className={classes.grid}>
               <SimpleSelect
                 label="购买产品"
                 xs={12}
-                disabled={props.user&&(+props.user.level||+props.user.type)>1}
+                disabled={user.canLogin&&+user.type>1}
                 className={classes.dense}
                 value={product}
                 onChange={(e) => {

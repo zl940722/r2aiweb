@@ -76,7 +76,7 @@ const SimpleSelect = (res: any) => {
         }}
       >
         {placeholder && <MenuItem key={placeholder} value={placeholder} style={{ display: 'none' }}>{placeholder}</MenuItem>}
-        {disabled ? null : _.map(data, (value, key) => (
+        {_.map(data, (value, key) => (
           <MenuItem key={key} value={value.code}>
             {value.name}
           </MenuItem>
