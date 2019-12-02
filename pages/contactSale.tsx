@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 const contactTypes = {
   "产品线下试用": "产品线下试用",
-  "获取报价": "获取报价",
+  "获取报价": "获取报价"
 };
 
 const customTheme = {
@@ -71,7 +71,7 @@ const customTheme = {
     }
   }
 };
-export default function ContactUs() {
+export default function ContactUs(res: any) {
   const classes = useStyles();
   const [values, setValues] = React.useState<any>({
     language: "zh-CN",
@@ -99,6 +99,8 @@ export default function ContactUs() {
   });
   const required = ["name", "mail", "phone", "company", "message"];
 
+  const [redirect, setRedirect] = React.useState(false);
+
   const submit = () => {
     const requiredValues = _.chain(values).pick(required).values().compact().value();
     if (requiredValues.length < required.length || checkErrorList.length > 0) {
@@ -114,18 +116,10 @@ export default function ContactUs() {
       }).then(() => {
         setDialogOpen({
           open: true,
-          content: "联系成功",
+          content: "联系销售成功，感谢反馈！",
           type: "tooltip"
         });
-        setValues({
-          language: "zh-CN",
-          type: "产品线下试用",
-          name: "",
-          mail: "",
-          phone: "",
-          company: "",
-          message: ""
-        })
+        setRedirect(true);
       }).catch((err: any) => {
         setDialogOpen({
           open: true,
@@ -135,7 +129,7 @@ export default function ContactUs() {
       });
     }
   };
-
+  redirect && !dialogInfo.open && setTimeout(() => res.router.push("/"), 600);
   const { type, name, mail, phone, company, message } = values;
   return (
     <div className={classes.bg}>

@@ -64,7 +64,8 @@ export default function (props) {
           minHeight: "calc(100vh - 202px)"
         }}
       >
-        {init ? <Component PRODUCT_URL={PRODUCT_URL} user={user} {...pageProps} route={router.route} /> : null}
+        {init ? <Component PRODUCT_URL={PRODUCT_URL} router={router}
+                           user={user} {...pageProps} route={router.route}/> : null}
       </section>
       <Footer />
       </Spin>
