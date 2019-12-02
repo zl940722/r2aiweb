@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useMemo } from "react";
 import { makeStyles } from "@material-ui/styles";
 import "./global.css";
 import Link from "next/link";
@@ -251,7 +251,7 @@ const Header = (props) => {
     location.href = "/";
   }
 
-  const menu = (
+  const menu = useMemo(()=>(
     <Menu style={{
       display: 'flex',
       flex: 'none',
@@ -274,7 +274,7 @@ const Header = (props) => {
         </a>
       </Menu.Item>
     </Menu >
-  );
+  ),[]);
 
   const handleClick = (e) => e.key && Router.push(e.key);
   return (
