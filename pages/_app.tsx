@@ -20,11 +20,11 @@ export default function (props) {
   });
 
   const [PRODUCT_URL, upPRODUCT_URL] = useState("");
-  const [init, setInit] = useState(false)
+  const [init, setInit] = useState(false);
+  const { Component, pageProps, router } = props as any;
 
   useEffect(() => {
-
-    const userPromise = axios
+    axios
       .get("/user/login")
       .then((result: any) => {
         const { data = {} } = result;
@@ -33,20 +33,22 @@ export default function (props) {
       .catch((err: any) => {
         console.log(err);
       })
-    const uproducPromise = axios
+  }, [router.route]);
+
+  useEffect(()=>{
+    axios
       .get("/product")
       .then((data: any) => {
         const PRODUCT_URL = data.data;
         PRODUCT_URL && upPRODUCT_URL(PRODUCT_URL);
+        setInit(true)
       })
       .catch((err: any) => {
         console.log(err);
-      })
-    const promiseArr = [userPromise, uproducPromise]
-    Promise.all(promiseArr).then(() => setInit(true))
-  }, []);
+      });
+  },[]);
 
-  const { Component, pageProps, router } = props as any;
+
   return <div style={{ minWidth: 1200 }}>
     <Head>
       <title>R2.ai官网</title>
