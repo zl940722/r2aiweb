@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme: any) =>
       marginRight: "0.75rem",
       paddingTop:'-20px',
       whiteSpace: 'nowrap',
+      display: 'flex',
+      flex: 'none',
+      justifyContent: 'flex-end',
     },
     selectTextField: {
       minHeight: "68px",
