@@ -75,7 +75,7 @@ export default function ContactUs() {
     language: "zh-CN",
     type: "获取试用版",
     name: "",
-    mail: "",
+    email: "",
     phone: "",
     company: "",
     message: ""
@@ -95,7 +95,7 @@ export default function ContactUs() {
     content: "",
     type: ""
   });
-  const required = ["name", "mail", "phone", "company", "message"];
+  const required = ["name", "email", "phone", "company", "message"];
 
   const submit = () => {
     const requiredValues = _.chain(values).pick(required).values().compact().value();
@@ -119,7 +119,7 @@ export default function ContactUs() {
           language: "zh-CN",
           type: "获取试用版",
           name: "",
-          mail: "",
+          email: "",
           phone: "",
           company: "",
           message: ""
@@ -134,7 +134,7 @@ export default function ContactUs() {
     }
   };
 
-  const { type, name, mail, phone, company, message } = values;
+  const { type, name, email, phone, company, message } = values;
   return (
     <div className={classes.bg}>
       <div className={'all_title'} style={{margin:'63px auto'}}>联系我们</div>
@@ -163,13 +163,13 @@ export default function ContactUs() {
             />
             <SimpleInput
               label="邮件"
-              value={mail}
-              required={_.includes(required, "mail")}
+              value={email}
+              required={_.includes(required, "email")}
               allowedLength={32}
               regex={/^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/}
               helperText="请输入正确的邮箱"
               className={classes.dense}
-              onChange={handleChange("mail")}
+              onChange={handleChange("email")}
               margin="dense"
             />
 
