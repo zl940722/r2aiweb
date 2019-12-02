@@ -89,7 +89,7 @@ export default function ContentBanner(res: any) {
   const toBuy = () => {
     if (user.active) {
       axios.get("/probation/applyProbation", { params: { userId: user.id } }).then((response: any) => {
-        if (response.data.status === 200) {
+        if (response.status === 200) {
           Router.push({
             pathname: "/toUse"
           });
