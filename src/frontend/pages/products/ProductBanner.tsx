@@ -18,8 +18,8 @@ const useStyles = makeStyles((theme: any) =>
       justifyContent: "center",
       position: "relative",
       "& >img": {
-        maxWidth: "100%",
-        maxHeight: "100%",
+        width: "100%",
+        maxHeight: "36.25rem",
         minWidth: "1000px"
       }
     },
@@ -101,15 +101,13 @@ function ProductBanner(res: any) {
         showStatus={false}
         showIndicators={false}
       >
-        <div>
-          <div className={classes.banner}>
-            <img src="/static/images/products/banner.png" alt="technical banner"/>
-            {/*</div>*/}
-            <div className={classes.itemContent}>
-              <div className={classes.buttonWrap} onClick={onHandleOpen}>
-                <img style={{ width: 36, marginRight: 20 }} src={"/static/images/products/player.png"}/>
-                <span style={{ fontSize: 36 }}>产品视频</span>
-              </div>
+        <div className={classes.banner}>
+          <img src="/static/images/products/banner.png" alt="technical banner" />
+          {/*</div>*/}
+          <div className={classes.itemContent}>
+            <div className={classes.buttonWrap} onClick={onHandleOpen}>
+              <img style={{ width: 36, marginRight: 20 }} src={"/static/images/products/player.png"} />
+              <span style={{ fontSize: 36 }}>产品视频</span>
             </div>
           </div>
         </div>
@@ -117,9 +115,9 @@ function ProductBanner(res: any) {
       <Modal className={classes.modal} open={open} onClose={onHandleClose}>
         <div className={classes.paper}>
           <video width={"100%"} controls autoPlay>
-            <source src="/static/images/home/20190830.ogv" type="video/ogg"/>
-            <source src="/static/images/home/20190830.mp4" type="video/mp4"/>
-            <source src="/static/images/home/20190830.webm" type="video/webm"/>
+            <source src="/static/images/home/20190830.ogv" type="video/ogg" />
+            <source src="/static/images/home/20190830.mp4" type="video/mp4" />
+            <source src="/static/images/home/20190830.webm" type="video/webm" />
           </video>
         </div>
       </Modal>

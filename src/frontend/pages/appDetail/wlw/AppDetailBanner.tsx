@@ -21,8 +21,8 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     position:'relative',
     "& >img": {
-      maxWidth: '100%',
-      maxHeight: '100%',
+      width: '100%',
+      maxHeight: '36.25rem',
       minWidth: '1000px'
     }
   },

@@ -29,7 +29,8 @@ export default function(props: Interface) {
         <div
           className={classes.item}
           style={{
-            backgroundImage: `url(/static/images/${props.link}/banner.png)`
+            backgroundImage: `url(/static/images/${props.link}/banner.png)`,
+            backgroundSize: '100% 100%'
           }}
         />
       </Carousel>
