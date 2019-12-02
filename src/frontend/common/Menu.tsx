@@ -10,7 +10,7 @@ import axios from "axios";
 
 const { SubMenu } = Menu;
 
-const menuStyle: any = { width: 99, textAlign: 'center' };
+const menuStyle: any = { width: 99, textAlign: 'center', fontSize: 16 };
 
 const useStyles = makeStyles({
   root: {
@@ -80,12 +80,12 @@ const useStyles = makeStyles({
     position: 'relative'
   },
   login: {
-    color: "#000",
+    color: "inherit",
     marginRight: 20,
     textDecoration: "none"
   },
   res: {
-    color: "#000",
+    color: "inherit",
     textDecoration: "none"
   },
   product: {

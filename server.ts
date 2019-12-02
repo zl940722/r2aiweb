@@ -106,24 +106,27 @@ app.prepare()
       payServiceProxy("/user/invoice/queryInvoiceStatus", "/invoice/queryInvoiceStatus")
     });
 
-    server.get('/user/login',async (req,res)=>{
-      const user = await getUser(req.headers.cookie)||{};
+    server.get('/user/login', async (req, res) => {
+      const user = await getUser(req.headers.cookie) || {};
       return res.json({
         ...user,
-        canLogin:new Date(user.endTime)>new Date()
+        canLogin: new Date(user.endTime) > new Date()
       })
     });
 
     server.get("/user/invoices", requireLoginMiddleware, async (req, res) => {
       const user = await getUser(req.headers.cookie)
+      console.log(user, '/user/invoices')
       try {
         const result = await axios({
           method: 'get',
-          params: { id: user.id },
+          params: { userId: user.id },
           url: `${payBff}/invoice/getOrderNeedInvoices`
         })
         const data = result.data;
+        console.log(data, '/user/invoices  data')
         const orderIds = data.map(order => order.id);
+        console.log(orderIds, '/user/invoices  orderIds')
         res.json({
           status: 200,
           message: 'ok',
@@ -173,8 +176,8 @@ app.prepare()
       try {
         const invoiceRes = await axios({
           method: 'get',
-          params: { id: user.id },
-          url: '/api/invoice/getOrderNeedInvoices'
+          params: { userId: user.id },
+          url: `${payBff}/invoice/getOrderNeedInvoices`
         })
         if (!invoiceRes.data || !invoiceRes.data.length) return res.send({
           status: 104,
@@ -258,34 +261,34 @@ app.prepare()
       res.send(PRODUCT_URL);
     });
 
-    server.get("/buy", async (req,res) => {
-      const {cookie=''} = req.headers;
-      const {captcha,orderType,price,totalPrice,productId,productName,payMethod,level} = req.query;
+    server.get("/buy", async (req, res) => {
+      const { cookie = '' } = req.headers;
+      const { captcha, orderType, price, totalPrice, productId, productName, payMethod, level } = req.query;
       axios({
         method: 'post',
-        url: authService+'/captcha',
-        data:{
+        url: authService + '/captcha',
+        data: {
           captcha,
         },
         headers: {
           cookie,
         },
-      }).catch(()=>{
+      }).catch(() => {
         res.status(500).json({
-          error:'captcha error'
+          error: 'captcha error'
         })
       });
 
       const user = await getUser(cookie);
-      if(!user){
+      if (!user) {
         res.status(500).json({
-          error:'not login'
+          error: 'not login'
         })
       }
 
-      if(+level>1&&+level!== +user.level&&user.endTime>new Date()){
+      if (+level > 1 && +level !== +user.level && user.endTime > new Date()) {
         res.status(500).json({
-          error:'type error'
+          error: 'type error'
         })
       }
 
@@ -304,11 +307,11 @@ app.prepare()
       axios.post(`${payBff}/${payMethod}/createCharge`, list).then(async (response: any) => {
         if (response.status === 200) {
           return res.json({
-            response:response.data
+            response: response.data
           })
         }
         res.status(500).json({
-          error:'pay fail',
+          error: 'pay fail',
         });
       }).catch((error: any) => {
         if (error.response) {
@@ -317,8 +320,8 @@ app.prepare()
           console.log(error.response.headers);
         }
         res.status(500).json({
-          error:'pay fail',
-          content:error.response.data,
+          error: 'pay fail',
+          content: error.response.data,
         });
       });
     });
