@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(3),
       display: "flex",
       flexFlow: "unset",
-      alignItems: "center",
+      // alignItems: "center",
       marginLeft: 0
     },
     all: {
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme: Theme) =>
       background: "#F5F5F5"
     },
     grid: {
-      flex: 1,
+      // flex: 1,
       background: "#F5F5F5",
       width: "100%",
       margin: "2.5rem auto ",

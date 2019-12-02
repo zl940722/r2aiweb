@@ -23,10 +23,19 @@ export default function (props) {
   const [init, setInit] = useState(false);
   const { Component, pageProps, router } = props as any;
 
-  axios.defaults.withCredentials = true;
+
   useEffect(() => {
-    axios
-      .get("/user/login")
+    axios.defaults.withCredentials = true;
+    axios.request({
+      headers: {
+        'Cache-Control': 'no-cache'
+      },
+      method: 'GET',
+      url: "/user/login",
+      params: {
+        time: Date.now()
+      }
+    })
       .then((result: any) => {
         const { data = {} } = result;
         upUser(data);
@@ -36,7 +45,7 @@ export default function (props) {
       })
   }, [router.route]);
 
-  useEffect(()=>{
+  useEffect(() => {
     axios
       .get("/product")
       .then((data: any) => {
@@ -47,7 +56,7 @@ export default function (props) {
       .catch((err: any) => {
         console.log(err);
       });
-  },[]);
+  }, []);
 
 
   return <div style={{ minWidth: 1200 }}>
@@ -56,17 +65,17 @@ export default function (props) {
     </Head>
     <ThemeProvider theme={theme}>
       <Spin spinning={!init}>
-      <CssBaseline />
-      <Header route={router.route} user={user} PRODUCT_URL={PRODUCT_URL} />
-      <section
-        style={{
-          // minHeight:'calc(100vh - 140px - 16.125rem)',
-          minHeight: "calc(100vh - 202px)"
-        }}
-      >
-        {init ? <Component PRODUCT_URL={PRODUCT_URL} user={user} {...pageProps} route={router.route} /> : null}
-      </section>
-      <Footer />
+        <CssBaseline />
+        <Header route={router.route} user={user} PRODUCT_URL={PRODUCT_URL} />
+        <section
+          style={{
+            // minHeight:'calc(100vh - 140px - 16.125rem)',
+            minHeight: "calc(100vh - 202px)"
+          }}
+        >
+          {init ? <Component PRODUCT_URL={PRODUCT_URL} user={user} {...pageProps} route={router.route} /> : null}
+        </section>
+        <Footer />
       </Spin>
     </ThemeProvider>
   </div>
