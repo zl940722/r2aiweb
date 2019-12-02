@@ -200,7 +200,7 @@ export default function Invoices(res) {
         type: "warning"
       });
     } else {
-      axios.post("user/invoices", inputData).then((res: any) => {
+      axios.post("/user/invoices", inputData).then((res: any) => {
         const { status, message, fpqqlsh } = res
         if (status === 200) {
           setFinish(true)
