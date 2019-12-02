@@ -15,7 +15,7 @@ const { parse } = require("url");
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     header: {
-      fontSize: "2.25rem",
+      fontSize: "36px",
       textAlign: "center",
       margin: "2rem 0"
     },
