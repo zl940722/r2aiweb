@@ -336,7 +336,7 @@ const Header = (props) => {
                       padding: 2,
                       marginRight: 2
                     }} type="user" title={(props.user.email || '').split('@')[0]} />
-                      {(props.user.email || '').split('@')[0]}1111
+                      {(props.user.email || '').split('@')[0]}
                     </span>
                   </Dropdown>
                 </div>
