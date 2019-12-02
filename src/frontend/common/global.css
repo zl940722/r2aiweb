@@ -8,8 +8,15 @@
 .ant-menu-horizontal > .ant-menu-submenu-selected {
     color: #D3323E !important;
     border-bottom: 2px solid !important;
+    font-size: 16px !important;
 }
 
+.ant-menu-item, .ant-menu-submenu-title{
+    font-size: 16px !important;
+}
+.ant-menu-horizontal > .ant-menu-item, .ant-menu-horizontal > .ant-menu-submenu{
+    font-size: 16px !important;
+}
 .ant-menu-item-active:hover {
     color: #D3323E !important;
 }
