@@ -69,6 +69,8 @@ const SimpleSelect = (res: any) => {
         }}
         value={value}
         onChange={(e) => {
+          const v = e.target.value
+          if(v === placeholder) return
           setValue(e.target.value)
           onChange(e)
         }}
