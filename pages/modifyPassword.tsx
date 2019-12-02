@@ -9,6 +9,7 @@ import SimpleButton from "../src/frontend/Components/SimpleButton";
 import SimpleDialog from "../src/frontend/Components/SimpleDialog";
 import { withRouter } from "next/router";
 import fetch from "isomorphic-unfetch";
+import Router from "next/router";
 
 const { parse } = require("url");
 
@@ -103,6 +104,7 @@ function ModifyPassword(res: any) {
             newPwd: "",
             password: ""
           });
+          Router.push(`/login`);
         })
         .catch((err: any) => {
           setDialogOpen({
