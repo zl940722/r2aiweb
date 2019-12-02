@@ -41,10 +41,10 @@ const SimpleSelect = (res: any) => {
 
   const classes = useStyles();
   const {
-    label, labelCss, data, className, disabled = false, placeholder, onChange
+    label, labelCss, data, className, disabled = false, placeholder, onChange, value: _value
   } = res;
-  const [value, setValue] = useState(placeholder || '')
-  const textFiledProps = _.omit(res, ["label", "labelCss", "inputCss", "data", "className", 'placeholder', 'onChange']);
+  const [value, setValue] = useState(_value || placeholder || '')
+  const textFiledProps = _.omit(res, ["label", "labelCss", "inputCss", "data", "className", 'placeholder', 'onChange', 'value']);
   return (
     <div className={classes.main}>
       {
@@ -70,12 +70,12 @@ const SimpleSelect = (res: any) => {
         value={value}
         onChange={(e) => {
           const v = e.target.value
-          if(v === placeholder) return
+          if (v === placeholder) return
           setValue(e.target.value)
           onChange(e)
         }}
       >
-        {<MenuItem key={placeholder} value={placeholder} style={{ display: 'none' }}>{placeholder}</MenuItem>}
+        {placeholder && <MenuItem key={placeholder} value={placeholder} style={{ display: 'none' }}>{placeholder}</MenuItem>}
         {disabled ? null : _.map(data, (value, key) => (
           <MenuItem key={key} value={value.code}>
             {value.name}
