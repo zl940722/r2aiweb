@@ -10,18 +10,18 @@ const Index = (res: any) => {
 };
 
 Index.getInitialProps = async function(props) {
-  let user,_user;
-  if (typeof window === 'object') {
-    const url = "/user/login";
-    _user = await fetch(url);
-  } else {
-    _user = await fetch(process.env.AUTH_SERVICE || "http://localhost:8088", {
-      headers: {
-        cookie: props.req.headers.cookie
-      }
-    });
-  }
-  user = _user.status === 200 ? await _user.json() : {};
+  // let user,_user;
+  // if (typeof window === 'object') {
+  //   const url = "/user/login";
+  //   _user = await fetch(url);
+  // } else {
+  //   _user = await fetch(process.env.AUTH_SERVICE || "http://localhost:8088", {
+  //     headers: {
+  //       cookie: props.req.headers.cookie
+  //     }
+  //   });
+  // }
+  // user = _user.status === 200 ? await _user.json() : {};
 
   const home: any = await fetch(url + `/prices?_sort=level`) || [];
 
@@ -39,12 +39,12 @@ Index.getInitialProps = async function(props) {
     priority_zh: "资源分配优先级",
     technical_support_zh: "技术支持"
   };
-
+  console.log(homeData, 'sss')
 
   homeData.unshift(list);
   return {
     data: homeData,
-    user
+    // user
   };
 };
 
