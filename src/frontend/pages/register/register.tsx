@@ -168,7 +168,6 @@ export default function TextFields() {
     industry: "",
     language: "zh-CN",
     phone: "",
-    productName: "",
     province: "",
     password: "",
     username: ""
@@ -205,9 +204,7 @@ export default function TextFields() {
   const required = ["email", "password", "phone"];
 
   const submit = () => {
-
-    const requiredValues = _.chain(values).pick(required).values().compact().value();
-    console.log(values, 999999999999);
+    console.log(values)
     if ((/^\w{6,18}$/).test(values.password) == false
       || (/^(?:\+?86)?1(?:3\d{3}|5[^4\D]\d{2}|8\d{3}|7(?:[35678]\d{2}|4(?:0\d|1[0-2]|9\d))|9[189]\d{2}|66\d{2})\d{6}$/).test(values.phone) == false
       || (/^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/).test(values.email) == false) {
@@ -217,10 +214,10 @@ export default function TextFields() {
         type: "error",
         buttonName: "确定"
       });
-    } else if (!!values.address || !!values.area || !!values.city
-      || !!values.companyName || !!values.country || !!values.department || !!values.email
-      || !!values.industry || !!values.phone || !!values.province
-      || !!values.password || !!values.username) {
+    } else if (!values.address || !values.area || !values.city
+      || !values.companyName || !values.country || !values.department || !values.email
+      || !values.industry || !values.phone || !values.province
+      || !values.password || !values.username) {
       setOpen(true);
       setModal({
         content: "以上选项为必填，请正确填写。",
@@ -240,7 +237,6 @@ export default function TextFields() {
         "industry": values.industry,
         "language": "zh-CN",
         "phone": values.phone,
-        "productName": values.productName,
         "province": values.province,
         "password": values.password,
         "username": values.username
@@ -366,11 +362,7 @@ export default function TextFields() {
           onChange={(e: any) => {
             setshow({ province: true });
             setValues({
-              email: values.email,
-              username: values.username,
-              password: values.password,
-              companyName: values.companyName,
-              productName: values.productName,
+              ...values,
               country: e.target.value
             });
 
@@ -398,12 +390,7 @@ export default function TextFields() {
                       setshow({ province: true, city: true });
                       setcityList(bb);
                       setValues({
-                        email: values.email,
-                        username: values.username,
-                        password: values.password,
-                        country: values.country,
-                        companyName: values.companyName,
-                        productName: values.productName,
+                        ...values,
                         province: event.target.value
                       });
                     }
@@ -424,13 +411,7 @@ export default function TextFields() {
                 value={values.city}
                 onChange={(event: any) => {
                   setValues({
-                    email: values.email,
-                    username: values.username,
-                    password: values.password,
-                    companyName: values.companyName,
-                    productName: values.productName,
-                    country: values.country,
-                    province: values.province,
+                    ...values,
                     city: event.target.value
                   });
                   let bb: any = [];
