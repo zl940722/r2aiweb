@@ -115,8 +115,10 @@ export default function Invoices(res) {
   const [checkErrorList, setCheckErrorList] = React.useState(arr);
   const handleChange = (name: string) => (event: React.ChangeEvent<HTMLInputElement>, invalid: boolean) => {
     setValues({ ...values, [name]: event.target.value });
-    let tempList: Array<string> = invalid ? _.chain(checkErrorList).concat(name).uniq().value() : _.pull(checkErrorList, name);
-    setCheckErrorList(tempList);
+    if (name !== 'type' && name !== 'invoice') {
+      let tempList: Array<string> = invalid ? _.chain(checkErrorList).concat(name).uniq().value() : _.pull(checkErrorList, name);
+      setCheckErrorList(tempList);
+    }
   };
 
   const handleChangePersonal = (name: string) => (event: React.ChangeEvent<HTMLInputElement>, invalid: boolean) => {
@@ -193,6 +195,8 @@ export default function Invoices(res) {
   const submit = () => {
     const inputData = Object.assign({ orderIds }, values, values.invoice === 'Personal' ? personal : offical)
     const requiredValues = _.chain(inputData).pick(required).values().compact().value();
+
+    console.log(required, requiredValues, checkErrorList)
     if (requiredValues.length < required.length || checkErrorList.length > 0) {
       setDialogOpen({
         open: true,
