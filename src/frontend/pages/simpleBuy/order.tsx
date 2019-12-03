@@ -20,6 +20,12 @@ import SimpleSelect from "../../Components/SimpleSelectCountry";
 import SimpleButton from "../../Components/SimpleButton";
 import Agreement from "../../../../pages/agreement";
 
+function crtTimeFtt(val) {
+  if (val !== null) {
+    const date = new Date(val);
+    return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+  }
+}
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     formControl: {
@@ -80,6 +86,60 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     captcha: {
       position: "relative"
+    },
+    weixinAfterPay: {
+      background: "#fff",
+      width: "100%",
+      height: "100%"
+    },
+    weixin: {
+      background: "#f5f5f5",
+      margin: "80px 100px"
+    },
+    weixin_div: {
+      display: "flex",
+      height: "25rem",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    weixinLeft: {
+      display: "flex",
+      flexFlow: "column",
+      alignitems: "center"
+    },
+    weixinCenter: {
+      height: "70%",
+      margin: "0 6rem",
+      border: "1px dashed #5b77a9"
+    },
+    weixinRight: {
+      // margin: "2.5rem auto",
+      // cursor: "pointer"
+    },
+    weixinRight_title: {
+      color: "#333",
+      fontSize: "16px"
+    },
+    weixinRight_price: {
+      color: "#333",
+      fontSize: "32px"
+    },
+    weixinRight_adress: {
+      color: "#333",
+      fontSize: "16px"
+    },
+    weixinRight_time: {
+      color: "#333",
+      fontSize: "16px"
+    },
+    weixinRight_number: {
+      color: "#333",
+      fontSize: "16px"
+    },
+    imgs: {
+      width: "123px",
+      height: "123px",
+      display: "block"
     }
   })
 );
@@ -188,6 +248,16 @@ export default function Orders(props: any) {
     cancelText: "",
     okText: "确认"
   });
+
+  const [weixin, setweixin] = useState(false);
+  const [state, setState] = React.useState({
+    img:'',
+    username: "",
+    createTime: 0,
+    id: 0,
+    totalPrice: 0,
+    productName: ""
+  });
   const [resData, setResData] = useState({}) as any;
   const buy = () => {
     if (values.price === "" || values.captcha === "") {
@@ -223,7 +293,42 @@ export default function Orders(props: any) {
           cancelText: "支付遇到问题？",
           okText: "支付完成"
         });
-        window.open(response.url, "", "width=1100,height=600");
+
+        if(payMethod == 'wechat'){
+
+          axios({
+            method: "get",
+            url: `/order/getOrderById`,
+            params: {
+              orderId: response.orderId
+            }
+          }).then(async (result) => {
+            let productNames = "";
+            if (result.data.productName === "Basic") {
+              productNames = "简易版";
+            } else {
+              productNames = "专业版";
+            }
+            await setState({
+              username: result.data.username,
+              createTime: result.data.createTime,
+              id: result.data.id,
+              totalPrice: result.data.totalPrice,
+              productName: productNames,
+              img:response.url
+            });
+            await setweixin(true)
+          })
+            .catch((e) => {
+              console.log(e);
+            });
+
+
+          // window.open(response.url, "", "width=1100,height=600");
+        }else{
+          window.open(response.url, "", "width=1100,height=600");
+        }
+
       }).catch((result) => {
         let { error, content = '' } = JSON.parse(result.request.responseText);
         switch (error) {
@@ -251,146 +356,11 @@ export default function Orders(props: any) {
         setCaptchas(new Date().getTime());
       })
 
-
-      // axios.post("/user/captcha", { "captcha": values.captcha })
-      //   .then(() => {
-      //     pays();
-      //   })
-      //   .catch((error) => {
-      //     if (error.response) {
-      //       console.log(error.response.data);
-      //       console.log(error.response.status);
-      //       console.log(error.response.headers);
-      //     }
-      //     setOpen(true);
-      //     setModal({
-      //       content: "验证码错误",
-      //       type: "error",
-      //       cancelText: "",
-      //       okText: "确认"
-      //     });
-      //     setCaptchas(new Date().getTime());
-      //   });
     }
   };
 
-  // const pays = () => {
-  //   axios.get("/user/login").then((data: any) => {
-  //     setuserInfo(data.data);
-  //     const list: any = {
-  //       email: data.data.email,
-  //       orderType: rent,
-  //       price: values.price * 100,
-  //       renew: false,
-  //       totalPrice: values.price * 100,
-  //       productId: product,
-  //       language: "zh-CN",
-  //       duration: 1,
-  //       productName: productName
-  //     };
-  //     if (payMethod === "alipay") {
-  //       axios.post("/alipay/createCharge", list)
-  //         .then(async (response: any) => {
-  //           if (response.status === 200) {
-  //             await setResData(response);
-  //             await setOpen(true);
-  //             await setModal({
-  //               content: "支付完成前，请不要关闭此支付验证窗口。 支付完成后，请根据您支付的情况点击下面按钮。",
-  //               type: "alipay",
-  //               cancelText: "支付遇到问题？",
-  //               okText: "支付完成"
-  //             });
-  //             window.open(response.data.url, "", "width=1100,height=600");
-  //           } else {
-  //             setOpen(true);
-  //             setModal({
-  //               content: "支付错误",
-  {/*              type: "error",*/ }
-  {/*              cancelText: "",*/ }
-  {/*              okText: "确认"*/ }
-  {/*            });*/ }
-  {/*          }*/ }
-  //         })
-  //         .catch((error: any) => {
-  //           if (error.response) {
-  //             console.log(error.response.data);
-  //             console.log(error.response.status);
-  //             console.log(error.response.headers);
-  //           }
-  //           setOpen(true);
-  //           setModal({
-  //             content: error.response.data,
-  //             type: "error",
-  //             cancelText: "",
-  //             okText: "确认"
-  //           });
-  //         });
-  //
-  //
-  //     } else if (payMethod === "unionPay") {
-  //       axios.post("/unionPay/createCharge", list)
-  //         .then((response: any) => {
-  {/*          setResData(response);*/ }
-  //           setOpen(true);
-  //           setModal({
-  //             content: "支付完成前，请不要关闭此支付验证窗口。 支付完成后，请根据您支付的情况点击下面按钮。",
-  //             type: "unionPay",
-  //             cancelText: "支付遇到问题？",
-  //             okText: "支付完成"
-  {/*          });*/ }
-  //           window.open(response.data.url, "", "width=1100,height=600");
-  //         })
-  //         .catch((error: any) => {
-  //           if (error.response) {
-  {/*            console.log(error.response.data);*/ }
-  {/*            console.log(error.response.status);*/ }
-  {/*            console.log(error.response.headers);*/ }
-  //           }
-  //           setOpen(true);
-  //           setModal({
-  //             content: error.response.data,
-  //             type: "error",
-  //             cancelText: "",
-  //             okText: "确认"
-  //           });
-  {/*        });*/ }
-
-
-  //     } else if (payMethod === "wechat") {
-  //       axios.post("/wechat/createCharge", list)
-  //         .then((response: any) => {
-  {/*          setResData(response);*/ }
-  //           setOpen(true);
-  //           setModal({
-  {/*            content: "支付完成前，请不要关闭此支付验证窗口。 支付完成后，请根据您支付的情况点击下面按钮。",*/ }
-  //             type: "wechat",
-  //             cancelText: "支付遇到问题？",
-  //             okText: "支付完成"
-  //           });
-  //           window.open(response.data.url, "", "width=1100,height=600");
-  //           // seturl(response.data.url);
-  //         })
-  //         .catch((error: any) => {
-  //           if (error.response) {
-  //             console.log(error.response.data);
-  //             console.log(error.response.status);
-  //             console.log(error.response.headers);
-  //           }
-  //           setOpen(true);
-  //           setModal({
-  //             content: error.response.data,
-  //             type: "error",
-  //             cancelText: "",
-  //             okText: "确认"
-  //           });
-  //         });
-  //
-  //     }
-  //   }).catch((error: any) => {
-  //     console.log("error", error);
-  //   });
-  // };
   const [dialogInfo, setDialogOpen] = useState(false);
+
 
   const Fail = function(content='交易失败'){
     setModal({
@@ -577,6 +547,46 @@ export default function Orders(props: any) {
             </Grid>
           </Grid>
           <div>
+
+            <Modal
+              width={"80%"}
+              title=""
+              visible={weixin}
+              onOk={() => {
+                setweixin(false);
+              }}
+              onCancel={() => {
+                setweixin(false);
+              }}
+              footer={null}
+              style={{ top: 80 }}
+
+            >
+              <div className={classes.weixinAfterPay}>
+                <div className={classes.weixin}>
+                  <div className={classes.weixin_div}>
+                    <div className={classes.weixinLeft}>
+                      <p style={{ color: "#333",fontSize:16 }}>二维码在15分钟后失效，请及时付款</p>
+                      <img src={state.img || ""} className={classes.imgs} alt=""/>
+                      <span style={{ color: "#333" ,fontSize:16,marginTop:20}}>请使用微信扫一扫完成支付</span>
+                    </div>
+                    <div className={classes.weixinCenter}>{}</div>
+                    <div className={classes.weixinRight}>
+                      <p className={classes.weixinRight_title}>{state.productName}</p>
+                      <p className={classes.weixinRight_price}><span
+                        style={{ fontSize: 16 }}>¥ </span>{(state.totalPrice / 100).toFixed(2)}</p>
+                      <p className={classes.weixinRight_adress}><span
+                        style={{ color: "#666" }}>收款方 </span><span>杭州睿拓智能科技有限公司</span></p>
+                      <p className={classes.weixinRight_time}>
+                        <span style={{ color: "#666" }}>下单时间 </span><span>{crtTimeFtt(state.createTime * 1000)}</span></p>
+                      <p className={classes.weixinRight_number}><span style={{ color: "#666" }}>订单号 </span><span>{state.id}</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Modal>
+
             <Modal
               width={"80%"}
               title=""
@@ -772,5 +782,7 @@ export default function Orders(props: any) {
     </div>
   );
 }
+
+
 
 
