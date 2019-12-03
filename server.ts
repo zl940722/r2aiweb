@@ -6,11 +6,11 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 const axios = require('axios');
 
-const messageService = process.env.MESSAGE_SERVICE || "http://localhost:8088";
-const authService = process.env.AUTH_SERVICE || "http://localhost:8088";
+const messageService = process.env.MESSAGE_SERVICE || "http://192.168.0.221:8088";
+const authService = process.env.AUTH_SERVICE || "http://192.168.0.221:8088";
 const payService = process.env.PAY_SERVICE || "http://192.168.0.105:8090";
-const payBff = process.env.PAY_BFF || "http://localhost:8091";
-const strapiService = process.env.STRAPI_URL || "http://localhost:1337";
+const payBff = process.env.PAY_BFF || "http://192.168.0.221:8091";
+const strapiService = process.env.STRAPI_URL || "http://192.168.0.221:1337";
 const basicPrice = process.env.BASIC_PRICE || 199.98;
 const basicPriceYear = process.env.BASIC_PRICE_YEAR || 2159.78;
 const essentialPrice = process.env.ESSENTIAL_PRICE || 1999.98;
@@ -84,6 +84,8 @@ app.prepare()
     server.use("/active", payServiceProxy("/active", "/user/activeUser"));
 
     server.use("/user/forgetPassword", payServiceProxy("/user/forgetPassword", "/user/forgetPassword"));
+
+    server.use("/order/getOrderById", payServiceProxy("/order/getOrderById", "/order/getOrderById"));
 
     server.use("/user/resetPassword", payServiceProxy("/user/resetPassword", "/user/resetPassword"));
 
