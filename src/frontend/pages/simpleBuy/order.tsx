@@ -709,7 +709,12 @@ export default function Orders(props: any) {
                             axios.get("/wechat/orderQuery", {
                               params: { orderId: resData.orderId }
                             }).then(result => {
-                              Router.push("/paySuccess");
+                              if (result.data == "success") {
+                                Router.push("/paySuccess");
+                              } else {
+                                Fail();
+                                // setOpen(false);
+                              }
                             }).catch((error) => {
                               Fail();
                               // setOpen(false);
