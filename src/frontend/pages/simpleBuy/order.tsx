@@ -311,7 +311,7 @@ export default function Orders(props: any) {
             }
             await setState({
               username: result.data.username,
-              createTime: result.data.createTime,
+              createTime: result.data.created_at,
               id: result.data.id,
               totalPrice: result.data.totalPrice,
               productName: productNames,
@@ -548,6 +548,8 @@ export default function Orders(props: any) {
           <div>
 
             <Modal
+              zIndex={99999}
+              maskClosable={false}
               width={"80%"}
               title=""
               visible={weixin}
