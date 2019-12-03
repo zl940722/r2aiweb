@@ -1,4 +1,4 @@
-import React, {useMemo } from "react";
+import React, { useMemo } from "react";
 import { makeStyles } from "@material-ui/styles";
 import "./global.css";
 import Link from "next/link";
@@ -255,7 +255,7 @@ const Header = (props) => {
     location.href = "/";
   }
 
-  const menu = useMemo(()=>(
+  const menu = useMemo(() => (
     <Menu style={{
       display: 'flex',
       flex: 'none',
@@ -264,7 +264,7 @@ const Header = (props) => {
       justifyContent: 'center',
       marginLeft: 'auto'
     }}>
-      <Menu.Item style={{fontSize: 16}}>
+      <Menu.Item style={{ fontSize: 16 }}>
         {/*<Link href='/modifyPassword'>*/}
         {/*  <a>修改密码</a>*/}
         {/*</Link>*/}
@@ -272,13 +272,13 @@ const Header = (props) => {
           修改密码
         </a>
       </Menu.Item>
-      <Menu.Item style={{fontSize: 16}}>
+      <Menu.Item style={{ fontSize: 16 }}>
         <a href="javascript:" onClick={logout}>
           退出登录
         </a>
       </Menu.Item>
     </Menu >
-  ),[]);
+  ), []);
 
   const handleClick = (e) => e.key && Router.push(e.key);
   return (
@@ -333,13 +333,14 @@ const Header = (props) => {
                   justifyContent: 'flex-end'
                 }}>
                   <Dropdown className={classes.cursor} overlay={menu} getPopupContainer={(el: any) => el.parentElement} placement='bottomRight'>
-                    <span className={classes.avatar}><Icon style={{
-                      cursor: 'pointer',
-                      border: '1px solid',
-                      borderRadius: '50%',
-                      padding: 2,
-                      marginRight: 2
-                    }} type="user" title={(props.user.email || '').split('@')[0]} />
+                    <span className={classes.avatar} title={(props.user.email || '').split('@')[0]}>
+                      <Icon style={{
+                        cursor: 'pointer',
+                        border: '1px solid',
+                        borderRadius: '50%',
+                        padding: 2,
+                        marginRight: 2
+                      }} type="user" />
                       {(props.user.email || '').split('@')[0]}
                     </span>
                   </Dropdown>
