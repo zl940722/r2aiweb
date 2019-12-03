@@ -251,7 +251,7 @@ export default function Orders(props: any) {
 
   const [weixin, setweixin] = useState(false);
   const [state, setState] = React.useState({
-    img:'',
+    img: '',
     username: "",
     createTime: 0,
     id: 0,
@@ -294,7 +294,7 @@ export default function Orders(props: any) {
           okText: "支付完成"
         });
 
-        if(payMethod == 'wechat'){
+        if (payMethod == 'wechat') {
 
           axios({
             method: "get",
@@ -315,7 +315,7 @@ export default function Orders(props: any) {
               id: result.data.id,
               totalPrice: result.data.totalPrice,
               productName: productNames,
-              img:response.url
+              img: response.url
             });
             await setweixin(true)
           })
@@ -325,7 +325,7 @@ export default function Orders(props: any) {
 
 
           // window.open(response.url, "", "width=1100,height=600");
-        }else{
+        } else {
           window.open(response.url, "", "width=1100,height=600");
         }
 
@@ -360,10 +360,12 @@ export default function Orders(props: any) {
   };
 
   const [dialogInfo, setDialogOpen] = useState(false);
+  const [close, setClose] = useState(false);
 
-  const Fail = function(){
+  const Fail = function () {
+    setClose(true)
     setModal({
-      content:"支付失败，重新进行支付",
+      content: "支付失败，重新进行支付",
       type: payMethod,
       cancelText: "",
       okText: "确定"
@@ -567,9 +569,9 @@ export default function Orders(props: any) {
                 <div className={classes.weixin}>
                   <div className={classes.weixin_div}>
                     <div className={classes.weixinLeft}>
-                      <p style={{ color: "#333",fontSize:16 }}>二维码在15分钟后失效，请及时付款</p>
-                      <img src={state.img || ""} className={classes.imgs} alt=""/>
-                      <span style={{ color: "#333" ,fontSize:16,marginTop:20}}>请使用微信扫一扫完成支付</span>
+                      <p style={{ color: "#333", fontSize: 16 }}>二维码在15分钟后失效，请及时付款</p>
+                      <img src={state.img || ""} className={classes.imgs} alt="" />
+                      <span style={{ color: "#333", fontSize: 16, marginTop: 20 }}>请使用微信扫一扫完成支付</span>
                     </div>
                     <div className={classes.weixinCenter}>{}</div>
                     <div className={classes.weixinRight}>
@@ -623,6 +625,10 @@ export default function Orders(props: any) {
                       <Button
                         style={{ width: 138, height: 38, borderRadius: 20, color: "#D3323E", fontSize: 16 }}
                         onClick={() => {
+                          if (close) {
+                            setOpen(false);
+                            return
+                          }
                           if (modal.type === "alipay") {
                             axios.get("/alipay/orderQuery", {
                               params: { orderId: resData.orderId }
@@ -679,6 +685,10 @@ export default function Orders(props: any) {
                           fontSize: 16
                         }}
                         onClick={() => {
+                          if (close) {
+                            setOpen(false);
+                            return
+                          }
                           if (modal.type === "alipay") {
                             axios.get("/alipay/orderQuery", {
                               params: { orderId: resData.orderId }
@@ -737,6 +747,10 @@ export default function Orders(props: any) {
                         fontSize: 16
                       }}
                       onClick={() => {
+                        if (close) {
+                          setOpen(false);
+                          return
+                        }
                         if (modal.type === "alipay") {
                           axios.get("/alipay/orderQuery", {
                             params: { orderId: resData.orderId }
