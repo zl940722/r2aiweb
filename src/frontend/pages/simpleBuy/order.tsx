@@ -738,6 +738,7 @@ export default function Orders(props: any) {
                       }}
                       onClick={() => {
                         setOpen(false);
+                        setCaptchas(new Date().getTime());
                         // Fail();
                       }} color="primary">
                       {modal.okText}
