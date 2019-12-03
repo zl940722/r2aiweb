@@ -642,7 +642,11 @@ export default function Orders(props: any) {
                             axios.get("/wechat/orderQuery", {
                               params: { orderId: resData.orderId }
                             }).then(result => {
-                              Router.push("/paySuccess");
+                              if (result.data == "success") {
+                                Router.push("/paySuccess");
+                              } else {
+                                setOpen(false);
+                              }
                             }).catch((error) => {
                               Fail(error.response.data);
                               // setOpen(false);
@@ -744,7 +748,11 @@ export default function Orders(props: any) {
                           axios.get("/wechat/orderQuery", {
                             params: { orderId: resData.orderId }
                           }).then(result => {
-                            Router.push("/paySuccess");
+                            if (result.data == "success") {
+                              Router.push("/paySuccess");
+                            } else {
+                              setOpen(false);
+                            }
                           }).catch(() => {
                             setOpen(false);
                             console.log("失败");
