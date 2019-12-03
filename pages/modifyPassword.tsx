@@ -113,17 +113,21 @@ function ModifyPassword(res: any) {
       const uri = token ? "/user/forgetPassword" : "/user/resetPassword";
       axios.post(uri, { ...values, token, userId })
         .then(() => {
-          // setDialogOpen({
-          //   open: true,
-          //   content: '修改成功',
-          //   type: "success"
-          // });
           setOpen(true);
-          setModal({
-            content: "修改成功",
-            type: "success",
-            buttonName: "返回登录"
-          });
+          if(token){
+            setModal({
+              content: "修改成功",
+              type: "success",
+              buttonName: "返回登录"
+            });
+          }else{
+            setModal({
+              content: "修改成功",
+              type: "success",
+              buttonName: "确认"
+            });
+          }
+
           setValues({
             oldPwd: "",
             newPwd: "",
