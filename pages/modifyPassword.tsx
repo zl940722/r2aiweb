@@ -10,6 +10,12 @@ import SimpleDialog from "../src/frontend/Components/SimpleDialog";
 import { withRouter } from "next/router";
 import fetch from "isomorphic-unfetch";
 import Router from "next/router";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogActions from "@material-ui/core/DialogActions";
+import { Button } from "grommet";
 
 const { parse } = require("url");
 
@@ -74,9 +80,16 @@ function ModifyPassword(res: any) {
     type: ""
   });
 
+  const [open, setOpen] = React.useState(false);
+  const [modal, setModal] = React.useState({
+    content: "",
+    type: "",
+    buttonName: ""
+  });
+
   React.useEffect(() => {
     if (!token && !userId) {
-      res.router.push("/login");
+      // res.router.push("/login");
     }
   }, []);
 
@@ -85,32 +98,50 @@ function ModifyPassword(res: any) {
   const submit = () => {
     const requiredValues = _.chain(values).pick(required).values().compact().value();
     if (requiredValues.length < required.length || checkErrorList.length > 0 || password !== newPwd) {
-      setDialogOpen({
-        open: true,
-        content: "请正确填写上述选项。",
-        type: "warning"
+      setOpen(true);
+      setModal({
+        content: "请正确填写以上信息",
+        type: "warning",
+        buttonName: "确定"
       });
+      // setDialogOpen({
+      //   open: true,
+      //   content: "请正确填写上述选项。",
+      //   type: "warning"
+      // });
     } else {
       const uri = token ? "/user/forgetPassword" : "/user/resetPassword";
       axios.post(uri, { ...values, token, userId })
         .then(()=>{
-          setDialogOpen({
-            open: true,
-            content: '修改成功',
-            type: "success"
+          // setDialogOpen({
+          //   open: true,
+          //   content: '修改成功',
+          //   type: "success"
+          // });
+          setOpen(true);
+          setModal({
+            content: "修改成功",
+            type: "success",
+            buttonName: "返回登录"
           });
           setValues({
             oldPwd: "",
             newPwd: "",
             password: ""
           });
-          Router.push(`/login`);
+          // Router.push(`/login`);
         })
         .catch((err: any) => {
-          setDialogOpen({
-            open: true,
+          // setDialogOpen({
+          //   open: true,
+          //   content: err.response.data,
+          //   type: "error"
+          // });
+          setOpen(true);
+          setModal({
             content: err.response.data,
-            type: "error"
+            type: "error",
+            buttonName: "确定"
           });
         });
     }
@@ -166,8 +197,40 @@ function ModifyPassword(res: any) {
           </Grid>
         </Grid>
       </form>
-      <SimpleDialog
-        dialogInfo={dialogInfo} setOpen={setDialogOpen}/>
+      {/*<SimpleDialog*/}
+      {/*  dialogInfo={dialogInfo} setOpen={(res)=>{*/}
+      {/*  setDialogOpen*/}
+      {/*  console.log(res.target.value , 'sdsadsa')*/}
+      {/*}}/>*/}
+
+
+      <Dialog
+        open={open}
+        // onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"提示"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            {modal.content}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            style={{ border: "1px solid #D3323E", width: 138, height: 38, borderRadius: 20, color: "#D3323E" }}
+            onClick={() => {
+              if (modal.buttonName == "返回登录") {
+                setOpen(false);
+                Router.push("/login");
+              } else {
+                setOpen(false);
+              }
+            }} color="primary">
+            {modal.buttonName}
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
@@ -179,7 +242,7 @@ ModifyPassword.getInitialProps = async function(props) {
     const _user = await fetch(url);
     user = await _user.json();
   }else{
-    const result = await fetch(process.env.AUTH_SERVICE || "http://localhost:8088",{
+    const result = await fetch(process.env.AUTH_SERVICE || "http://192.168.0.221:8088",{
       headers:{
         cookie:props.req.headers.cookie
       }
