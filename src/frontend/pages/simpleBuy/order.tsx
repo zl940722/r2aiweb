@@ -14,7 +14,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Router from "next/router";
-
+import moment from "moment";
 import SimpleInput from "../../Components/SimpleInput";
 import SimpleSelect from "../../Components/SimpleSelectCountry";
 import SimpleButton from "../../Components/SimpleButton";
@@ -579,7 +579,7 @@ export default function Orders(props: any) {
                       <p className={classes.weixinRight_adress}><span
                         style={{ color: "#666" }}>收款方 </span><span>杭州睿拓智能科技有限公司</span></p>
                       <p className={classes.weixinRight_time}>
-                        <span style={{ color: "#666" }}>下单时间 </span><span>{crtTimeFtt(state.createTime * 1000)}</span></p>
+                        <span style={{ color: "#666" }}>下单时间 </span><span>{moment(state.createTime).format("YYYY-MM-DD hh:mm:ss")}</span></p>
                       <p className={classes.weixinRight_number}><span style={{ color: "#666" }}>订单号 </span><span>{state.id}</span>
                       </p>
                     </div>
