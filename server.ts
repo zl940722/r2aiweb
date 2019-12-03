@@ -102,9 +102,7 @@ app.prepare()
 
     server.use("/wechat/orderQuery", payBffProxy("/wechat/orderQuery", "/wechat/orderQuery"));
 
-    server.post("/user/invoice/queryInvoiceStatus", requireLoginMiddleware, (req, res) => {
-      payServiceProxy("/user/invoice/queryInvoiceStatus", "/invoice/queryInvoiceStatus")
-    });
+    server.post("/user/invoice/queryInvoiceStatus", requireLoginMiddleware, payBffProxy("/user/invoice/queryInvoiceStatus", "/invoice/queryInvoiceStatus"));
 
     server.get('/user/login', async (req, res) => {
       const user = await getUser(req.headers.cookie) || {};
