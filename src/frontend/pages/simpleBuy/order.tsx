@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
-import clsx from "clsx";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
-import TextField from "@material-ui/core/TextField";
 import { Modal, PageHeader } from "antd";
 import { Grid } from "@material-ui/core";
-import { Grommet, Box, Button } from "grommet";
+import { Button } from "grommet";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
 import axios from "axios";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -394,6 +390,16 @@ export default function Orders(props: any) {
   //   });
   // };
   const [dialogInfo, setDialogOpen] = useState(false);
+
+  const Fail = function(content='交易失败'){
+    setModal({
+      content,
+      type: payMethod,
+      cancelText: "",
+      okText: "确定"
+    });
+  };
+
   return (
     <div className={classes.all}>
       <div className={classes.bg}>
@@ -610,9 +616,10 @@ export default function Orders(props: any) {
                               params: { orderId: resData.orderId }
                             }).then(result => {
                               Router.push("/paySuccess");
-                            }).catch(() => {
-                              setOpen(false);
-                              console.log("失败");
+                            }).catch((error) => {
+                              Fail(error.response.data);
+                              // setOpen(false);
+                              // console.log("失败");
                             });
                           } else if (modal.type === "unionPay") {
                             axios.get("/unionPay/orderQuery", {
@@ -622,10 +629,12 @@ export default function Orders(props: any) {
                               if (result.data == "success") {
                                 Router.push("/paySuccess");
                               } else {
-                                setOpen(false);
+                                Fail(result.data);
+                                // setOpen(false);
                               }
-                            }).catch(() => {
-                              setOpen(false);
+                            }).catch((error) => {
+                              Fail(error.response.data);
+                              // setOpen(false);
                               console.log("失败");
                             });
                           } else if (modal.type === "wechat") {
@@ -633,9 +642,10 @@ export default function Orders(props: any) {
                               params: { orderId: resData.orderId }
                             }).then(result => {
                               Router.push("/paySuccess");
-                            }).catch(() => {
-                              setOpen(false);
-                              console.log("失败");
+                            }).catch((error) => {
+                              Fail(error.response.data);
+                              // setOpen(false);
+                              // console.log("失败");
                             });
                           } else if ((modal.type === "error")) {
                             setOpen(false);
@@ -658,9 +668,10 @@ export default function Orders(props: any) {
                               params: { orderId: resData.orderId }
                             }).then(result => {
                               Router.push("/paySuccess");
-                            }).catch(() => {
-                              setOpen(false);
-                              console.log("失败");
+                            }).catch((error) => {
+                              Fail(error.response.data);
+                              // setOpen(false);
+                              // console.log("失败");
                             });
                           } else if (modal.type === "unionPay") {
                             axios.get("/unionPay/orderQuery", {
@@ -670,20 +681,23 @@ export default function Orders(props: any) {
                               if (result.data == "success") {
                                 Router.push("/paySuccess");
                               } else {
-                                setOpen(false);
+                                Fail(result.data);
+                                // setOpen(false);
                               }
-                            }).catch(() => {
-                              setOpen(false);
-                              console.log("失败");
+                            }).catch((error) => {
+                              Fail(error.response.data);
+                              // setOpen(false);
+                              // console.log("失败");
                             });
                           } else if (modal.type === "wechat") {
                             axios.get("/wechat/orderQuery", {
                               params: { orderId: resData.orderId }
                             }).then(result => {
                               Router.push("/paySuccess");
-                            }).catch(() => {
-                              setOpen(false);
-                              console.log("失败");
+                            }).catch((error) => {
+                              Fail(error.response.data);
+                              // setOpen(false);
+                              // console.log("失败");
                             });
                           } else if ((modal.type === "error")) {
                             setOpen(false);

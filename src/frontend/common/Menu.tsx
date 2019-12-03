@@ -289,7 +289,7 @@ const Header = (props) => {
         selectedKeys={[current]}
         mode="horizontal"
       >
-        <Link href={"/"}>
+        <Link href="/">
           <a className={classes.logo}>
             <img
               src="/static/images/common/logo@2x.png"
@@ -298,7 +298,6 @@ const Header = (props) => {
             />
           </a>
         </Link>
-
         {
           _.map(menus, (value: InterfaceMenu, index) => {
             const menuLink = value.link;

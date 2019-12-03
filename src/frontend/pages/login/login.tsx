@@ -2,7 +2,7 @@ import React, { ReactElement, useEffect, useReducer, useRef, useState } from "re
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import axios from "axios";
 import { Input, message, Modal, PageHeader } from "antd";
-import Router from "next/router";
+import SimpleDialog from "../../../../src/frontend/Components/SimpleDialog";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -141,6 +141,12 @@ export default function (): ReactElement {
   const _password: any = useRef(null);
   const _captcha: any = useRef(null);
 
+  const [dialogInfo, setDialogOpen] = useState({
+    open: false,
+    content: "",
+    type: ""
+  });
+
   //forget
   const __email: any = useRef(null);
   const __captcha: any = useRef(null);
@@ -189,8 +195,13 @@ export default function (): ReactElement {
       .post("/user/forget", values)
       .then((res: any) => {
         if (res.status === 200) {
-          Modal.success({
-            content: "操作成功，请查看最新邮件操作"
+          // Modal.success({
+          //   content: "操作成功，请查看最新邮件操作"
+          // });
+          setDialogOpen({
+            open: true,
+            content: "操作成功，请查看最新邮件操作",
+            type: "success"
           });
           upForget(false);
         }
@@ -209,12 +220,12 @@ export default function (): ReactElement {
   };
 
   function getRequest() {
-    var url = window.location.search;
-    var jsonList = {};
+    const url = window.location.search;
+    const jsonList = {};
     if (url.indexOf("?") > -1) {
-      var str = url.slice(url.indexOf("?") + 1);
-      var strs = str.split("&");
-      for (var i = 0; i < strs.length; i++) {
+      const str = url.slice(url.indexOf("?") + 1);
+      const strs = str.split("&");
+      for (let i = 0; i < strs.length; i++) {
         jsonList[strs[i].split("=")[0]] = strs[i].split("=")[1];//如果出现乱码的话，可以用decodeURI()进行解码
       }
     }
@@ -345,6 +356,12 @@ export default function (): ReactElement {
           确定
         </a>
       </div>
+      <SimpleDialog
+        dialogInfo={dialogInfo} setOpen={() => setDialogOpen({
+        open: false,
+        content: "",
+        type: ""
+      })}/>
     </section>
   );
 }
