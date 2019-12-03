@@ -264,7 +264,7 @@ const Header = (props) => {
       justifyContent: 'center',
       marginLeft: 'auto'
     }}>
-      <Menu.Item>
+      <Menu.Item style={{fontSize: 16}}>
         {/*<Link href='/modifyPassword'>*/}
         {/*  <a>修改密码</a>*/}
         {/*</Link>*/}
@@ -272,7 +272,7 @@ const Header = (props) => {
           修改密码
         </a>
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item style={{fontSize: 16}}>
         <a href="javascript:" onClick={logout}>
           退出登录
         </a>
