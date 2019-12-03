@@ -56,10 +56,10 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function ModifyPassword(res: any) {
-  const {user={}} = res;
+  const { user = {} } = res;
   const parsedUrl = parse(res.router.asPath, true);
   const { query: { token } } = parsedUrl;
-  const [userId,upUserId] = useState(user.id);
+  const [userId, upUserId] = useState(user.id);
   const classes = useStyles();
   const [values, setValues] = React.useState<any>({
     oldPwd: "",
@@ -74,11 +74,11 @@ function ModifyPassword(res: any) {
     setCheckErrorList(tempList);
   };
 
-  const [dialogInfo, setDialogOpen] = React.useState({
-    open: false,
-    content: "",
-    type: ""
-  });
+  // const [dialogInfo, setDialogOpen] = React.useState({
+  //   open: false,
+  //   content: "",
+  //   type: ""
+  // });
 
   const [open, setOpen] = React.useState(false);
   const [modal, setModal] = React.useState({
@@ -89,7 +89,7 @@ function ModifyPassword(res: any) {
 
   React.useEffect(() => {
     if (!token && !userId) {
-      // res.router.push("/login");
+      res.router.push("/login");
     }
   }, []);
 
@@ -112,7 +112,7 @@ function ModifyPassword(res: any) {
     } else {
       const uri = token ? "/user/forgetPassword" : "/user/resetPassword";
       axios.post(uri, { ...values, token, userId })
-        .then(()=>{
+        .then(() => {
           // setDialogOpen({
           //   open: true,
           //   content: '修改成功',
@@ -188,7 +188,7 @@ function ModifyPassword(res: any) {
               onChange={handleChange("newPwd")}
               margin="dense"
             />
-            <div className={classes.button} style={{textAlign:'center'}}>
+            <div className={classes.button} style={{ textAlign: "center" }}>
               <SimpleButton
                 onClick={_.debounce(submit, 1000)}
                 label={"提交"}
@@ -237,21 +237,21 @@ function ModifyPassword(res: any) {
 
 ModifyPassword.getInitialProps = async function(props) {
   let user;
-  if(typeof window === 'object'){
-    const url='/user/login';
+  if (typeof window === "object") {
+    const url = "/user/login";
     const _user = await fetch(url);
     user = await _user.json();
-  }else{
-    const result = await fetch(process.env.AUTH_SERVICE || "http://192.168.0.221:8088",{
-      headers:{
-        cookie:props.req.headers.cookie
+  } else {
+    const result = await fetch(process.env.AUTH_SERVICE || "http://192.168.0.221:8088", {
+      headers: {
+        cookie: props.req.headers.cookie
       }
     });
-    user = result.status === 200?await result.json():{};
+    user = result.status === 200 ? await result.json() : {};
   }
 
   return {
-    user,
+    user
   };
 };
 
