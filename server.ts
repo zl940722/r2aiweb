@@ -116,7 +116,6 @@ app.prepare()
 
     server.get("/user/invoices", requireLoginMiddleware, async (req, res) => {
       const user = await getUser(req.headers.cookie)
-      console.log(user, '/user/invoices')
       try {
         const result = await axios({
           method: 'get',
@@ -124,9 +123,7 @@ app.prepare()
           url: `${payBff}/invoice/getOrderNeedInvoices`
         })
         const data = result.data;
-        console.log(data, '/user/invoices  data')
         const orderIds = data.map(order => order.id);
-        console.log(orderIds, '/user/invoices  orderIds')
         res.json({
           status: 200,
           message: 'ok',
@@ -138,22 +135,6 @@ app.prepare()
           message: e.response.data
         })
       }
-    })
-
-    server.post("/user/test", (req, res) => {
-      console.log("/user/test")
-      let str = ''
-      req.on('data', s => {
-        str += s
-      })
-      req.on('end', () => {
-        console.log(str, 'str')
-        try {
-          console.log(str, JSON.parse(str), 'str')
-        } catch (e) {
-          console.log("ss")
-        }
-      })
     })
 
     server.post("/user/invoices", requireLoginMiddleware, async (req, res) => {
@@ -172,8 +153,6 @@ app.prepare()
             message: 'error params'
           })
         }
-
-        console.log(bodyData, 'bodyData')
 
         const {
           language = "zh-CN",
