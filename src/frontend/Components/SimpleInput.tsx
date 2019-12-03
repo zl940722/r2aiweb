@@ -32,7 +32,7 @@ const SimpleInput = (res: any) => {
   const classes = useStyles();
   const {
     label, regex, value, labelCss, helperText, onChange, required, placeholder, allowedLength, className, inputCss = {
-      height: "2.9375rem",
+      height: "47px",
       backgroundColor: "#FFFFFF"
     }
   } = res;

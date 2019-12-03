@@ -30,7 +30,8 @@ const useStyles = makeStyles((theme: Theme) =>
       marginLeft: 0
     },
     all: {
-      width: 1400,
+      width: "100%",
+      maxWidth: '1200px',
       margin: "0 auto"
     },
     bg: {
@@ -124,8 +125,8 @@ const products = [
 
 export default function Orders(props: any) {
   const classes = useStyles();
-  const {user={}} = props;
-  const level = (user.level >1 ? +user.level:+props.router.asPath.split("=")[1])||2;
+  const { user = {} } = props;
+  const level = (user.level > 1 ? +user.level : +props.router.asPath.split("=")[1]) || 2;
 
   const [mPrice, setmPrice] = useState(0);
   const [yPrice, setyPrice] = useState(0);
@@ -162,7 +163,7 @@ export default function Orders(props: any) {
       setProduct("prod_E7zz1vwTiZxOgO");
       setProductName("Basic");
       axios.get("/price").then((response: any) => {
-        const { basicPrice} = response.data;
+        const { basicPrice } = response.data;
         setValues({ price: basicPrice });
       });
 
@@ -170,7 +171,7 @@ export default function Orders(props: any) {
       setProduct("prod_E7zzObgS7kjaMK");
       setProductName("Essential");
       axios.get("/price").then((response: any) => {
-        const {essentialPrice } = response.data;
+        const { essentialPrice } = response.data;
         setValues({ price: essentialPrice });
       });
     }
@@ -198,8 +199,8 @@ export default function Orders(props: any) {
         okText: "确认"
       });
     } else {
-      axios.get('/buy',{
-        params:{
+      axios.get('/buy', {
+        params: {
           captcha: values.captcha,
           orderType: rent,
           price: values.price * 100,
@@ -212,8 +213,8 @@ export default function Orders(props: any) {
           payMethod,
           level,
         }
-      }).then((result)=>{
-        let {response} = result.data;
+      }).then((result) => {
+        let { response } = result.data;
         setResData(response);
         setOpen(true);
         setModal({
@@ -223,8 +224,8 @@ export default function Orders(props: any) {
           okText: "支付完成"
         });
         window.open(response.url, "", "width=1100,height=600");
-      }).catch((result)=>{
-        let {error,content=''} = JSON.parse(result.request.responseText);
+      }).catch((result) => {
+        let { error, content = '' } = JSON.parse(result.request.responseText);
         switch (error) {
           case 'captcha error':
             content = '验证码错误';
@@ -233,7 +234,7 @@ export default function Orders(props: any) {
             location.href = '/login';
             break;
           case 'pay fail':
-            content = content||'支付错误';
+            content = content || '支付错误';
             break;
           case 'type error':
             content = '选择套餐错误，请刷新后重试';
@@ -304,11 +305,11 @@ export default function Orders(props: any) {
   //             setOpen(true);
   //             setModal({
   //               content: "支付错误",
-  {/*              type: "error",*/}
-  {/*              cancelText: "",*/}
-  {/*              okText: "确认"*/}
-  {/*            });*/}
-  {/*          }*/}
+  {/*              type: "error",*/ }
+  {/*              cancelText: "",*/ }
+  {/*              okText: "确认"*/ }
+  {/*            });*/ }
+  {/*          }*/ }
   //         })
   //         .catch((error: any) => {
   //           if (error.response) {
@@ -329,21 +330,21 @@ export default function Orders(props: any) {
   //     } else if (payMethod === "unionPay") {
   //       axios.post("/unionPay/createCharge", list)
   //         .then((response: any) => {
-  {/*          setResData(response);*/}
+  {/*          setResData(response);*/ }
   //           setOpen(true);
   //           setModal({
   //             content: "支付完成前，请不要关闭此支付验证窗口。 支付完成后，请根据您支付的情况点击下面按钮。",
   //             type: "unionPay",
   //             cancelText: "支付遇到问题？",
   //             okText: "支付完成"
-  {/*          });*/}
+  {/*          });*/ }
   //           window.open(response.data.url, "", "width=1100,height=600");
   //         })
   //         .catch((error: any) => {
   //           if (error.response) {
-  {/*            console.log(error.response.data);*/}
-  {/*            console.log(error.response.status);*/}
-  {/*            console.log(error.response.headers);*/}
+  {/*            console.log(error.response.data);*/ }
+  {/*            console.log(error.response.status);*/ }
+  {/*            console.log(error.response.headers);*/ }
   //           }
   //           setOpen(true);
   //           setModal({
@@ -352,16 +353,16 @@ export default function Orders(props: any) {
   //             cancelText: "",
   //             okText: "确认"
   //           });
-  {/*        });*/}
+  {/*        });*/ }
 
 
   //     } else if (payMethod === "wechat") {
   //       axios.post("/wechat/createCharge", list)
   //         .then((response: any) => {
-  {/*          setResData(response);*/}
+  {/*          setResData(response);*/ }
   //           setOpen(true);
   //           setModal({
-  {/*            content: "支付完成前，请不要关闭此支付验证窗口。 支付完成后，请根据您支付的情况点击下面按钮。",*/}
+  {/*            content: "支付完成前，请不要关闭此支付验证窗口。 支付完成后，请根据您支付的情况点击下面按钮。",*/ }
   //             type: "wechat",
   //             cancelText: "支付遇到问题？",
   //             okText: "支付完成"
@@ -428,7 +429,7 @@ export default function Orders(props: any) {
               <SimpleSelect
                 label="购买产品"
                 xs={12}
-                disabled={user.canLogin&&+user.type>1}
+                disabled={user.canLogin && +user.type > 1}
                 className={classes.dense}
                 value={product}
                 onChange={(e) => {
@@ -529,11 +530,11 @@ export default function Orders(props: any) {
                 />
 
                 <img src={`/user/captcha?${captcha}`}
-                     style={{ marginTop: "11px", position: "absolute", right: 10, top: 16 }}
-                     alt=""
-                     onClick={() => {
-                       setCaptchas(new Date().getTime());
-                     }}
+                  style={{ marginTop: "11px", position: "absolute", right: 10, top: 16 }}
+                  alt=""
+                  onClick={() => {
+                    setCaptchas(new Date().getTime());
+                  }}
                 />
               </div>
 
@@ -541,19 +542,19 @@ export default function Orders(props: any) {
                 <FormControl component="fieldset" className={classes.formControl}>
                   <div style={{ marginRight: 20, width: "6.6rem" }}>选择支付方式</div>
                   <RadioGroup aria-label="gender" name="gender1" value={payMethod} onChange={handleChanges}>
-                    <Grid container spacing={10}>
-                      <Grid item md={4}>
-                        <FormControlLabel value="unionPay" control={<Radio/>} label={<img style={{ width: 120 }}
-                                                                                          src='/static/images/price/yinlian@2x.png'/>}/>
+                    <Grid container spacing={10} >
+                      <Grid item xs={4} style={{ textAlign: 'center' }}>
+                        <FormControlLabel value="unionPay" control={<Radio />} label={<img style={{ width: 120 }}
+                          src='/static/images/price/yinlian@2x.png' />} />
                       </Grid>
-                      <Grid item md={4}>
-                        <FormControlLabel value="alipay" control={<Radio/>} label={<img style={{ width: 120 }}
-                                                                                        src='/static/images/price/zhifubao@2x.png'/>}/>
+                      <Grid item xs={4} style={{ textAlign: 'center' }}>
+                        <FormControlLabel value="alipay" control={<Radio />} label={<img style={{ width: 120 }}
+                          src='/static/images/price/zhifubao@2x.png' />} />
                       </Grid>
-                      <Grid item md={4}>
-                        <FormControlLabel value="wechat" control={<Radio/>}
-                                          label={<img style={{ width: 120 }}
-                                                      src='/static/images/price/weixin@2x.png'/>}/>
+                      <Grid item xs={4} style={{ textAlign: 'center' }}>
+                        <FormControlLabel value="wechat" control={<Radio />}
+                          label={<img style={{ width: 120 }}
+                            src='/static/images/price/weixin@2x.png' />} />
                       </Grid>
                     </Grid>
                   </RadioGroup>
@@ -590,7 +591,7 @@ export default function Orders(props: any) {
               style={{ top: 0 }}
 
             >
-              <Agreement/>
+              <Agreement />
             </Modal>
             <Dialog
               open={open}
