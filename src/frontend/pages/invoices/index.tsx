@@ -196,7 +196,6 @@ export default function Invoices(res) {
     const inputData = Object.assign({ orderIds }, values, values.invoice === 'Personal' ? personal : offical)
     const requiredValues = _.chain(inputData).pick(required).values().compact().value();
 
-    console.log(required, requiredValues, checkErrorList)
     if (requiredValues.length < required.length || checkErrorList.length > 0) {
       setDialogOpen({
         open: true,
