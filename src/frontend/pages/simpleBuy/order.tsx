@@ -363,7 +363,7 @@ export default function Orders(props: any) {
 
   const Fail = function(){
     setModal({
-      content:"您可通过点击“提交订单”重新进行支付",
+      content:"支付失败，重新进行支付",
       type: payMethod,
       cancelText: "",
       okText: "确定"
@@ -736,8 +736,9 @@ export default function Orders(props: any) {
                           }).then(result => {
                             Router.push("/paySuccess");
                           }).catch(() => {
-                            setOpen(false);
-                            console.log("失败");
+                            Fail();
+                            // setOpen(false);
+                            // console.log("失败");
                           });
                         } else if (modal.type === "unionPay") {
                           axios.get("/unionPay/orderQuery", {
@@ -747,11 +748,13 @@ export default function Orders(props: any) {
                             if (result.data == "success") {
                               Router.push("/paySuccess");
                             } else {
-                              setOpen(false);
+                              // setOpen(false);
+                              Fail();
                             }
                           }).catch(() => {
-                            setOpen(false);
-                            console.log("失败");
+                            Fail();
+                            // setOpen(false);
+                            // console.log("失败");
                           });
                         } else if (modal.type === "wechat") {
                           axios.get("/wechat/orderQuery", {
@@ -760,14 +763,17 @@ export default function Orders(props: any) {
                             if (result.data == "success") {
                               Router.push("/paySuccess");
                             } else {
-                              setOpen(false);
+                              Fail();
+                              // setOpen(false);
                             }
                           }).catch(() => {
-                            setOpen(false);
-                            console.log("失败");
+                            Fail();
+                            // setOpen(false);
+                            // console.log("失败");
                           });
                         } else if ((modal.type === "error")) {
-                          setOpen(false);
+                          // setOpen(false);
+                          Fail();
                         }
                       }} color="primary">
                       {modal.okText}
