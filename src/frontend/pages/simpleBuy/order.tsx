@@ -736,8 +736,7 @@ export default function Orders(props: any) {
                           }).then(result => {
                             Router.push("/paySuccess");
                           }).catch(() => {
-                            Fail();
-                            // setOpen(false);
+                            setOpen(false);
                             // console.log("失败");
                           });
                         } else if (modal.type === "unionPay") {
@@ -748,12 +747,10 @@ export default function Orders(props: any) {
                             if (result.data == "success") {
                               Router.push("/paySuccess");
                             } else {
-                              // setOpen(false);
-                              Fail();
+                              setOpen(false);
                             }
                           }).catch(() => {
-                            Fail();
-                            // setOpen(false);
+                            setOpen(false);
                             // console.log("失败");
                           });
                         } else if (modal.type === "wechat") {
@@ -763,17 +760,15 @@ export default function Orders(props: any) {
                             if (result.data == "success") {
                               Router.push("/paySuccess");
                             } else {
-                              Fail();
-                              // setOpen(false);
+                              setOpen(false);
                             }
                           }).catch(() => {
-                            Fail();
-                            // setOpen(false);
+                            setOpen(false);
                             // console.log("失败");
                           });
                         } else if ((modal.type === "error")) {
-                          // setOpen(false);
-                          Fail();
+                          setOpen(false);
+                          // Fail();
                         }
                       }} color="primary">
                       {modal.okText}
