@@ -360,10 +360,8 @@ export default function Orders(props: any) {
   };
 
   const [dialogInfo, setDialogOpen] = useState(false);
-  const [close, setClose] = useState(false);
 
   const Fail = function () {
-    setClose(true)
     setModal({
       content: "支付失败，重新进行支付",
       type: payMethod,
@@ -625,10 +623,6 @@ export default function Orders(props: any) {
                       <Button
                         style={{ width: 138, height: 38, borderRadius: 20, color: "#D3323E", fontSize: 16 }}
                         onClick={() => {
-                          if (close) {
-                            setOpen(false);
-                            return
-                          }
                           if (modal.type === "alipay") {
                             axios.get("/alipay/orderQuery", {
                               params: { orderId: resData.orderId }
@@ -685,10 +679,6 @@ export default function Orders(props: any) {
                           fontSize: 16
                         }}
                         onClick={() => {
-                          if (close) {
-                            setOpen(false);
-                            return
-                          }
                           if (modal.type === "alipay") {
                             axios.get("/alipay/orderQuery", {
                               params: { orderId: resData.orderId }
@@ -747,50 +737,8 @@ export default function Orders(props: any) {
                         fontSize: 16
                       }}
                       onClick={() => {
-                        if (close) {
-                          setOpen(false);
-                          return
-                        }
-                        if (modal.type === "alipay") {
-                          axios.get("/alipay/orderQuery", {
-                            params: { orderId: resData.orderId }
-                          }).then(result => {
-                            Router.push("/paySuccess");
-                          }).catch(() => {
-                            setOpen(false);
-                            // console.log("失败");
-                          });
-                        } else if (modal.type === "unionPay") {
-                          axios.get("/unionPay/orderQuery", {
-                            params: { orderId: resData.orderId }
-                          }).then(result => {
-                            console.log(result, "result");
-                            if (result.data == "success") {
-                              Router.push("/paySuccess");
-                            } else {
-                              setOpen(false);
-                            }
-                          }).catch(() => {
-                            setOpen(false);
-                            // console.log("失败");
-                          });
-                        } else if (modal.type === "wechat") {
-                          axios.get("/wechat/orderQuery", {
-                            params: { orderId: resData.orderId }
-                          }).then(result => {
-                            if (result.data == "success") {
-                              Router.push("/paySuccess");
-                            } else {
-                              setOpen(false);
-                            }
-                          }).catch(() => {
-                            setOpen(false);
-                            // console.log("失败");
-                          });
-                        } else if ((modal.type === "error")) {
-                          setOpen(false);
-                          // Fail();
-                        }
+                        setOpen(false);
+                        // Fail();
                       }} color="primary">
                       {modal.okText}
                     </Button>
