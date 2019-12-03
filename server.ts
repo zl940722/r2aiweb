@@ -237,7 +237,7 @@ app.prepare()
               detail,
               orderIds,
               invoiceType: type,
-              "basic": { id: user.id, buyername: name, phone, taxnum: personNo, address, account: bankNo }
+              "basic": { email: user.email, buyername: name, phone, taxnum: personNo, address, account: bankNo }
             }
           })
 
