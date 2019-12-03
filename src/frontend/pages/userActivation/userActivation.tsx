@@ -21,13 +21,15 @@ class Index extends React.Component<any, any> {
         token: (data[1].split(/=(?=.)/))[1]
       }
     }).then((res: any) => {
-
       setTimeout(function() {
         Router.push("/login");
       }, 3000);
 
 
     }).catch(function(error: any) {
+      setTimeout(function() {
+        Router.push("/login");
+      }, 3000);
       if (error.response) {
         console.log(error.response.data);
         console.log(error.response.status);
