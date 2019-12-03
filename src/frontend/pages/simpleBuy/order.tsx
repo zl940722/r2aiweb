@@ -392,9 +392,9 @@ export default function Orders(props: any) {
   // };
   const [dialogInfo, setDialogOpen] = useState(false);
 
-  const Fail = function(content='交易失败'){
+  const Fail = function(){
     setModal({
-      content,
+      content:"您可通过点击“提交订单”重新进行支付",
       type: payMethod,
       cancelText: "",
       okText: "确定"
@@ -618,7 +618,7 @@ export default function Orders(props: any) {
                             }).then(result => {
                               Router.push("/paySuccess");
                             }).catch((error) => {
-                              Fail(error.response.data);
+                              Fail();
                               // setOpen(false);
                               // console.log("失败");
                             });
@@ -630,11 +630,11 @@ export default function Orders(props: any) {
                               if (result.data == "success") {
                                 Router.push("/paySuccess");
                               } else {
-                                Fail(result.data);
+                                Fail();
                                 // setOpen(false);
                               }
                             }).catch((error) => {
-                              Fail(error.response.data);
+                              Fail();
                               // setOpen(false);
                               console.log("失败");
                             });
@@ -644,7 +644,7 @@ export default function Orders(props: any) {
                             }).then(result => {
                               Router.push("/paySuccess");
                             }).catch((error) => {
-                              Fail(error.response.data);
+                              Fail();
                               // setOpen(false);
                               // console.log("失败");
                             });
@@ -670,7 +670,7 @@ export default function Orders(props: any) {
                             }).then(result => {
                               Router.push("/paySuccess");
                             }).catch((error) => {
-                              Fail(error.response.data);
+                              Fail();
                               // setOpen(false);
                               // console.log("失败");
                             });
@@ -682,11 +682,11 @@ export default function Orders(props: any) {
                               if (result.data == "success") {
                                 Router.push("/paySuccess");
                               } else {
-                                Fail(result.data);
+                                Fail();
                                 // setOpen(false);
                               }
                             }).catch((error) => {
-                              Fail(error.response.data);
+                              Fail();
                               // setOpen(false);
                               // console.log("失败");
                             });
@@ -696,7 +696,7 @@ export default function Orders(props: any) {
                             }).then(result => {
                               Router.push("/paySuccess");
                             }).catch((error) => {
-                              Fail(error.response.data);
+                              Fail();
                               // setOpen(false);
                               // console.log("失败");
                             });
