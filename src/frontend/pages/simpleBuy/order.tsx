@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(3),
       display: "flex",
       flexFlow: "unset",
-      // alignItems: "center",
+      alignItems: "center",
       marginLeft: 0
     },
     all: {
@@ -394,7 +394,7 @@ export default function Orders(props: any) {
         <h1 style={{ textAlign: "center", marginTop: 40, fontWeight: "bold", fontSize: 36 }}>产品购买</h1>
         <form className={classes.container} noValidate autoComplete="off">
           <Grid container className={classes.grids}>
-            <Grid item md={6} className={classes.grid}>
+            <Grid item xs={8} className={classes.grid}>
               <SimpleSelect
                 label="购买产品"
                 xs={12}
@@ -508,7 +508,7 @@ export default function Orders(props: any) {
               </div>
 
               <div>
-                <FormControl component="fieldset" className={classes.formControl}>
+                <FormControl component="div" className={classes.formControl}>
                   <div style={{ marginRight: 20, width: "6.6rem" }}>选择支付方式</div>
                   <RadioGroup aria-label="gender" name="gender1" value={payMethod} onChange={handleChanges}>
                     <Grid container spacing={10} >
