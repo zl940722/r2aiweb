@@ -95,7 +95,7 @@ const customTheme = {
   global: {
     hover: {
       color: "#FFF",
-      background: "#2C4159"
+      background: 'none'
     },
     colors: {
       brand: "#fff"
