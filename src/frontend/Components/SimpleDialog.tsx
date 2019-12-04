@@ -18,18 +18,15 @@ const useStyles = makeStyles((theme: Theme) => ({
   main: {},
   header: {
     fontSize: "1.5rem",
-    textAlign: "center",
-    width: "572px",
-    marginTop: "2.5rem",
-    marginBottom: "1rem"
+    textAlign: "center"
   },
   content: {
-    padding: "1rem 3rem 3.25rem 3rem"
+    marginTop: "25px",
+    marginBottom: "25px"
   },
   footer: {
     display: "flex",
-    justifyContent: "center",
-    paddingBottom: "2.5rem"
+    justifyContent: "center"
   },
   button: {
     height: "2.375rem",
@@ -57,8 +54,7 @@ export default function SimpleDialog(res: any) {
         <div className={classes.footer}>
           {disagreeText ?
             <Button onClick={setOpen} color="primary">{disagreeText || info["Disagree"]}</Button> : null}
-          <SimpleButton onClick={setOpen} label={agreeText || info["Agree"]}
-                        autoFocus className={classes.button}/>
+          <SimpleButton onClick={setOpen} label={agreeText || info["Agree"]} className={classes.button}/>
         </div>
       </Dialog>
     </div>
