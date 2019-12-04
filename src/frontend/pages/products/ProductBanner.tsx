@@ -106,7 +106,7 @@ function ProductBanner(res: any) {
           {/*</div>*/}
           <div className={classes.itemContent}>
             <div className={classes.buttonWrap} onClick={onHandleOpen}>
-              <img style={{ width: 36, marginRight: 20 }} src={"/static/images/products/player.png"} />
+              <img style={{ width: 36, marginRight: 20 }} src={"/static/images/products/player1.png"} />
               <span style={{ fontSize: 36 }}>产品视频</span>
             </div>
           </div>
