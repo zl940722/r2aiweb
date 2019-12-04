@@ -62,7 +62,8 @@ const useStyles = makeStyles((theme: any) =>
     button: {
       width: "16.6rem",
       height: "4.5rem",
-      fontWeight: "bold"
+      fontWeight: "bold",
+      marginBottom: 44
     },
     modal: {
       display: "flex",
