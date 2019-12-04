@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { makeStyles } from "@material-ui/styles";
 import "./global.css";
 import Link from "next/link";
@@ -10,13 +10,18 @@ import axios from "axios";
 
 const { SubMenu } = Menu;
 
-const menuStyle: any = { width: 99, textAlign: 'center', fontSize: 16 };
+const menuStyle: any = { width: 99, textAlign: 'center', fontSize: 16, position: 'relative' };
 
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
     backgroundColor: "#fff",
     color: "#000",
+    position: "absolute",
+    top: 0,
+    zIndex: 2,
+    width: "100%",
+    minWidth: "1200px",
     "& span": {
       color: "#000"
     },
@@ -47,7 +52,6 @@ const useStyles = makeStyles({
     fontSize: 16
   },
   index: {
-    position: "absolute",
     top: 0,
     zIndex: 2,
     width: "100%",
@@ -78,7 +82,7 @@ const useStyles = makeStyles({
   },
   cursor: {
     cursor: 'pointer',
-    position: 'relative'
+    position: 'relative',
   },
   login: {
     color: "inherit",
@@ -95,6 +99,12 @@ const useStyles = makeStyles({
     background: 'transparent',
     cursor: 'pointer',
     fontSize: 16
+  },
+  subMenu: {
+    top: '70px !important',
+  },
+  dropdown: {
+    top: '70px !important'
   }
 });
 
@@ -248,7 +258,7 @@ const Header = (props) => {
   const classes = useStyles();
   const current = props.route;
 
-  const index = props.route === "/";
+  const [hover, setHover] = useState(false)
 
   function logout() {
     axios.delete("/user/logout");
@@ -262,7 +272,7 @@ const Header = (props) => {
       flexDirection: 'column',
       // width: 100,
       justifyContent: 'center',
-      marginLeft: 'auto'
+      marginLeft: 'auto',
     }}>
       <Menu.Item style={{ fontSize: 16 }}>
         {/*<Link href='/modifyPassword'>*/}
@@ -282,7 +292,14 @@ const Header = (props) => {
 
   const handleClick = (e) => e.key && Router.push(e.key);
   return (
-    <div className={classNames(classes.root, index ? classes.index : "")}>
+    <div className={classNames(classes.root, !hover && classes.index)}
+      onMouseOver={() => {
+        setHover(true)
+      }}
+      onMouseOut={() => {
+        setHover(false)
+      }}
+    >
       <Menu
         onClick={handleClick}
         style={{ color: "#000000" }}
@@ -303,7 +320,7 @@ const Header = (props) => {
             const menuLink = value.link;
             return (
               value.children ?
-                <SubMenu key={index} style={menuStyle}
+                <SubMenu key={index} style={menuStyle} popupClassName={classes.subMenu}
                   title={value.name} onTitleClick={() => menuLink && Router.push(menuLink)}>
                   {
                     menuLink &&
@@ -331,7 +348,7 @@ const Header = (props) => {
                   position: 'relative',
                   justifyContent: 'flex-end'
                 }}>
-                  <Dropdown className={classes.cursor} overlay={menu} getPopupContainer={(el: any) => el.parentElement} placement='bottomRight'>
+                  <Dropdown className={classes.cursor} overlay={menu} overlayClassName={classes.dropdown} getPopupContainer={(el: any) => el.parentElement} placement='bottomRight'>
                     <span className={classes.avatar} title={(props.user.email || '').split('@')[0]}>
                       <Icon style={{
                         cursor: 'pointer',
