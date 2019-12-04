@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { makeStyles } from "@material-ui/styles";
 import "./global.css";
 import Link from "next/link";
@@ -10,18 +10,13 @@ import axios from "axios";
 
 const { SubMenu } = Menu;
 
-const menuStyle: any = { width: 99, textAlign: 'center', fontSize: 16, position: 'relative' };
+const menuStyle: any = { width: 99, textAlign: 'center', fontSize: 16 };
 
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
     backgroundColor: "#fff",
     color: "#000",
-    position: "absolute",
-    top: 0,
-    zIndex: 2,
-    width: "100%",
-    minWidth: "1200px",
     "& span": {
       color: "#000"
     },
@@ -52,6 +47,7 @@ const useStyles = makeStyles({
     fontSize: 16
   },
   index: {
+    position: "absolute",
     top: 0,
     zIndex: 2,
     width: "100%",
@@ -78,11 +74,29 @@ const useStyles = makeStyles({
     },
     '& button:hover': {
       background: 'transparent',
+    },
+    '&:hover':{
+      backgroundColor: "#fff",
+      "& span": {
+        color: "#000"
+      },
+      "& > ul": {
+        color: "#000",
+        "& > li": {
+          color: "#000"
+        }
+      },
+      "& > a": {
+        color: "#000"
+      },
+      '& i': {
+        color: "#000"
+      },
     }
   },
   cursor: {
     cursor: 'pointer',
-    position: 'relative',
+    position: 'relative'
   },
   login: {
     color: "inherit",
@@ -99,12 +113,6 @@ const useStyles = makeStyles({
     background: 'transparent',
     cursor: 'pointer',
     fontSize: 16
-  },
-  subMenu: {
-    top: '70px !important',
-  },
-  dropdown: {
-    top: '70px !important'
   }
 });
 
@@ -258,7 +266,7 @@ const Header = (props) => {
   const classes = useStyles();
   const current = props.route;
 
-  const [hover, setHover] = useState(false)
+  const index = props.route === "/";
 
   function logout() {
     axios.delete("/user/logout");
@@ -272,7 +280,7 @@ const Header = (props) => {
       flexDirection: 'column',
       // width: 100,
       justifyContent: 'center',
-      marginLeft: 'auto',
+      marginLeft: 'auto'
     }}>
       <Menu.Item style={{ fontSize: 16 }}>
         {/*<Link href='/modifyPassword'>*/}
@@ -292,14 +300,7 @@ const Header = (props) => {
 
   const handleClick = (e) => e.key && Router.push(e.key);
   return (
-    <div className={classNames(classes.root, !hover && classes.index)}
-      onMouseOver={() => {
-        setHover(true)
-      }}
-      onMouseOut={() => {
-        setHover(false)
-      }}
-    >
+    <div className={classNames(classes.root, index ? classes.index : "")}>
       <Menu
         onClick={handleClick}
         style={{ color: "#000000" }}
@@ -320,8 +321,8 @@ const Header = (props) => {
             const menuLink = value.link;
             return (
               value.children ?
-                <SubMenu key={index} style={menuStyle} popupClassName={classes.subMenu}
-                  title={value.name} onTitleClick={() => menuLink && Router.push(menuLink)}>
+                <SubMenu key={index} style={menuStyle}
+                         title={value.name} onTitleClick={() => menuLink && Router.push(menuLink)}>
                   {
                     menuLink &&
                     <Menu.Item key={menuLink} style={{ display: 'none' }} />
@@ -348,7 +349,7 @@ const Header = (props) => {
                   position: 'relative',
                   justifyContent: 'flex-end'
                 }}>
-                  <Dropdown className={classes.cursor} overlay={menu} overlayClassName={classes.dropdown} getPopupContainer={(el: any) => el.parentElement} placement='bottomRight'>
+                  <Dropdown className={classes.cursor} overlay={menu} getPopupContainer={(el: any) => el.parentElement} placement='bottomRight'>
                     <span className={classes.avatar} title={(props.user.email || '').split('@')[0]}>
                       <Icon style={{
                         cursor: 'pointer',
@@ -368,7 +369,7 @@ const Header = (props) => {
                 {/*<a className={classes.res} style={{marginLeft:10}} href={props.PRODUCT_URL}>使用产品</a>*/}
               </> :
               <div><a className={classes.login} href={"/login"}>登录</a> <a className={classes.res}
-                href={"/register"}>注册</a>
+                                                                          href={"/register"}>注册</a>
               </div>
           }
         </span>
