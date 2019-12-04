@@ -74,7 +74,7 @@ function ProductAbout() {
         </Typography>
         <div className={classes.product_img}>
           <img
-            src="/static/images/products/product.png"
+            src="/static/images/products/nt.png"
             alt=""
           />
         </div>

@@ -46,7 +46,10 @@ const useStyles = makeStyles({
   },
   itemTitle: {
     marginBottom: "1.6875rem",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    '&:hover':{
+      color:'#d3323e'
+    }
   },
   itemTitle2: {
     marginTop: "1.0525rem",
