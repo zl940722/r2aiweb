@@ -33,7 +33,8 @@ const useStyles = makeStyles({
     flexFlow: "column",
     maxHeight: "23rem",
     alignItems: 'center',
-    paddingTop: 40
+    paddingTop: 40,
+    flex: 'none'
   },
   image: {
     height: 96,
@@ -57,7 +58,8 @@ const useStyles = makeStyles({
     fontSize: "14px",
     padding: 15,
     lineHeight: 2,
-    letterSpacing: 1
+    letterSpacing: 1,
+    maxWidth: '100%'
   }
 });
 
