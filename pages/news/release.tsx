@@ -12,9 +12,9 @@ Index.getInitialProps = async function(props) {
   const { p = 1 } = props.query;
   const news: any = await fetch(url + `/news?type=Release&_sort=publishTime:DESC&_limit=5&_start=${5 * (p - 1)}`) || [];
   const count: any = await (await fetch(url + "/news/count?type=Release")).json();
-  const information: any = await fetch(url + "/infors") || [];
+  // const information: any = await fetch(url + "/infors") || [];
   const newsData = await news.json();
-  const informationData = await information.json();
+  // const informationData = await information.json();
 
   const tabs = [{
     name: "产品发布",
@@ -29,7 +29,7 @@ Index.getInitialProps = async function(props) {
 
   return {
     list: newsData,
-    information: informationData,
+    // information: informationData,
     tabs,
     count,
     page: p

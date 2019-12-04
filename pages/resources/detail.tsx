@@ -10,9 +10,9 @@ const Index = (res: any) => {
 
 Index.getInitialProps = async function(res: any) {
   const news: any = await fetch(url + `/communities/${res.asPath.split("?")[1]}`) || [];
-  const information: any = await fetch(url + "/infors") || [];
+  // const information: any = await fetch(url + "/infors") || [];
   const newsData = await news.json();
-  const informationData = await information.json();
+  // const informationData = await information.json();
 
   const newsNext: any = await fetch(url + `/communities?type=${newsData.type}&create_at=${newsData.create_at}&_limit=1&_sort=id:DESC`) || [];
   const newsPrev: any = await fetch(url + `/communities?type=${newsData.type}&create_at=${newsData.create_at}&_limit=1&_sort=id:DESC`) || [];
@@ -25,7 +25,7 @@ Index.getInitialProps = async function(res: any) {
     news: newsData,
     next: nextData[0],
     prev: prevData[0],
-    information: informationData
+    // information: informationData
   };
 };
 

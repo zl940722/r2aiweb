@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import moment from "moment";
-import CommonButton from "../../Components/CommonButton";
-import Router from "next/router";
 import { PageHeader } from "antd";
 
 const useStyles = makeStyles({

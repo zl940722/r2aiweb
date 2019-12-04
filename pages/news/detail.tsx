@@ -10,9 +10,9 @@ const Index = (res: any) => {
 
 Index.getInitialProps = async function(res: any) {
   const news: any = await fetch(url + `/news/${res.asPath.split("?")[1]}`) || [];
-  const information: any = await fetch(url + "/infors") || [];
+  // const information: any = await fetch(url + "/infors") || [];
   const newsData = await news.json();
-  const informationData = await information.json();
+  // const informationData = await information.json();
 
   const newsNext: any = await fetch(url + `/news?type=${newsData.type}&publishTime_gt=${newsData.publishTime}&_limit=1&_sort=publishTime:DESC`) || [];
   const newsPrev: any = await fetch(url + `/news?type=${newsData.type}&publishTime_lt=${newsData.publishTime}&_limit=1&_sort=publishTime:DESC`) || [];
@@ -25,7 +25,7 @@ Index.getInitialProps = async function(res: any) {
     news: newsData,
     next: nextData[0],
     prev: prevData[0],
-    information: informationData
+    // information: informationData
   };
 };
 
