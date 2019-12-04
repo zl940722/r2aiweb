@@ -75,7 +75,7 @@ const useStyles = makeStyles({
     '& button:hover': {
       background: 'transparent',
     },
-    '&:hover':{
+    '&:hover': {
       backgroundColor: "#fff",
       "& span": {
         color: "#000"
@@ -113,6 +113,12 @@ const useStyles = makeStyles({
     background: 'transparent',
     cursor: 'pointer',
     fontSize: 16
+  },
+  overlayClass: {
+    top: '70px !important'
+  },
+  subMenu: {
+    top: '70px !important'
   }
 });
 
@@ -321,8 +327,8 @@ const Header = (props) => {
             const menuLink = value.link;
             return (
               value.children ?
-                <SubMenu key={index} style={menuStyle}
-                         title={value.name} onTitleClick={() => menuLink && Router.push(menuLink)}>
+                <SubMenu key={index} style={menuStyle} popupClassName={classes.subMenu}
+                  title={value.name} onTitleClick={() => menuLink && Router.push(menuLink)}>
                   {
                     menuLink &&
                     <Menu.Item key={menuLink} style={{ display: 'none' }} />
@@ -349,7 +355,7 @@ const Header = (props) => {
                   position: 'relative',
                   justifyContent: 'flex-end'
                 }}>
-                  <Dropdown className={classes.cursor} overlay={menu} getPopupContainer={(el: any) => el.parentElement} placement='bottomRight'>
+                  <Dropdown className={classes.cursor} overlay={menu} overlayClassName={classes.overlayClass} getPopupContainer={(el: any) => el.parentElement} placement='bottomRight'>
                     <span className={classes.avatar} title={(props.user.email || '').split('@')[0]}>
                       <Icon style={{
                         cursor: 'pointer',
@@ -369,7 +375,7 @@ const Header = (props) => {
                 {/*<a className={classes.res} style={{marginLeft:10}} href={props.PRODUCT_URL}>使用产品</a>*/}
               </> :
               <div><a className={classes.login} href={"/login"}>登录</a> <a className={classes.res}
-                                                                          href={"/register"}>注册</a>
+                href={"/register"}>注册</a>
               </div>
           }
         </span>
