@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme: any) =>
     itemContent: {
       overflow: "hidden",
       position: 'absolute',
-      bottom: 50,
+      bottom: 0,
       left: 0,
       right: 0,
       top: 0,
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme: any) =>
       width: "16.6rem",
       height: "4.5rem",
       fontWeight: "bold",
-      marginBottom: 80
+      marginBottom: '35%'
     },
     modal: {
       display: "flex",
