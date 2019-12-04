@@ -9,7 +9,7 @@ import { Carousel } from "react-responsive-carousel";
 const useStyles = makeStyles((theme: any) =>
   createStyles({
     banner: {
-      maxHeight: "36.25rem",
+      // maxHeight: "36.25rem",
       maxWidth: "100%",
       overflow: "hidden",
       margin: "0 auto",
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: any) =>
       position: "relative",
       "& >img": {
         width: "100%",
-        maxHeight: "36.25rem",
+        // maxHeight: "36.25rem",
         minWidth: "1000px"
       }
     },
