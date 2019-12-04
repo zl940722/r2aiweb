@@ -91,17 +91,59 @@ const useStyles = makeStyles({
     }
   },
   images: {
-    marginTop: "80px"
+    marginTop: "80px",
+    position: 'relative'
   },
   card: {
-    width: 320
+    width: 320,
+    height: 150,
+    padding: 20,
+    border: '1px solid #ccc',
+    cursor: 'pointer'
   },
   relative: {
     position: 'relative',
-    zIndex: 0
+    zIndex: 0,
+    height: 150,
+    margin: '25px 0'
   },
   liText: {
     fontSize: 14
+  },
+  imageBlock: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    zIndex: 0,
+    display: 'flex',
+    flex: 'none',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  left: {
+    display: 'flex',
+    flex: 'auto',
+    "& >div": {
+      marginLeft: 'auto'
+    }
+  },
+  right: {
+    display: 'flex',
+    flex: 'auto',
+    "& >div": {
+      marginRight: 'auto'
+    }
+  },
+  centerBlock: {
+    width: 556,
+    height: 150,
+    display: 'flex',
+    flex: 'none',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative'
   }
 });
 
@@ -179,8 +221,7 @@ function HomeAbout() {
                 align='left'>
                 <p style={{ color: "#D3323E", fontWeight: 600, margin: 0 }}>全球唯一一家同时支持有监督/无监督/时间序列分析的Auto ML公司！</p>
                 <p style={{ color: "#666666", margin: 0 }}>为各行业企业、个人提供世界领先的人工智能开发及应用平台，帮助客户以最简单、便捷、高效的方式，</p>
-                <p
-                  style={{ color: "#666666", margin: 0 }}>建立最优质的机器学习模型，为每个有价值的业务场景自主构建&nbsp;AI&nbsp;应用，实现业务升级和企业&nbsp;AI&nbsp;赋能。&nbsp;</p>
+                <p style={{ color: "#666666", margin: 0 }}>建立最优质的机器学习模型，为每个有价值的业务场景自主构建&nbsp;AI&nbsp;应用，实现业务升级和企业&nbsp;AI&nbsp;赋能。&nbsp;</p>
               </Typography>
             </Grid>
           </Grid>
@@ -237,7 +278,7 @@ function HomeAbout() {
       <Grid container className={classes.content} component='div'>
         <Grid container xs={12} className={classes.title}>
           <Grid item xs={12} md={9} lg={7} xl={5} className={classes.center}>
-            <p className={"all_title"} style={{marginBottom: 0}}>
+            <p className={"all_title"} style={{ marginBottom: 0 }}>
               R2六脉神剑
             </p>
           </Grid>
@@ -250,55 +291,120 @@ function HomeAbout() {
           </Grid>
         </Grid>
         <Grid container xs={12} className={classes.images} >
-          <Grid container xs={12} justify='center' alignItems='center' className={classes.relative} style={{ marginBottom: "-55px" }}>
-            <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={"img"}
-              src={`/static/images/technical/1xz${index === 1 ? "a" : ""}.png`} alt="1xz" onMouseOver={onOver(1)}
-              onMouseOut={onOver(-1)} />
-            <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={"img"}
-              src={`/static/images/technical/6xz${index === 6 ? "a" : ""}.png`} alt="6xz" onMouseOver={onOver(6)}
-              onMouseOut={onOver(-1)} />
+          <Grid container xs={12} alignItems='center' className={classes.relative}>
+            <div className={classes.left}>
+              <div className={classes.card} onMouseOver={onOver(1)} onMouseOut={onOver(-1)} style={index === 1 ? { boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.3)' } : {}}>
+                <Typography gutterBottom variant="h6" component="h6" style={{ fontSize: 18 }}>
+                  {title[0]}
+                </Typography>
+                {content[0] && content[0].map(c => {
+                  return <Typography variant="body2" color="textSecondary" component='li' style={{ fontSize: 14 }}>
+                    {c}
+                  </Typography>;
+                })}
+              </div>
+            </div>
+            <div className={classes.centerBlock}>
+              <div className={classes.imageBlock} style={{marginBottom: -90}}>
+                <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={"img"}
+                  src={`/static/images/technical/1xz${index === 1 ? "a" : ""}.png`} alt="1xz" onMouseOver={onOver(1)}
+                  onMouseOut={onOver(-1)} />
+                <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={"img"}
+                  src={`/static/images/technical/6xz${index === 6 ? "a" : ""}.png`} alt="6xz" onMouseOver={onOver(6)}
+                  onMouseOut={onOver(-1)} />
+              </div>
+            </div>
+            <div className={classes.right}>
+              <div className={classes.card} onMouseOver={onOver(6)} onMouseOut={onOver(-1)} style={index === 6 ? { boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.3)' } : {}}>
+                <Typography gutterBottom variant="h6" component="h6" style={{ fontSize: 18 }}>
+                  {title[5]}
+                </Typography>
+                {content[5] && content[5].map(c => {
+                  return <Typography variant="body2" color="textSecondary" component='li' style={{ fontSize: 14 }}>
+                    {c}
+                  </Typography>;
+                })}
+              </div>
+            </div>
           </Grid>
-          <Grid container xs={12} justify='center' alignItems='center' className={classes.relative}>
-            <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={"img"}
-              src={`/static/images/technical/2xz${index === 2 ? "a" : ""}.png`} alt="2xz" onMouseOver={onOver(2)}
-              onMouseOut={onOver(-1)} style={{ marginRight: "95px", textAlign: "end" }} />
-            <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={"img"}
-              src={`/static/images/technical/5xz${index === 5 ? "a" : ""}.png`} alt="5xz" onMouseOver={onOver(5)}
-              onMouseOut={onOver(-1)} style={{ marginLeft: "95px" }} />
-            <Grid item className={classes.r2}>
-              <img src={`/static/images/technical/r2.png`} alt="r2" />
-            </Grid>
+          <Grid container xs={12} alignItems='center' className={classes.relative}>
+            <div className={classes.left}>
+              <div className={classes.card} onMouseOver={onOver(2)} onMouseOut={onOver(-1)} style={index === 2 ? { boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.3)' } : {}}>
+                <Typography gutterBottom variant="h6" component="h6" style={{ fontSize: 18 }}>
+                  {title[1]}
+                </Typography>
+                {content[1] && content[1].map(c => {
+                  return <Typography variant="body2" color="textSecondary" component='li' style={{ fontSize: 14 }}>
+                    {c}
+                  </Typography>;
+                })}
+              </div>
+            </div>
+            <div className={classes.centerBlock}>
+              <div className={classes.imageBlock}>
+                <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={"img"}
+                  src={`/static/images/technical/2xz${index === 2 ? "a" : ""}.png`} alt="2xz" onMouseOver={onOver(2)}
+                  onMouseOut={onOver(-1)} style={{ marginRight: "95px", textAlign: "end" }} />
+                <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={"img"}
+                  src={`/static/images/technical/5xz${index === 5 ? "a" : ""}.png`} alt="5xz" onMouseOver={onOver(5)}
+                  onMouseOut={onOver(-1)} style={{ marginLeft: "95px" }} />
+                <Grid item className={classes.r2}>
+                  <img src={`/static/images/technical/r2.png`} alt="r2" />
+                </Grid>
+              </div>
+            </div>
+            <div className={classes.right}>
+              <div className={classes.card} onMouseOver={onOver(5)} onMouseOut={onOver(-1)} style={index === 5 ? { boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.3)' } : {}}>
+                <Typography gutterBottom variant="h6" component="h6" style={{ fontSize: 18 }}>
+                  {title[4]}
+                </Typography>
+                {content[4] && content[4].map(c => {
+                  return <Typography variant="body2" color="textSecondary" component='li' style={{ fontSize: 14 }}>
+                    {c}
+                  </Typography>;
+                })}
+              </div>
+            </div>
           </Grid>
-          <Grid container xs={12} justify='center' alignItems='center' className={classes.relative} style={{ marginTop: "-55px" }}>
-            <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={"img"}
-              src={`/static/images/technical/3xz${index === 3 ? "a" : ""}.png`} alt="3xz" onMouseOver={onOver(3)}
-              onMouseOut={onOver(-1)} />
-            <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={"img"}
-              src={`/static/images/technical/4xz${index === 4 ? "a" : ""}.png`} alt="4xz" onMouseOver={onOver(4)}
-              onMouseOut={onOver(-1)} />
+          <Grid container xs={12} alignItems='center' className={classes.relative}>
+            <div className={classes.left}>
+              <div className={classes.card} onMouseOver={onOver(3)} onMouseOut={onOver(-1)} style={index === 3 ? { boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.3)' } : {}}>
+                <Typography gutterBottom variant="h6" component="h6" style={{ fontSize: 18 }}>
+                  {title[2]}
+                </Typography>
+                {content[2] && content[2].map(c => {
+                  return <Typography variant="body2" color="textSecondary" component='li' style={{ fontSize: 14 }}>
+                    {c}
+                  </Typography>;
+                })}
+              </div>
+            </div>
+            <div className={classes.centerBlock}>
+              <div className={classes.imageBlock} style={{marginTop: -90}}>
+                <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={"img"}
+                  src={`/static/images/technical/3xz${index === 3 ? "a" : ""}.png`} alt="3xz" onMouseOver={onOver(3)}
+                  onMouseOut={onOver(-1)} />
+                <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={"img"}
+                  src={`/static/images/technical/4xz${index === 4 ? "a" : ""}.png`} alt="4xz" onMouseOver={onOver(4)}
+                  onMouseOut={onOver(-1)} />
+              </div>
+            </div>
+            <div className={classes.right}>
+              <div className={classes.card} onMouseOver={onOver(4)} onMouseOut={onOver(-1)} style={index === 4 ? { boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.3)' } : {}}>
+                <Typography gutterBottom variant="h6" component="h6" style={{ fontSize: 18 }}>
+                  {title[3]}
+                </Typography>
+                {content[3] && content[3].map(c => {
+                  return <Typography variant="body2" color="textSecondary" component='li' style={{ fontSize: 14 }}>
+                    {c}
+                  </Typography>;
+                })}
+              </div>
+            </div>
           </Grid>
         </Grid>
-        <Popper
-          id="mouse-over-popover"
-          open={Boolean(anchorEl)}
-          anchorEl={anchorEl}
-          placement={index > 3 ? "right" : "left"}
-        >
-          <Card className={classes.card}>
-            <CardContent>
-              <Typography gutterBottom variant="h6" component="h6" style={{fontSize: 18}}>
-                {title[index - 1]}
-              </Typography>
-              {content[index - 1] && content[index - 1].map(c => {
-                return <Typography variant="body2" color="textSecondary" component='li' style={{fontSize: 14}}>
-                  {c}
-                </Typography>;
-              })}
-            </CardContent>
-          </Card>
-        </Popper>
       </Grid>
-    </Paper>
+    </Paper >
   );
 }
 
