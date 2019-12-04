@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/styles";
+import { Icon } from 'antd'
 import { Paper, Typography, Grid, Popper, Card, CardContent } from "@material-ui/core";
 
 const useStyles = makeStyles({
@@ -68,7 +69,8 @@ const useStyles = makeStyles({
     }
   },
   pointer: {
-    cursor: "pointer"
+    cursor: "pointer",
+    position: 'relative'
   },
   imageContent: {
     maxHeight: "230px",
@@ -144,6 +146,14 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative'
+  },
+  triangle: {
+    position: 'absolute',
+    bottom: -30,
+    width: 20,
+    height: 11,
+    lineHeight: '11px',
+    color: '#F5F5F5',
   }
 });
 
@@ -238,6 +248,7 @@ function HomeAbout() {
                   <Typography component={"div"} align='center' style={{ color: `${img === 0 ? "#D3323E" : "#333333"}`, fontSize: 18 }}>
                     全链自动优化
                 </Typography>
+                  {img === 0 && <div className={classes.triangle}><Icon type="caret-up" /></div>}
                 </Grid>
                 <Grid container xs={4} className={classes.pointer} direction='column' alignItems='center'
                   onMouseOver={imgOver(1)} >
@@ -247,6 +258,7 @@ function HomeAbout() {
                   <Typography component={"div"} align='center' style={{ color: `${img === 1 ? "#D3323E" : "#333333"}`, fontSize: 18 }}>
                     自研算法
                 </Typography>
+                  {img === 1 && <div className={classes.triangle}><Icon type="caret-up" /></div>}
                 </Grid>
                 <Grid container xs={4} className={classes.pointer} direction='column' alignItems='center'
                   onMouseOver={imgOver(2)} >
@@ -256,6 +268,7 @@ function HomeAbout() {
                   <Typography component={"div"} align='center' style={{ color: `${img === 2 ? "#D3323E" : "#333333"}`, fontSize: 18 }}>
                     业务场景模拟优化
                 </Typography>
+                  {img === 2 && <div className={classes.triangle}><Icon type="caret-up" /></div>}
                 </Grid>
               </Grid>
             </Grid>
@@ -305,7 +318,7 @@ function HomeAbout() {
               </div>
             </div>
             <div className={classes.centerBlock}>
-              <div className={classes.imageBlock} style={{marginBottom: -90}}>
+              <div className={classes.imageBlock} style={{ marginBottom: -90 }}>
                 <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={"img"}
                   src={`/static/images/technical/1xz${index === 1 ? "a" : ""}.png`} alt="1xz" onMouseOver={onOver(1)}
                   onMouseOut={onOver(-1)} />
@@ -380,7 +393,7 @@ function HomeAbout() {
               </div>
             </div>
             <div className={classes.centerBlock}>
-              <div className={classes.imageBlock} style={{marginTop: -90}}>
+              <div className={classes.imageBlock} style={{ marginTop: -90 }}>
                 <Grid item className={`${classes.imageContent} ${classes.pointer}`} component={"img"}
                   src={`/static/images/technical/3xz${index === 3 ? "a" : ""}.png`} alt="3xz" onMouseOver={onOver(3)}
                   onMouseOut={onOver(-1)} />
