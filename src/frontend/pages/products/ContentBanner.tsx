@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     width: "100%",
     height: "28rem",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "0 center",
+    backgroundPosition: "center",
     backgroundSize: "cover"
   },
   content: {
