@@ -15,9 +15,9 @@ const useStyles = makeStyles({
     maxWidth: "100%",
     overflow: "hidden",
     margin: "0 auto",
-    display: "flex",
-    flex: "none",
-    justifyContent: "center",
+    // display: "flex",
+    // flex: "none",
+    // justifyContent: "center",
     position: "relative",
     "& >img": {
       width: "100%",
