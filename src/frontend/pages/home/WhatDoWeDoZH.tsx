@@ -34,7 +34,8 @@ const useStyles = makeStyles({
         fontWight: "bold",
         display: "block",
         textAlign: "right",
-        marginBottom: "1.25rem"
+        marginBottom: "1.25rem",
+        fontWeight:'bold'
       },
       "& label": {
         textAlign: "left"
@@ -42,7 +43,7 @@ const useStyles = makeStyles({
       "& dd": {
         margin: "0 2.5rem"
       }
-    }
+    },
   }
 });
 

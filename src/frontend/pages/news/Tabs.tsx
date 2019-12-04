@@ -104,7 +104,7 @@ export default function(res: any) {
             return <dd
               key={itm.key}
               className={route.includes(itm.key) ? classes.on : ""}>
-              <Link href={`/${link}/${itm.key}`}><a>{itm.name}</a></Link>
+              <Link href={`/${link}/${itm.key}#main`}><a>{itm.name}</a></Link>
             </dd>;
           })}
         </dl>
