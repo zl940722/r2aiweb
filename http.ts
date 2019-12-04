@@ -1,8 +1,8 @@
-let http = process.env.STRAPI_URL || "http://localhost:1337";
+let http = process.env.STRAPI_URL || "http://localhost:1338";
 
 console.log(process.env.STRAPI_URL, 'process.env.STRAPI_URL ');
 
-if(typeof Window === 'function'){
+if(typeof window === 'object'){
   http='/strapi'
 }
 
