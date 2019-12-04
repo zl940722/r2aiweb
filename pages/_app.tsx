@@ -70,7 +70,8 @@ export default function (props) {
       <section
         style={{
           // minHeight:'calc(100vh - 140px - 16.125rem)',
-          minHeight: "calc(100vh - 202px)"
+          minHeight: "calc(100vh - 134px)",
+          paddingTop:100
         }}
       >
         {init ? <Component PRODUCT_URL={PRODUCT_URL} router={router}
