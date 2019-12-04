@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: any) =>
       backgroundPosition: "center"
     },
     banner: {
-      maxHeight: "36.25rem",
+      // maxHeight: "36.25rem",
       maxWidth: "100%",
       overflow: "hidden",
       // margin: "0 auto",
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: any) =>
       position: "relative",
       "& >img": {
         width: "100%",
-        maxHeight: "36.25rem",
+        // maxHeight: "36.25rem",
         minWidth: "1000px"
       }
     },
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme: any) =>
       width: "16.6rem",
       height: "4.5rem",
       fontWeight: "bold",
-      marginBottom: 44
+      marginBottom: 80
     },
     modal: {
       display: "flex",

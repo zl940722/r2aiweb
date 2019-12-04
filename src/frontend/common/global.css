@@ -16,7 +16,7 @@
 
 .ant-menu-horizontal {
     line-height: 68px !important;
-    /* box-shadow: 2px 2px 2px #e8e8e8; */
+    box-shadow: 2px 2px 2px #e8e8e8;
 }
 
 a:hover {

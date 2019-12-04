@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     }
   },
   banner: {
-    maxHeight: "36.25rem",
+    // maxHeight: "36.25rem",
     maxWidth: "100%",
     overflow: "hidden",
     margin: "0 auto",
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     position: "relative",
     "& >img": {
       width: "100%",
-      maxHeight: "100%",
+      // maxHeight: "100%",
       minWidth: "1000px"
     }
   },
