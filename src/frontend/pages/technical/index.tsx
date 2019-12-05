@@ -311,7 +311,7 @@ function HomeAbout() {
                   {title[0]}
                 </Typography>
                 {content[0] && content[0].map(c => {
-                  return <Typography variant="body2" color="textSecondary" component='li' style={{ fontSize: 14 }}>
+                  return <Typography variant="body2" component='li' style={{ fontSize: 14, color: "#333" }}>
                     {c}
                   </Typography>;
                 })}
