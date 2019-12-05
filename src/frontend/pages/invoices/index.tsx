@@ -22,7 +22,8 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundSize: "cover",
       backgroundPosition: "50%",
       backgroundRepeat: "no-repeat",
-      fontSize: "1rem"
+      fontSize: "1rem",
+      paddingTop: 70
     },
     container: {
       width: "61.12%",
@@ -48,7 +49,8 @@ const useStyles = makeStyles((theme: Theme) =>
     content: {
       textAlign: 'center',
       fontSize: 16,
-      lineHeight: 2
+      lineHeight: 2,
+      paddingTop: 70
     },
     title: {
       marginTop: 30,

@@ -14,6 +14,11 @@ const menuStyle: any = { width: 99, textAlign: 'center', fontSize: 16 };
 
 const useStyles = makeStyles({
   root: {
+    position: "absolute",
+    top: 0,
+    zIndex: 2,
+    width: "100%",
+    minWidth: "1200px",
     flexGrow: 1,
     backgroundColor: "#fff",
     color: "#000",
@@ -47,11 +52,6 @@ const useStyles = makeStyles({
     fontSize: 16
   },
   index: {
-    position: "absolute",
-    top: 0,
-    zIndex: 2,
-    width: "100%",
-    minWidth: "1200px",
     background: "transparent",
     color: "#fff",
     "& span": {
@@ -258,7 +258,7 @@ const menus: InterfaceMenu[] = [
         link: "/contactUs"
       }, {
         id: 14,
-        name: "职业机会",
+        name: "加入我们",
         children: null,
         link: "/job"
       }

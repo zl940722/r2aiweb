@@ -6,7 +6,8 @@ import "./index.css";
 
 const useStyles = makeStyles({
   content: {
-    overflow: "hidden"
+    overflow: "hidden",
+    paddingTop: 70
   },
   content_div: {
     maxWidth: "75rem",

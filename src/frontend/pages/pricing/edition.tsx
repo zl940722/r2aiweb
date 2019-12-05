@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   title2: {
     padding: "1.8125rem 0 1.8125rem 1.25rem",
     background: "#F5F5F5",
-    fontSize: "1rem",
+    fontSize: "1.125rem",
     fontWeight: "bold",
     textAlign: "left",
     color:"#333",

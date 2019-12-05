@@ -31,8 +31,8 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     bg: {
       background: "#fff",
-      backgroundSize: "cover"
-
+      backgroundSize: "cover",
+      paddingTop: 70
     },
     container: {
       display: "flex",

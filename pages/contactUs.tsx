@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundSize: "cover",
       backgroundPosition: "50%",
       backgroundRepeat: "no-repeat",
-      fontSize: "1rem"
+      paddingTop: 70
     },
     container: {
       width: "61.12%",
@@ -112,7 +112,7 @@ export default function ContactUs(res: any) {
       axios.post("user/sendMail", {
         "data": values,
         "emailType": "contact"
-      }).then(() =>{
+      }).then(() => {
         setDialogOpen({
           open: true,
           content: "联系成功，感谢合作！",
@@ -218,7 +218,7 @@ export default function ContactUs(res: any) {
           open: false,
           content: "",
           type: ""
-        })}/>
+        })} />
     </div>
   );
 }

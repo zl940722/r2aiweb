@@ -231,7 +231,7 @@ function HomeAbout() {
                 align='left'>
                 <p style={{ color: "#D3323E", fontWeight: 600, margin: 0 }}>全球唯一一家同时支持有监督/无监督/时间序列分析的Auto ML公司！</p>
                 <p style={{ color: "#666666", margin: 0 }}>为各行业企业、个人提供世界领先的人工智能开发及应用平台，帮助客户以最简单、便捷、高效的方式，</p>
-                <p style={{ color: "#666666", margin: 0 }}>建立最优质的机器学习模型，为每个有价值的业务场景自主构建&nbsp;AI&nbsp;应用，实现业务升级和企业&nbsp;AI&nbsp;赋能。&nbsp;</p>
+                <p style={{ color: "#666666", margin: 0 }}>建立最优质的机器学习模型，为每个有价值的业务场景自主构建&nbsp;AI&nbsp;应用，实现业务升级和企业&nbsp;AI&nbsp;转型。&nbsp;</p>
               </Typography>
             </Grid>
           </Grid>
@@ -256,7 +256,7 @@ function HomeAbout() {
                     <img src={`/static/images/technical/algo${img === 1 ? "a" : ""}.png`} alt="algo" />
                   </div>
                   <Typography component={"div"} align='center' style={{ color: `${img === 1 ? "#D3323E" : "#333333"}`, fontSize: 18 }}>
-                    自研算法
+                    最先进的算法选择
                 </Typography>
                   {img === 1 && <div className={classes.triangle}><Icon type="caret-up" /></div>}
                 </Grid>

@@ -8,7 +8,7 @@ const useStyles = makeStyles({
   content: {
     maxWidth: "75rem",
     margin: "0 auto",
-    padding: "1.5rem 0 8.8rem",
+    padding: "70px 0 8.8rem",
     overflow: "hidden"
   },
   title: {

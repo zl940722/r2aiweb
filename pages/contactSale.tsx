@@ -25,7 +25,8 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundSize: "cover",
       backgroundPosition: "50%",
       backgroundRepeat: "no-repeat",
-      fontSize: "1rem"
+      fontSize: "1rem",
+      paddingTop: 70
     },
     container: {
       width: "61.12%",

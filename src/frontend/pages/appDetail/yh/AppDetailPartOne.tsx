@@ -62,7 +62,7 @@ function AppDetailPartOne(props: any) {
                   <img style={{ width: 24 }} src={"/static/images/appDetail/mb.png"} />
                   <span style={{ fontSize: 18, marginLeft: 10 }}>项目目标</span>
                 </div>
-                <p style={{ marginLeft: 34, marginBottom: 20, fontSize: 14 }}>建立机器学习模型，划定“XX通”贷款产品促活广告的投放名单。
+                <p style={{ marginLeft: 34, marginTop: 20, fontSize: 14 }}>建立机器学习模型，划定“XX通”贷款产品促活广告的投放名单。
                 </p>
               </div>
 

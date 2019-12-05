@@ -83,7 +83,7 @@ function Supports() {
                 /></div>
                 <h4 style={{ textAlign: "center", fontSize: 18, fontWeight: 600, marginTop: 30 }}>解决方案</h4>
                 <p className={classes.text}>
-                  充分发挥R2领先的AI开发和落地技术，<br />
+                  充分发挥R2领先的AI开发和落地技术，
                   提供各行业AI赋能解决方案。<br />
                   提供具体场景建模流程和应用部署介绍。<br />
                 </p>
