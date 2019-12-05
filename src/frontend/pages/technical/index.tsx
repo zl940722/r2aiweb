@@ -307,7 +307,7 @@ function HomeAbout() {
           <Grid container xs={12} alignItems='center' className={classes.relative}>
             <div className={classes.left}>
               <div className={classes.card} onMouseOver={onOver(1)} onMouseOut={onOver(-1)} style={index === 1 ? { boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.3)' } : {}}>
-                <Typography gutterBottom variant="h6" component="h6" style={{ fontSize: 18 }}>
+                <Typography gutterBottom variant="h6" component="h6" style={{ fontSize: 18, color: "#333" }}>
                   {title[0]}
                 </Typography>
                 {content[0] && content[0].map(c => {
@@ -329,11 +329,11 @@ function HomeAbout() {
             </div>
             <div className={classes.right}>
               <div className={classes.card} onMouseOver={onOver(6)} onMouseOut={onOver(-1)} style={index === 6 ? { boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.3)' } : {}}>
-                <Typography gutterBottom variant="h6" component="h6" style={{ fontSize: 18 }}>
+                <Typography gutterBottom variant="h6" component="h6" style={{ fontSize: 18, color: "#333" }}>
                   {title[5]}
                 </Typography>
                 {content[5] && content[5].map(c => {
-                  return <Typography variant="body2" color="textSecondary" component='li' style={{ fontSize: 14 }}>
+                  return <Typography variant="body2" component='li' style={{ fontSize: 14, color: "#333" }}>
                     {c}
                   </Typography>;
                 })}
@@ -343,11 +343,11 @@ function HomeAbout() {
           <Grid container xs={12} alignItems='center' className={classes.relative}>
             <div className={classes.left}>
               <div className={classes.card} onMouseOver={onOver(2)} onMouseOut={onOver(-1)} style={index === 2 ? { boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.3)' } : {}}>
-                <Typography gutterBottom variant="h6" component="h6" style={{ fontSize: 18 }}>
+                <Typography gutterBottom variant="h6" component="h6" style={{ fontSize: 18, color: "#333" }}>
                   {title[1]}
                 </Typography>
                 {content[1] && content[1].map(c => {
-                  return <Typography variant="body2" color="textSecondary" component='li' style={{ fontSize: 14 }}>
+                  return <Typography variant="body2" component='li' style={{ fontSize: 14, color: "#333" }}>
                     {c}
                   </Typography>;
                 })}
@@ -368,11 +368,11 @@ function HomeAbout() {
             </div>
             <div className={classes.right}>
               <div className={classes.card} onMouseOver={onOver(5)} onMouseOut={onOver(-1)} style={index === 5 ? { boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.3)' } : {}}>
-                <Typography gutterBottom variant="h6" component="h6" style={{ fontSize: 18 }}>
+                <Typography gutterBottom variant="h6" component="h6" style={{ fontSize: 18, color: "#333" }}>
                   {title[4]}
                 </Typography>
                 {content[4] && content[4].map(c => {
-                  return <Typography variant="body2" color="textSecondary" component='li' style={{ fontSize: 14 }}>
+                  return <Typography variant="body2" component='li' style={{ fontSize: 14, color: "#333" }}>
                     {c}
                   </Typography>;
                 })}
@@ -382,11 +382,11 @@ function HomeAbout() {
           <Grid container xs={12} alignItems='center' className={classes.relative}>
             <div className={classes.left}>
               <div className={classes.card} onMouseOver={onOver(3)} onMouseOut={onOver(-1)} style={index === 3 ? { boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.3)' } : {}}>
-                <Typography gutterBottom variant="h6" component="h6" style={{ fontSize: 18 }}>
+                <Typography gutterBottom variant="h6" component="h6" style={{ fontSize: 18, color: "#333" }}>
                   {title[2]}
                 </Typography>
                 {content[2] && content[2].map(c => {
-                  return <Typography variant="body2" color="textSecondary" component='li' style={{ fontSize: 14 }}>
+                  return <Typography variant="body2" component='li' style={{ fontSize: 14, color: "#333" }}>
                     {c}
                   </Typography>;
                 })}
@@ -404,11 +404,11 @@ function HomeAbout() {
             </div>
             <div className={classes.right}>
               <div className={classes.card} onMouseOver={onOver(4)} onMouseOut={onOver(-1)} style={index === 4 ? { boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.3)' } : {}}>
-                <Typography gutterBottom variant="h6" component="h6" style={{ fontSize: 18 }}>
+                <Typography gutterBottom variant="h6" component="h6" style={{ fontSize: 18, color: "#333" }}>
                   {title[3]}
                 </Typography>
                 {content[3] && content[3].map(c => {
-                  return <Typography variant="body2" color="textSecondary" component='li' style={{ fontSize: 14 }}>
+                  return <Typography variant="body2" component='li' style={{ fontSize: 14, color: "#333" }}>
                     {c}
                   </Typography>;
                 })}
