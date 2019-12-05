@@ -49,15 +49,15 @@ const useStyles = makeStyles((theme: any) =>
     },
     buttonWrap: {
       color: "#fff",
-      width: 280,
+      width: '17.5rem',
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      marginTop: "60%",
+      marginTop: "70%",
       cursor: "pointer",
       border: "1px solid #fff",
       borderRadius: 80,
-      padding: "20px 0"
+      padding: "1rem 0"
     },
     button: {
       width: "13.6rem",
@@ -106,8 +106,8 @@ function ProductBanner(res: any) {
           {/*</div>*/}
           <div className={classes.itemContent}>
             <div className={classes.buttonWrap} onClick={onHandleOpen}>
-              <img style={{ width: 36, marginRight: 20 }} src={"/static/images/products/player1.png"} />
-              <span style={{ fontSize: 36 }}>产品视频</span>
+              <img style={{ width: '2.25rem', marginRight: 20 }} src={"/static/images/products/player1.png"} />
+              <span style={{ fontSize: '2.25rem' }}>产品视频</span>
             </div>
           </div>
         </div>
