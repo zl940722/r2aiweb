@@ -41,7 +41,7 @@ function Application(res: any) {
   return (
     <Card>
       <div className={classes.banner}>
-        <img src="/static/images/price/banner.png" alt="banner"/>
+        <img src="/static/images/price/banner2.png" alt="banner"/>
       </div>
       <p className={"all_title"} style={{ marginTop: 65, marginBottom: 63 }}>
         价格指南
