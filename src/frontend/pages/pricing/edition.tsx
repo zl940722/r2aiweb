@@ -194,7 +194,7 @@ function Pricing(props: any) {
                     price_zh = (p).toLocaleString()+ '元/年'
                   }
                   if(!isNaN(pd)){
-                    price_description_zh = (pd).toLocaleString()+ '元/年'
+                    price_description_zh = (pd).toLocaleString()+ '元/月'
                   }
                   return <dd key={index} className={index?'content':'title'}>
                       <p className={classes.itemsContext1}>{value.name_zh}</p>
