@@ -14,7 +14,9 @@ const useStyles = makeStyles({
     "& span": {
       display: "flex",
       alignItems: "center",
-      width: "fit-content"
+      width: "fit-content",
+      paddingTop:34,
+      fontSize:18,
     },
     "& img": {
       width: "1.4rem",
@@ -24,13 +26,17 @@ const useStyles = makeStyles({
   },
   first: {
     borderRight: "1px solid #D7D7D7",
-    paddingRight: "6rem"
+    paddingRight: "6rem",
+    "& img": {
+      width: 24,
+      height: 20,
+    }
   },
   second: {
     paddingLeft: "6rem"
   },
   main: {
-    fontSize: "2.25rem",
+    fontSize: 36,
     fontWeight: "bold",
     marginBlockStart: 0,
     marginBlockEnd: 0
@@ -44,7 +50,7 @@ const useStyles = makeStyles({
     fontSize: 16,
     color: "#fff",
     position: "relative",
-    top: "-2rem",
+    top: -38,
     textAlign: "center",
     lineHeight: '27px',
   }
@@ -70,7 +76,7 @@ export default function(props: Interface) {
     <section className={classes.content}>
       <div className={classes.first}>
         <p className={classes.main}>
-          {userNum}
+          {(+userNum).toLocaleString()}
           <sup className={classes.sup}>+{userAdd}</sup>
         </p>
         <span>
@@ -80,7 +86,7 @@ export default function(props: Interface) {
       </div>
       <div className={classes.second}>
         <p className={classes.main}>
-          {modelingNum}
+          {(+modelingNum).toLocaleString()}
           <sup className={classes.sup}>+{modelingAdd}</sup>
         </p>
         <span>
