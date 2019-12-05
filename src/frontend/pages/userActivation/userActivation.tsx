@@ -11,34 +11,34 @@ class Index extends React.Component<any, any> {
     };
   }
 
-  // componentDidMount() {
-  //   const query: any = this.props.router.asPath.split("?");
-  //   const data = query[1].split("&");
-  //   axios.defaults.withCredentials = true;
-  //   axios.get("/active", {
-  //     params: {
-  //       userId: (data[0].split("="))[1],
-  //       token: (data[1].split(/=(?=.)/))[1]
-  //     }
-  //   }).then((res: any) => {
-  //     setTimeout(function() {
-  //       Router.push("/login");
-  //     }, 3000);
+  componentDidMount() {
+    const query: any = this.props.router.asPath.split("?");
+    const data = query[1].split("&");
+    axios.defaults.withCredentials = true;
+    axios.get("/active", {
+      params: {
+        userId: (data[0].split("="))[1],
+        token: (data[1].split(/=(?=.)/))[1]
+      }
+    }).then((res: any) => {
+      setTimeout(function() {
+        Router.push("/login");
+      }, 3000);
 
 
-  //   }).catch(function(error: any) {
-  //     setTimeout(function() {
-  //       Router.push("/login");
-  //     }, 3000);
-  //     if (error.response) {
-  //       console.log(error.response.data);
-  //       console.log(error.response.status);
-  //       console.log(error.response.headers);
-  //     }
-  //   });
+    }).catch(function(error: any) {
+      setTimeout(function() {
+        Router.push("/login");
+      }, 3000);
+      if (error.response) {
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      }
+    });
 
 
-  // }
+  }
 
   render() {
     return <div style={{ paddingTop: 270 }}>
