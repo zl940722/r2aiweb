@@ -31,7 +31,8 @@ const useStyles = makeStyles((theme: Theme) =>
       background: "#fff",
       backgroundSize: "cover",
       backgroundPosition: "50%",
-      backgroundRepeat: "no-repeat"
+      backgroundRepeat: "no-repeat",
+      paddingTop: 70
     },
     container: {
       width: 1200,

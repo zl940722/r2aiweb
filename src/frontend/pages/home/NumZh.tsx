@@ -39,7 +39,8 @@ const useStyles = makeStyles({
     fontSize: 36,
     fontWeight: "bold",
     marginBlockStart: 0,
-    marginBlockEnd: 0
+    marginBlockEnd: 0,
+    margin: 0
   },
   sup: {
     backgroundImage: "url(/static/images/home/add.png)",

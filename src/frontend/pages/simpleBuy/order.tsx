@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
     formControl: {
       margin: theme.spacing(3),
       display: "flex",
-      flexFlow: "unset",
+      flex: 'auto',
       alignItems: "center",
       marginLeft: 0
     },
@@ -509,8 +509,8 @@ export default function Orders(props: any) {
 
               <div>
                 <FormControl component="div" className={classes.formControl}>
-                  <div style={{ marginRight: 20, width: "6.6rem" }}>选择支付方式</div>
-                  <RadioGroup aria-label="gender" name="gender1" value={payMethod} onChange={handleChanges}>
+                  <div style={{ marginRight: 20, width: "6.6rem", display: 'flex', flex: 'none' }}>选择支付方式</div>
+                  <RadioGroup aria-label="gender" name="gender1" value={payMethod} onChange={handleChanges} style={{ display: 'flex', flex: 'auto' }}>
                     <Grid container spacing={10} >
                       <Grid item xs={4} style={{ textAlign: 'center' }}>
                         <FormControlLabel value="unionPay" control={<Radio />} label={<img style={{ width: 120 }}

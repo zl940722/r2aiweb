@@ -47,12 +47,12 @@ const useStyles = makeStyles((theme: Theme) =>
     main: {
       backgroundImage: `url(/static/images/login/login.png)`,
       backgroundRepeat: "no-repeat",
-      backgroundPosition: "center 5.3125rem",
-      height: "725px",
+      backgroundPosition: "center 155px",
+      height: "795px",
       width: "1225px",
       // margin: "5.3125rem auto",
       margin: "0 auto",
-      padding: "85px 0"
+      padding: "155px 0 85px"
       // minHeight:'calc(100vh - 140px - 16.125rem)',
     },
     msg: {
