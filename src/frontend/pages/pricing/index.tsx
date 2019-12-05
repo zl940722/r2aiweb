@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Typography } from "@material-ui/core";
+import { Card } from "@material-ui/core";
 import Edition from "./edition";
 import Context from "./context";
 import { makeStyles } from "@material-ui/styles";
@@ -11,17 +11,12 @@ const useStyles = makeStyles({
     backgroundPosition: "center"
   },
   banner: {
-    // maxHeight: "36.25rem",
     maxWidth: "100%",
     overflow: "hidden",
     margin: "0 auto",
-    // display: "flex",
-    // flex: "none",
-    // justifyContent: "center",
     position: "relative",
     "& >img": {
       width: "100%",
-      // maxHeight: "36.25rem",
       minWidth: "1000px"
     }
   },

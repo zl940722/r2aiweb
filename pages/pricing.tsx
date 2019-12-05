@@ -44,7 +44,6 @@ Index.getInitialProps = async function() {
   homeData.unshift(list);
   return {
     data: homeData,
-    // user
   };
 };
 

@@ -187,10 +187,19 @@ function Pricing(props: any) {
                     }
                     return false
                   };
+                  let {price_zh,price_description_zh} = value;
+                  const p = price_zh&&+price_zh.split('元')[0];
+                  const pd = price_description_zh&&+price_description_zh.split('元')[0];
+                  if(!isNaN(p)){
+                    price_zh = (p).toLocaleString()+ '元/年'
+                  }
+                  if(!isNaN(pd)){
+                    price_description_zh = (pd).toLocaleString()+ '元/年'
+                  }
                   return <dd key={index} className={index?'content':'title'}>
                       <p className={classes.itemsContext1}>{value.name_zh}</p>
-                      <p className={classes.itemsContext2}>{value.price_zh}</p>
-                      <p className={classes.itemsContext3}>{value.price_description_zh}</p>
+                      <p className={classes.itemsContext2}>{price_zh}</p>
+                      <p className={classes.itemsContext3}>{price_description_zh}</p>
                         {value.button_zh &&<Grommet className={classes.buttonWrap} theme={customTheme}>
                              <Button
                                hoverIndicator
