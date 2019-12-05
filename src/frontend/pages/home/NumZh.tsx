@@ -15,7 +15,7 @@ const useStyles = makeStyles({
       display: "flex",
       alignItems: "center",
       width: "fit-content",
-      paddingTop:34,
+      paddingTop:30,
       fontSize:18,
     },
     "& img": {
