@@ -33,7 +33,8 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       flex: 'auto',
       alignItems: "center",
-      marginLeft: 0
+      marginLeft: 0,
+      flexDirection: 'row'
     },
     all: {
       width: "100%",

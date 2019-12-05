@@ -9,7 +9,7 @@ const useStyles = makeStyles(() =>createStyles({
     backgroundColor:'#F5F5F5',
     margin:'0 auto',
     position:'relative',
-    top:102,
+    top:172,
     padding:'73px 250px',
     boxSizing: 'border-box',
     color:'#333',
