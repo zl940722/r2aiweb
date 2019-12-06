@@ -187,8 +187,8 @@ const products = [
 export default function Orders(props: any) {
   const classes = useStyles();
   const { user = {} } = props;
-  const level = (user.level > 1 ? +user.level : +props.router.asPath.split("=")[1]) || 2;
-
+  let level = (user.type > 1 ? +user.type : +props.router.asPath.split("=")[1]) || 2;
+  level = level>3?3:level;
   const [mPrice, setmPrice] = useState(0);
   const [yPrice, setyPrice] = useState(0);
   const [userInfo, setuserInfo] = useState({
@@ -227,7 +227,6 @@ export default function Orders(props: any) {
         const { basicPrice } = response.data;
         setValues({ price: basicPrice });
       });
-
     } else {
       setProduct("prod_E7zzObgS7kjaMK");
       setProductName("Essential");
