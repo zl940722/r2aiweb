@@ -14,7 +14,8 @@ Index.getInitialProps = async function() {
   const homeData = await home.json();
 
   return {
-    data: homeData
+    data: homeData,
+    JOB_EMAIL:process.env.JOB_EMAIL || 'ya.chen@r2.ai',
   };
 };
 
