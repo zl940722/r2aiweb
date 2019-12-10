@@ -20,6 +20,7 @@ export default function (props) {
   });
 
   const [PRODUCT_URL, upPRODUCT_URL] = useState("");
+  const [JOB_EMAIL, upJOB_EMAIL] = useState("");
   const [init, setInit] = useState(false);
   const { Component, pageProps, router } = props as any;
 
@@ -47,10 +48,11 @@ export default function (props) {
 
   useEffect(() => {
     axios
-      .get("/product")
+      .get("/message")
       .then((data: any) => {
-        const PRODUCT_URL = data.data;
+        const {PRODUCT_URL,JOB_EMAIL} = data.data;
         PRODUCT_URL && upPRODUCT_URL(PRODUCT_URL);
+        JOB_EMAIL && upJOB_EMAIL(JOB_EMAIL);
         setInit(true)
       })
       .catch((err: any) => {
@@ -69,12 +71,16 @@ export default function (props) {
       <Header route={router.route} user={user} PRODUCT_URL={PRODUCT_URL} />
       <section
         style={{
-          // minHeight:'calc(100vh - 140px - 16.125rem)',
           minHeight: "calc(100vh - 132px)",
         }}
       >
-        {init ? <Component PRODUCT_URL={PRODUCT_URL} router={router}
-                           user={user} {...pageProps} route={router.route}/> : null}
+        {init ? <Component
+          JOB_EMAIL={JOB_EMAIL}
+          PRODUCT_URL={PRODUCT_URL}
+          router={router}
+          user={user}
+          {...pageProps}
+          route={router.route}/> : null}
       </section>
       <Footer />
       </Spin>

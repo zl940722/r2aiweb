@@ -58,6 +58,7 @@ const useStyles = makeStyles({
 
 
 function HomeAbout(res: any) {
+  console.log(res.JOB_EMAIL);
   const classes = useStyles();
   const detail = (id: any) => {
     return () => {

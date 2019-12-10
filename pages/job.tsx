@@ -15,7 +15,6 @@ Index.getInitialProps = async function() {
 
   return {
     data: homeData,
-    JOB_EMAIL:process.env.JOB_EMAIL || 'ya.chen@r2.ai',
   };
 };
 

@@ -16,6 +16,7 @@ const basicPriceYear = process.env.BASIC_PRICE_YEAR || 2159.78;
 const essentialPrice = process.env.ESSENTIAL_PRICE || 1999.98;
 const essentialPriceYear = process.env.ESSENTIAL_PRICE_YEAR || 21599.78;
 const PRODUCT_URL = process.env.PRODUCT_URL || 'http://localhost:7777';
+const JOB_EMAIL = process.env.JOB_EMAIL || 'ya.chen@r2.ai';
 
 const proxies = (target, org, url) => {
   return proxy({
@@ -271,8 +272,11 @@ app.prepare()
       next();
     });
 
-    server.get("/product", (req, res) => {
-      res.send(PRODUCT_URL);
+    server.get("/message", (req, res) => {
+      res.send({
+        PRODUCT_URL,
+        JOB_EMAIL,
+      });
     });
 
     server.get("/buy", async (req, res) => {
