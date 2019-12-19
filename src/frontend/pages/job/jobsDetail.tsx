@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/styles";
-
-import { Typography, Grid } from "@material-ui/core";
 import Router from "next/router";
-import { PageHeader } from "antd";
+import { Modal, PageHeader } from "antd";
 import moment from "moment";
 
 const useStyles = makeStyles({
@@ -50,9 +48,9 @@ const useStyles = makeStyles({
   itemBorderDiv: {
     display: "flex",
     alignItems: "center",
-    marginTop: 60,
+    marginTop: 60
   },
-  itemBorderP: { display: "flex", flex: 'none', fontSize: 20, margin: 0 },
+  itemBorderP: { display: "flex", flex: "none", fontSize: 20, margin: 0 },
   itemBorder: {
     width: "100%",
     display: "flex",
@@ -65,13 +63,20 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     margin: "90px 0 80px"
+  },
+  buttons: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: 70
+  },
+  modal: {
+    padding: '55px 50px 40px'
   }
 });
 
 function HomeAbout(res: any) {
   const classes = useStyles();
-  const submit = () => {
-  };
+  const [dialogInfo, setDialogOpen] = useState(false);
   return (
     <div className={classes.content}>
       <div
@@ -98,7 +103,11 @@ function HomeAbout(res: any) {
 
           <div>
             <p
-              style={{ color: "#666666", fontSize: 14, marginBottom: 18 }}>发布时间：{res.data.created_at ? moment(res.data.created_at).format("YYYY-MM-DD") : ""}</p>
+              style={{
+                color: "#666666",
+                fontSize: 14,
+                marginBottom: 18
+              }}>发布时间：{res.data.created_at ? moment(res.data.created_at).format("YYYY-MM-DD") : ""}</p>
             <h4 style={{ fontSize: 24, marginBottom: 0 }}>{res.data.name_zh}</h4>
             <p style={{ fontSize: 16, marginBottom: 0 }}>工作地点：{res.data.place_zh}</p>
           </div>
@@ -125,8 +134,41 @@ function HomeAbout(res: any) {
             color: "#D3323E",
             height: "40px",
             lineHeight: "40px"
-          }} href="mailto:lin.zhou@r2.ai">立即申请</a>
+          }} onClick={() => {
+            setDialogOpen(true);
+          }}>立即申请</a>
         </div>
+        <Modal
+          width={572}
+          title=""
+          visible={dialogInfo}
+          onOk={() => {
+            setDialogOpen(false);
+          }}
+          onCancel={() => {
+            setDialogOpen(false);
+          }}
+          footer={null}
+          
+        >
+          <div className={classes.modal}>
+            感谢您的关注，请将简历发送至邮箱：
+          <a href="mailto:career@r2.ai">career@r2.ai</a>
+            我们将尽快回复您。
+          <div className={classes.buttons}>
+              <a style={{
+                border: "1px solid #D3323E",
+                padding: "0 40px",
+                borderRadius: "36px",
+                color: "#D3323E",
+                height: "40px",
+                lineHeight: "40px"
+              }} onClick={() => {
+                setDialogOpen(false);
+              }}>确定</a>
+            </div>
+          </div>
+        </Modal>
       </div>
 
     </div>
