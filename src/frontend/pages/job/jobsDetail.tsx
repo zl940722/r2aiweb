@@ -111,13 +111,12 @@ function HomeAbout(res: any) {
             <h4 style={{ fontSize: 24, marginBottom: 0 }}>{res.data.name_zh}</h4>
             <p style={{ fontSize: 16, marginBottom: 0 }}>工作地点：{res.data.place_zh}</p>
           </div>
-          <div className={classes.itemBorderDiv}><h4 className={classes.itemBorderP}>职业描述</h4><p
+          <div className={classes.itemBorderDiv}><h4 className={classes.itemBorderP}>职位描述</h4><p
             className={classes.itemBorder}>{}</p></div>
           <div className={classes.item}>
             <p>{res.data.describe_zh}</p>
-
           </div>
-          <div className={classes.itemBorderDiv}><h4 className={classes.itemBorderP}>职业要求</h4><p
+          <div className={classes.itemBorderDiv}><h4 className={classes.itemBorderP}>职位要求</h4><p
             className={classes.itemBorder}>{}</p></div>
           <div className={classes.item}>
             <p>{res.data.requirement_zh}</p>
