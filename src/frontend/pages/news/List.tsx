@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer, useState } from "react";
 import { makeStyles } from "@material-ui/styles";
 import Router from "next/router";
 import { Typography, Grid } from "@material-ui/core";
@@ -66,6 +66,8 @@ const useStyles = makeStyles({
 
 export default function(res: any) {
   const { list = [], route } = res;
+  const [List,upList] = useState(list);
+  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
   const classes = useStyles();
   const detail = (id: any) => {
     return () => {
@@ -75,8 +77,8 @@ export default function(res: any) {
   };
 
   function main() {
-    if(list.length){
-      return list.map((value: any, index: any) => {
+    if(List.length){
+      return List.map((value: any, index: any) => {
         const Time = ()=>{
           if(value.publishTime){
             return <>{moment(value.publishTime).format("YYYY-MM-DD")}<i>|</i></>
@@ -87,6 +89,15 @@ export default function(res: any) {
             <div className={classes.item} style={{ textAlign: "center" }}>
               <img
                 src={(value.image || {}).url}
+                onError={()=>{
+                  console.log(111,List[index].image.url)
+                  if(!List[index].image.url.startsWith('/r2')){
+                    List[index].image.url = '/r2'+List[index].image.url;
+                    upList(List);
+                    // @ts-ignore
+                    forceUpdate();
+                  }
+                }}
                 alt="R2.ai"
               />
             </div>
