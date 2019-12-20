@@ -90,12 +90,16 @@ export default function(res: any) {
               <img
                 src={(value.image || {}).url}
                 onError={()=>{
-                  console.log(111,List[index].image.url)
                   if(!List[index].image.url.startsWith('/r2')){
+                    console.log(1,List[index].image.url);
                     List[index].image.url = '/r2'+List[index].image.url;
                     upList(List);
                     // @ts-ignore
                     forceUpdate();
+                  }else{
+                    console.log(2,List[index].image.url);
+                    List[index].image.url = List[index].image.url +'?v='+Date.now();
+                    setTimeout(forceUpdate,1000);
                   }
                 }}
                 alt="R2.ai"
