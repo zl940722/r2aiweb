@@ -40,7 +40,7 @@ function Copyright() {
             杭州睿拓智能科技有限公司
           </Typography>
           <Typography variant={"caption"} component={"p"}>
-            @2019 R2.ai INC 版权所有 浙ICP备18053463号
+            @2019 R2.ai INC 版权所有 <a target='_blank' href='http://www.beian.miit.gov.cn/'>浙ICP备18053463号</a>
           </Typography>
           <Typography variant={"caption"} component={"p"}>
             contact@r2.ai
