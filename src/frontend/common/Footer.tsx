@@ -43,14 +43,24 @@ function Copyright() {
             @2019 R2.ai INC 版权所有 <a target='_blank' href='http://www.beian.miit.gov.cn/'>浙ICP备18053463号</a>
           </Typography>
           <Typography variant={"caption"} component={"p"}>
+            <a target='_blank' href='http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802010610'><img style={{ height: 20, marginRight: 5 }} src="/static/images/common/beian.png" alt='备案' />浙公网安备 33010802010610号</a>
+          </Typography>
+
+          {/* <Typography variant={"caption"} component={"div"} style={{ width: 300, margin: '0 auto', padding: '20px 0' }}>
+            <a target='_blank' href='http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802010610' style={{ display: 'inline-block', textDecoration: 'none', height: '20px', lineHeight: '20px' }}>
+              <img src="/static/images/common/beian.png" alt='备案' style={{ float: 'left' }} />
+              <p style={{ float: 'left', height: '20px', lineHeight: '20px', margin: '0px 0px 0px 5px', color: '#939393' }}>浙公网安备 33010802010610号</p>
+            </a>
+          </Typography> */}
+          <Typography variant={"caption"} component={"p"}>
             contact@r2.ai
           </Typography>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 
 export default function Footer() {
-  return <Copyright/>;
+  return <Copyright />;
 }
