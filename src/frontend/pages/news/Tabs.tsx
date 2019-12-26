@@ -109,7 +109,7 @@ export default function(res: any) {
           })}
         </dl>
       </div>
-      <List list={list} route={route}/>
+      <List page={page} list={list} route={route}/>
       <section className={classes.page} style={{display:(count?'':'none')}}>
         <Pagination
           defaultCurrent={+page}

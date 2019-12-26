@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { makeStyles } from "@material-ui/styles";
 import Router from "next/router";
 import { Typography, Grid } from "@material-ui/core";
@@ -64,8 +64,8 @@ const useStyles = makeStyles({
   }
 });
 
-export default function(res: any) {
-  const { list = [], route } = res;
+export default function(props: any) {
+  const { list = [], route,page=1 } = props;
   const [List,upList] = useState(list);
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
   const classes = useStyles();
@@ -75,6 +75,10 @@ export default function(res: any) {
       Router.push(`/${link}/detail?${id}`);
     };
   };
+
+  useEffect(()=>{
+    upList(list)
+  },[page]);
 
   function main() {
     if(List.length){
