@@ -52,7 +52,7 @@ export default function() {
   return (
     <section className={classes.content}>
       <p className={'all_title'}>我们在做什么</p>
-      R2.ai是帮助创造AI的AI。我们服务于银行、保险、医疗、新零售、物联网等行业，利用最先进的AI开发及应用技术，以快速、高质、简单、经济的方式为企业进行AI赋能。
+      我们提供最先进的AI开发和运营技术，以使企业能够快速，轻松，超高质量地开发AI应用程序。 我们为银行，保险，医疗保健，物联网，零售，游戏等众多行业提供服务。
       <div className={classes.main}>
         <dl>
           <dd>

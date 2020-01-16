@@ -1,5 +1,5 @@
 #news .Activity:after {
-    content: '活动参会';
+    content: '企业动态';
     color: #50A5E7;
     font-size: 14px;
 }
@@ -16,11 +16,11 @@
     font-size: 14px;
 }
 
-#news .Message:after {
-    content: '活动信息';
-    color: #E7505B;
-    font-size: 14px;
-}
+/*#news .Message:after {*/
+/*    content: '活动信息';*/
+/*    color: #E7505B;*/
+/*    font-size: 14px;*/
+/*}*/
 
 #news .Product:after {
     content: '产品干货';

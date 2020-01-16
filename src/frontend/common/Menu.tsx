@@ -210,7 +210,7 @@ const menus: InterfaceMenu[] = [
       link: "/news/prize"
     }, {
       id: 83,
-      name: "活动参会",
+      name: "企业动态",
       children: null,
       link: "/news/activity"
     }],
@@ -220,11 +220,6 @@ const menus: InterfaceMenu[] = [
     id: 9,
     name: "R2社区",
     children: [{
-      id: 41,
-      name: "活动信息",
-      children: null,
-      link: "/resources/message"
-    }, {
       id: 42,
       name: "产品干货",
       children: null,

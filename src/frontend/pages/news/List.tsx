@@ -95,7 +95,6 @@ export default function(props: any) {
                 src={(value.image || {}).url}
                 onError={()=>{
                   if(!List[index].image.url.startsWith('/r2')){
-                    console.log(1,List[index].image.url);
                     List[index].image.url = '/r2'+List[index].image.url;
                     upList(List);
                     // @ts-ignore
