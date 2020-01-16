@@ -32,3 +32,22 @@
     /* transform: scale(1.1); */
     opacity: 1;
 }
+
+.team_bottom{
+    position: absolute;
+    width: 100%;
+    background: #2c3f57;
+    bottom: 0;
+    color: #fff;
+    padding: 17px 26px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.team_bottom p{
+    margin-bottom: 0;
+}
+.team_bottom p:last-child{
+    font-size: 14px;
+    padding-top: 5px;
+}

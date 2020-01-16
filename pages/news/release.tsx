@@ -21,7 +21,7 @@ Index.getInitialProps = async function(props) {
     name: "参评获奖",
     key: "prize"
   }, {
-    name: "活动参会",
+    name: "企业动态",
     key: "activity"
   }];
 

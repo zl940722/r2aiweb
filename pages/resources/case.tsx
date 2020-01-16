@@ -16,10 +16,7 @@ Index.getInitialProps = async function(props) {
   const newsData = await news.json();
   // const informationData = await information.json();
 
-  const tabs = [{
-    name: "活动信息",
-    key: "message"
-  }, {
+  const tabs = [ {
     name: "产品干货",
     key: "product"
   }, {
