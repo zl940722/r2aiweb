@@ -6,8 +6,8 @@
     "dev": "nodemon server.ts",
     "build": "cross-env NODE_ENV=production next build",
     "start": "cross-env NODE_ENV=production ts-node server.ts",
-    "docker:build": "yarn build && docker build -t harbor-dev.r2ai.com.cn/r2-test/portal-zh-bff:latest .",
-    "docker:push": "docker push harbor-dev.r2ai.com.cn/r2-test/portal-zh-bff:latest"
+    "docker:build": "yarn build && docker build -t harbor-dev.r2ai.com.cn/r2-test/zh-portal-bff:latest .",
+    "docker:push": "docker push harbor-dev.r2ai.com.cn/r2-test/zh-portal-bff:latest"
   },
   "dependencies": {
     "@types/node": "^12.12.11",
@@ -31,7 +31,7 @@
     "isomorphic-unfetch": "^3.0.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
-    "next": "^9.1.4",
+    "next": "9.1.4",
     "next-optimized-images": "^2.5.3",
     "next-plugin-graphql": "^0.0.2",
     "node-fetch": "^2.6.0",
