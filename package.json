@@ -6,8 +6,8 @@
     "dev": "nodemon server.ts",
     "build": "cross-env NODE_ENV=production next build",
     "start": "cross-env NODE_ENV=production ts-node server.ts",
-    "docker:build": "yarn build && docker build -t harbor-dev.r2ai.com.cn/r2-test/zh-portal-bff:latest .",
-    "docker:push": "docker push harbor-dev.r2ai.com.cn/r2-test/zh-portal-bff:latest"
+    "docker:build": "yarn build && docker build -t harbor-dev.r2ai.com.cn/r2-test/portal-bff-zh:latest .",
+    "docker:push": "docker push harbor-dev.r2ai.com.cn/r2-test/portal-bff-zh:latest"
   },
   "dependencies": {
     "@types/node": "^12.12.11",
