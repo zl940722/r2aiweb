@@ -25,26 +25,26 @@ export default function (props) {
   const { Component, pageProps, router } = props as any;
 
 
-  useEffect(() => {
-    axios.defaults.withCredentials = true;
-    axios.request({
-      headers: {
-        'Cache-Control': 'no-cache'
-      },
-      method: 'GET',
-      url: "/user/login",
-      params: {
-        time: Date.now()
-      }
-    })
-      .then((result: any) => {
-        const { data = {} } = result;
-        upUser(data);
-      })
-      .catch((err: any) => {
-        console.log(err);
-      })
-  }, [router.route]);
+  // useEffect(() => {
+  //   axios.defaults.withCredentials = true;
+  //   axios.request({
+  //     headers: {
+  //       'Cache-Control': 'no-cache'
+  //     },
+  //     method: 'GET',
+  //     url: "/user/login",
+  //     params: {
+  //       time: Date.now()
+  //     }
+  //   })
+  //     .then((result: any) => {
+  //       const { data = {} } = result;
+  //       upUser(data);
+  //     })
+  //     .catch((err: any) => {
+  //       console.log(err);
+  //     })
+  // }, [router.route]);
 
   useEffect(() => {
     axios
