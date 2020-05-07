@@ -40,7 +40,7 @@ function Copyright() {
             杭州睿拓智能科技有限公司
           </Typography>
           <Typography variant={"caption"} component={"p"}>
-            @2019 R2.ai INC 版权所有 <a target='_blank' href='http://www.beian.miit.gov.cn/'>浙ICP备18053463号</a>
+            @2020 R2.ai INC 版权所有 <a target='_blank' href='http://www.beian.miit.gov.cn/'>浙ICP备18053463号</a>
           </Typography>
           <Typography variant={"caption"} component={"p"}>
             <a target='_blank' href='http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802010610'><img style={{ height: 20, marginRight: 5 }} src="/static/images/common/beian.png" alt='备案' />浙公网安备 33010802010610号</a>

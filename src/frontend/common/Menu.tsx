@@ -183,12 +183,12 @@ const menus: InterfaceMenu[] = [
     ],
     link: "/application"
   },
-  {
-    id: 6,
-    name: "云服务",
-    children: null,
-    link: "/pricing"
-  },
+  // {
+  //   id: 6,
+  //   name: "云服务",
+  //   children: null,
+  //   link: "/pricing"
+  // },
   {
     id: 7,
     name: "合作伙伴",
@@ -339,41 +339,41 @@ const Header = (props) => {
           })
         }
 
-        <span className='main_user'>
-          {
-            props.user.active ?
-              <>
-                <div style={{
-                  flex: 'auto',
-                  width: 0,
-                  display: 'flex',
-                  position: 'relative',
-                  justifyContent: 'flex-end'
-                }}>
-                  <Dropdown className={classes.cursor} overlay={menu} overlayClassName={classes.overlayClass} getPopupContainer={(el: any) => el.parentElement} placement='bottomRight'>
-                    <span className={classes.avatar} title={(props.user.email || '').split('@')[0]}>
-                      <Icon style={{
-                        cursor: 'pointer',
-                        border: '1px solid',
-                        borderRadius: '50%',
-                        padding: 2,
-                        marginRight: 2
-                      }} type="user" />
-                      {(props.user.email || '').split('@')[0]}
-                    </span>
-                  </Dropdown>
-                </div>
-                <Button style={{
-                  cursor: 'pointer',
-                  display: (props.user.canLogin ? '' : 'none')
-                }} className={classes.product} shape="round" icon="arrow-right" onClick={() => location.href = props.PRODUCT_URL}>使用产品</Button>
-                {/*<a className={classes.res} style={{marginLeft:10}} href={props.PRODUCT_URL}>使用产品</a>*/}
-              </> :
-              <div><a className={classes.login} href={"/login"}>登录</a> <a className={classes.res}
-                href={"/register"}>注册</a>
-              </div>
-          }
-        </span>
+        {/*<span className='main_user'>*/}
+        {/*  {*/}
+        {/*    props.user.active ?*/}
+        {/*      <>*/}
+        {/*        <div style={{*/}
+        {/*          flex: 'auto',*/}
+        {/*          width: 0,*/}
+        {/*          display: 'flex',*/}
+        {/*          position: 'relative',*/}
+        {/*          justifyContent: 'flex-end'*/}
+        {/*        }}>*/}
+        {/*          <Dropdown className={classes.cursor} overlay={menu} overlayClassName={classes.overlayClass} getPopupContainer={(el: any) => el.parentElement} placement='bottomRight'>*/}
+        {/*            <span className={classes.avatar} title={(props.user.email || '').split('@')[0]}>*/}
+        {/*              <Icon style={{*/}
+        {/*                cursor: 'pointer',*/}
+        {/*                border: '1px solid',*/}
+        {/*                borderRadius: '50%',*/}
+        {/*                padding: 2,*/}
+        {/*                marginRight: 2*/}
+        {/*              }} type="user" />*/}
+        {/*              {(props.user.email || '').split('@')[0]}*/}
+        {/*            </span>*/}
+        {/*          </Dropdown>*/}
+        {/*        </div>*/}
+        {/*        <Button style={{*/}
+        {/*          cursor: 'pointer',*/}
+        {/*          display: (props.user.canLogin ? '' : 'none')*/}
+        {/*        }} className={classes.product} shape="round" icon="arrow-right" onClick={() => location.href = props.PRODUCT_URL}>使用产品</Button>*/}
+        {/*        /!*<a className={classes.res} style={{marginLeft:10}} href={props.PRODUCT_URL}>使用产品</a>*!/*/}
+        {/*      </> :*/}
+        {/*      <div><a className={classes.login} href={"/login"}>登录</a> <a className={classes.res}*/}
+        {/*        href={"/register"}>注册</a>*/}
+        {/*      </div>*/}
+        {/*  }*/}
+        {/*</span>*/}
       </Menu>
     </div>
   );

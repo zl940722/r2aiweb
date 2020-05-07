@@ -123,15 +123,15 @@ export default function ContentBanner(res: any) {
           R2 Learn 公开免费试用，开启全新建模体验！<br/>助您快速建立高质量机器学习模型！
         </Typography>
         <Grommet theme={customTheme} className={classes.buttonWrap}>
-          <Box align="center" pad="medium">
-            <Button
-              hoverIndicator
-              disabled={user.type > 0}
-              onClick={toBuy}
-              label={"立即试用"}
-              className={classes.button}
-            />
-          </Box>
+          {/*<Box align="center" pad="medium">*/}
+          {/*  <Button*/}
+          {/*    hoverIndicator*/}
+          {/*    disabled={user.type > 0}*/}
+          {/*    onClick={toBuy}*/}
+          {/*    label={"立即试用"}*/}
+          {/*    className={classes.button}*/}
+          {/*  />*/}
+          {/*</Box>*/}
         </Grommet>
       </div>
       <SimpleDialog
