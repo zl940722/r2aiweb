@@ -77,165 +77,165 @@ app.prepare()
     server.use("/uploads", strapiServiceProxy("/", "/"));
     server.use("/r2/uploads", strapiServiceProxy("/", "/"));
     server.use("/strapi", strapiServiceProxy("/strapi", "/"));
-    server.use("/user/sendMail", messageServiceProxy("/user/sendMail", "/mailer/sendMail"));
-    server.put("/user/login", authServiceProxy("/user/login", "/"));
-    server.delete("/user/logout", authServiceProxy("/user/logout", "/"));
-    server.post("/user/forget", authServiceProxy("/user/forget", "/forget"));
-    server.use("/user/captcha", authServiceProxy("/user/captcha", "/captcha"));
-    server.use("/user/register", payServiceProxy("/user/register", "/user/register"));
-    server.use("/active", payServiceProxy("/active", "/user/activeUser"));
+    // server.use("/user/sendMail", messageServiceProxy("/user/sendMail", "/mailer/sendMail"));
+    // server.put("/user/login", authServiceProxy("/user/login", "/"));
+    // server.delete("/user/logout", authServiceProxy("/user/logout", "/"));
+    // server.post("/user/forget", authServiceProxy("/user/forget", "/forget"));
+    // server.use("/user/captcha", authServiceProxy("/user/captcha", "/captcha"));
+    // server.use("/user/register", payServiceProxy("/user/register", "/user/register"));
+    // server.use("/active", payServiceProxy("/active", "/user/activeUser"));
 
-    server.use("/user/forgetPassword", payServiceProxy("/user/forgetPassword", "/user/forgetPassword"));
+    // server.use("/user/forgetPassword", payServiceProxy("/user/forgetPassword", "/user/forgetPassword"));
+    //
+    // server.use("/order/getOrderById", payServiceProxy("/order/getOrderById", "/order/getOrderById"));
+    //
+    // server.use("/user/resetPassword", payServiceProxy("/user/resetPassword", "/user/resetPassword"));
+    //
+    // server.use("/probation/applyProbation", payServiceProxy("/probation/applyProbation", "/probation/applyProbation"));
+    //
+    //
+    // server.use("/alipay/createCharge", payBffProxy("/alipay/createCharge", "/alipay/createCharge"));
+    //
+    // server.use("/alipay/orderQuery", payBffProxy("/alipay/orderQuery", "/alipay/orderQuery"));
+    //
+    // server.use("/unionPay/createCharge", payBffProxy("/unionPay/createCharge", "/unionPay/createCharge"));
+    //
+    // server.use("/unionPay/orderQuery", payBffProxy("/unionPay/orderQuery", "/unionPay/orderQuery"));
+    //
+    // server.use("/wechat/createCharge", payBffProxy("/wechat/createCharge", "/wechat/createCharge"));
+    //
+    // server.use("/wechat/orderQuery", payBffProxy("/wechat/orderQuery", "/wechat/orderQuery"));
+    //
+    // server.post("/user/invoice/queryInvoiceStatus", requireLoginMiddleware, payBffProxy("/user/invoice/queryInvoiceStatus", "/invoice/queryInvoiceStatus"));
 
-    server.use("/order/getOrderById", payServiceProxy("/order/getOrderById", "/order/getOrderById"));
+    // server.get('/user/login', async (req, res) => {
+    //   const user = await getUser(req.headers.cookie) || {};
+    //   return res.json({
+    //     ...user,
+    //     canLogin: new Date(user.endTime) > new Date()
+    //   })
+    // });
 
-    server.use("/user/resetPassword", payServiceProxy("/user/resetPassword", "/user/resetPassword"));
+    // server.get("/user/invoices", requireLoginMiddleware, async (req, res) => {
+    //   const user = await getUser(req.headers.cookie)
+    //   try {
+    //     const result = await axios({
+    //       method: 'get',
+    //       params: { userId: user.id },
+    //       url: `${payBff}/invoice/getOrderNeedInvoices`
+    //     })
+    //     const data = result.data;
+    //     const orderIds = data.map(order => order.id);
+    //     res.json({
+    //       status: 200,
+    //       message: 'ok',
+    //       orderIds
+    //     })
+    //   } catch (e) {
+    //     res.json({
+    //       status: 500,
+    //       message: e.response.data
+    //     })
+    //   }
+    // })
 
-    server.use("/probation/applyProbation", payServiceProxy("/probation/applyProbation", "/probation/applyProbation"));
-
-
-    server.use("/alipay/createCharge", payBffProxy("/alipay/createCharge", "/alipay/createCharge"));
-
-    server.use("/alipay/orderQuery", payBffProxy("/alipay/orderQuery", "/alipay/orderQuery"));
-
-    server.use("/unionPay/createCharge", payBffProxy("/unionPay/createCharge", "/unionPay/createCharge"));
-
-    server.use("/unionPay/orderQuery", payBffProxy("/unionPay/orderQuery", "/unionPay/orderQuery"));
-
-    server.use("/wechat/createCharge", payBffProxy("/wechat/createCharge", "/wechat/createCharge"));
-
-    server.use("/wechat/orderQuery", payBffProxy("/wechat/orderQuery", "/wechat/orderQuery"));
-
-    server.post("/user/invoice/queryInvoiceStatus", requireLoginMiddleware, payBffProxy("/user/invoice/queryInvoiceStatus", "/invoice/queryInvoiceStatus"));
-
-    server.get('/user/login', async (req, res) => {
-      const user = await getUser(req.headers.cookie) || {};
-      return res.json({
-        ...user,
-        canLogin: new Date(user.endTime) > new Date()
-      })
-    });
-
-    server.get("/user/invoices", requireLoginMiddleware, async (req, res) => {
-      const user = await getUser(req.headers.cookie)
-      try {
-        const result = await axios({
-          method: 'get',
-          params: { userId: user.id },
-          url: `${payBff}/invoice/getOrderNeedInvoices`
-        })
-        const data = result.data;
-        const orderIds = data.map(order => order.id);
-        res.json({
-          status: 200,
-          message: 'ok',
-          orderIds
-        })
-      } catch (e) {
-        res.json({
-          status: 500,
-          message: e.response.data
-        })
-      }
-    })
-
-    server.post("/user/invoices", requireLoginMiddleware, async (req, res) => {
-      let str = ''
-      req.on('data', s => {
-        str += s
-      })
-      req.on('end', async () => {
-        let bodyData
-        try {
-          bodyData = JSON.parse(str)
-        } catch (e) {
-          console.log(e.message, 'parseError')
-          return res.send({
-            status: 501,
-            message: 'error params'
-          })
-        }
-
-        const {
-          language = "zh-CN",
-          type,
-          invoice,
-          name,
-          bankNo,
-          address,
-          phone,
-          personNo,
-          orderIds
-        } = bodyData
-
-        const user = await getUser(req.headers.cookie)
-
-        if (!user) return res.send({
-          status: 301,
-          message: language === 'zh-CN' ? "请先登录" : 'please login first'
-        })
-
-        const required = invoice === 'Personal' ? ["type", "invoice", "name", "phone"] : ["type", "invoice", "personNo", "name", "address", "phone"]
-        for (let v of required) {
-          if (!bodyData[v]) return res.send({
-            status: 101,
-            message: language === 'zh-CN' ? "以上选项包含必填项，请正确填写。" : 'error'
-          })
-        }
-
-        if (!orderIds || !orderIds.length) return res.send({
-          status: 102,
-          message: language === 'zh-CN' ? "发票开具失败" : 'error'
-        })
-
-        try {
-          const invoiceRes = await axios({
-            method: 'get',
-            params: { userId: user.id },
-            url: `${payBff}/invoice/getOrderNeedInvoices`
-          })
-          if (!invoiceRes.data || !invoiceRes.data.length) return res.send({
-            status: 104,
-            message: language === 'zh-CN' ? "没有要开的发票" : 'error'
-          })
-          const orders = invoiceRes.data
-          const _orderIds = orders.map(o => o.id)
-          if (orderIds.some(orderId => !_orderIds.includes(orderId))) return res.send({
-            status: 105,
-            message: language === 'zh-CN' ? "已有开过发票" : 'error'
-          })
-
-          const detail = orders.filter(o => orderIds.includes(o.id)).map(order => {
-            return {
-              goodsname: 'r2.ai - ' + order.productName,
-              price: Number(order.totalPrice) / 100
-            }
-          });
-          const applyResult = await axios({
-            method: 'post',
-            url: `${payBff}/invoice/applyInvoice`,
-            data: {
-              detail,
-              orderIds,
-              invoiceType: type,
-              "basic": { email: user.email, buyername: name, phone, taxnum: personNo, address, account: bankNo }
-            }
-          })
-
-          return res.send({
-            status: 200,
-            message: 'ok',
-            fpqqlsh: applyResult.data
-          })
-
-        } catch (e) {
-          return res.send({
-            status: 103,
-            message: e.response.data
-          })
-        }
-      })
-    });
+    // server.post("/user/invoices", requireLoginMiddleware, async (req, res) => {
+    //   let str = ''
+    //   req.on('data', s => {
+    //     str += s
+    //   })
+    //   req.on('end', async () => {
+    //     let bodyData
+    //     try {
+    //       bodyData = JSON.parse(str)
+    //     } catch (e) {
+    //       console.log(e.message, 'parseError')
+    //       return res.send({
+    //         status: 501,
+    //         message: 'error params'
+    //       })
+    //     }
+    //
+    //     const {
+    //       language = "zh-CN",
+    //       type,
+    //       invoice,
+    //       name,
+    //       bankNo,
+    //       address,
+    //       phone,
+    //       personNo,
+    //       orderIds
+    //     } = bodyData
+    //
+    //     const user = await getUser(req.headers.cookie)
+    //
+    //     if (!user) return res.send({
+    //       status: 301,
+    //       message: language === 'zh-CN' ? "请先登录" : 'please login first'
+    //     })
+    //
+    //     const required = invoice === 'Personal' ? ["type", "invoice", "name", "phone"] : ["type", "invoice", "personNo", "name", "address", "phone"]
+    //     for (let v of required) {
+    //       if (!bodyData[v]) return res.send({
+    //         status: 101,
+    //         message: language === 'zh-CN' ? "以上选项包含必填项，请正确填写。" : 'error'
+    //       })
+    //     }
+    //
+    //     if (!orderIds || !orderIds.length) return res.send({
+    //       status: 102,
+    //       message: language === 'zh-CN' ? "发票开具失败" : 'error'
+    //     })
+    //
+    //     try {
+    //       const invoiceRes = await axios({
+    //         method: 'get',
+    //         params: { userId: user.id },
+    //         url: `${payBff}/invoice/getOrderNeedInvoices`
+    //       })
+    //       if (!invoiceRes.data || !invoiceRes.data.length) return res.send({
+    //         status: 104,
+    //         message: language === 'zh-CN' ? "没有要开的发票" : 'error'
+    //       })
+    //       const orders = invoiceRes.data
+    //       const _orderIds = orders.map(o => o.id)
+    //       if (orderIds.some(orderId => !_orderIds.includes(orderId))) return res.send({
+    //         status: 105,
+    //         message: language === 'zh-CN' ? "已有开过发票" : 'error'
+    //       })
+    //
+    //       const detail = orders.filter(o => orderIds.includes(o.id)).map(order => {
+    //         return {
+    //           goodsname: 'r2.ai - ' + order.productName,
+    //           price: Number(order.totalPrice) / 100
+    //         }
+    //       });
+    //       const applyResult = await axios({
+    //         method: 'post',
+    //         url: `${payBff}/invoice/applyInvoice`,
+    //         data: {
+    //           detail,
+    //           orderIds,
+    //           invoiceType: type,
+    //           "basic": { email: user.email, buyername: name, phone, taxnum: personNo, address, account: bankNo }
+    //         }
+    //       })
+    //
+    //       return res.send({
+    //         status: 200,
+    //         message: 'ok',
+    //         fpqqlsh: applyResult.data
+    //       })
+    //
+    //     } catch (e) {
+    //       return res.send({
+    //         status: 103,
+    //         message: e.response.data
+    //       })
+    //     }
+    //   })
+    // });
 
     server.get("/price", (req, res) => {
       res.send({
@@ -246,31 +246,31 @@ app.prepare()
       });
     });
 
-    const user = async (cookie) => {
-      const u = await getUser(cookie)
+    // const user = async (cookie) => {
+    //   const u = await getUser(cookie)
+    //
+    //   return !!u && !!u.id
+    // };
 
-      return !!u && !!u.id
-    };
+    // server.get("/login", async (req, res, next) => {
+    //   const { cookie } = req.headers;
+    //   const _user = cookie && await user(req.headers.cookie);
+    //
+    //   if (_user) {
+    //     return res.redirect('/')
+    //   }
+    //   next();
+    // });
 
-    server.get("/login", async (req, res, next) => {
-      const { cookie } = req.headers;
-      const _user = cookie && await user(req.headers.cookie);
-
-      if (_user) {
-        return res.redirect('/')
-      }
-      next();
-    });
-
-    server.get("/register", async (req, res, next) => {
-      const { cookie } = req.headers;
-      const _user = cookie && await user(req.headers.cookie);
-
-      if (_user) {
-        return res.redirect('/')
-      }
-      next();
-    });
+    // server.get("/register", async (req, res, next) => {
+    //   const { cookie } = req.headers;
+    //   const _user = cookie && await user(req.headers.cookie);
+    //
+    //   if (_user) {
+    //     return res.redirect('/')
+    //   }
+    //   next();
+    // });
 
     server.get("/message", (req, res) => {
       res.send({
@@ -279,70 +279,70 @@ app.prepare()
       });
     });
 
-    server.get("/buy", async (req, res) => {
-      const { cookie = '' } = req.headers;
-      const { captcha, orderType, price, totalPrice, productId, productName, payMethod, level } = req.query;
-      axios({
-        method: 'post',
-        url: authService + '/captcha',
-        data: {
-          captcha,
-        },
-        headers: {
-          cookie,
-        },
-      }).catch(() => {
-        res.status(500).json({
-          error: 'captcha error'
-        })
-      });
-
-      const user = await getUser(cookie);
-      if (!user) {
-        res.status(500).json({
-          error: 'not login'
-        })
-      }
-
-      if (+level > 1 && +level !== +user.level && user.endTime > new Date()) {
-        res.status(500).json({
-          error: 'type error'
-        })
-      }
-
-      const list = {
-        email: user.email,
-        orderType,
-        price,
-        renew: false,
-        totalPrice,
-        productId,
-        language: "zh-CN",
-        duration: 1,
-        productName,
-      };
-
-      axios.post(`${payBff}/${payMethod}/createCharge`, list).then(async (response: any) => {
-        if (response.status === 200) {
-          return res.json({
-            response: response.data
-          })
-        }
-        res.status(500).json({
-          error: 'pay fail',
-        });
-      }).catch((error: any) => {
-        if (error.response) {
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        }
-        res.status(500).json({
-          error: 'pay fail',
-          content: error.response.data,
-        });
-      });
-    });
+    // server.get("/buy", async (req, res) => {
+    //   const { cookie = '' } = req.headers;
+    //   const { captcha, orderType, price, totalPrice, productId, productName, payMethod, level } = req.query;
+    //   axios({
+    //     method: 'post',
+    //     url: authService + '/captcha',
+    //     data: {
+    //       captcha,
+    //     },
+    //     headers: {
+    //       cookie,
+    //     },
+    //   }).catch(() => {
+    //     res.status(500).json({
+    //       error: 'captcha error'
+    //     })
+    //   });
+    //
+    //   const user = await getUser(cookie);
+    //   if (!user) {
+    //     res.status(500).json({
+    //       error: 'not login'
+    //     })
+    //   }
+    //
+    //   if (+level > 1 && +level !== +user.level && user.endTime > new Date()) {
+    //     res.status(500).json({
+    //       error: 'type error'
+    //     })
+    //   }
+    //
+    //   const list = {
+    //     email: user.email,
+    //     orderType,
+    //     price,
+    //     renew: false,
+    //     totalPrice,
+    //     productId,
+    //     language: "zh-CN",
+    //     duration: 1,
+    //     productName,
+    //   };
+    //
+    //   axios.post(`${payBff}/${payMethod}/createCharge`, list).then(async (response: any) => {
+    //     if (response.status === 200) {
+    //       return res.json({
+    //         response: response.data
+    //       })
+    //     }
+    //     res.status(500).json({
+    //       error: 'pay fail',
+    //     });
+    //   }).catch((error: any) => {
+    //     if (error.response) {
+    //       console.log(error.response.data);
+    //       console.log(error.response.status);
+    //       console.log(error.response.headers);
+    //     }
+    //     res.status(500).json({
+    //       error: 'pay fail',
+    //       content: error.response.data,
+    //     });
+    //   });
+    // });
 
 
     server.get("/p/:id", (req, res) => {
