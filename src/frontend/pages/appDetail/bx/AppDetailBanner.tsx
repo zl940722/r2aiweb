@@ -50,31 +50,9 @@ function AppDetailBanner() {
 
   return (
     <>
-      <Carousel
-        showThumbs={false}
-        showArrows={false}
-        showStatus={false}
-        showIndicators={false}
-      >
-        {/*<div*/}
-        {/*  className={classes.item}*/}
-        {/*  style={{*/}
-        {/*    backgroundImage: "url(/static/images/appDetail/11.png)"*/}
-        {/*  }}*/}
-        {/*>*/}
-        {/*  /!*<div className={classes.itemContent}>*!/*/}
-        {/*  /!*  <Typography variant={"h3"} className={classes.title}>*!/*/}
-        {/*  /!*    {data.name}*!/*/}
-        {/*  /!*  </Typography>*!/*/}
-        {/*  /!*  <Typography variant={"h5"} className={classes.body}>*!/*/}
-        {/*  /!*    {data.des}*!/*/}
-        {/*  /!*  </Typography>*!/*/}
-        {/*  /!*</div>*!/*/}
-        {/*</div>*/}
         <div className={classes.banner}>
           <img src="/static/images/appDetail/11.png" alt="technical banner"/>
         </div>
-      </Carousel>
     </>
   );
 }

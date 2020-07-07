@@ -68,7 +68,7 @@ function Lessons() {
           <Typography className={classes.des}>
             <p> R2 Learn产品入门及进阶课程</p>
             <p>
-              查看更多>
+              {'查看更多>'}
             </p>
           </Typography>
 

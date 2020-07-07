@@ -86,7 +86,7 @@ function AppGrids() {
                 <div className={classes.grid_name}>
                   <h2 className={classes.grid_h}> {value.name}</h2>
                   <p className={classes.grid_p}>  {value.text}</p>
-                  <p className={classes.grid_p2}>查看详情 >></p>
+                  <p className={classes.grid_p2}>{'查看详情 >>'}</p>
                 </div>
               </Grid>
               {/*</a>*/}

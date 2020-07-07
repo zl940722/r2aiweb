@@ -50,16 +50,9 @@ function AppDetailBanner() {
 
   return (
     <>
-      <Carousel
-        showThumbs={false}
-        showArrows={false}
-        showStatus={false}
-        showIndicators={false}
-      >
         <div className={classes.banner}>
           <img src="/static/images/appDetail/31.png" alt="technical banner"/>
         </div>
-      </Carousel>
     </>
   );
 }
