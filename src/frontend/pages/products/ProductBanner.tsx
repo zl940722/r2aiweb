@@ -95,12 +95,6 @@ function ProductBanner(res: any) {
 
   return (
     <>
-      <Carousel
-        showThumbs={false}
-        showArrows={false}
-        showStatus={false}
-        showIndicators={false}
-      >
         <div className={classes.banner}>
           <img src="/static/images/products/banner.png" alt="technical banner" />
           {/*</div>*/}
@@ -111,7 +105,6 @@ function ProductBanner(res: any) {
             </div>
           </div>
         </div>
-      </Carousel>
       <Modal className={classes.modal} open={open} onClose={onHandleClose}>
         <div className={classes.paper}>
           <video width={"100%"} controls autoPlay>

@@ -106,7 +106,7 @@ const HomeBanner = (res: any) => {
 
   return (
     <>
-      <Carousel showThumbs={false} showArrows={false} showStatus={false}>
+
         <div
           className={classes.item}
           style={{ backgroundImage: banner }}
@@ -131,7 +131,6 @@ const HomeBanner = (res: any) => {
           </div>
         </div>
 
-      </Carousel>
       <Modal className={classes.modal} open={open} onClose={onHandleClose}>
         <div className={classes.paper}>
           <video width={"100%"} controls autoPlay>

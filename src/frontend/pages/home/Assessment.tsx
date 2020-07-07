@@ -80,16 +80,7 @@ function Assessment(res: any) {
         <Grommet theme={customBreakpoints}>
           <ResponsiveContext.Consumer>
             {size => (
-              <Carousel
-                showThumbs={false}
-                showArrows={false}
-                showStatus={false}
-                showIndicators={false}
-                className={classes.items}
-                centerMode
-                centerSlidePercentage={percentages[size] || 33}
-                emulateTouch={size === "xs"}
-              >
+<div>
                 <div className={classes.item}>
                   <Grid item md={4} xs={12} className={classes.card}>
                     <div className={classes.actionArea}>
@@ -168,7 +159,7 @@ function Assessment(res: any) {
                     </div>
                   </Grid>
                 </div>
-              </Carousel>
+              </div>
             )}
           </ResponsiveContext.Consumer>
         </Grommet>

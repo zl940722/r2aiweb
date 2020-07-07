@@ -124,12 +124,6 @@ function ProductBanner() {
 
   return (
     <>
-      <Carousel
-        showThumbs={false}
-        showArrows={false}
-        showStatus={false}
-        showIndicators={false}
-      >
         <div className={classes.banner}>
           <img src="/static/images/partner/banner@2x.png" alt="banner" />
           {/*</div>*/}
@@ -144,7 +138,6 @@ function ProductBanner() {
             </Grommet>
           </div>
         </div>
-      </Carousel>
       <Modal className={classes.modal} open={open} onClose={onHandleClose}>
         <div className={classes.paper}>
           <video width={"100%"} controls autoPlay>

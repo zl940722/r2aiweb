@@ -20,12 +20,6 @@ export default function(props: Interface) {
 
   return (
     <>
-      <Carousel
-        showThumbs={false}
-        showArrows={false}
-        showStatus={false}
-        showIndicators={false}
-      >
         <div
           className={classes.item}
           style={{
@@ -33,7 +27,6 @@ export default function(props: Interface) {
             backgroundSize: '100% 100%'
           }}
         />
-      </Carousel>
     </>
   );
 }

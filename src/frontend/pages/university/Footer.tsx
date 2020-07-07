@@ -63,12 +63,6 @@ function ProductBanner() {
 
   return (
     <>
-      <Carousel
-        showThumbs={false}
-        showArrows={false}
-        showStatus={false}
-        showIndicators={false}
-      >
         <div
           className={classes.item}
           style={{ backgroundImage: "url(/static/images/university/banner@2x.png)" }}
@@ -82,7 +76,6 @@ function ProductBanner() {
             </Typography>
           </div>
         </div>
-      </Carousel>
     </>
   );
 }
