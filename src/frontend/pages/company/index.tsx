@@ -208,7 +208,7 @@ function HomeAbout() {
                     上海机颖智能科技有限公司 R2.ai – 上海
                   </div>
                   <div className={classes.cardText}>
-                    上海市杨浦区国霞路458弄2号307室
+                    上海市杨浦区国霞路458弄星汇广场二期2号307室
                   </div>
                 </Card>
               </div>
