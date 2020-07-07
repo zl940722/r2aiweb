@@ -208,7 +208,7 @@ function HomeAbout() {
                     上海机颖智能科技有限公司 R2.ai – 上海
                   </div>
                   <div className={classes.cardText}>
-                    上海市杨浦区政立路497号国正中心 1号楼1508室
+                    上海市杨浦区国霞路458弄2号307室
                   </div>
                 </Card>
               </div>
@@ -231,7 +231,7 @@ function HomeAbout() {
                     杭州睿拓智能科技有限公司 R2.ai – 杭州
                   </div>
                   <div className={classes.cardText}>
-                    杭州滨江区六和路368号海创基地 南楼2楼E2012
+                    杭州市滨江区六和路368号海创基地北二楼B7-11室
                   </div>
                 </Card>
               </div>
